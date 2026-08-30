@@ -1,0 +1,66 @@
+@media(max-width:980px){
+  .nav-links{display:none}
+  .menu-btn{display:grid;place-items:center}
+  .site-nav.open .nav-links{
+    display:flex;
+    position:absolute;
+    top:64px;left:0;right:0;
+    flex-direction:column;align-items:stretch;
+    padding:9px;
+    border:1px solid rgba(255,255,255,.8);
+    background:rgba(250,253,251,.96);
+    box-shadow:var(--shadow-md);
+    border-radius:16px;
+    backdrop-filter:blur(16px);
+  }
+  .nav-links a{padding:10px 12px}
+  .update-pill{margin-left:auto}
+  .hero{min-height:auto;padding-top:128px}
+  .hero-grid,.stream-layout,.natural-unit,.reflection-demo,.report-layout,.membership-panel{grid-template-columns:1fr}
+  .hero-grid{gap:36px}
+  .phone-stage{min-height:470px}
+  .floating-note.one{right:3%}
+  .floating-note.two{left:4%}
+}
+@media(max-width:760px){
+  .wrap{width:min(calc(100% - 28px),var(--content))}
+  .site-nav{top:8px;width:calc(100% - 16px)}
+  .brand span:last-child{display:none}
+  .update-pill{padding:0 9px;font-size:11px}
+  .hero{padding:108px 0 52px}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .btn{width:100%}
+  .phone-stage{min-height:485px}
+  .prototype-disclaimer{bottom:-18px;width:min(350px,96%);font-size:11px}
+  .phone{width:310px;min-height:470px}
+  .phone-screen{min-height:442px}
+  .floating-note{display:none}
+  section{padding:70px 0}
+  .grid-3,.learning-flow,.memory-grid,.track-grid,.changelog,.beliefs-grid{grid-template-columns:1fr}
+  .atom-feed-viewport{height:430px}
+  .reel{padding:22px 72px 20px 20px}
+  .phase:not(:last-child)::after{
+    content:"↓";right:auto;left:50%;top:auto;bottom:-20px;transform:translateX(-50%)
+  }
+  .complete-card,.collection-header,.update-header,footer{align-items:flex-start;flex-direction:column}
+  .change:nth-child(odd){border-right:0}
+  .change:nth-last-child(-n+2){border-bottom:1px solid rgba(16,185,129,.10)}
+  .change:last-child{border-bottom:0}
+  .natural-unit,.collection{padding:18px}
+  .section-head{margin-bottom:34px}
+  .closing{padding:86px 0 72px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .phone:hover{transform:rotate(2deg)}
+}
+@media print{
+  .site-nav,#scrollProgress{display:none!important}
+  body{background:white}
+  .hero{min-height:auto;padding-top:30px}
+  .reveal{opacity:1!important;transform:none!important}
+  section{padding:45px 0}
+  .surface,.pain-card,.phone,.report-card,.memory-card{box-shadow:none!important}
+}
