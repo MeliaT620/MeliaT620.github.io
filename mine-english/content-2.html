@@ -2,70 +2,80 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div class="kicker">Daily Learning</div>
-        <h2>Review、Build、Coach，<br>都藏在同一条往上刷的流里。</h2>
-        <p>这三个词是系统理解课程的方式，不是要求用户切换三个复杂模块。对你来说，始终只是：当前知识点 → 当前动作 → ↑ 下一页。</p>
+        <h2>Review、Build、Coach，<br>都藏在同一条向下流动的学习河流里。</h2>
+        <p>它们是系统在后台理解课程的方式，不是三个需要你自己切换的页面。对你来说，始终只是当前这一页，然后继续往下。</p>
       </div>
 
-      <div class="learning-flow">
-        <article class="phase reveal">
-          <div class="num">BACKSTAGE · REVIEW</div>
-          <h3>该重新想一次了</h3>
-          <p>系统把最值得重新唤起的知识原子放到当前页；你不用先打开一张复习清单。</p>
-        </article>
-        <article class="phase reveal">
-          <div class="num">BACKSTAGE · BUILD</div>
-          <h3>现在建立一个新的 Usage</h3>
-          <p>一页只建立一个新的知识点，不把整个 Word 的所有意思同时压给你。</p>
-        </article>
-        <article class="phase reveal">
-          <div class="num">BACKSTAGE · COACH</div>
-          <h3>只在需要时多走一步</h3>
-          <p>辨析和迁移也继续以原子卡出现，不突然把你扔进另一套课程界面。</p>
-        </article>
-      </div>
+      <div class="learning-river reveal">
+        <div class="river-line"></div>
 
-      <div class="complete-card reveal">
-        <div>
-          <strong>↑ ↑ ↑ → Today's Learning Complete ✓</strong>
-          <span>刷到底，今日任务、统一打卡和 Learning Reward 都已经完成。</span>
+        <article class="river-node">
+          <div class="river-dot"></div>
+          <div class="river-copy">
+            <span>REVIEW · BACKSTAGE</span>
+            <h3>把正在变模糊的 Usage 找回来</h3>
+            <p>系统挑出最值得重新唤起的知识，不把一整张“待还清”的复习清单压给你。</p>
+          </div>
+        </article>
+
+        <article class="river-node">
+          <div class="river-dot"></div>
+          <div class="river-copy">
+            <span>BUILD · BACKSTAGE</span>
+            <h3>再建立一个新的 Usage</h3>
+            <p>一屏只做一个认知任务。一词多义，也是一义一义慢慢建立。</p>
+          </div>
+        </article>
+
+        <article class="river-node">
+          <div class="river-dot"></div>
+          <div class="river-copy">
+            <span>COACH · ONLY WHEN NEEDED</span>
+            <h3>只在需要时，多走一步</h3>
+            <p>辨析、迁移和重点错项仍然嵌在这条流里，不突然把你带去另一套复杂界面。</p>
+          </div>
+        </article>
+
+        <div class="river-finish">
+          <div class="finish-check">✓</div>
+          <div class="finish-copy">
+            <strong>Today's Learning Complete</strong>
+            <span>今天真正需要完成的学习，到这里就结束了。</span>
+          </div>
+          <small>Learning ends the obligation.</small>
         </div>
-        <span>Learning ends the obligation.</span>
+      </div>
+
+      <div class="manifesto reveal">
+        <p><strong>系统可以有很多分支，用户始终只有一条路。</strong> 一页一个知识点，继续往下；刷到底，就是完成。</p>
       </div>
     </div>
   </section>
 
-  <section id="reflection">
+<section id="reflection">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="kicker">Reflection · Optional</div>
-        <h2>Reflection 也不是“总结页”。<br>还是一个知识点一个知识点地刷。</h2>
-        <p>Learning 完成以后，今天真正经过的 Knowledge Elements 会重新排成一条有限的 Reflection Feed。仍然是一屏一个原子，仍然只需要向上滑。</p>
+        <h2>Reflection 也很简单。<br>今天学过的 Usage，一个一个再遇见。</h2>
+        <p>只回看今天真正经过的知识。有限、安静，刷到最后就结束。</p>
       </div>
 
       <div class="reflection-demo">
         <div class="reel reveal" aria-label="Reflection knowledge atom concept card">
-          <div class="reel-top">
-            <span>TODAY · KNOWLEDGE ATOM</span>
-            <span>7 / 18</span>
-          </div>
+          <div class="reel-progress-line"><span></span></div>
 
           <div class="reel-wordline">
             <span class="reel-word">issue</span>
-            <span class="reel-pos">verb · Usage 03</span>
+            <span class="reel-pos">verb</span>
           </div>
 
-          <div class="reel-usage-label">USAGE</div>
-          <div class="reel-target">签发；发放</div>
-
-          <div class="reel-definition-label">ENGLISH DEFINITION</div>
-          <div class="reel-definition">to officially provide or give something, especially a document</div>
-
-          <div class="reel-example-wrap">
-            <div class="reel-example-label">EXAMPLE</div>
+          <div class="reel-example-wrap reel-example-first">
             <div class="reel-example">The embassy <mark>issued her a visa</mark>.</div>
             <div class="reel-zh">大使馆给她签发了签证。</div>
-            <div class="reel-mnu"><span>Minimal Natural Unit</span><b>issued her a visa</b></div>
           </div>
+
+          <div class="reel-target reel-meaning-after">签发；发放</div>
+          <div class="reel-definition">to officially provide or give something, especially a document</div>
 
           <div class="reel-comment">
             <div class="comment-dot"></div>
@@ -81,27 +91,18 @@
 
           <div class="reel-footer">
             <span>精选评论会轻轻出现</span>
-            <span>↑ next atom</span>
+            <span>↓ next usage</span>
           </div>
         </div>
 
         <div class="reflection-copy copy reveal">
-          <h3>不是一屏一个“单词”，而是一屏一个今天真正学过的 Usage。</h3>
-          <p>
-            如果今天你分别学过 <b>“问题 / 议题”</b>、<b>“发布 / 发表”</b>、<b>“签发 / 发放”</b>，
-            Reflection 就把它们作为三个独立 Knowledge Elements 重新排回来。
-          </p>
-          <p>
-            `issued a statement`、`issued her a visa` 不是 Usage 的名字。
-            它们是具体 Example 里值得作为整体被看见、听见和记住的 <b>Minimal Natural Unit</b>。
-          </p>
-          <ul class="bullets">
-            <li>Usage 先告诉你“这个词在这里是什么意思”，再用 English Definition 把边界说清楚。</li>
-            <li>Example 给语境，Minimal Natural Unit 把注意力落到真正值得带走的自然表达。</li>
-            <li>Like / Save / Share / Comment 像短视频一样放在卡片右侧，单轴浏览不被打断。</li>
-            <li>精选评论只是轻盈的磨砂浮层；想深读时再打开 Full Comments。</li>
-            <li>只刷今天真实遇到过的知识，刷到最后自然结束。</li>
-          </ul>
+          <h3>今天学过的 Usage，再轻轻遇见一次。</h3>
+          <p>Example 先出现；意义随后跟上。没有编号，也没有多余标签。</p>
+          <div class="reflection-mini-points">
+            <span>只出现今天真正学过的内容</span>
+            <span>评论与操作退到边缘，不抢知识的第一注意力</span>
+            <span>有限 Feed，刷完自然结束</span>
+          </div>
           <div class="quote">Learning 完成任务。Reflection 留给兴趣。</div>
         </div>
       </div>
@@ -151,6 +152,7 @@
           <span>One Reflection</span>
         </div>
       </div>
+
 
       <div class="paired-story reveal">
         <div class="paired-copy">
