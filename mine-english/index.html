@@ -19,23 +19,39 @@
     <span class="brand-mark">M</span>
     <span>Mine English</span>
   </a>
-  <div class="nav-links" id="navLinks">
-    <a href="#why">为什么 Mine</a>
-    <a href="#stream">学习方式</a>
-    <a href="#unit">最小自然单位</a>
-    <a href="#reflection">Reflection</a>
-    <a href="#collections">Collections</a>
-    <a href="#updates">最近更新</a>
-  </div>
+  <div class="nav-spacer"></div>
   <a class="update-pill" href="#updates" title="查看最近更新">
     <span class="dot"></span>
     <span>Updated · 2026.08.31</span>
   </a>
-  <button class="menu-btn" id="menuBtn" aria-label="打开导航">☰</button>
+  <button class="toc-btn" id="tocBtn" aria-expanded="false" aria-controls="tocPanel">目录</button>
 </nav>
+
+<div class="toc-panel" id="tocPanel" aria-label="页面目录">
+  <div class="toc-head"><span>Contents</span><button type="button" id="tocClose" aria-label="关闭目录">×</button></div>
+  <nav class="toc-links">
+    <a href="#respect"><span>01</span>获得知识值得被尊重</a>
+    <a href="#why"><span>02</span>为什么是 Mine</a>
+    <a href="#stream"><span>03</span>Atomic Learning Stream</a>
+    <a href="#unit"><span>04</span>Minimal Natural Unit</a>
+    <a href="#learning"><span>05</span>Daily Learning</a>
+    <a href="#reflection"><span>06</span>Reflection</a>
+    <a href="#collections"><span>07</span>Collections 与 App Family</a>
+    <a href="#memory"><span>08</span>遗忘、投入与知识生长</a>
+    <a href="#reports"><span>09</span>Quiet Data</a>
+    <a href="#beliefs"><span>10</span>一套安静的原则</a>
+    <a href="#contribution"><span>11</span>学习者贡献</a>
+    <a href="#membership"><span>12</span>会员与 Learning Reward</a>
+    <a href="#boundaries"><span>13</span>产品边界</a>
+    <a href="#journey"><span>14</span>一段真实的学习旅程</a>
+    <a href="#updates"><span>15</span>最近更新</a>
+  </nav>
+</div>
+<div class="toc-backdrop" id="tocBackdrop"></div>
+
 <main id="top"><div id="contentHost"></div></main>
 <footer>
-  <span>Mine English · Public Product Preview · Concept UI</span>
+  <span>Mine English · Public Product Preview · Concept UI · Human-centered learning</span>
   <span>Last updated · <time datetime="2026-08-31">2026.08.31</time></span>
 </footer>
 <script src="app.js"></script>
