@@ -161,6 +161,7 @@
   font-size:10px;font-weight:730;box-shadow:0 9px 24px rgba(23,33,29,.12)
 }
 .polysemy-note{margin-top:12px;text-align:center;color:var(--accent-dark);font-size:11.5px;font-weight:720}
+/* Reflection is a knowledge-atom reel, not a word card. */
 .reel{
   position:relative;
   padding:24px 82px 22px 24px;
