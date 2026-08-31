@@ -1,401 +1,51 @@
-<section id="scheduler">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="kicker">Per-Usage Memory</div>
-        <h2>不是“这个词会不会”。<br>而是：这个 Usage，现在有多稳？</h2>
-        <p>真正会遗忘的，往往是某一个具体 Usage，而不是整个 Word 一起掉下去。Mine 把复习颗粒度做到这里。</p>
+
+<section id="membership">
+  <div class="wrap narrow">
+    <div class="section-head reveal">
+      <div class="kicker">Membership</div>
+      <h2>奖励，而不是惩罚。</h2>
+      <p>会员可以收费，产品也需要被持续维护。但价格不应该变成另一种学习焦虑。</p>
+    </div>
+
+    <div class="reward-card reveal">
+      <div class="reward-main">
+        <span>Learning Reward</span>
+        <h3>这个月的学习，<br>决定下个月能获得多少 Reward。</h3>
+        <p>标准价格就是标准价格。真实学习带来的优惠，是对已经发生的投入做出的回应，而不是“不学习就涨价”。</p>
       </div>
-
-      <div class="usage-memory-demo surface reveal">
-        <div class="memory-word-head">
-          <div><span>ONE WORD</span><b>issue</b></div>
-          <small>同一个 Word · 三条不同的记忆轨迹</small>
-        </div>
-
-        <div class="memory-usage-row stable">
-          <div class="memory-label">
-            <span>noun · countable</span><b>问题；议题</b>
-            <small>已经很稳定 · 暂时不用占用今天的时间</small>
-          </div>
-          <div class="memory-curve">
-            <svg viewBox="0 0 320 82" preserveAspectRatio="none">
-              <path class="curve-grid" d="M0 65 H320 M0 40 H320 M0 15 H320"/>
-              <path class="curve-line" d="M0 18 C70 22,110 25,155 27 S245 30,320 33"/>
-            </svg>
-            <span class="curve-status">Stable</span>
-          </div>
-        </div>
-
-        <div class="memory-usage-row fading">
-          <div class="memory-label">
-            <span>verb</span><b>发布；发表</b>
-            <small>正在变模糊 · 今天值得再想一次</small>
-          </div>
-          <div class="memory-curve">
-            <svg viewBox="0 0 320 82" preserveAspectRatio="none">
-              <path class="curve-grid" d="M0 65 H320 M0 40 H320 M0 15 H320"/>
-              <path class="curve-line" d="M0 17 C62 24,105 34,150 44 S248 56,320 63"/>
-              <circle class="curve-now" cx="320" cy="63" r="5"/>
-            </svg>
-            <span class="curve-status">Review now</span>
-          </div>
-        </div>
-
-        <div class="memory-usage-row fragile">
-          <div class="memory-label">
-            <span>verb</span><b>签发；发放</b>
-            <small>更脆弱 · 优先被重新带回来</small>
-          </div>
-          <div class="memory-curve">
-            <svg viewBox="0 0 320 82" preserveAspectRatio="none">
-              <path class="curve-grid" d="M0 65 H320 M0 40 H320 M0 15 H320"/>
-              <path class="curve-line" d="M0 17 C52 28,102 43,145 56 S235 66,320 69"/>
-              <circle class="curve-now" cx="320" cy="69" r="5"/>
-            </svg>
-            <span class="curve-status">Priority</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="memory-explain-grid">
-        <article class="memory-explain reveal">
-          <span>01</span><h3>每个 Usage 都有自己的状态</h3>
-          <p>“问题 / 议题”很稳，不代表“签发 / 发放”也会了。系统分别追踪，不用一个 Word 的总状态掩盖细节。</p>
-        </article>
-        <article class="memory-explain reveal">
-          <span>02</span><h3>注意力只给真正薄弱的部分</h3>
-          <p>今天只有 10 分钟，就把时间给最值得唤起的 Usage，而不是把已经会的几个意思重新看一遍。</p>
-        </article>
-        <article class="memory-explain reveal">
-          <span>03</span><h3>Due 是 priority，不是 debt</h3>
-          <p>“到期”只是风险信号：现在比较值得出现。没排到今天，不会自动变成越滚越大的复习债。</p>
-        </article>
-      </div>
-
-      <div class="memory-human reveal">
-        <p>颗粒度变小以后，系统终于能问一个更有用的问题：<strong>你究竟是哪一小部分还不清楚？</strong></p>
-        <span>然后，只把那一小部分重新带回来。</span>
+      <div class="reward-side">
+        <div><span>不希望</span><b>断签 → 惩罚 → 焦虑</b></div>
+        <div class="positive"><span>更希望</span><b>真实学习 → Reward → 更轻</b></div>
       </div>
     </div>
-  </section>
 
-<section id="memory">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="kicker">Learning without Erasure</div>
-        <h2>忘记可以改变“现在”，<br>但不能改写你已经走过的路。</h2>
-        <p>真实学习不是一个“会 / 不会”的开关。Mine 把投入、当前状态和知识生长分开记录。</p>
-      </div>
-
-      <div class="memory-grid">
-        <article class="memory-card reveal">
-          <div class="metric">Learning Investment</div>
-          <h3>我已经为它投入了多少？</h3>
-          <p>每一次真实学习、尝试、答错、重新找回都会留下历史，不因为遗忘而消失。</p>
-        </article>
-        <article class="memory-card reveal">
-          <div class="metric">Current Proficiency</div>
-          <h3>我现在站得有多稳？</h3>
-          <p>它可以上升、下降、再恢复。生疏只说明现在值得重新唤起，不代表回到原点。</p>
-        </article>
-        <article class="memory-card reveal">
-          <div class="metric">Depth</div>
-          <h3>我的理解长得有多丰富？</h3>
-          <p>更多真实语境、表达和辨析会慢慢生长，但不会变成另一份“待完成债务”。</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="reports">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="kicker">Quiet Data</div>
-        <h2>学习的时候，数据应该安静；<br>回头看的时候，数据应该有重量。</h2>
-        <p>日常不让数字追着你跑。真正丰富的数据，留到周报、月报和年报里，帮助你看见那些当时没有注意到的积累。</p>
-      </div>
-
-      <div class="report-layout">
-        <article class="report-card large reveal">
-          <div class="label">Quiet Persistence · 安静的坚持</div>
-          <div class="big">217 天<br>每天不到 15 分钟</div>
-          <p>这些不起眼的小 session，最后累积成了 <b>31 h 24 min</b>。那些看起来很小的 5 分钟、10 分钟，并没有消失。</p>
-        </article>
-        <div style="display:grid;gap:14px">
-          <article class="report-card reveal">
-            <div class="label">Hard-won Words</div>
-            <div class="big" style="font-size:25px">来之不易的词</div>
-            <p>那些你忘过很多次，却一直没有放弃、最后重新找回来的词。</p>
-          </article>
-          <article class="report-card reveal">
-            <div class="label">Best Comeback</div>
-            <div class="big" style="font-size:25px">最漂亮的一次找回</div>
-            <p>它掉下来过，但你又把它找回来了，而且下一次会更快。</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="beliefs" class="quiet-section">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="kicker">A quieter kind of technology</div>
-        <h2>技术可以很复杂，<br>但不应该让人感到自己正在被系统催着走。</h2>
-        <p>我们更希望算法、Scheduler、AI 和数据分析退到后面，让前台只剩下清楚、自然和一点点余地。</p>
-      </div>
-
-      <div class="beliefs-grid">
-        <article class="belief-card reveal">
-          <div><div class="belief-kicker">Forgetting</div><blockquote>遗忘可以改变“现在”，<br>但不能改写历史。</blockquote></div>
-          <p>一次答错只说明现在有点生疏。已经投入过的时间、尝试和重新找回来的过程，不会因此消失。</p>
-        </article>
-        <article class="belief-card reveal">
-          <div><div class="belief-kicker">Review</div><blockquote>Due 是 priority，<br>不是 debt。</blockquote></div>
-          <p>复习应该帮系统决定什么现在最值得出现，而不是告诉你“欠了多少，必须清零”。</p>
-        </article>
-        <article class="belief-card reveal">
-          <div><div class="belief-kicker">Time</div><blockquote>没完成计划，<br>也不等于今天白学。</blockquote></div>
-          <p>真实生活会打断计划。五分钟、十分钟，只要真的学过，就应该留在你的历史里，而不是被一个未完成标签抹掉。</p>
-        </article>
-        <article class="belief-card reveal">
-          <div><div class="belief-kicker">Technology</div><blockquote>技术足够先进，<br>但产品最终仍然是在认真对待一个具体的人。</blockquote></div>
-          <p>技术的价值不是让产品显得聪明，而是让一个人在面对复杂学习时少一点负担、多一点确定感。</p>
-        </article>
-      </div>
-
-      <div class="human-promise reveal">
-        <p><strong>你对知识的认真，我们尊重。</strong><br>你对自己的投入，我们认真回应。<br>每一次学习，都应该留下点什么。</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contribution">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="kicker">Knowledge can be passed on</div>
-        <h2>好的语言，也可以从学习者那里留下来。</h2>
-        <p>有时候，一条真正值得学习的语言，不是在词典里遇到的，而是在一本书、一封邮件、一次旅行或一句真实对话里发现的。</p>
-      </div>
-
-      <div class="contribution-panel surface reveal">
-        <div class="contribution-copy">
-          <p>如果你发现一个特别自然的 Example、一个很好的表达，或者 Mine 还没有整理好的 Usage，可以把它交给 Mine。</p>
-          <p>它不会因为点赞多就自动变成“正确答案”。编辑审核仍然负责可靠性；社区负责帮助我们发现那些值得被认真整理的语言。</p>
-          <div class="soft-quote compact">
-            <span>用户帮助我们发现好语言，</span>
-            <span>Mine 负责把它整理成可靠的知识。</span>
-          </div>
-        </div>
-        <div class="impact-card">
-          <div class="impact-label">One day, you may see</div>
-          <div class="impact-number">8</div>
-          <p>你提交的 8 条例句，<br>已经帮助 <b>12,483</b> 人学习英语。</p>
-          <small>可署名，也可以匿名。真正有价值的贡献会被认真记住。</small>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="membership">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="kicker">Membership as encouragement</div>
-        <h2>会员不应该成为新的学习压力。</h2>
-        <p>如果 Mine 用“你今天没学，所以你失去了什么”来逼人回来，那只是把另一种焦虑包装成激励。我们更想做相反的事情。</p>
-      </div>
-
-      <div class="reward-hero surface reveal">
-        <div class="reward-left">
-          <div class="kicker" style="text-align:left">Learning Reward</div>
-          <h3>不是“不学习就涨价”。<br>而是：<em>你认真学过，所以得到一份 Reward。</em></h3>
-          <p>标准价格只是标准价格。真实学习带来的优惠，是对已经发生的投入做出的正向回应，而不是对中断的惩罚。</p>
-          <p class="reward-principle"><strong>这个月的学习，决定下个月能获得多少 Reward。</strong></p>
-          <p class="app-price-note">每个 App 可以独立定价、独立维护自己的 Reward 机制；共享学习旅程，不等于必须共享一张会员。</p>
-          <div class="pricing-status">各 App Pricing · Still being tested · 保持低门槛、合理定价</div>
-        </div>
-        <div class="reward-contrast">
-          <div class="contrast-row no">
-            <span>不希望</span>
-            <b>没打卡 → 惩罚 / 欠债 / 倒扣过去</b>
-          </div>
-          <div class="contrast-row yes">
-            <span>更希望</span>
-            <b>真实学习 → 积累 Reward → 下一阶段更轻</b>
-          </div>
-        </div>
-      </div>
-
-      <div class="care-grid">
-        <article class="care-card reveal">
-          <span>01</span>
-          <h3>中断不会变成处罚</h3>
-          <p>某一天真的很忙，没有完成，不会产生一笔新的“学习债务”，也不会否定这个月已经完成的那些日子。</p>
-        </article>
-        <article class="care-card reveal">
-          <span>02</span>
-          <h3>长期坚持要给真实生活留位置</h3>
-          <p>旅行、论文、工作、生病、状态不好都会发生。未来的长期挑战会保留 Light Day 一类的缓冲机制；例如“只有 5 分钟，也算今天认真连接过一次”这样的方向，具体规则仍会通过测试决定。</p>
-        </article>
-        <article class="care-card reveal">
-          <span>03</span>
-          <h3>几分钟也可以是一段真实连接</h3>
-          <p>有些日子只能留下很短的时间。Mine 更愿意承认“我今天仍然回来过”，而不是因为它不够完美就当作零。</p>
-        </article>
-        <article class="care-card reveal">
-          <span>04</span>
-          <h3>不同 App，可以有各自合理的价格</h3>
-          <p>Mine Words 与 Mine Sentences 是不同的产品，也有各自的内容、音频、算法与维护成本。分别收费很正常；重要的是价格本身清楚、合理，不靠套餐焦虑或比较心理逼用户购买。</p>
-        </article>
-      </div>
-
-      <div class="recovery-card reveal">
-        <div class="recovery-icon">↺</div>
-        <div class="recovery-copy">
-          <span>A SMALL RECOVERY MECHANISM</span>
-          <h3>偶尔错过一天，不代表整段坚持都失去意义。</h3>
-          <p>如果以后提供“补回一天”的机会，它不会是一键伪造打卡。你需要先完成今天，再真实完成一份轻量补学任务，那个缺口才会重新被点亮。</p>
-          <div class="recovery-rules">
-            <span>不能直接花钱买</span>
-            <span>必须真实补学</span>
-            <span>过去不会阻塞今天</span>
-          </div>
-          <blockquote>连续记录值得珍惜，但不值得拿来惩罚真实生活。</blockquote>
-        </div>
-      </div>
-
-      <div class="quiet-membership-line reveal">
-        <p>我们希望会员机制传达的是：<strong>越努力，越幸运。</strong></p>
-        <span>不是因为你害怕失去什么，而是因为已经发生的努力值得被回应。</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing-research" class="quiet-section">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="kicker">Product Research</div>
-        <h2>一个合理的价格，<br>也应该被认真测试。</h2>
-        <p>我们不太相信“你愿意付多少钱？”这种假设式问卷。真正的付费意愿，应该发生在真正需要做购买决定的那一刻。</p>
-      </div>
-
-      <div class="pricing-research-panel surface reveal">
-        <div class="research-flow">
-          <div class="research-step"><span>01</span><b>真实使用一个月</b><small>先让产品自己说话，而不是先问价格。</small></div>
-          <div class="research-arrow">→</div>
-          <div class="research-step"><span>02</span><b>随机真实续费价格</b><small>不同用户看到不同真实价格区间。</small></div>
-          <div class="research-arrow">→</div>
-          <div class="research-step"><span>03</span><b>自己正常支付</b><small>用自己的支付方式，真的决定买或不买。</small></div>
-          <div class="research-arrow">→</div>
-          <div class="research-step"><span>04</span><b>得到真实需求曲线</b><small>看价格变化时，真正的购买率怎么变化。</small></div>
-        </div>
-        <div class="research-note">
-          <p><strong>测试劳务费与会员购买完全独立。</strong> 它是参与研究的报酬，不是会员代金券；真正付款前会清楚展示价格，也不会自动扣费。</p>
-          <blockquote>我们想找的不是“能把一次 WTP 榨到多高”，而是一个用户愿意长期留下、产品也能长期维护的价格。</blockquote>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="boundaries" class="quiet-section">
-    <div class="wrap narrow">
-      <div class="quiet-kicker reveal">Product boundary</div>
-      <div class="quiet-essay reveal">
-        <h2>Mine 不卖课，<br>也不希望占据你更多时间。</h2>
-        <p>我们并不想把 Words、Sentences、Reflection、Community、AI、Reports 全部变成一个越来越大的“英语平台”。</p>
-        <p>每增加一个东西，都应该先问：</p>
-        <div class="soft-quote compact">
-          <span>它真的在帮助语言变成“我的”吗？</span>
-        </div>
-        <p>如果它没有帮助你更好地理解、记忆、迁移、表达，或者在遗忘之后重新找回来，那么它就应该非常谨慎。</p>
-        <p class="quiet-rule"><strong>不能帮助语言真正变成你的内容，都是噪音。</strong></p>
-        <p>功能可以丰富，认知任务必须简单。我们不追求让你在 App 里停留得更久，只希望你愿意留给语言的每一分钟，都更值得。</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="journey">
-    <div class="wrap">
-      <div class="journey-card reveal">
-        <div class="kicker">Years later</div>
-        <h2>最后，我们希望留下的，<br>是一段真实的学习旅程。</h2>
-        <p class="journey-intro">几年以后，我们希望你看到的不只是：“我背过 5000 个单词。”</p>
-        <div class="journey-lines">
-          <span>我认真花过时间。</span>
-          <span>我忘记过，也重新找回来过。</span>
-          <span>有些只有 5 分钟的日子，最后真的累积起来了。</span>
-          <span>我学过的 Words，慢慢进入了真正会用的 Sentences。</span>
-          <span>我在不同的 Mine App 里学习，但它们一直都是同一段旅程。</span>
-          <span>有些我发现的好表达，后来还帮助了别人。</span>
-        </div>
-        <blockquote>而 Mine，没有把这些过程当成一串 KPI。<br><strong>它认真地记住了。</strong></blockquote>
-        <div class="journey-signature">Mine English · 把语言，变成我的。</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="updates">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="kicker">Recently Updated</div>
-        <h2>最近更新</h2>
-        <p>这里会记录网页与产品理念最近一次重要更新，方便快速确认“上一次我们改到了哪里”。</p>
-      </div>
-
-      <div class="update-panel reveal">
-        <div class="update-header">
-          <div class="stamp"><i></i> Latest product update</div>
-          <time datetime="2026-08-31">2026.08.31</time>
-        </div>
-        <div class="changelog">
-          <article class="change">
-            <span class="type">Focus · Example-first</span>
-            <h3>学习卡进一步去掉内部术语</h3>
-            <p>Example 先出现，Meaning / Definition 随后解释；隐藏 Usage 编号、Example / Definition 标签和 Minimal Natural Unit 术语，只保留真正有用的词性与可数性等语法信息。</p>
-          </article>
-          <article class="change">
-            <span class="type">Research · Pricing</span>
-            <h3>加入真实付费意愿实验</h3>
-            <p>用真实使用、随机真实续费价和正常支付行为估计价格—购买率曲线；测试劳务费与购买行为独立。</p>
-          </article>
-          <article class="change">
-            <span class="type">Membership · Product family</span>
-            <h3>共享学习旅程，不强行共享会员</h3>
-            <p>Mine Words / Mine Sentences 可以分别订阅。人文关怀不来自“必须一张会员”，而来自价格合理、规则透明、不制造惩罚和比较焦虑。</p>
-          </article>
-          <article class="change">
-            <span class="type">Content · Humanism</span>
-            <h3>把 v0.26 的人文骨架重新放回网页</h3>
-            <p>补回“获得知识值得被尊重”、Learning Reward 是奖励而非惩罚、学习者贡献、产品注意力边界，以及几年后回看整段学习旅程的收束。</p>
-          </article>
-          <article class="change">
-            <span class="type">Learning · Polysemy</span>
-            <h3>Learning 也正式变成 Atomic Feed</h3>
-            <p>一词多义不再一次摊开：同一个 Word 被拆成多个 Usage / Knowledge Elements，一屏一个知识原子，连续向下刷。</p>
-          </article>
-          <article class="change">
-            <span class="type">Reflection · UI</span>
-            <h3>Reflection 改成完整 Usage Knowledge Card</h3>
-            <p>卡片加高到接近完整手机 viewport；Usage 展示中文语义 + English Definition + Example + Minimal Natural Unit。精选评论改为轻盈半透明磨砂 Overlay，右侧保留 Like / Save / Share / Comment。</p>
-          </article>
-          <article class="change">
-            <span class="type">Words · Audio</span>
-            <h3>Minimal Natural Unit</h3>
-            <p>Mine Words 不为了短而硬切音频：高亮并朗读最小但自然完整、可直接输出的表达；短句本身足够干净时可以直接读整句。</p>
-          </article>
-          <article class="change">
-            <span class="type">Public Preview</span>
-            <h3>公开页面保持概念级，而不是承诺最终 UI / Pricing</h3>
-            <p>App Preview 明确标注为 Concept UI；实际产品视觉与交互仍会大幅迭代。会员价格只表达低门槛方向，具体数字继续通过真实用户实验验证。</p>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap closing reveal">
-    <div class="kicker">Mine English</div>
-    <h2>知识可以很复杂。<br>但你此刻需要做的事情，应该很简单。</h2>
-    <p>把复杂留给系统，把注意力留给知识。<br>把已经发生过的努力，留给时间。</p>
-    <div class="signature">每一次学习，都应该留下点什么。</div>
+    <p class="pricing-note reveal">
+      Mine Words、Mine Sentences 可以是分别维护、分别收费的产品。
+      只要每一个 App 的价格清楚、合理、值得，不需要故意制造套餐比较或捆绑焦虑。
+    </p>
   </div>
+</section>
+
+<section id="journey" class="journey-section">
+  <div class="wrap narrow">
+    <div class="journey reveal">
+      <div class="kicker">What Mine wants to keep</div>
+      <h2>我们不希望占据你更多时间。<br>只希望你留给语言的时间，更值得。</h2>
+
+      <div class="journey-lines">
+        <p>你认真花过时间。</p>
+        <p>你忘记过，也重新找回来过。</p>
+        <p>已经会的东西，没有继续浪费你的注意力。</p>
+        <p>真正薄弱的 Usage，在最值得的时候被重新带回来。</p>
+        <p>有些只有 5 分钟的日子，最后真的累积起来了。</p>
+      </div>
+
+      <blockquote>
+        功能可以丰富，认知任务必须简单。<br>
+        <strong>不能帮助语言真正变成你的内容，都是噪音。</strong>
+      </blockquote>
+
+      <div class="signature">Mine English · 把语言，变成我的。</div>
+    </div>
+  </div>
+</section>
