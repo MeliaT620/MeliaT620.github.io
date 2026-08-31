@@ -1,4 +1,4 @@
-/* Mine English v43 — reflection polish, reward icons, glass controls. */
+/* Mine English v44 — reflection polish, reward icons, glass controls. */
 :root{--v42-green:#15966f;--v42-yellow:#f0c74d;--v42-ink:#1b2521;--v42-text:#68736d;}
 
 /* IPA: yellow means pay attention. Bold color only; no underline. */
@@ -21,6 +21,22 @@
 #reflection .live-comments{bottom:48px!important;height:112px!important;}
 #reflection .live-comment{bottom:0!important;}
 @media(max-width:560px){#reflection .reflection-actions,#reflection .live-comments{bottom:45px!important;}}
+
+/* Reflection callout for tapping a word to open Word Overview. */
+#reflection .callout-word{left:-132px!important;right:auto!important;top:47%!important;display:flex!important;align-items:center!important;flex-direction:row-reverse!important;}
+#reflection .callout-word .callout-line{width:82px!important;}
+#reflection .callout-word small{text-align:right!important;white-space:nowrap!important;line-height:1.45!important;}
+#reflection .callout-word .callout-dot{transform:translateX(3px)!important;}
+@media(max-width:720px){
+  #reflection .callout-word{left:-112px!important;top:46%!important;}
+  #reflection .callout-word .callout-line{width:68px!important;}
+  #reflection .callout-word small{font-size:8px!important;}
+}
+
+/* Word Overview is explicitly a concept sketch, not final visual design. */
+.peek-overview-head{display:flex!important;align-items:center!important;gap:8px!important;margin-bottom:4px!important;}
+.peek-overview-head>small{margin:0!important;}
+.peek-concept{display:inline-flex!important;align-items:center!important;height:17px!important;padding:0 7px!important;border-radius:999px!important;background:rgba(21,150,111,.07)!important;border:1px solid rgba(21,150,111,.10)!important;color:#6d9c8c!important;font-size:8px!important;font-weight:650!important;letter-spacing:.02em!important;}
 
 /* Seed / Coin language */
 .seed-icon{background:rgba(21,150,111,.10)!important;color:var(--v42-green)!important;}
