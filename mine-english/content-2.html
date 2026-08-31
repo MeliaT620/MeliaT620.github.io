@@ -1,81 +1,126 @@
 
 <section id="learning">
-  <div class="wrap">
-    <div class="section-head reveal">
+  <div class="wrap learning-intro">
+    <div class="section-head">
       <div class="kicker">Review · Grow · Coach</div>
-      <h2>后台可以很复杂。<br>你的操作只有左、右、下。</h2>
-      <p>我们喜欢一种接近 Apple 产品的设计原则：好的交互，最好不用先读说明。需要判断时左右划；其余时候，只要继续往下。</p>
+      <h2>复杂留在后台。<br>你只需要自然地往下。</h2>
+      <p>受 Apple 式产品原则启发：真正重要的交互，最好不需要先读说明。需要判断时轻轻向左或向右推；其余时候，继续往下。</p>
     </div>
+    <p class="linear-note"><strong>交互是线性的，课程是非线性的。</strong> Review、Grow、Coach 都由系统排进同一条学习流。</p>
+  </div>
 
-    <div class="learning-showcase">
-      <div class="learning-copy reveal">
-        <h3>交互是线性的，课程是非线性的。</h3>
-        <p>Review、Grow、Coach 都由系统排进同一条流。你不需要决定下一步去哪，也不需要在四个相似选项里猜答案。</p>
-        <div class="gesture-key">
-          <span><b>←</b> 我会 / 我理解</span>
-          <span><b>→</b> 还不会</span>
-          <span><b>↓</b> 继续</span>
+  <div class="learning-reel" id="learningReel">
+    <article class="learning-scene judge-scene" data-judge="true" data-stage="review-understand">
+      <div class="edge-glow edge-left"></div><div class="edge-glow edge-right"></div>
+      <div class="scene-stage">Review · Understand</div>
+      <div class="scene-content">
+        <div class="word-pron-row">
+          <button class="scene-word" data-peek="deliberate">deliberate</button><span class="pos-tag">adj.</span>
+          <button class="accent-toggle" data-us="/dɪˈlɪb.ɚ.ət/" data-uk="/dɪˈlɪb.ər.ət/">US</button>
+          <span class="ipa">/dɪˈlɪb.ɚ.ət/</span>
         </div>
-        <p class="gesture-note">判断以后答案才浮现；如果看见答案后发现刚才判断错了，可以直接改回去。判断不是考试，只是让 Mine 更准确地理解你。</p>
-      </div>
-
-      <div class="learning-demo reveal" id="learningDemo">
-        <div class="learning-phone" id="learningPhone">
-          <div class="learning-stagebar"><span id="stageName">Review · Understand</span><button class="tiny-feedback" id="feedbackBtn" aria-label="反馈">···</button></div>
-          <div class="feedback-pop" id="feedbackPop"><button>有帮助</button><button>有疑问</button><button>发现错误</button></div>
-          <div class="learning-card" id="learningCard"></div>
-          <div class="decision-row" id="decisionRow"><button data-choice="known">←　会</button><button data-choice="unknown">还不会　→</button></div>
-          <button class="down-next" id="downNext">↓</button>
-          <div class="demo-dots" id="demoDots"></div>
-          <div class="word-peek" id="wordPeek">
-            <button class="peek-close" id="peekClose">×</button>
-            <small>WORD OVERVIEW</small>
-            <h4 id="peekWord">issue</h4>
-            <strong id="peekCore">先抓住这个 Word 的整体轮廓</strong>
-            <p id="peekStory">在现代英语里，issue 既常见于“问题 / 议题”，也常作为动词表示“正式发布、签发、发放”。Overview 不要求你背一串历史词源，而是先知道这些 Usage 属于同一个 Word，再逐个学清楚。</p>
-          </div>
+        <div class="scene-example">It was <mark>a deliberate lie</mark>.<button class="example-audio" data-full="It was a deliberate lie." data-focus="a deliberate lie" aria-label="播放例句"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10H4zm12.5 2a4.5 4.5 0 0 0-2-3.74v7.48A4.5 4.5 0 0 0 16.5 12zm0-7.5v2.06A7 7 0 0 1 19 12a7 7 0 0 1-2.5 5.44v2.06A9 9 0 0 0 21 12a9 9 0 0 0-4.5-7.5z"/></svg></button></div>
+        <div class="judge-prompt">你理解这里的 deliberate 吗？</div>
+        <div class="answer-reveal">
+          <div class="answer-zh">这是一个蓄意的谎言。</div>
+          <div class="answer-main">故意的；蓄意的</div>
+          <div class="answer-definition">done consciously and intentionally</div>
         </div>
-        <p class="demo-hint">可以直接左右拖动判断。答案浮现以后，仍然可以改回自己的判断；↓ 继续。</p>
       </div>
-    </div>
+      <div class="gesture-hint"><span>← 轻轻向左推 · 我理解</span><span>还不熟 · 向右推 →</span></div>
+      <div class="scene-next">↓</div>
+    </article>
 
-    <div class="small-thoughts reveal">
-      <div class="small-thoughts-head"><span>Some small decisions we cared about</span><h3>一些我们认真想过的小事。</h3></div>
-      <div class="thought-grid">
-        <article><b>新 Word 先有一张地图。</b><p>第一次先看核心意思和很短的语义发展脉络。以后想回看，只需点一下 Word；看完就回到原来的卡片。</p></article>
-        <article><b>哪里不稳，就只修哪里。</b><p>一个 Usage 不会，不会把整个 Word 重新塞回来。只有多个 Usage 反复混淆时，系统才有理由帮你重新连接整体。</p></article>
-        <article><b>Review 先 Understand，再 Express。</b><p>先确认“看到它真的理解”；再从一组知识里挑值得主动提取的 Usage。Express 挖空完整自然表达，不靠四选一。</p></article>
-        <article><b>有用的信息留下，其余悄悄退后。</b><p><code>VT</code>、<code>VI</code>、<code>n. C</code>、<code>n. U</code> 会影响真实使用，所以保留；内部编号和术语隐藏。反馈也只留一个轻轻的 <code>···</code>。</p></article>
+    <article class="learning-scene judge-scene" data-judge="true" data-stage="review-express">
+      <div class="edge-glow edge-left"></div><div class="edge-glow edge-right"></div>
+      <div class="scene-stage">Review · Express</div>
+      <div class="scene-content">
+        <div class="word-pron-row">
+          <span class="scene-word static">deliberate</span><span class="pos-tag">adj.</span>
+          <button class="accent-toggle" data-us="/dɪˈlɪb.ɚ.ət/" data-uk="/dɪˈlɪb.ər.ət/">US</button>
+          <span class="ipa">/dɪˈlɪb.ɚ.ət/</span>
+        </div>
+        <div class="scene-chinese">这是一个蓄意的谎言。</div>
+        <div class="scene-example express-example">It was <span class="blank-target">a deliberate lie</span>.</div>
+        <div class="judge-prompt">不是在四个选项里认出来，而是自己把完整表达找回来。</div>
+        <div class="answer-reveal">
+          <div class="answer-main">a deliberate lie</div>
+          <div class="answer-definition">主动提取的是自然表达，不只是一个孤零零的单词。</div>
+          <div class="audio-line">It was <mark>a deliberate lie</mark>.<button class="example-audio" data-full="It was a deliberate lie." data-focus="a deliberate lie" aria-label="播放完整例句"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10H4zm12.5 2a4.5 4.5 0 0 0-2-3.74v7.48A4.5 4.5 0 0 0 16.5 12zm0-7.5v2.06A7 7 0 0 1 19 12a7 7 0 0 1-2.5 5.44v2.06A9 9 0 0 0 21 12a9 9 0 0 0-4.5-7.5z"/></svg></button></div>
+        </div>
       </div>
-      <blockquote>Mine 很多设计，不是为了让你多做一点，而是为了让那些其实不需要你做的事情，悄悄消失。</blockquote>
+      <div class="gesture-hint"><span>← 我能主动想起</span><span>还想不起来 →</span></div>
+      <div class="scene-next">↓</div>
+    </article>
+
+    <article class="learning-scene grow-scene" data-stage="grow">
+      <div class="scene-stage">Grow</div>
+      <div class="scene-content">
+        <div class="word-pron-row">
+          <button class="scene-word" data-peek="deliberate">deliberate</button><span class="pos-tag">VI</span>
+          <button class="accent-toggle" data-us="/dɪˈlɪb.ɚ.eɪt/" data-uk="/dɪˈlɪb.ər.eɪt/">US</button>
+          <span class="ipa">/dɪˈlɪb.ɚ.eɪt/</span>
+        </div>
+        <div class="scene-example">The jury <mark>deliberated for hours</mark>.<button class="example-audio" data-full="The jury deliberated for hours." data-focus="deliberated for hours" aria-label="播放例句"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10H4zm12.5 2a4.5 4.5 0 0 0-2-3.74v7.48A4.5 4.5 0 0 0 16.5 12zm0-7.5v2.06A7 7 0 0 1 19 12a7 7 0 0 1-2.5 5.44v2.06A9 9 0 0 0 21 12a9 9 0 0 0-4.5-7.5z"/></svg></button></div>
+        <div class="answer-reveal visible">
+          <div class="answer-zh">陪审团审议了数小时。</div>
+          <div class="answer-main">仔细考虑；审议</div>
+          <div class="answer-definition">to think about or discuss something carefully before deciding</div>
+          <div class="quiet-note">同一个拼写，不同词性，读音也会变化。该知道的时候，它自然出现在当前 Usage 旁边。</div>
+        </div>
+      </div>
+      <div class="scene-next">↓</div>
+    </article>
+
+    <article class="learning-scene coach-scene" data-stage="coach">
+      <div class="scene-stage">Coach · Pro</div>
+      <div class="scene-content coach-content">
+        <div class="coach-lead"><span>Basic Example 已经学会</span><h3>接下来，不急着塞更多“搭配清单”。</h3><p>Coach 会在合适的时候，用新的例句把 Depth 再往前推一点。</p></div>
+        <div class="coach-example"><span>forward</span><p>We need to <mark>move forward</mark>.<button class="example-audio" data-full="We need to move forward." data-focus="move forward" aria-label="播放例句"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10H4zm12.5 2a4.5 4.5 0 0 0-2-3.74v7.48A4.5 4.5 0 0 0 16.5 12zm0-7.5v2.06A7 7 0 0 1 19 12a7 7 0 0 1-2.5 5.44v2.06A9 9 0 0 0 21 12a9 9 0 0 0-4.5-7.5z"/></svg></button></p></div>
+        <div class="coach-example"><span>forward</span><p>I <mark>look forward to hearing from you</mark>.<button class="example-audio" data-full="I look forward to hearing from you." data-focus="look forward to hearing from you" aria-label="播放例句"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10H4zm12.5 2a4.5 4.5 0 0 0-2-3.74v7.48A4.5 4.5 0 0 0 16.5 12zm0-7.5v2.06A7 7 0 0 1 19 12a7 7 0 0 1-2.5 5.44v2.06A9 9 0 0 0 21 12a9 9 0 0 0-4.5-7.5z"/></svg></button></p></div>
+        <div class="coach-summary">更多例句不是一次全部出现，而是在真正能帮助你加深理解的时候出现。</div>
+      </div>
+      <div class="scene-next">↓</div>
+    </article>
+  </div>
+
+  <div class="wrap small-thoughts">
+    <div class="small-thoughts-head"><span>Some small decisions we cared about</span><h3>一些我们认真想过的小事。</h3></div>
+    <div class="thought-stack">
+      <article><b>新 Word 先有一张地图。</b><p>第一次先抓住核心概念和简短的 Meaning Story；以后想回看，只需点一下 Word，不打断当前学习。</p></article>
+      <article><b>哪里不稳，就只修哪里。</b><p>一个 Usage 不会，不会把整个 Word 重新塞回来。只有多个 Usage 反复混淆，才重新连接整体。</p></article>
+      <article><b>信息先被整理，再出现。</b><p>不同词典、助记、搭配与扩展解释先在后台融合。能用一句话解释清楚，就不堆五种说法；能在 Example 的高亮里自然记住，就不再额外列一张搭配表。</p></article>
+      <article><b>学习时，先只有你和知识。</b><p>学习者贡献的拓展示例可以进入内容池，但 Learning 不显示用户名、点赞数和社交证明。到了 Reflection，想看时再展开来源和讨论。</p></article>
     </div>
+    <blockquote>Mine 很多设计，不是为了让你多做一点，而是为了让那些其实不需要你做的事情，悄悄消失。</blockquote>
   </div>
 </section>
 
 <section id="reflection">
   <div class="wrap">
-    <div class="section-head reveal">
+    <div class="section-head">
       <div class="kicker">Reflection · Optional</div>
       <h2>学完以后，还想再待一会儿。</h2>
       <p>今天真正学过的 Usage，会重新排成一条有限的 Reflection。还是往下刷，只是这一次没有任务。</p>
     </div>
 
     <div class="reflection-layout compact-reflection">
-      <div class="reflection-phone reveal">
+      <div class="reflection-phone">
         <div class="reflection-top"><span>TODAY</span><span>7 / 18</span></div>
         <div class="reflection-word"><b>issue</b><span>VT</span></div>
-        <div class="reflection-example">The embassy <mark>issued her a visa</mark>.<small>大使馆给她签发了一张签证。</small></div>
+        <div class="reflection-example">The embassy <mark>issued her a visa</mark>.<button class="example-audio tiny" data-full="The embassy issued her a visa." data-focus="issued her a visa" aria-label="播放例句"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10H4zm12.5 2a4.5 4.5 0 0 0-2-3.74v7.48A4.5 4.5 0 0 0 16.5 12zm0-7.5v2.06A7 7 0 0 1 19 12a7 7 0 0 1-2.5 5.44v2.06A9 9 0 0 0 21 12a9 9 0 0 0-4.5-7.5z"/></svg></button><small>大使馆给她签发了一张签证。</small></div>
         <div class="reflection-meaning">签发；发放</div>
         <div class="reflection-definition">to officially provide or give something, especially a document</div>
         <div class="comment-overlay">“我以前只记得 issue = 问题。把『签发 / 发放』单独再遇见一次以后，终于不会混成一团了。”</div>
+        <details class="community-example"><summary>学习者拓展示例 · 查看来源</summary><p>The office issued a temporary permit.</p><small>Contributed by M. · 经过内容审核</small></details>
         <div class="action-rail">
           <button><span>♡</span><small>Like</small></button><button><span>☆</span><small>Save</small></button><button><span>↗</span><small>Share</small></button><button><span>◌</span><small>Comment</small></button>
         </div>
         <div class="reflection-next"><span>精选评论轻轻出现</span><b>↓ next</b></div>
       </div>
-      <div class="reflection-copy reveal">
-        <p><strong>只出现今天真正遇见过的知识。</strong></p>
-        <p>好的评论会轻轻浮起来，不盖住知识；刷到底，它就结束。</p>
+      <div class="reflection-copy">
+        <p><strong>学习时不需要先知道“是谁说的”。</strong></p>
+        <p>到了 Reflection，想看更多例句、来源和讨论时，再轻轻展开。</p>
         <blockquote>Learning 完成任务。Reflection 留给兴趣。</blockquote>
       </div>
     </div>
