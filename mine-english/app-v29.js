@@ -19,17 +19,22 @@
       cue.insertAdjacentElement('beforebegin',q);
     }
 
+    const sceneTop=scene=>{
+      const rr=reel.getBoundingClientRect();
+      const sr=scene.getBoundingClientRect();
+      return reel.scrollTop+(sr.top-rr.top);
+    };
     const nearestIndex=()=>{
       const top=reel.scrollTop;
       let best=0,bestDist=Infinity;
       scenes.forEach((scene,i)=>{
-        const d=Math.abs(scene.offsetTop-top);
+        const d=Math.abs(sceneTop(scene)-top);
         if(d<bestDist){best=i;bestDist=d;}
       });
       return best;
     };
     const isUnanswered=scene=>!!scene?.classList.contains('judge-scene')&&!scene.dataset.choice;
-    const targetTop=i=>scenes[Math.max(0,Math.min(scenes.length-1,i))].offsetTop;
+    const targetTop=i=>sceneTop(scenes[Math.max(0,Math.min(scenes.length-1,i))]);
 
     let moving=false;
     const goTo=index=>{
