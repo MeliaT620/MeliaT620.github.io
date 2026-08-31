@@ -24,7 +24,7 @@ function initLearningDemo(){
   const phone=document.getElementById('learningPhone'); if(!phone) return;
   const card=document.getElementById('learningCard'), stage=document.getElementById('stageName'), row=document.getElementById('decisionRow'), next=document.getElementById('downNext'), dots=document.getElementById('demoDots');
   const peek=document.getElementById('wordPeek'), peekClose=document.getElementById('peekClose'), fb=document.getElementById('feedbackBtn'), pop=document.getElementById('feedbackPop');
-  const states={}; let idx=0, startX=null;
+  const states={}; let idx=0, startX=null, dragX=0;
   const slides=[
     {stage:'Review · Understand',judge:true,word:'issue',grammar:'VT',html:`<div class="learn-wordline"><button class="learn-word" data-peek="issue">issue</button><span class="grammar-tag">VT</span></div><div class="learn-prompt">The embassy <mark>issued her a visa</mark>.<small>先只看英文：你理解这里的 issue 吗？</small></div><div class="answer-reveal"><div class="answer-main">签发；发放</div><div class="answer-definition">to officially provide or give something, especially a document</div><div class="answer-phrase">大使馆给她签发了一张签证。</div></div>`},
     {stage:'Review · Express',judge:true,word:'issue',grammar:'VT',html:`<div class="learn-wordline"><button class="learn-word" data-peek="issue">issue</button><span class="grammar-tag">VT</span></div><div class="learn-prompt">大使馆给她签发了一张签证。<small>The embassy <span class="cloze">issued her a visa</span>.</small></div><div class="answer-reveal"><div class="answer-main">issued her a visa</div><div class="answer-definition">不是只想起 issued，而是把真正自然的表达整块找回来。</div></div>`},
@@ -34,14 +34,14 @@ function initLearningDemo(){
   ];
   dots.innerHTML=slides.map((_,i)=>`<i class="${i===0?'active':''}"></i>`).join('');
   function render(){
-    const s=slides[idx]; stage.textContent=s.stage; card.innerHTML=s.html; row.classList.toggle('hidden',!s.judge); phone.classList.remove('state-known','state-unknown');
+    const s=slides[idx]; stage.textContent=s.stage; card.innerHTML=s.html; row.classList.toggle('hidden',!s.judge); phone.classList.remove('state-known','state-unknown','drag-known','drag-unknown'); card.style.transform=''; card.style.opacity='';
     row.querySelectorAll('button').forEach(b=>b.classList.remove('active-known','active-unknown'));
     if(states[idx]) apply(states[idx],false);
     dots.querySelectorAll('i').forEach((d,i)=>d.classList.toggle('active',i===idx));
     const w=card.querySelector('[data-peek]'); if(w) w.addEventListener('click',()=>openPeek(w.dataset.peek||'issue'));
   }
   const peekData={
-    issue:{core:'核心感觉：从一个“事项 / 事情”出发',story:'它可以指需要讨论或处理的“问题 / 议题”；作为动词时，又可以发展出“正式发出、发布、签发”的用法。这里不是背一串词源，而是先获得这个 Word 的整体感觉。'},
+    issue:{core:'先抓住这个 Word 的整体轮廓',story:'在现代英语里，issue 既常见于“问题 / 议题”，也常作为动词表示“正式发布、签发、发放”。Overview 不要求你背一串历史词源，而是先知道这些 Usage 属于同一个 Word，再逐个学清楚。'},
     refrain:{core:'核心感觉：把自己收住，不去做某件事',story:'它强调的是主动克制、忍住某个动作。最常见的结构是 refrain from doing something。先有这个整体感觉，再去学具体 Usage，会更容易把表达连起来。'}
   };
   function openPeek(word){
@@ -58,8 +58,28 @@ function initLearningDemo(){
   }
   row.addEventListener('click',e=>{const b=e.target.closest('button[data-choice]');if(b) apply(b.dataset.choice)});
   next.addEventListener('click',()=>{idx=(idx+1)%slides.length;render()});
-  card.addEventListener('pointerdown',e=>{startX=e.clientX});
-  card.addEventListener('pointerup',e=>{if(startX===null||!slides[idx].judge)return;const dx=e.clientX-startX;if(Math.abs(dx)>55) apply(dx<0?'known':'unknown');startX=null});
+  card.addEventListener('pointerdown',e=>{
+    if(!slides[idx].judge) return;
+    startX=e.clientX; dragX=0; card.setPointerCapture?.(e.pointerId); card.classList.add('dragging');
+  });
+  card.addEventListener('pointermove',e=>{
+    if(startX===null||!slides[idx].judge) return;
+    dragX=Math.max(-95,Math.min(95,e.clientX-startX));
+    card.style.transform=`translateX(${dragX}px) rotate(${dragX/80}deg)`;
+    card.style.opacity=String(1-Math.min(Math.abs(dragX)/620,.08));
+    phone.classList.toggle('drag-known',dragX < -18);
+    phone.classList.toggle('drag-unknown',dragX > 18);
+  });
+  const finishDrag=e=>{
+    if(startX===null) return;
+    const dx=dragX; startX=null; dragX=0; card.classList.remove('dragging');
+    phone.classList.remove('drag-known','drag-unknown');
+    if(Math.abs(dx)>55 && slides[idx].judge) apply(dx<0?'known':'unknown');
+    card.style.transform=''; card.style.opacity='';
+    try{card.releasePointerCapture?.(e.pointerId)}catch(_){}
+  };
+  card.addEventListener('pointerup',finishDrag);
+  card.addEventListener('pointercancel',finishDrag);
   peekClose.addEventListener('click',()=>peek.classList.remove('open')); peek.addEventListener('click',e=>{if(e.target===peek) peek.classList.remove('open')});
   fb.addEventListener('click',()=>pop.classList.toggle('open')); pop.addEventListener('click',()=>pop.classList.remove('open'));
   document.addEventListener('click',e=>{if(!fb.contains(e.target)&&!pop.contains(e.target)) pop.classList.remove('open')});
