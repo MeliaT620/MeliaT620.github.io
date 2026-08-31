@@ -1,0 +1,229 @@
+/* Mine English v38 — precision polish on top of the stable v37 layout. */
+:root{
+  --v38-mint:#34cfa0;
+  --v38-mint-dark:#0d9870;
+  --v38-yellow:#efc74f;
+  --v38-pink:#d989a2;
+  --v38-ink:#18231f;
+}
+html,body{overflow-x:hidden!important}
+.wrap,section>.wrap{margin-left:auto!important;margin-right:auto!important}
+
+/* 1. Brand: lighter, airier, less dense */
+.brand-mark{
+  background:linear-gradient(145deg,#55ddb2 0%,#27c795 100%)!important;
+  box-shadow:0 8px 22px rgba(32,196,145,.16)!important;
+  color:#fff!important;
+}
+.hero-link b{
+  width:30px!important;height:30px!important;border-radius:50%!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  color:#6f7b75!important;font-size:13px!important;font-weight:400!important;
+  background:rgba(255,255,255,.45)!important;
+  border:1px solid rgba(24,35,31,.055)!important;
+  box-shadow:0 5px 18px rgba(28,55,44,.045)!important;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)
+}
+
+/* 2. Usage-memory cards: status lives at top-right, every curve has a legend */
+.usage-memory .usage-row{position:relative!important;padding-top:30px!important}
+.usage-memory .curve-box{position:static!important}
+.usage-memory .usage-result{
+  position:absolute!important;top:14px!important;right:18px!important;
+  width:auto!important;margin:0!important;padding:0!important;
+  background:transparent!important;border:0!important;box-shadow:none!important;
+  color:#77827c!important;font-size:10px!important;line-height:1.2!important;font-weight:650!important;
+}
+.usage-memory .fragile .usage-result{color:var(--v38-mint-dark)!important}
+.usage-memory .curve-legend{
+  display:flex!important;justify-content:space-between!important;gap:10px!important;
+  width:100%!important;margin-top:8px!important;color:#98a29d!important;
+  font-size:8px!important;line-height:1.25!important
+}
+.repair-principle{
+  max-width:760px!important;margin-left:auto!important;margin-right:auto!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  flex-wrap:nowrap!important;gap:16px!important
+}
+.repair-principle>div{min-width:0!important;flex:0 1 300px!important;padding:16px 18px!important}
+.repair-principle>i{flex:0 0 auto!important;margin:0!important}
+.repair-principle span,.repair-principle b{white-space:nowrap!important}
+
+/* 3. Device centering and hardware */
+.learning-device,.reflection-device{width:276px!important;max-width:calc(100vw - 96px)!important}
+.device-speaker{
+  left:50%!important;right:auto!important;transform:translateX(-50%) scale(.78)!important;
+  transform-origin:top center!important
+}
+.learning-progress-ui,
+.reflection-progress{
+  left:22px!important;right:22px!important;top:24px!important;
+  height:13px!important;padding:5px 7px!important;box-sizing:border-box!important;
+  border-radius:999px!important;background:rgba(248,251,249,.60)!important;
+  border:1px solid rgba(255,255,255,.76)!important;
+  box-shadow:0 5px 16px rgba(27,48,39,.045)!important;
+  backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important
+}
+.learning-progress-track,.reflection-progress{
+  overflow:hidden!important
+}
+.learning-progress-track{height:2px!important;margin:0!important;background:rgba(24,35,31,.06)!important}
+.reflection-progress span{height:2px!important;margin-top:0!important}
+
+/* 4. Learning / Reflection reading scale: smaller, calmer, more breathing room */
+.demo-content{
+  left:30px!important;right:30px!important;top:18.5%!important;bottom:auto!important
+}
+.scene-example,.reflection-example{
+  font-size:13.35px!important;line-height:1.38!important;letter-spacing:-.022em!important;
+  font-weight:470!important;white-space:nowrap!important
+}
+.sentence-line{white-space:nowrap!important;overflow:visible!important}
+.scene-example mark,.reflection-example mark,
+.judge-scene[data-choice] .word-blanks{
+  box-shadow:inset 0 -.54em rgba(16,185,129,.115)!important;
+  border-radius:.10em!important;padding:0 .018em!important
+}
+.response-slot{margin-top:12px!important;min-height:29px!important}
+.recall-prompt strong,.answer-zh,.reflection-translation{
+  font-size:8.6px!important;line-height:1.48!important;color:#53605a!important;font-weight:620!important
+}
+.recall-prompt span{font-size:6.35px!important;margin-top:2px!important;color:#9fa8a3!important}
+.express-cue{font-size:8.8px!important;margin-bottom:11px!important;color:#53605a!important}
+
+/* Reveal should happen high on the page; upper task is compact, lower support gets the room. */
+.support-divider{
+  width:76%!important;margin:13px 0 0!important;height:1px!important;
+  background:linear-gradient(90deg,rgba(24,35,31,.105),rgba(24,35,31,.04) 68%,transparent 100%)!important
+}
+.demo-lower{margin-top:13px!important}
+.judge-scene:not([data-choice]) .support-divider{display:none!important}
+
+/* 5. Compact dictionary badges — same size, medal-like, no empty padding */
+.support-word{font-size:11.3px!important;margin:0 0 8px!important;line-height:1.15!important}
+.support-grid{
+  grid-template-columns:28px 1fr!important;column-gap:8px!important;row-gap:6px!important
+}
+.meta-control{
+  width:28px!important;min-width:28px!important;height:16px!important;min-height:16px!important;
+  padding:0!important;border-radius:999px!important;
+  border:1px solid rgba(24,35,31,.075)!important;background:#f8faf9!important;
+  font-size:5.8px!important;line-height:1!important;font-weight:730!important;letter-spacing:.015em!important
+}
+button.accent-toggle{
+  color:var(--v38-mint-dark)!important;border-color:rgba(13,152,112,.13)!important;
+  background:rgba(52,207,160,.055)!important
+}
+.support-primary{min-height:16px!important}
+.ipa{font-size:8.8px!important;line-height:1.2!important;color:#4d5953!important;letter-spacing:.01em!important}
+.ipa-diff{position:relative!important;color:#39463f!important;font-weight:650!important}
+.ipa-diff::after{
+  content:"";position:absolute;left:50%;bottom:-3px;transform:translateX(-50%);
+  width:72%;height:2px;border-radius:999px;background:var(--v38-yellow)
+}
+.usage-zh{font-size:9.5px!important;line-height:1.28!important;font-weight:690!important;color:#2c3732!important}
+.usage-en{
+  margin-top:2px!important;font-size:7.45px!important;line-height:1.42!important;
+  color:#6f7a74!important;font-weight:470!important;opacity:1!important
+}
+
+/* 6. Express blanks: one clean line per word, no exaggerated inter-word gaps */
+.word-blanks{gap:2px!important;box-shadow:none!important;padding:0!important}
+.word-blank{min-width:0!important;padding:0!important}
+.word-blank[data-word="lead"]{width:2.35em!important}
+.word-blank[data-word="the"]{width:1.62em!important}
+.word-blank[data-word="team"]{width:2.42em!important}
+.judge-scene[data-choice] .word-blanks{gap:.18em!important}
+.judge-scene[data-choice] .word-blank{width:auto!important;min-width:0!important;border-bottom-color:transparent!important}
+.judge-scene[data-choice] .word-blank .blank-text{visibility:visible!important}
+
+/* 7. Judgment hint: centered and readable, but still quiet */
+.gesture-hint{
+  left:50%!important;right:auto!important;width:max-content!important;transform:translateX(-50%)!important;
+  bottom:24px!important;gap:20px!important;color:#98a29d!important;
+  font-size:7.35px!important;line-height:1!important;font-weight:520!important;opacity:.94!important
+}
+.gesture-hint b{font-size:9.5px!important;color:#89958f!important}
+.scene-next{bottom:10px!important;font-size:8.5px!important;color:#b5bdb9!important}
+
+/* 8. Complete page: no clipping, investment note stays visible */
+.complete-scene{position:relative!important}
+.complete-card{
+  position:absolute!important;left:50%!important;top:20%!important;transform:translateX(-50%)!important;
+  width:208px!important;max-width:calc(100% - 48px)!important;margin:0!important
+}
+.complete-foot{
+  display:block!important;position:absolute!important;left:20px!important;right:20px!important;bottom:30px!important;
+  text-align:center!important;color:#9aa39f!important;font-size:6.8px!important;line-height:1.3!important
+}
+
+/* 9. Reflection: callouts use the empty sides, and actually connect to the phone */
+.reflection-stage-wrap{position:relative!important;max-width:520px!important;margin-inline:auto!important;overflow:visible!important}
+.reflection-callout{color:#707c76!important;align-items:center!important}
+.reflection-callout small{font-size:6.7px!important;line-height:1.38!important;width:46px!important;font-weight:520!important}
+.callout-line{width:21px!important;height:1px!important;background:rgba(88,104,96,.48)!important;margin:0!important}
+.callout-dot{width:7px!important;height:7px!important;background:#91a098!important;margin:0!important}
+/* upper annotation on the RIGHT: phone -> dot -> line -> text */
+.callout-upper{
+  left:calc(50% + 130px)!important;right:auto!important;top:34%!important
+}
+.callout-upper .callout-dot{order:0!important;transform:translateX(-6px)!important}
+.callout-upper .callout-line{order:1!important;transform:translateX(-6px)!important}
+.callout-upper small{order:2!important;text-align:left!important;margin:0 0 0 1px!important}
+/* lower annotation on the LEFT: text -> line -> dot -> phone */
+.callout-lower{
+  right:calc(50% + 130px)!important;left:auto!important;top:54%!important
+}
+.callout-lower small{order:0!important;text-align:right!important;margin:0 1px 0 0!important}
+.callout-lower .callout-line{order:1!important;transform:translateX(6px)!important}
+.callout-lower .callout-dot{order:2!important;transform:translateX(6px)!important}
+
+/* 10. Social rail: active = filled icon only. Counts stay neutral. */
+.reflection-actions{right:15px!important;gap:9px!important}
+.social-action{background:transparent!important;box-shadow:none!important;border-radius:0!important}
+.social-action svg{width:11.8px!important;height:11.8px!important;stroke-width:1.55!important}
+.social-action small,.social-action.active small{color:#9ba39f!important;background:transparent!important}
+.social-action.active.like-action{color:var(--v38-pink)!important;background:transparent!important}
+.social-action.active.like-action svg{fill:currentColor!important}
+.social-action.active.save-action{color:var(--v38-yellow)!important;background:transparent!important}
+.social-action.active.save-action svg{fill:currentColor!important}
+.social-action.active.comment-action{color:var(--v38-mint-dark)!important;background:transparent!important}
+.social-action.active.comment-action svg{fill:currentColor!important}
+
+/* 11. Small-decisions alignment remains one editorial column */
+#learning .editorial-thoughts article{width:100%!important;margin-left:auto!important;margin-right:auto!important}
+#learning .editorial-thoughts article b{color:var(--v38-mint-dark)!important}
+
+@media(max-width:560px){
+  .brand-mark{box-shadow:0 6px 18px rgba(32,196,145,.14)!important}
+  .usage-memory .usage-result{top:12px!important;right:14px!important;font-size:8.5px!important}
+  .usage-memory .curve-legend{font-size:6.8px!important}
+  .repair-principle{gap:7px!important;padding-inline:10px!important}
+  .repair-principle>div{padding:11px 8px!important;flex:1 1 0!important}
+  .repair-principle span{font-size:6.8px!important}.repair-principle b{font-size:8.6px!important}
+  .repair-principle>i{font-size:11px!important}
+
+  .learning-device,.reflection-device{width:258px!important;max-width:calc(100vw - 106px)!important}
+  .learning-progress-ui,.reflection-progress{left:20px!important;right:20px!important;top:22px!important;height:12px!important;padding:5px 6px!important}
+  .demo-content{left:28px!important;right:28px!important;top:17.5%!important}
+  .scene-example,.reflection-example{font-size:12.55px!important}
+  .response-slot{margin-top:11px!important;min-height:27px!important}
+  .recall-prompt strong,.answer-zh,.reflection-translation{font-size:8.15px!important}
+  .recall-prompt span{font-size:6px!important}.express-cue{font-size:8.35px!important;margin-bottom:10px!important}
+  .support-divider{margin-top:12px!important;width:74%!important}.demo-lower{margin-top:12px!important}
+  .support-word{font-size:10.8px!important;margin-bottom:7px!important}
+  .support-grid{grid-template-columns:26px 1fr!important;column-gap:7px!important;row-gap:5px!important}
+  .meta-control{width:26px!important;min-width:26px!important;height:15px!important;min-height:15px!important;font-size:5.35px!important}
+  .ipa{font-size:8.15px!important}.usage-zh{font-size:9px!important}.usage-en{font-size:7.05px!important}
+  .gesture-hint{font-size:6.9px!important;gap:18px!important;bottom:23px!important}
+
+  .reflection-actions{right:11px!important;gap:8px!important}
+  .social-action svg{width:11px!important;height:11px!important}
+  .callout-upper{left:calc(50% + 121px)!important;top:33%!important}
+  .callout-lower{right:calc(50% + 121px)!important;top:53%!important}
+  .reflection-callout small{width:40px!important;font-size:6.15px!important}
+  .callout-line{width:17px!important}
+
+  .complete-card{top:18%!important;width:198px!important}
+  .complete-foot{bottom:25px!important}
+}
