@@ -1,103 +1,83 @@
 
-<section id="reflection">
+<section id="learning">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="kicker">Reflection · Optional</div>
-      <h2>学完以后，今天的 Usage 再安静地经过一次。</h2>
-      <p>还是一个一个往下刷。只是这一次，没有任务。</p>
+      <div class="kicker">Review · Grow · Coach</div>
+      <h2>后台可以很复杂。<br>你的操作只有左、右、下。</h2>
+      <p>我们喜欢一种接近 Apple 产品的设计原则：好的交互，最好不用先读说明。需要判断时左右划；其余时候，只要继续往下。</p>
     </div>
 
-    <div class="reflection-layout">
-      <div class="reflection-phone reveal">
-        <div class="reflection-top"><span>TODAY</span><span>7 / 18</span></div>
-        <div class="reflection-word"><b>issue</b><span>verb</span></div>
-
-        <div class="reflection-example">
-          The embassy <mark>issued her a visa</mark>.
-          <small>大使馆给她签发了签证。</small>
+    <div class="learning-showcase">
+      <div class="learning-copy reveal">
+        <h3>交互是线性的，课程是非线性的。</h3>
+        <p>Review、Grow、Coach 都由系统排进同一条流。你不需要决定下一步去哪，也不需要在四个相似选项里猜答案。</p>
+        <div class="gesture-key">
+          <span><b>←</b> 我会 / 我理解</span>
+          <span><b>→</b> 还不会</span>
+          <span><b>↓</b> 继续</span>
         </div>
-
-        <div class="reflection-meaning">签发；发放</div>
-        <div class="reflection-definition">to officially provide or give something, especially a document</div>
-
-        <div class="comment-overlay">
-          “我以前只记得 issue = 问题。把『签发 / 发放』单独再遇见一次以后，终于不会混成一团了。”
-        </div>
-
-        <div class="action-rail">
-          <button><span>♡</span><small>Like</small></button>
-          <button><span>☆</span><small>Save</small></button>
-          <button><span>↗</span><small>Share</small></button>
-          <button><span>◌</span><small>Comment</small></button>
-        </div>
-
-        <div class="reflection-next"><span>精选评论轻轻出现</span><b>↓ next</b></div>
+        <p class="gesture-note">判断以后答案才浮现；如果看见答案后发现刚才判断错了，可以直接改回去。判断不是考试，只是让 Mine 更准确地理解你。</p>
       </div>
 
-      <div class="reflection-copy reveal">
-        <p><strong>只出现今天真正学过的 Usage。</strong></p>
-        <p>有限 Feed，不做无限推荐；不进入 Reflection，也不会损失任何完成度。</p>
-        <blockquote>Learning 完成任务。Reflection 留给兴趣。</blockquote>
+      <div class="learning-demo reveal" id="learningDemo">
+        <div class="learning-phone" id="learningPhone">
+          <div class="learning-stagebar"><span id="stageName">Review · Understand</span><button class="tiny-feedback" id="feedbackBtn" aria-label="反馈">···</button></div>
+          <div class="feedback-pop" id="feedbackPop"><button>有帮助</button><button>有疑问</button><button>发现错误</button></div>
+          <div class="learning-card" id="learningCard"></div>
+          <div class="decision-row" id="decisionRow"><button data-choice="known">←　会</button><button data-choice="unknown">还不会　→</button></div>
+          <button class="down-next" id="downNext">↓</button>
+          <div class="demo-dots" id="demoDots"></div>
+          <div class="word-peek" id="wordPeek">
+            <button class="peek-close" id="peekClose">×</button>
+            <small>WORD OVERVIEW</small>
+            <h4 id="peekWord">issue</h4>
+            <strong id="peekCore">核心感觉：从一个“事项 / 事情”出发</strong>
+            <p id="peekStory">它可以指需要讨论或处理的“问题 / 议题”；作为动词时，又可以发展出“正式发出、发布、签发”的用法。这里不是背一串词源，而是先获得这个 Word 的整体感觉。</p>
+          </div>
+        </div>
+        <p class="demo-hint">可以直接点左右判断，再按 ↓ 看下一张；也支持左右拖动。</p>
       </div>
+    </div>
+
+    <div class="small-thoughts reveal">
+      <div class="small-thoughts-head"><span>Some small decisions we cared about</span><h3>一些我们认真想过的小事。</h3></div>
+      <div class="thought-grid">
+        <article><b>新 Word 先有一张地图。</b><p>第一次必须经过 Word Overview：核心意思 + 很短的语义发展脉络。以后想看，点一下 Word 就轻轻浮出来，不打断当前学习。</p></article>
+        <article><b>Review 先 Understand，再 Express。</b><p>先确认“看到它真的理解”；再从一组知识里挑真正值得主动提取的 Usage。Express 会把完整自然表达一起挖空，而不是只留一个单词。</p></article>
+        <article><b>只留下真正有用的语法信息。</b><p><code>VT</code>、<code>VI</code>、<code>n. C</code>、<code>n. U</code> 会影响你怎么用英语，所以保留；Usage 编号、系统状态和内部术语默认消失。</p></article>
+        <article><b>Learning 里先是“我与知识”。</b><p>每个知识点都可以反馈，但入口只是一枚很轻的 <code>···</code>；不显示点赞数，不让别人先抢走你的注意力。</p></article>
+      </div>
+      <blockquote>Mine 很多设计，不是为了让你多做一点，而是为了让那些其实不需要你做的事情，悄悄消失。</blockquote>
     </div>
   </div>
 </section>
 
-<div class="bridge wrap reveal">
-  <span>Mine Words</span>
-  <i>→</i>
-  <span>Usage</span>
-  <i>→</i>
-  <span>Mine Sentences</span>
-  <i>→</i>
-  <span>Real Situation</span>
-  <p>学过的词，不应该永远停在词卡里。它应该尽快走进一句你真的可能说的话。</p>
-</div>
-
-<section id="human">
+<section id="reflection">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="kicker">Human-centered memory</div>
-      <h2>遗忘可以改变“现在”，<br>但不能改写你已经走过的路。</h2>
+      <div class="kicker">Reflection · Optional</div>
+      <h2>学完以后，还想再待一会儿。</h2>
+      <p>今天真正学过的 Usage，会重新排成一条有限的 Reflection。还是往下刷，只是这一次没有任务。</p>
     </div>
 
-    <div class="human-grid">
-      <article class="human-card reveal">
-        <span>FORGETTING</span>
-        <h3>忘记，不代表白学。</h3>
-        <p>一次答错只说明现在有点生疏。以前投入的时间、尝试、重新找回来的过程都还在。</p>
-      </article>
-
-      <article class="human-card reveal">
-        <span>REVIEW</span>
-        <h3>Due 是 priority，不是 debt。</h3>
-        <p>“现在比较值得复习”只是风险信号，不是一张催债单，也不会滚成 183 个必须清零的欠款。</p>
-      </article>
-
-      <article class="human-card reveal">
-        <span>QUIET PERSISTENCE</span>
-        <h3>那些不起眼的 5 分钟，没有消失。</h3>
-        <p>一年里有 217 天，你每天只学了不到 15 分钟。最后，它们仍然可能累积成 31 h 24 min。</p>
-      </article>
-    </div>
-
-    <div class="recovery reveal">
-      <div class="recovery-icon">↺</div>
-      <div>
-        <span>A small recovery mechanism</span>
-        <h3>偶尔错过一天，不代表整段坚持都失去意义。</h3>
-        <p>如果以后补回某一天，不是一键伪造打卡：先完成今天，再真实完成一份轻量补学，那一天才重新被点亮。</p>
-        <div class="recovery-tags">
-          <span>不能直接花钱买</span>
-          <span>必须真实补学</span>
-          <span>过去不会阻塞今天</span>
+    <div class="reflection-layout compact-reflection">
+      <div class="reflection-phone reveal">
+        <div class="reflection-top"><span>TODAY</span><span>7 / 18</span></div>
+        <div class="reflection-word"><b>issue</b><span>VT</span></div>
+        <div class="reflection-example">The embassy <mark>issued her a visa</mark>.<small>大使馆给她签发了一张签证。</small></div>
+        <div class="reflection-meaning">签发；发放</div>
+        <div class="reflection-definition">to officially provide or give something, especially a document</div>
+        <div class="comment-overlay">“我以前只记得 issue = 问题。把『签发 / 发放』单独再遇见一次以后，终于不会混成一团了。”</div>
+        <div class="action-rail">
+          <button><span>♡</span><small>Like</small></button><button><span>☆</span><small>Save</small></button><button><span>↗</span><small>Share</small></button><button><span>◌</span><small>Comment</small></button>
         </div>
+        <div class="reflection-next"><span>精选评论轻轻出现</span><b>↓ next</b></div>
       </div>
-    </div>
-
-    <div class="quiet-quote reveal">
-      <p>获得知识，本来就是一件需要被尊重的事。</p>
-      <strong>已经发生过的努力，也应该被认真记住。</strong>
+      <div class="reflection-copy reveal">
+        <p><strong>只出现今天真正遇见过的知识。</strong></p>
+        <p>好的评论会轻轻浮起来，不盖住知识；刷到底，它就结束。</p>
+        <blockquote>Learning 完成任务。Reflection 留给兴趣。</blockquote>
+      </div>
     </div>
   </div>
 </section>
