@@ -1,0 +1,60 @@
+/* v29 — symmetric recall prompts + deliberate one-page vertical navigation */
+
+/* Chinese -> English needs an explicit thinking cue too. */
+.express-question{
+  margin-top:34px;
+  margin-bottom:13px;
+  display:grid;
+  gap:4px;
+  text-align:left;
+  transition:opacity .16s ease,transform .16s ease;
+}
+.express-question strong{
+  color:var(--text-2);
+  font-size:11px;
+  font-weight:650;
+  line-height:1.5;
+}
+.express-question span{
+  color:var(--muted-2);
+  font-size:8.5px;
+  line-height:1.5;
+}
+[data-stage="review-express"][data-choice] .express-question{
+  display:none!important;
+}
+[data-stage="review-express"] .express-question + .express-cue{
+  margin-top:0!important;
+}
+
+/* Do not let browser momentum decide which learning card the user lands on.
+   Vertical movement is handled as an intentional one-page gesture in app-v29.js. */
+.learning-reel,
+.learning-reel.is-answer-locked{
+  scroll-snap-type:none!important;
+  overscroll-behavior:contain!important;
+  touch-action:none!important;
+  scroll-behavior:smooth!important;
+}
+.learning-reel .learning-scene{
+  touch-action:none!important;
+  scroll-snap-align:none!important;
+}
+.learning-reel.is-page-moving{
+  pointer-events:none;
+}
+
+/* Tiny failed swipes should feel like nothing happened, not like a half-page scroll. */
+.learning-reel .learning-scene{
+  transform:translateZ(0);
+}
+
+@media(max-width:560px){
+  .express-question{
+    margin-top:28px;
+    margin-bottom:10px;
+    gap:3px;
+  }
+  .express-question strong{font-size:9.5px}
+  .express-question span{font-size:7.5px}
+}
