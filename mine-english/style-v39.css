@@ -1,0 +1,162 @@
+/* Mine English v39 — reflection-led visual calibration. */
+:root{
+  --v39-green:#16a77d;
+  --v39-mint:#48d7ae;
+  --v39-yellow:#f1cc58;
+  --v39-pink:#da8fa7;
+  --v39-ink:#19241f;
+  --v39-muted:#87938d;
+}
+
+/* Brand: the arrow itself is the icon; no filled circle behind it. */
+.hero-link b{
+  width:auto!important;height:auto!important;min-width:0!important;
+  display:inline!important;padding:0!important;margin-left:7px!important;
+  border:0!important;border-radius:0!important;background:transparent!important;
+  box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+  color:#75817b!important;font-size:15px!important;font-weight:420!important;line-height:1!important;
+}
+.brand-mark{
+  background:linear-gradient(145deg,#63dfbb 0%,#34cfa2 100%)!important;
+  box-shadow:0 7px 20px rgba(42,201,151,.12)!important;
+}
+
+/* Repair principle: two compact cards MUST stay in one row on phone. */
+.repair-principle{
+  display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
+  align-items:center!important;justify-content:center!important;gap:7px!important;
+  width:min(100%,680px)!important;max-width:680px!important;margin-inline:auto!important;
+}
+.repair-principle>div{
+  flex:1 1 0!important;min-width:0!important;width:auto!important;
+  padding:11px 9px!important;margin:0!important;
+}
+.repair-principle>i{flex:0 0 auto!important;margin:0 1px!important}
+.repair-principle span,.repair-principle b{white-space:nowrap!important}
+
+/* One shared reading language for Reflection and Learning. */
+.demo-content{left:31px!important;right:31px!important;top:18%!important}
+.scene-example,.reflection-example{
+  font-size:12.85px!important;line-height:1.42!important;letter-spacing:-.018em!important;
+  font-weight:610!important;color:var(--v39-ink)!important;white-space:nowrap!important;
+}
+/* Marker is centered around the text body, not dropped below the baseline. */
+.scene-example mark,.reflection-example mark,
+.judge-scene[data-choice] .word-blanks{
+  box-shadow:none!important;
+  background:linear-gradient(to bottom,transparent 17%,rgba(40,203,154,.14) 17%,rgba(40,203,154,.14) 84%,transparent 84%)!important;
+  border-radius:3px!important;padding:0 .035em!important;
+  -webkit-box-decoration-break:clone!important;box-decoration-break:clone!important;
+}
+.core-word,.blank-core{color:#0b966d!important;font-weight:780!important}
+
+/* More deliberate hierarchy after reveal. */
+.response-slot{margin-top:11px!important;min-height:28px!important}
+.recall-prompt strong,.answer-zh,.reflection-translation{
+  font-size:8.6px!important;line-height:1.5!important;font-weight:600!important;color:#53605a!important;
+}
+.recall-prompt span{font-size:6.4px!important;line-height:1.45!important;margin-top:2px!important}
+.support-divider{
+  width:72%!important;height:1px!important;margin:14px 0 0!important;
+  background:linear-gradient(90deg,rgba(31,47,39,.12),rgba(31,47,39,.055) 66%,transparent)!important;
+}
+.demo-lower{margin-top:14px!important}
+.support-word{font-size:12.4px!important;line-height:1.15!important;margin:0 0 8px!important;font-weight:710!important}
+.support-grid{grid-template-columns:31px 1fr!important;column-gap:9px!important;row-gap:7px!important}
+.meta-control{
+  width:31px!important;min-width:31px!important;height:16px!important;min-height:16px!important;
+  padding:0!important;border-radius:999px!important;white-space:nowrap!important;word-break:keep-all!important;
+  font-size:6px!important;line-height:1!important;font-weight:720!important;letter-spacing:.01em!important;
+}
+.support-primary{min-height:16px!important}
+.ipa{font-size:9px!important;color:#48554e!important;line-height:1.2!important}
+.ipa-diff{font-weight:700!important;color:#34423b!important}
+.ipa-diff::after{bottom:-3px!important;height:2px!important;background:var(--v39-yellow)!important}
+.usage-zh{font-size:10.2px!important;line-height:1.3!important;font-weight:700!important}
+.usage-en{font-size:7.9px!important;line-height:1.42!important;color:#68756f!important;font-weight:500!important;opacity:1!important}
+
+/* Express is sentence-first, like Reflection: English task first, Chinese context beneath it. */
+.learning-scene[data-stage="review-express"] .demo-upper{
+  display:flex!important;flex-direction:column!important;
+}
+.learning-scene[data-stage="review-express"] .sentence-line{order:1!important}
+.learning-scene[data-stage="review-express"] .express-cue{
+  order:2!important;margin:12px 0 0!important;font-size:8.5px!important;line-height:1.5!important;color:#53605a!important;
+}
+.learning-scene[data-stage="review-express"] .response-slot{order:3!important;margin-top:3px!important}
+.learning-scene[data-stage="review-express"] .recall-prompt strong{display:none!important}
+.learning-scene[data-stage="review-express"] .recall-prompt span{font-size:6.25px!important;color:#9da7a2!important}
+.word-blanks{display:inline-flex!important;gap:3px!important;vertical-align:baseline!important;background:none!important;padding:0!important}
+.word-blank{height:.96em!important;line-height:.96em!important;border-bottom:1px solid rgba(65,79,72,.26)!important;text-align:center!important}
+.word-blank[data-word="lead"]{width:2.25em!important}.word-blank[data-word="the"]{width:1.45em!important}.word-blank[data-word="team"]{width:2.25em!important}
+.judge-scene[data-choice] .word-blanks{
+  gap:.18em!important;background:linear-gradient(to bottom,transparent 17%,rgba(40,203,154,.14) 17%,rgba(40,203,154,.14) 84%,transparent 84%)!important;
+}
+.judge-scene[data-choice] .word-blank{width:auto!important;height:auto!important;border-bottom-color:transparent!important;line-height:inherit!important}
+
+/* Bottom judgment hint: readable and truly centered. */
+.gesture-hint{
+  left:50%!important;right:auto!important;bottom:25px!important;transform:translateX(-50%)!important;
+  width:max-content!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  gap:22px!important;color:#8f9a94!important;font-size:7.4px!important;font-weight:540!important;opacity:1!important;
+}
+.gesture-hint b{font-size:10px!important;color:#7e8a84!important}
+
+/* Complete card stays fully inside the white display. */
+.complete-card{top:17.5%!important;width:204px!important}
+.complete-foot{bottom:15px!important;font-size:7px!important;z-index:4!important;color:#8f9994!important}
+
+/* Reflection callouts: upper RIGHT and a little higher; lower LEFT. Lines reach the phone. */
+.reflection-callout small{font-size:7px!important;line-height:1.4!important;width:70px!important;font-weight:560!important;color:#69756f!important}
+.callout-line{width:42px!important;height:1px!important;background:rgba(86,101,94,.48)!important}
+.callout-dot{width:7px!important;height:7px!important;background:#8f9d96!important}
+.callout-upper{left:calc(50% + 116px)!important;right:auto!important;top:24%!important}
+.callout-upper .callout-dot{order:0!important;transform:translateX(-10px)!important}
+.callout-upper .callout-line{order:1!important;transform:translateX(-10px)!important}
+.callout-upper small{order:2!important;margin-left:2px!important;text-align:left!important}
+.callout-lower{right:calc(50% + 116px)!important;left:auto!important;top:50%!important}
+.callout-lower small{order:0!important;text-align:right!important;margin-right:2px!important}
+.callout-lower .callout-line{order:1!important;transform:translateX(10px)!important}
+.callout-lower .callout-dot{order:2!important;transform:translateX(10px)!important}
+
+/* Reflection lower third: realistic short-video social rail + live comments. */
+.reflection-actions{
+  right:18px!important;top:auto!important;bottom:74px!important;transform:none!important;
+  gap:11px!important;align-items:center!important;
+}
+.social-action{
+  width:34px!important;height:39px!important;min-height:39px!important;
+  padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;
+}
+.social-action svg{width:18px!important;height:18px!important;stroke-width:1.6!important}
+.social-action small,.social-action.active small{font-size:6.4px!important;line-height:1!important;color:#8f9994!important;background:transparent!important}
+.social-action.active.like-action{color:var(--v39-pink)!important}.social-action.active.like-action svg{fill:currentColor!important}
+.social-action.active.save-action{color:var(--v39-yellow)!important}.social-action.active.save-action svg{fill:currentColor!important}
+.social-action.active.comment-action{color:var(--v39-green)!important}.social-action.active.comment-action svg{fill:currentColor!important;stroke:currentColor!important}
+.live-comments{left:28px!important;bottom:56px!important;width:164px!important;height:136px!important}
+.live-comment{max-width:158px!important}
+.live-comment-body{font-size:7px!important;padding:6px 8px!important;border-radius:9px!important;background:rgba(255,255,255,.86)!important}
+
+@media(max-width:560px){
+  /* make the repair pair survive narrow phone widths */
+  .repair-principle{gap:5px!important;padding-inline:6px!important}
+  .repair-principle>div{padding:9px 6px!important}
+  .repair-principle span{font-size:5.9px!important}.repair-principle b{font-size:7.5px!important}.repair-principle>i{font-size:9px!important}
+
+  .learning-device,.reflection-device{width:258px!important;max-width:calc(100vw - 106px)!important}
+  .demo-content{left:29px!important;right:29px!important;top:18%!important}
+  .scene-example,.reflection-example{font-size:12.25px!important}
+  .support-word{font-size:11.8px!important}.usage-en{font-size:7.55px!important}
+  .meta-control{width:30px!important;min-width:30px!important;height:15px!important;min-height:15px!important;font-size:5.7px!important}
+  .support-grid{grid-template-columns:30px 1fr!important;column-gap:8px!important}
+  .gesture-hint{font-size:7px!important;gap:19px!important}
+
+  .callout-upper{left:calc(50% + 111px)!important;top:23.5%!important}
+  .callout-lower{right:calc(50% + 111px)!important;top:49%!important}
+  .reflection-callout small{width:54px!important;font-size:6.35px!important}
+  .callout-line{width:30px!important}
+
+  .reflection-actions{right:13px!important;bottom:67px!important;gap:9px!important}
+  .social-action{width:31px!important;height:36px!important;min-height:36px!important}.social-action svg{width:16.5px!important;height:16.5px!important}
+  .live-comments{left:23px!important;bottom:53px!important;width:146px!important;height:124px!important}
+}
