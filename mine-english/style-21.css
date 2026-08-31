@@ -1,0 +1,99 @@
+/* v30 — stable recall slots + cleaner, responsive gesture feel */
+
+/* Prompts live in the answer slot, so the actual question never shifts. */
+.recall-slot{
+  position:relative;
+  min-height:34px;
+  margin-top:16px;
+  text-align:left;
+}
+.recall-prompt,
+.recall-answer{
+  position:absolute;
+  inset:0;
+  display:grid;
+  align-content:start;
+  gap:3px;
+  transition:opacity .14s ease;
+}
+.recall-prompt strong{
+  color:var(--text-2);
+  font-size:10.5px;
+  font-weight:650;
+  line-height:1.5;
+}
+.recall-prompt span{
+  color:var(--muted-2);
+  font-size:8.2px;
+  line-height:1.5;
+}
+.recall-answer{
+  opacity:0;
+  color:var(--text-2);
+  font-size:11px;
+  line-height:1.65;
+}
+.judge-scene[data-choice] .recall-prompt{opacity:0}
+[data-stage="review-understand"][data-choice] .recall-answer{opacity:1}
+
+/* Express prompt belongs below the missing English, not above the Chinese cue. */
+[data-stage="review-express"] .recall-slot{
+  margin-top:11px;
+  min-height:30px;
+}
+[data-stage="review-express"] .recall-prompt strong{
+  font-size:9.8px;
+  font-weight:620;
+}
+[data-stage="review-express"] .recall-prompt span{font-size:7.9px}
+
+/* The original Chinese answer is moved into the recall slot by app-v30. */
+.answer-zh.slot-source-hidden{display:none!important}
+
+/* Restore the breathing divider after the recalled content and before lexical support. */
+.judge-scene .answer-reveal{
+  margin-top:0!important;
+  padding-top:0!important;
+  border-top:0!important;
+}
+.judge-scene .answer-reveal.visible::before{
+  content:"";
+  display:block;
+  width:100%;
+  height:1px;
+  margin:18px 0 17px;
+  background:linear-gradient(90deg,rgba(23,33,29,.11),rgba(23,33,29,.045) 72%,transparent);
+}
+
+/* v29 intentionally disabled native scrolling; v30 replaces the stacked handlers with one gesture controller. */
+.learning-reel,
+.learning-reel.is-answer-locked{
+  scroll-snap-type:none!important;
+  scroll-behavior:auto!important;
+  overscroll-behavior:contain!important;
+  touch-action:none!important;
+}
+.learning-reel .learning-scene{
+  scroll-snap-align:none!important;
+  touch-action:none!important;
+}
+.learning-reel.is-page-moving{pointer-events:auto!important}
+
+@media(max-width:560px){
+  .recall-slot{
+    min-height:30px;
+    margin-top:13px;
+  }
+  .recall-prompt strong{font-size:9.2px}
+  .recall-prompt span{font-size:7.2px}
+  .recall-answer{font-size:10px}
+  [data-stage="review-express"] .recall-slot{
+    margin-top:9px;
+    min-height:26px;
+  }
+  [data-stage="review-express"] .recall-prompt strong{font-size:8.8px}
+  [data-stage="review-express"] .recall-prompt span{font-size:6.9px}
+  .judge-scene .answer-reveal.visible::before{
+    margin:15px 0 14px;
+  }
+}
