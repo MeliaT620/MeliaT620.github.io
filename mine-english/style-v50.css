@@ -1,0 +1,59 @@
+/* Mine English v50 — Reflection-derived Learning Stream + chaptered My Garden. */
+:root{--v50-green:#15966f;--v50-pink:#d989a2;--v50-ink:#1b2521;--v50-text:#68736d;--v50-line:rgba(30,51,43,.075)}
+
+/* ---------- Learning: reuse Reflection's visual language ---------- */
+.learning-v50-wrap{margin-top:28px!important}
+.learning-device-v50{position:relative!important;overflow:hidden!important;background:#fbfcfb!important}
+.learning-device-v50 .learning-progress-ui{z-index:15!important}
+.learning-device-v50 .learning-scene{position:relative!important;display:flex!important;align-items:stretch!important;justify-content:center!important;box-sizing:border-box!important;padding:55px 20px 40px!important;background:#fbfcfb!important;overflow:hidden!important}
+.learning-device-v50 .learning-card-v50{position:relative!important;width:100%!important;max-width:310px!important;min-height:100%!important;box-sizing:border-box!important;padding:44px 24px 92px!important;text-align:center!important}
+.learning-stage-label{display:block!important;margin-bottom:26px!important;color:#a1aaa5!important;font-size:7px!important;font-weight:750!important;letter-spacing:.14em!important}
+.learning-card-v50 .sentence-line{margin:0!important;text-align:center!important}
+.learning-card-v50 .reflection-example,.express-cue-v50{font-size:22px!important;line-height:1.55!important;color:var(--v50-ink)!important;font-weight:520!important;letter-spacing:-.015em!important}
+.learning-card-v50 mark{background:transparent!important;color:inherit!important;font-weight:inherit!important;box-shadow:inset 0 -7px 0 rgba(240,199,77,.25)!important}
+.learning-prompt-v50{margin-top:20px!important;display:flex!important;flex-direction:column!important;gap:5px!important;color:#8a948f!important}
+.learning-prompt-v50 strong{color:#59655f!important;font-size:12px!important;font-weight:650!important}.learning-prompt-v50 span{font-size:9px!important}
+.learning-answer-v50{margin-top:20px!important;transition:opacity .26s ease,transform .26s ease!important}
+.learning-answer-v50 .reflection-translation{margin:0!important;color:#4c5651!important;font-size:13px!important;line-height:1.6!important;text-align:center!important}
+.learning-answer-v50 .support-divider{margin:22px auto 20px!important;width:78%!important;border:0!important;height:1px!important;background:var(--v50-line)!important}
+.learning-answer-v50 .demo-lower{max-width:215px!important;margin:0 auto!important;text-align:left!important}
+.learning-answer-v50 .support-word{font-size:22px!important;line-height:1.1!important;margin-bottom:11px!important;color:var(--v50-ink)!important;font-weight:670!important}
+.learning-reflection-scene:not(.known):not(.not-yet) .learning-answer-v50{opacity:0!important;transform:translateY(8px)!important;pointer-events:none!important}
+.learning-reflection-scene:not(.known):not(.not-yet) .learning-answer-v50 .support-divider{visibility:hidden!important}
+.learning-reflection-scene.known .learning-answer-v50,.learning-reflection-scene.not-yet .learning-answer-v50{opacity:1!important;transform:none!important}
+.learning-reflection-scene.known .learning-prompt-v50 strong{color:var(--v50-green)!important}.learning-reflection-scene.not-yet .learning-prompt-v50 strong{color:#b27085!important}
+
+/* Express stays visually calm: prompt first, answer appears only after judgment. */
+.express-card-v50 .express-cue-v50{margin-top:4px!important}
+.express-card-v50 .learning-answer-v50 .sentence-line{margin-bottom:3px!important}
+
+/* Side judgement belongs to the phone, not to floating UI chrome. */
+.learning-judge-v50{position:absolute!important;left:14px!important;right:14px!important;bottom:21px!important;display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:end!important;z-index:12!important;pointer-events:none!important}
+.learning-judge-v50>span{display:flex!important;align-items:center!important;gap:5px!important}
+.learning-judge-v50 .judge-left{justify-content:flex-start!important;color:var(--v50-green)!important}.learning-judge-v50 .judge-right{justify-content:flex-end!important;color:var(--v50-pink)!important}.learning-judge-v50 b{font-size:15px!important;font-weight:600!important}.learning-judge-v50 small{font-size:8px!important;font-weight:650!important}.learning-judge-v50 .judge-center{display:block!important;color:#adb5b1!important;font-size:6.5px!important;letter-spacing:.02em!important;align-self:center!important}
+.learning-next-v50{bottom:9px!important;font-size:10px!important;color:#b7bfbb!important}
+.learning-reflection-scene::before,.learning-reflection-scene::after{content:'';position:absolute;top:22%;bottom:20%;width:54px;opacity:0;filter:blur(12px);pointer-events:none;transition:opacity .15s ease}.learning-reflection-scene::before{left:-24px;background:rgba(21,150,111,.32);opacity:var(--left-glow,0)}.learning-reflection-scene::after{right:-24px;background:rgba(217,137,162,.34);opacity:var(--right-glow,0)}
+
+/* ---------- Human reward wording / flow ---------- */
+.coin-mode .reward-flow span:last-child{background:rgba(240,199,77,.09)!important;color:#806b30!important}
+.reward-principle-v40{border-top:1px solid rgba(28,63,50,.055)!important;padding-top:18px!important}
+
+/* ---------- My Garden is its own chapter ---------- */
+.garden-section-v50{padding:112px 0 104px!important;background:linear-gradient(180deg,rgba(247,252,249,.55),rgba(255,255,255,.96))!important;border-top:1px solid rgba(24,35,31,.04)!important;border-bottom:1px solid rgba(24,35,31,.04)!important}
+.garden-section-head-v50{max-width:670px!important;margin:0 auto 38px!important;text-align:center!important}.garden-section-head-v50 p{max-width:600px!important;margin-inline:auto!important}
+.garden-hero-v50{display:grid!important;grid-template-columns:minmax(240px,.9fr) minmax(0,1.1fr)!important;gap:28px!important;align-items:center!important;padding:28px!important;border-radius:28px!important;background:rgba(255,255,255,.84)!important;border:1px solid rgba(21,150,111,.075)!important;box-shadow:0 18px 64px rgba(35,76,61,.04)!important}
+.garden-visual-v50{position:relative!important;height:330px!important;overflow:hidden!important;border-radius:22px!important;background:linear-gradient(180deg,#f3fbf7 0%,#edf8f2 57%,#e5f1e9 100%)!important}
+.garden-ground-v50{position:absolute;left:-12%;right:-12%;bottom:-54px;height:135px;border-radius:50%;background:rgba(101,164,129,.14)}
+.garden-tree-v50{position:absolute;left:50%;bottom:70px;width:136px;height:174px;transform:translateX(-50%)}.garden-tree-v50 i{position:absolute;left:62px;bottom:0;width:13px;height:88px;border-radius:12px;background:#98785d;transform:rotate(-1deg)}.garden-tree-v50 b,.garden-tree-v50 em,.garden-tree-v50 span{position:absolute;display:block;border-radius:50%;background:#71b790}.garden-tree-v50 b{width:91px;height:91px;left:21px;top:20px}.garden-tree-v50 em{width:74px;height:74px;left:0;top:50px}.garden-tree-v50 span{width:78px;height:78px;right:0;top:54px}.garden-flower{position:absolute;color:#6db698;font-style:normal;font-size:25px}.garden-flower.f1{left:19%;bottom:52px}.garden-flower.f2{right:18%;bottom:50px;font-size:18px}.garden-flower.f3{left:33%;bottom:31px;font-size:15px}
+.garden-principles-v50{display:grid!important;gap:0!important}.garden-principles-v50 article{display:grid!important;grid-template-columns:78px 1fr!important;gap:15px!important;padding:18px 4px!important;border-bottom:1px solid rgba(28,63,50,.06)!important}.garden-principles-v50 article:last-child{border-bottom:0!important}.garden-principles-v50 strong{color:#286b55!important;font-size:17px!important}.garden-principles-v50 p{margin:0!important;color:var(--v50-text)!important;line-height:1.75!important}
+.garden-month-v50,.tree-challenge-v50,.garden-continuity-v50,.garden-keepsake-v50{margin-top:18px!important;padding:26px 28px!important;border-radius:22px!important;background:rgba(255,255,255,.82)!important;border:1px solid rgba(28,63,50,.055)!important;box-sizing:border-box!important}
+.garden-month-v50{display:grid!important;grid-template-columns:1fr 250px!important;gap:30px!important;align-items:center!important}.garden-month-v50 span,.tree-challenge-head-v50 span,.garden-continuity-v50>span,.garden-keepsake-v50>span{color:#57917d!important;font-size:8.5px!important;font-weight:760!important;letter-spacing:.14em!important}.garden-month-v50 h3,.tree-challenge-v50 h3,.garden-continuity-v50 h3,.garden-keepsake-v50 h3{margin:8px 0 9px!important;color:var(--v50-ink)!important;font-size:18px!important;line-height:1.45!important}.garden-month-v50 p,.tree-challenge-v50 p,.garden-continuity-v50 p,.garden-keepsake-v50 p{margin:0!important;color:var(--v50-text)!important;line-height:1.75!important}.flower-calendar-v50{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:10px!important;align-items:center!important;text-align:center!important}.flower-calendar-v50 b{font-size:7px!important;color:#a1aaa5!important;font-weight:600!important}.flower-calendar-v50 i{font-style:normal!important;font-size:19px!important;color:#70b79e!important}
+.tree-challenge-v50{background:linear-gradient(145deg,rgba(246,252,249,.96),rgba(252,249,240,.85))!important}.tree-challenge-head-v50{display:flex!important;justify-content:space-between!important;gap:20px!important;align-items:flex-start!important}.tree-challenge-head-v50>strong{color:#28705a!important;font-size:28px!important;white-space:nowrap!important}.tree-challenge-head-v50>strong small{display:block!important;margin-top:3px!important;text-align:right!important;font-size:8px!important;color:#909a95!important;font-weight:600!important}.tree-challenge-points-v50{display:flex!important;flex-wrap:wrap!important;gap:7px!important;margin-top:17px!important}.tree-challenge-points-v50 span{padding:6px 9px!important;border-radius:999px!important;background:rgba(21,150,111,.06)!important;color:#527f70!important;font-size:8px!important;font-weight:650!important}.garden-continuity-v50 blockquote{margin:15px 0 0!important;padding:0!important;border:0!important;color:#477565!important;font-size:12px!important;font-weight:650!important;line-height:1.7!important}.garden-keepsake-v50{background:rgba(252,249,242,.76)!important}
+
+/* ---------- Journey gets a clean chapter break ---------- */
+.journey-v50{padding-top:112px!important}.journey-v50 .journey{padding-top:0!important}.journey-intro-v50{max-width:620px!important;margin:0 auto 26px!important;text-align:center!important;color:#727c77!important;line-height:1.8!important}.journey-v50 .words-sentences{margin-top:28px!important}.journey-v50 .year-card{margin-top:32px!important}
+
+@media(max-width:720px){
+  .learning-device-v50 .learning-card-v50{padding:41px 20px 88px!important;max-width:286px!important}.learning-card-v50 .reflection-example,.express-cue-v50{font-size:19px!important}.learning-stage-label{margin-bottom:22px!important}.learning-judge-v50{left:11px!important;right:11px!important}.learning-judge-v50 .judge-center{font-size:5.8px!important}
+  .garden-section-v50{padding:82px 0 76px!important}.garden-hero-v50{grid-template-columns:1fr!important;padding:15px!important;gap:18px!important}.garden-visual-v50{height:240px!important}.garden-principles-v50 article{grid-template-columns:62px 1fr!important;padding:14px 4px!important;gap:10px!important}.garden-principles-v50 strong{font-size:15px!important}.garden-month-v50{grid-template-columns:1fr!important;gap:20px!important}.garden-month-v50,.tree-challenge-v50,.garden-continuity-v50,.garden-keepsake-v50{padding:21px 19px!important}.tree-challenge-head-v50>strong{font-size:23px!important}.journey-v50{padding-top:82px!important}
+}
