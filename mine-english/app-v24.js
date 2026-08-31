@@ -9,66 +9,73 @@
     const scenes=[...reel.querySelectorAll('.learning-scene')];
     if(!scenes.length)return true;
 
-    const pageIndex=()=>{
-      const h=Math.max(reel.clientHeight,1);
-      return Math.max(0,Math.min(scenes.length-1,Math.round(reel.scrollTop/h)));
+    const pageHeight=()=>Math.max(reel.clientHeight,1);
+    const pageTop=index=>index*pageHeight();
+    const pageIndex=()=>Math.max(0,Math.min(scenes.length-1,Math.round(reel.scrollTop/pageHeight())));
+    const isUnansweredJudge=scene=>!!scene?.classList.contains('judge-scene')&&!scene.dataset.choice;
+
+    /* Only pages up to this index may be reached. Each unanswered judge card closes the gate to everything after it. */
+    const maxAccessibleIndex=()=>{
+      let max=0;
+      for(let i=0;i<scenes.length-1;i++){
+        const scene=scenes[i];
+        if(isUnansweredJudge(scene))break;
+        max=i+1;
+      }
+      return max;
     };
+
     const currentScene=()=>scenes[pageIndex()];
-    const isLocked=scene=>!!scene?.classList.contains('judge-scene')&&!scene.dataset.choice;
-    const pageTop=index=>index*Math.max(reel.clientHeight,1);
-
     const syncLock=()=>{
-      reel.classList.toggle('is-answer-locked',isLocked(currentScene()));
+      const idx=pageIndex();
+      const max=maxAccessibleIndex();
+      reel.classList.toggle('is-answer-locked',idx>=max&&isUnansweredJudge(currentScene()));
     };
 
-    let startX=0,startY=0,startTop=0;
+    let startX=0,startY=0,startTop=0,startIndex=0;
     reel.addEventListener('touchstart',e=>{
       const t=e.touches[0];if(!t)return;
-      startX=t.clientX;startY=t.clientY;startTop=reel.scrollTop;
+      startX=t.clientX;startY=t.clientY;startTop=reel.scrollTop;startIndex=pageIndex();
       syncLock();
     },{passive:true,capture:true});
 
     reel.addEventListener('touchmove',e=>{
-      const scene=currentScene();
-      if(!isLocked(scene))return;
       const t=e.touches[0];if(!t)return;
       const dx=t.clientX-startX,dy=t.clientY-startY;
-      // Finger moving upward means attempting to advance to the next card.
-      if(dy< -4 && Math.abs(dy)>Math.abs(dx)+4){
+      const max=maxAccessibleIndex();
+      // Finger moving upward means attempting to advance. Block it when the current accessible card is still unanswered.
+      if(startIndex>=max && isUnansweredJudge(scenes[startIndex]) && dy< -4 && Math.abs(dy)>Math.abs(dx)+4){
         if(e.cancelable)e.preventDefault();
         reel.scrollTop=startTop;
       }
     },{passive:false,capture:true});
 
     reel.addEventListener('wheel',e=>{
-      if(isLocked(currentScene())&&e.deltaY>0){
-        e.preventDefault();
-      }
+      const idx=pageIndex(),max=maxAccessibleIndex();
+      if(idx>=max&&isUnansweredJudge(scenes[idx])&&e.deltaY>0)e.preventDefault();
     },{passive:false,capture:true});
 
     reel.addEventListener('keydown',e=>{
-      if(!isLocked(currentScene()))return;
-      if(['ArrowDown','PageDown',' ','End'].includes(e.key))e.preventDefault();
+      const idx=pageIndex(),max=maxAccessibleIndex();
+      if(idx>=max&&isUnansweredJudge(scenes[idx])&&['ArrowDown','PageDown',' ','End'].includes(e.key))e.preventDefault();
     },true);
 
     let correcting=false;
     reel.addEventListener('scroll',()=>{
       if(correcting)return;
-      const idx=pageIndex();
-      const scene=scenes[idx];
-      if(isLocked(scene)){
-        const top=pageTop(idx);
-        // If momentum or browser elastic scrolling slips through, snap the unanswered card back into place.
-        if(reel.scrollTop>top+3){
-          correcting=true;
-          reel.scrollTop=top;
-          requestAnimationFrame(()=>{correcting=false});
-        }
+      const max=maxAccessibleIndex();
+      const maxTop=pageTop(max);
+      // Momentum, elastic scrolling, or scripted scrolling may not cross the first unanswered card.
+      if(reel.scrollTop>maxTop+3){
+        correcting=true;
+        reel.scrollTop=maxTop;
+        requestAnimationFrame(()=>{correcting=false;syncLock()});
+        return;
       }
       syncLock();
     },{passive:true});
 
-    // The original judge handler writes data-choice on submit. Observe that mutation so the gate opens immediately.
+    // The original judge handler writes data-choice on submit. Open the next gate immediately when that happens.
     const mo=new MutationObserver(syncLock);
     scenes.filter(s=>s.classList.contains('judge-scene')).forEach(s=>mo.observe(s,{attributes:true,attributeFilter:['data-choice']}));
     window.addEventListener('resize',syncLock,{passive:true});
