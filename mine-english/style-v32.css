@@ -1,0 +1,132 @@
+/* Mine English v32 — visual refinement: native-looking audio controls, stable inline highlights, cleaner sentence rhythm. */
+
+.sentence-row{
+  display:block!important;
+  width:100%!important;
+  min-width:0!important;
+}
+.sentence-row .sentence-text{
+  display:inline!important;
+  min-width:0!important;
+  flex:none!important;
+}
+
+/* Highlight must never change the line box. */
+.scene-example mark,
+.reflection-example mark,
+.peek-example mark{
+  display:inline!important;
+  padding:0 .035em!important;
+  border-radius:.13em!important;
+  background:none!important;
+  box-shadow:inset 0 -.52em rgba(16,185,129,.125)!important;
+  color:inherit!important;
+  line-height:inherit!important;
+  vertical-align:baseline!important;
+  -webkit-box-decoration-break:clone!important;
+  box-decoration-break:clone!important;
+}
+.core-word,
+.blank-core{
+  font-size:1em!important;
+  line-height:inherit!important;
+  vertical-align:baseline!important;
+}
+
+.blank-target{
+  display:inline!important;
+  padding:0 .035em!important;
+  border-radius:.13em!important;
+  background:none!important;
+  box-shadow:none!important;
+  line-height:inherit!important;
+  vertical-align:baseline!important;
+  -webkit-box-decoration-break:clone!important;
+  box-decoration-break:clone!important;
+}
+.blank-target .blank-content{
+  line-height:inherit!important;
+  white-space:nowrap!important;
+}
+.judge-scene[data-choice] .blank-target{
+  background:none!important;
+  box-shadow:inset 0 -.52em rgba(16,185,129,.125)!important;
+}
+
+/* One quiet, system-like outline speaker everywhere. */
+.example-audio,
+.word-audio{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:22px!important;
+  height:22px!important;
+  min-width:22px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:transparent!important;
+  color:#66726C!important;
+  line-height:1!important;
+  vertical-align:-.19em!important;
+  box-shadow:none!important;
+}
+.example-audio{margin-left:.28em!important}
+.audio-icon{
+  display:block!important;
+  width:16px!important;
+  height:16px!important;
+  overflow:visible!important;
+}
+.example-audio:hover,
+.word-audio:hover{
+  color:var(--mine-green-dark)!important;
+  background:rgba(16,185,129,.055)!important;
+}
+.example-audio:active,
+.word-audio:active{transform:scale(.92)!important}
+.reveal-only-audio{
+  display:none!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+.judge-scene[data-choice] .reveal-only-audio{display:inline-flex!important}
+
+/* The answer below Express is only a quiet confirmation; the sentence remains the visual center. */
+.express-confirmation{
+  color:#7B8781!important;
+  font-size:9px!important;
+  line-height:1.5!important;
+  font-weight:540!important;
+}
+.express-confirmation strong{
+  color:var(--mine-green-dark)!important;
+  font-weight:720!important;
+}
+
+/* Reflection sentence gets its natural width. Only lexical support yields to the action rail. */
+.reflection-card{padding-right:0!important}
+.reflection-support{padding-right:35px!important}
+.reflection-sentence-row{max-width:100%!important}
+
+@media(max-width:560px){
+  .scene-example,
+  .reflection-example{
+    font-size:16.8px!important;
+    line-height:1.48!important;
+    letter-spacing:-.025em!important;
+  }
+  .reflection-example{font-size:16.2px!important}
+  .example-audio,
+  .word-audio{
+    width:20px!important;
+    height:20px!important;
+    min-width:20px!important;
+  }
+  .audio-icon{
+    width:14.5px!important;
+    height:14.5px!important;
+  }
+  .reflection-support{padding-right:31px!important}
+  .response-slot{min-height:36px!important}
+}
