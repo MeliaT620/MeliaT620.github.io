@@ -1,0 +1,354 @@
+
+/* v15 — final visual cleanup: cleaner progress, fixed banner, flatter audio, calmer learning hierarchy */
+
+:root{
+  --lotus:#F0B6C7;
+  --lotus-deep:#D98EA5;
+  --warm-yellow:#F3D675;
+  --warm-yellow-deep:#E8C24F;
+}
+
+/* Clean three-stage progress: pink → yellow → green.
+   The transition zones are narrow so colors do not muddy each other. */
+#scrollProgress{
+  position:fixed!important;
+  top:0!important;
+  left:0!important;
+  z-index:2001!important;
+  height:3px!important;
+  background:linear-gradient(90deg,
+    #F0B6C7 0%,
+    #F0B6C7 30%,
+    #F3D675 36%,
+    #F3D675 62%,
+    #79CFA6 68%,
+    #10B981 100%)!important;
+  box-shadow:none!important;
+}
+.site-nav{
+  position:fixed!important;
+  z-index:2000!important;
+  top:3px!important;
+}
+main{position:relative;z-index:0}
+section[id]{scroll-margin-top:86px}
+
+/* Hero: only one idea + one real CTA */
+.hero-minimal{
+  min-height:62vh!important;
+  padding-top:54px!important;
+  padding-bottom:66px!important;
+}
+.hero-minimal .hero-copy{max-width:650px!important}
+.hero-minimal h1{margin-bottom:19px!important}
+.hero-minimal .hero-lead{
+  max-width:610px!important;
+  font-size:15px!important;
+  line-height:1.95!important;
+}
+.hero-link{
+  display:inline-flex!important;
+  align-items:center;
+  min-height:42px;
+  padding:0 16px!important;
+  margin-top:26px!important;
+  border-radius:13px!important;
+  border:1px solid rgba(16,185,129,.14)!important;
+  background:#fff!important;
+  box-shadow:
+    0 8px 24px rgba(29,60,48,.065),
+    inset 0 1px 0 rgba(255,255,255,.9)!important;
+  font-size:12px!important;
+  font-weight:690!important;
+}
+
+/* Learning scenes feel like pages, not component cards */
+#learning{padding-top:105px!important}
+.learning-intro{padding-bottom:24px}
+.learning-reel{
+  width:min(100% - 34px,900px)!important;
+  gap:34px!important;
+}
+.learning-scene{
+  min-height:84svh!important;
+  border-radius:26px!important;
+  border:1px solid rgba(23,33,29,.07)!important;
+  background:#FDFEFD!important;
+  box-shadow:0 22px 58px rgba(29,60,48,.055)!important;
+  padding:30px clamp(30px,6vw,58px) 24px!important;
+}
+.scene-stage{
+  padding:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:var(--muted-2)!important;
+  font-size:9px!important;
+  letter-spacing:.09em!important;
+}
+.scene-content{
+  width:min(100%,620px)!important;
+  margin:auto 0!important;
+}
+.word-pron-row{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:11px!important;
+  flex-wrap:wrap!important;
+}
+.word-main{
+  display:inline-flex!important;
+  align-items:baseline!important;
+  gap:7px!important;
+}
+.scene-word{
+  font-size:38px!important;
+  letter-spacing:-.045em!important;
+}
+.pos-tag{
+  padding:0!important;
+  background:transparent!important;
+  color:var(--muted)!important;
+  font-size:9px!important;
+}
+.pron-inline{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:28px;
+}
+.accent-switch{
+  display:inline-flex!important;
+  align-items:center;
+  gap:7px!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  background:transparent!important;
+}
+.accent-switch button{
+  position:relative;
+  min-width:auto!important;
+  padding:2px 0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:var(--muted-2)!important;
+  font-size:8.5px!important;
+  letter-spacing:.04em;
+}
+.accent-switch button.active{
+  background:transparent!important;
+  color:var(--text)!important;
+  box-shadow:none!important;
+}
+.accent-switch button.active::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:-3px;
+  height:1.5px;
+  border-radius:99px;
+  background:rgba(16,185,129,.65);
+}
+.ipa{
+  color:var(--muted)!important;
+  font-size:10px!important;
+  white-space:nowrap;
+}
+.word-audio,
+.example-audio{
+  display:inline-grid!important;
+  place-items:center!important;
+  width:25px!important;
+  height:25px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:transparent!important;
+  color:#5F6B66!important;
+  box-shadow:none!important;
+  vertical-align:middle;
+  cursor:pointer;
+  transition:background .15s ease,color .15s ease,box-shadow .15s ease;
+}
+.word-audio:hover,.example-audio:hover{
+  background:rgba(16,185,129,.055)!important;
+  color:var(--accent-dark)!important;
+}
+.word-audio svg,.example-audio svg{
+  width:15px!important;height:15px!important;
+  overflow:visible;
+}
+.word-audio svg path:first-child,
+.example-audio svg path:first-child{fill:currentColor;stroke:none}
+.word-audio .sound-wave,
+.example-audio .sound-wave{
+  fill:none!important;
+  stroke:currentColor!important;
+  stroke-width:1.7;
+  stroke-linecap:round;
+}
+.word-audio.playing,.example-audio.playing{
+  background:rgba(16,185,129,.07)!important;
+  color:var(--accent-dark)!important;
+  box-shadow:0 0 0 5px rgba(16,185,129,.04)!important;
+}
+
+/* Example first. Nothing competes with it. */
+.scene-example{
+  margin-top:40px!important;
+  max-width:590px!important;
+  font-size:clamp(23px,3.1vw,30px)!important;
+  line-height:1.58!important;
+  letter-spacing:-.018em;
+}
+.scene-example mark{
+  padding:0 1px;
+  background:linear-gradient(180deg,transparent 64%,rgba(16,185,129,.17) 64%)!important;
+}
+.judge-prompt{
+  margin-top:12px!important;
+  color:var(--muted-2)!important;
+  font-size:10px!important;
+}
+.answer-reveal{
+  margin-top:11px!important;
+  padding:0!important;
+  border:0!important;
+}
+.answer-zh{
+  margin:0!important;
+  color:var(--text-2)!important;
+  font-size:13.5px!important;
+}
+.answer-main{
+  margin-top:13px!important;
+  font-size:18px!important;
+}
+.answer-definition{
+  margin-top:4px!important;
+  max-width:520px;
+  font-size:11.5px!important;
+  color:var(--muted)!important;
+}
+.scene-chinese{
+  margin-top:38px!important;
+  color:var(--text-2)!important;
+  font-size:14px!important;
+}
+.express-example{margin-top:12px!important}
+.blank-target{
+  min-width:190px!important;
+  padding:0 4px!important;
+  border-radius:5px!important;
+  background:rgba(23,33,29,.045)!important;
+}
+.blank-target.revealed{
+  color:var(--text)!important;
+  background:linear-gradient(180deg,transparent 64%,rgba(16,185,129,.17) 64%)!important;
+}
+
+/* Edge judgement = one luminous line, no block glow. */
+.learning-scene::before,
+.learning-scene::after{
+  top:12%!important;
+  bottom:12%!important;
+  width:2px!important;
+  border-radius:99px!important;
+  filter:none!important;
+  z-index:5!important;
+}
+.learning-scene::before{
+  left:-1px!important;
+  background:linear-gradient(180deg,
+    transparent 0%,
+    #25C88A 20%,
+    #10B981 50%,
+    #25C88A 80%,
+    transparent 100%)!important;
+  box-shadow:
+    0 0 8px rgba(16,185,129,.95),
+    0 0 22px rgba(16,185,129,.38)!important;
+}
+.learning-scene::after{
+  right:-1px!important;
+  background:linear-gradient(180deg,
+    transparent 0%,
+    #F0B6C7 20%,
+    #DE91A8 50%,
+    #F0B6C7 80%,
+    transparent 100%)!important;
+  box-shadow:
+    0 0 8px rgba(222,145,168,.92),
+    0 0 22px rgba(222,145,168,.34)!important;
+}
+/* committed choice remains visible */
+.learning-scene.known::before{opacity:.95!important}
+.learning-scene.not-yet::after{opacity:.95!important}
+
+/* Gesture hint looks like a gesture, never a control */
+.gesture-hint{
+  padding:8px 2px 0!important;
+  color:var(--muted-2)!important;
+}
+.swipe-cue{opacity:.55!important}
+.swipe-cue i{font-size:12px!important}
+.swipe-cue b{font-size:12px!important}
+.swipe-cue em{font-size:8.5px!important}
+.scene-next{
+  color:rgba(16,185,129,.5)!important;
+  font-size:15px!important;
+}
+
+/* Coach depth uses vertical examples with quieter surfaces */
+.coach-content{max-width:610px!important}
+.coach-lead h3{font-size:23px!important}
+.coach-lead p{max-width:570px!important}
+.coach-example{
+  padding:15px 16px!important;
+  margin-top:10px!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  border:1px solid rgba(23,33,29,.065)!important;
+  box-shadow:0 5px 15px rgba(29,60,48,.035)!important;
+}
+.coach-summary{margin-top:14px!important;color:var(--muted)!important;font-size:10px!important}
+
+/* First-screen/section spacing */
+.section-head h2{letter-spacing:-.035em!important}
+.small-thoughts{margin-top:62px!important}
+.thought-stack article{padding-block:15px!important}
+
+/* Reflection: keep social, but knowledge stays visually first. */
+.comment-overlay{
+  opacity:.72!important;
+  box-shadow:0 9px 26px rgba(27,58,46,.035)!important;
+}
+.action-rail button{color:#5F6A66!important}
+
+/* Global scrolling stays natural. Learning scenes alone act as soft anchors. */
+html{scroll-behavior:smooth}
+.learning-scene{scroll-snap-align:center}
+@media(max-width:760px){
+  .hero-minimal{
+    padding-top:50px!important;
+    padding-bottom:54px!important;
+  }
+  .hero-minimal .hero-copy{max-width:520px!important}
+  .hero-minimal .hero-lead{font-size:14px!important}
+  #learning{padding-top:82px!important}
+  .learning-reel{width:min(100% - 18px,900px)!important;gap:22px!important}
+  .learning-scene{
+    min-height:82svh!important;
+    padding:25px 22px 21px!important;
+    border-radius:22px!important;
+  }
+  .scene-word{font-size:33px!important}
+  .word-pron-row{gap:7px 10px!important}
+  .pron-inline{gap:7px}
+  .scene-example{
+    margin-top:32px!important;
+    font-size:22px!important;
+  }
+  .answer-main{font-size:17px!important}
+  .gesture-hint{padding-inline:0!important}
+}
