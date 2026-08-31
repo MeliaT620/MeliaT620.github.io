@@ -39,6 +39,8 @@ function initJudgeScenes(){
       if(Math.abs(v)>52){
         scene.classList.toggle('known',v<0);scene.classList.toggle('not-yet',v>0);
         scene.querySelectorAll('.answer-reveal').forEach(el=>el.classList.add('visible'));
+        scene.querySelectorAll('.blank-target').forEach(el=>el.classList.add('revealed'));
+        scene.querySelectorAll('.reveal-only-audio').forEach(el=>el.classList.add('visible'));
       }
       resetGlow();
       try{scene.releasePointerCapture?.(e.pointerId)}catch(_){}
@@ -48,26 +50,43 @@ function initJudgeScenes(){
 }
 
 function initAccentToggles(){
-  document.querySelectorAll('.accent-toggle').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const ipa=btn.parentElement.querySelector('.ipa');
-      const us=btn.dataset.us,uk=btn.dataset.uk;
-      if(btn.textContent.trim()==='US'){btn.textContent='UK';ipa.textContent=uk}else{btn.textContent='US';ipa.textContent=us}
+  document.querySelectorAll('.accent-switch').forEach(sw=>{
+    const ipa=sw.parentElement.querySelector('.ipa');
+    sw.querySelectorAll('button').forEach(btn=>{
+      btn.addEventListener('click',e=>{
+        e.stopPropagation();
+        sw.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b===btn));
+        ipa.textContent=btn.dataset.accent==='UK'?sw.dataset.uk:sw.dataset.us;
+      });
     });
   });
 }
 
 function initAudio(){
+  const speak=(text,lang='en-US',rate=.92)=>{
+    if(!('speechSynthesis' in window))return;
+    window.speechSynthesis.cancel();
+    const utter=new SpeechSynthesisUtterance(text);utter.lang=lang;utter.rate=rate;
+    window.speechSynthesis.speak(utter);
+  };
+
+  document.querySelectorAll('.word-audio').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      const row=btn.closest('.word-pron-row');
+      const accent=row?.querySelector('.accent-switch button.active')?.dataset.accent==='UK'?'en-GB':'en-US';
+      btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),500);
+      speak(btn.dataset.word||'',accent,.9);
+    });
+  });
+
   document.querySelectorAll('.example-audio').forEach(btn=>{
     btn.addEventListener('click',e=>{
       e.stopPropagation();
-      btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),650);
-      if(!('speechSynthesis' in window))return;
-      window.speechSynthesis.cancel();
-      const utter=new SpeechSynthesisUtterance(btn.dataset.full||btn.dataset.focus||'');
       const scene=btn.closest('.learning-scene');
-      const accent=scene?.querySelector('.accent-toggle')?.textContent.trim()==='UK'?'en-GB':'en-US';
-      utter.lang=accent;utter.rate=.92;window.speechSynthesis.speak(utter);
+      const accent=scene?.querySelector('.accent-switch button.active')?.dataset.accent==='UK'?'en-GB':'en-US';
+      btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),650);
+      speak(btn.dataset.full||'',accent,.92);
     });
   });
 }
