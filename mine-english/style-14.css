@@ -1,0 +1,242 @@
+/* v23 — tighter mobile product preview, breathing dividers, low-key live comments */
+
+/* Keep the product demo visibly smaller than the phone viewport itself. */
+@media(max-width:560px){
+  .learning-device,
+  .reflection-device{
+    width:min(326px,calc(100vw - 42px))!important;
+    padding:6px!important;
+    border-radius:36px!important;
+  }
+
+  .learning-device .learning-reel,
+  .reflection-screen{
+    border-radius:30px!important;
+  }
+
+  .device-speaker{
+    top:11px!important;
+    width:54px!important;
+    height:15px!important;
+  }
+
+  .learning-device::after{
+    bottom:10px!important;
+    width:62px!important;
+    height:2.5px!important;
+  }
+
+  .learning-device .learning-scene{
+    padding:48px 19px 18px!important;
+  }
+
+  .learning-device .scene-stage,
+  .reflection-stage{
+    font-size:7px!important;
+  }
+
+  .learning-device .scene-example,
+  .learning-device .review-example-first,
+  .learning-device .express-example,
+  .reflection-example{
+    font-size:19px!important;
+    line-height:1.52!important;
+  }
+
+  .learning-device .review-example-first,
+  .reflection-example{
+    margin-top:52px!important;
+  }
+
+  .learning-device .express-cue{
+    margin-top:50px!important;
+    font-size:11.5px!important;
+  }
+
+  .learning-device .express-example{
+    margin-top:13px!important;
+  }
+
+  .learning-device .answer-zh,
+  .reflection-translation{
+    font-size:11px!important;
+    line-height:1.65!important;
+  }
+
+  .learning-device .support-word,
+  .reflection-support .support-word{
+    font-size:18px!important;
+  }
+
+  .learning-device .pron-line,
+  .reflection-support .pron-line{
+    margin-top:8px!important;
+  }
+
+  .learning-device .pron-line .ipa,
+  .reflection-support .pron-line .ipa{
+    font-size:9.5px!important;
+  }
+
+  .learning-device .usage-meaning,
+  .reflection-support .usage-meaning{
+    margin-top:14px!important;
+  }
+
+  .learning-device .usage-zh,
+  .reflection-support .usage-zh{
+    font-size:15.5px!important;
+  }
+
+  .learning-device .usage-en,
+  .reflection-support .usage-en{
+    margin-top:5px!important;
+    font-size:10px!important;
+  }
+
+  .learning-device .gesture-hint{
+    font-size:7px!important;
+  }
+
+  .learning-progress-ui{
+    top:30px!important;
+    left:20px!important;
+    right:20px!important;
+    gap:7px!important;
+  }
+
+  .learning-progress-ui small{
+    font-size:6.5px!important;
+  }
+
+  .reflection-screen{
+    padding:48px 18px 24px!important;
+  }
+
+  .reflection-card{
+    padding-right:31px!important;
+  }
+
+  .reflection-actions{
+    right:4px!important;
+    gap:8px!important;
+  }
+
+  .reflection-actions .social-action{
+    width:30px!important;
+    min-height:37px!important;
+  }
+
+  .reflection-actions .social-action>span{
+    font-size:17px!important;
+  }
+
+  .reflection-actions .social-action small{
+    font-size:6px!important;
+  }
+
+  .complete-check{
+    width:39px!important;
+    height:39px!important;
+    margin-bottom:14px!important;
+    font-size:18px!important;
+  }
+
+  .complete-card h3{font-size:21px!important}
+  .complete-time{margin-top:22px!important}
+  .complete-time strong{font-size:24px!important}
+  .complete-stats{margin-top:18px!important;gap:5px!important}
+  .complete-stats div{padding:10px 4px!important}
+  .complete-stats strong{font-size:16px!important}
+  .coin-reward{margin-top:19px!important;padding:11px 12px!important}
+
+  /* The learning journey remains one intentional line on phones. */
+  .words-sentences{
+    width:100%!important;
+    flex-wrap:nowrap!important;
+    justify-content:center!important;
+    gap:4px!important;
+    margin-top:22px!important;
+  }
+  .words-sentences span{
+    flex:0 0 auto!important;
+    padding:5px 6px!important;
+    font-size:7.7px!important;
+    white-space:nowrap!important;
+  }
+  .words-sentences i{
+    flex:0 0 auto!important;
+    font-size:10px!important;
+    line-height:1!important;
+  }
+}
+
+/* A quiet divider separates the sentence/translation from lexical support. */
+.learning-device .answer-zh::after,
+.reflection-translation::after{
+  content:"";
+  display:block;
+  width:100%;
+  height:1px;
+  margin:20px 0 18px;
+  background:linear-gradient(90deg,rgba(23,33,29,.11),rgba(23,33,29,.045) 72%,transparent);
+}
+.learning-device .no-divider-support,
+.reflection-support{
+  margin-top:0!important;
+}
+
+/* Reflection comments behave more like a quiet live-room comment stream:
+   they rise from the lower-left instead of flying across the sentence. */
+.danmaku-layer{
+  opacity:.56!important;
+}
+.danmaku{
+  left:13px!important;
+  right:auto!important;
+  top:auto!important;
+  bottom:43px!important;
+  width:max-content!important;
+  max-width:188px!important;
+  padding:5px 8px!important;
+  border:1px solid rgba(255,255,255,.56)!important;
+  border-radius:11px!important;
+  background:rgba(255,255,255,.43)!important;
+  backdrop-filter:blur(7px)!important;
+  color:rgba(55,67,61,.60)!important;
+  font-size:7.4px!important;
+  line-height:1.35!important;
+  white-space:normal!important;
+  box-shadow:0 3px 10px rgba(26,55,44,.025)!important;
+  animation:mineCommentRise 11s ease-out infinite!important;
+}
+.danmaku b{
+  margin-left:5px!important;
+  color:rgba(185,133,144,.56)!important;
+  font-size:6.6px!important;
+}
+.danmaku-a{
+  left:13px!important;
+  animation-delay:-2s!important;
+}
+.danmaku-b{
+  left:20px!important;
+  animation-delay:-7.5s!important;
+  animation-duration:12.5s!important;
+}
+@keyframes mineCommentRise{
+  0%{transform:translateY(16px);opacity:0}
+  12%{opacity:.72}
+  62%{opacity:.52}
+  100%{transform:translateY(-118px);opacity:0}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .danmaku{
+    left:13px!important;
+    bottom:58px!important;
+    animation:none!important;
+    opacity:.38!important;
+  }
+  .danmaku-b{bottom:84px!important}
+}
