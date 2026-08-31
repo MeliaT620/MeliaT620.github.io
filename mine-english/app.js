@@ -18,105 +18,267 @@ function initPage(){
   const update=()=>{const h=document.documentElement,max=h.scrollHeight-h.clientHeight,p=max>0?h.scrollTop/max*100:0;progress.style.width=p+'%';progress.style.setProperty('--progress',p)};
   document.addEventListener('scroll',update,{passive:true});update();
   const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting) links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{threshold:.18,rootMargin:'-15% 0px -60% 0px'});document.querySelectorAll('section[id]').forEach(s=>so.observe(s));
-  initJudgeScenes();initAccentToggles();initAudio();initWordPeek();initReelAudio();
+  initWordPeek();initJudgeScenes();initAccentToggles();initAudio();initReelAudio();
 }
 
 function initJudgeScenes(){
   document.querySelectorAll('.judge-scene').forEach(scene=>{
-    let startX=null, dx=0;
-    const resetGlow=()=>{scene.style.setProperty('--left-glow','0');scene.style.setProperty('--right-glow','0')};
-    scene.addEventListener('pointerdown',e=>{if(e.target.closest('button,details,summary'))return;startX=e.clientX;dx=0;scene.setPointerCapture?.(e.pointerId)});
-    scene.addEventListener('pointermove',e=>{
-      if(startX===null)return;
-      dx=Math.max(-110,Math.min(110,e.clientX-startX));
-      const left=Math.max(0,-dx)/110,right=Math.max(0,dx)/110;
-      scene.style.setProperty('--left-glow',left.toFixed(3));
-      scene.style.setProperty('--right-glow',right.toFixed(3));
-    });
-    const finish=e=>{
-      if(startX===null)return;
-      const v=dx;startX=null;dx=0;
-      if(Math.abs(v)>52){
-        scene.classList.remove('known','not-yet');
-        scene.classList.add(v<0?'known':'not-yet');
-        scene.querySelectorAll('.answer-reveal').forEach(el=>el.classList.add('visible'));
-        scene.querySelectorAll('.blank-target').forEach(el=>el.classList.add('revealed'));
-        scene.querySelectorAll('.reveal-only-audio').forEach(el=>el.classList.add('visible'));
+    const threshold=42;
+    let active=false;
+    let startX=0,startY=0,lastX=0,pointerId=null;
+
+    const setGlow=(dx)=>{
+      const mag=Math.min(Math.abs(dx)/95,1);
+      const eased=Math.pow(mag,.72);
+      if(dx<0){
+        scene.style.setProperty('--left-glow',eased.toFixed(3));
+        scene.style.setProperty('--right-glow','0');
+        scene.style.setProperty('--left-spread',(7+eased*25).toFixed(1)+'px');
+        scene.style.setProperty('--left-width',(2.2+eased*2.2).toFixed(1)+'px');
+      }else if(dx>0){
+        scene.style.setProperty('--right-glow',eased.toFixed(3));
+        scene.style.setProperty('--left-glow','0');
+        scene.style.setProperty('--right-spread',(7+eased*25).toFixed(1)+'px');
+        scene.style.setProperty('--right-width',(2.2+eased*2.2).toFixed(1)+'px');
       }
-      resetGlow();
-      try{scene.releasePointerCapture?.(e.pointerId)}catch(_){}
     };
-    scene.addEventListener('pointerup',finish);scene.addEventListener('pointercancel',finish);resetGlow();
+
+    const reveal=(choice)=>{
+      scene.classList.remove('known','not-yet');
+      scene.classList.add(choice==='known'?'known':'not-yet');
+      scene.dataset.choice=choice;
+      scene.querySelectorAll('.answer-reveal').forEach(el=>el.classList.add('visible'));
+      scene.querySelectorAll('.blank-target').forEach(el=>el.classList.add('revealed'));
+      scene.querySelectorAll('.reveal-only-audio').forEach(el=>el.classList.add('visible'));
+      scene.style.removeProperty('--left-glow');
+      scene.style.removeProperty('--right-glow');
+    };
+
+    const clearTransient=()=>{
+      if(scene.dataset.choice)return;
+      scene.style.setProperty('--left-glow','0');
+      scene.style.setProperty('--right-glow','0');
+    };
+
+    const onStart=(x,y,id=null)=>{
+      active=true;startX=lastX=x;startY=y;pointerId=id;
+    };
+
+    const onMove=(x,y,e)=>{
+      if(!active)return;
+      lastX=x;
+      const dx=x-startX,dy=y-startY;
+      if(Math.abs(dx)>Math.abs(dy)+6){
+        if(e?.cancelable)e.preventDefault();
+        setGlow(dx);
+      }
+    };
+
+    const onEnd=()=>{
+      if(!active)return;
+      const dx=lastX-startX;
+      active=false;
+      if(dx<=-threshold) reveal('known');
+      else if(dx>=threshold) reveal('not-yet');
+      else clearTransient();
+    };
+
+    scene.addEventListener('pointerdown',e=>{
+      if(e.target.closest('button,a'))return;
+      onStart(e.clientX,e.clientY,e.pointerId);
+      try{scene.setPointerCapture(e.pointerId)}catch(_){}
+    });
+    scene.addEventListener('pointermove',e=>onMove(e.clientX,e.clientY,e));
+    scene.addEventListener('pointerup',e=>{
+      onEnd();
+      try{scene.releasePointerCapture(e.pointerId)}catch(_){}
+    });
+    scene.addEventListener('pointercancel',onEnd);
+
+    scene.addEventListener('touchstart',e=>{
+      if(e.target.closest('button,a'))return;
+      const t=e.touches[0]; if(!t)return;
+      onStart(t.clientX,t.clientY);
+    },{passive:true});
+    scene.addEventListener('touchmove',e=>{
+      const t=e.touches[0]; if(!t)return;
+      onMove(t.clientX,t.clientY,e);
+    },{passive:false});
+    scene.addEventListener('touchend',onEnd,{passive:true});
+
+    let wheelDx=0,wheelTimer=null;
+    scene.addEventListener('wheel',e=>{
+      if(Math.abs(e.deltaX)<=Math.abs(e.deltaY))return;
+      e.preventDefault();
+      wheelDx+=e.deltaX;
+      setGlow(wheelDx>0?wheelDx:-Math.abs(wheelDx));
+      clearTimeout(wheelTimer);
+      wheelTimer=setTimeout(()=>{
+        if(wheelDx>threshold) reveal('known');
+        else if(wheelDx<-threshold) reveal('not-yet');
+        else clearTransient();
+        wheelDx=0;
+      },120);
+    },{passive:false});
   });
 }
 
 function initAccentToggles(){
-  document.querySelectorAll('.accent-switch').forEach(sw=>{
-    const ipa=sw.parentElement.querySelector('.ipa');
-    sw.querySelectorAll('button').forEach(btn=>{
-      btn.addEventListener('click',e=>{
-        e.stopPropagation();
-        sw.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b===btn));
-        ipa.textContent=btn.dataset.accent==='UK'?sw.dataset.uk:sw.dataset.us;
-      });
-    });
+  const renderIpa=(raw,diff)=>{
+    if(!raw)return '';
+    if(!diff)return raw;
+    const i=raw.lastIndexOf(diff);
+    if(i<0)return raw;
+    return raw.slice(0,i)+'<span class="ipa-diff">'+diff+'</span>'+raw.slice(i+diff.length);
+  };
+
+  document.addEventListener('click',e=>{
+    const btn=e.target.closest('.accent-switch button');
+    if(!btn)return;
+    e.preventDefault();e.stopPropagation();
+    const sw=btn.closest('.accent-switch');
+    const line=sw.closest('.pron-line');
+    const ipa=line?.querySelector('.ipa');
+    sw.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b===btn));
+    const raw=btn.dataset.accent==='UK'?sw.dataset.uk:sw.dataset.us;
+    if(ipa)ipa.innerHTML=renderIpa(raw,sw.dataset.diff||'');
   });
 }
 
 function initAudio(){
   const speak=(text,lang='en-US',rate=.92)=>{
-    if(!('speechSynthesis' in window)||!text)return;
-    window.speechSynthesis.cancel();
-    const utter=new SpeechSynthesisUtterance(text);utter.lang=lang;utter.rate=rate;
-    window.speechSynthesis.speak(utter);
-  };
-  const getAccent=el=>{
-    const scene=el.closest('.learning-scene');
-    return scene?.querySelector('.accent-switch button.active')?.dataset.accent==='UK'?'en-GB':'en-US';
+    if(!text)return;
+    if(!('speechSynthesis' in window))return;
+    try{
+      window.speechSynthesis.cancel();
+      const utter=new SpeechSynthesisUtterance(text);
+      utter.lang=lang;utter.rate=rate;utter.volume=1;
+      window.speechSynthesis.speak(utter);
+    }catch(_){}
   };
 
-  document.querySelectorAll('.word-audio').forEach(btn=>{
-    btn.addEventListener('click',e=>{
-      e.stopPropagation();
-      const row=btn.closest('.word-pron-row');
-      const accent=row?.querySelector('.accent-switch button.active')?.dataset.accent==='UK'?'en-GB':'en-US';
-      btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),420);
-      speak(btn.dataset.word||'',accent,.9);
-    });
+  const getScope=(el)=>el.closest('.learning-scene,.peek-sheet,.reflection-screen')||document;
+  const getAccent=(el)=>{
+    const scope=getScope(el);
+    return scope.querySelector('.accent-switch button.active')?.dataset.accent==='UK'?'UK':'US';
+  };
+
+  document.addEventListener('click',e=>{
+    const wordBtn=e.target.closest('.word-audio');
+    if(wordBtn){
+      e.preventDefault();e.stopPropagation();
+      const reading=wordBtn.dataset.reading||'adj';
+      const accent=getAccent(wordBtn);
+      const src=DELIBERATE_AUDIO[reading+'_'+accent];
+      wordBtn.classList.add('playing');
+      setTimeout(()=>wordBtn.classList.remove('playing'),500);
+      if(src){
+        try{
+          const audio=new Audio(src);
+          audio.preload='auto';audio.volume=1;
+          const p=audio.play();
+          if(p?.catch)p.catch(()=>speak('deliberate',accent==='UK'?'en-GB':'en-US',.86));
+        }catch(_){
+          speak('deliberate',accent==='UK'?'en-GB':'en-US',.86);
+        }
+      }else{
+        speak('deliberate',accent==='UK'?'en-GB':'en-US',.86);
+      }
+      return;
+    }
   });
 
-  document.querySelectorAll('.example-audio').forEach(btn=>{
-    let timer=null;
-    btn.addEventListener('click',e=>{
-      e.stopPropagation();
-      if(timer)clearTimeout(timer);
-      timer=setTimeout(()=>{
-        btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),420);
-        speak(btn.dataset.focus||btn.dataset.full||'',getAccent(btn),.9);
-        timer=null;
-      },220);
-    });
-    btn.addEventListener('dblclick',e=>{
-      e.preventDefault();e.stopPropagation();
-      if(timer){clearTimeout(timer);timer=null;}
-      btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),520);
-      speak(btn.dataset.full||btn.dataset.focus||'',getAccent(btn),.92);
-    });
+  const timers=new WeakMap();
+  document.addEventListener('click',e=>{
+    const btn=e.target.closest('.example-audio');
+    if(!btn)return;
+    e.preventDefault();e.stopPropagation();
+    const old=timers.get(btn);if(old)clearTimeout(old);
+    const timer=setTimeout(()=>{
+      const accent=getAccent(btn);
+      btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),420);
+      speak(btn.dataset.focus||btn.dataset.full||'',accent==='UK'?'en-GB':'en-US',.9);
+      timers.delete(btn);
+    },230);
+    timers.set(btn,timer);
+  });
+
+  document.addEventListener('dblclick',e=>{
+    const btn=e.target.closest('.example-audio');
+    if(!btn)return;
+    e.preventDefault();e.stopPropagation();
+    const old=timers.get(btn);if(old)clearTimeout(old);
+    timers.delete(btn);
+    const accent=getAccent(btn);
+    btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),500);
+    speak(btn.dataset.full||btn.dataset.focus||'',accent==='UK'?'en-GB':'en-US',.92);
   });
 }
 
 function initWordPeek(){
   let overlay=document.getElementById('globalWordPeek');
   if(!overlay){
-    overlay=document.createElement('div');overlay.id='globalWordPeek';overlay.className='global-word-peek';
-    overlay.innerHTML='<div class="peek-sheet"><button class="peek-x">×</button><small>WORD OVERVIEW</small><h4></h4><strong></strong><p></p></div>';
+    overlay=document.createElement('div');
+    overlay.id='globalWordPeek';
+    overlay.className='global-word-peek';
+    overlay.innerHTML=`<div class="peek-sheet example-first-peek">
+      <button class="peek-x" aria-label="关闭">×</button>
+      <small>WORD OVERVIEW</small>
+
+      <div class="peek-example">
+        It was a <mark><span class="core-word">deliberate</span> lie</mark>.
+        <button class="example-audio peek-example-audio"
+                data-full="It was a deliberate lie."
+                data-focus="a deliberate lie"
+                title="单击重听高亮 · 双击播放整句"
+                aria-label="播放例句">__SPEAKER__</button>
+      </div>
+      <div class="peek-translation">这是一个蓄意的谎言。</div>
+
+      <div class="word-divider peek-divider"></div>
+
+      <div class="peek-word">deliberate</div>
+      <div class="pron-line peek-pron">
+        <span class="accent-switch"
+              data-us="/dɪˈlɪb.ɚ.ət/"
+              data-uk="/dɪˈlɪb.ər.ət/"
+              data-diff="ət">
+          <button class="active" data-accent="US">US</button>
+          <button data-accent="UK">UK</button>
+        </span>
+        <span class="ipa">/dɪˈlɪb.ɚ.<span class="ipa-diff">ət</span>/</span>
+        <button class="word-audio"
+                data-reading="adj"
+                aria-label="播放 deliberate 形容词读音">__SPEAKER__</button>
+      </div>
+
+      <div class="micro-divider"></div>
+
+      <div class="usage-meaning peek-usage">
+        <span class="usage-pos">adj.</span>
+        <div class="usage-explain">
+          <div class="usage-zh">故意的；蓄意的</div>
+          <div class="usage-en">done consciously and intentionally</div>
+        </div>
+      </div>
+
+      <div class="semantic-bridge peek-bridge">
+        不是随手发生，而是经过意识与考虑。
+      </div>
+      <div class="overview-story peek-story">
+        作形容词时，它强调某件事是有意识地做出的；作动词时，则进一步表示经过仔细考虑或讨论后再作决定。
+      </div>
+    </div>`.replaceAll('__SPEAKER__',`<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10.8 5.5 6.7 8.9H4.5v6.2h2.2l4.1 3.4v-13Z"/><path d="M14.8 9.3a3.8 3.8 0 0 1 0 5.4"/><path d="M17.4 7a7.1 7.1 0 0 1 0 10"/></svg>`);
     document.body.appendChild(overlay);
   }
-  const data={
-    deliberate:{core:'核心感觉：不是随手发生，而是经过意识与考虑。',story:'第一次遇见一个新 Word，Mine 会先给你一张很短的地图。你不需要背一串词典释义；先抓住整体感觉，再去学具体 Usage。作为形容词和动词时，它的读音也不同，这种真正影响使用的信息会跟着当前例句出现。'}
-  };
-  document.querySelectorAll('[data-peek]').forEach(w=>w.addEventListener('click',e=>{e.stopPropagation();const d=data[w.dataset.peek]||data.deliberate;overlay.querySelector('h4').textContent=w.dataset.peek;overlay.querySelector('strong').textContent=d.core;overlay.querySelector('p').textContent=d.story;overlay.classList.add('open')}));
-  overlay.querySelector('.peek-x').addEventListener('click',()=>overlay.classList.remove('open'));overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('open')});
+
+  document.querySelectorAll('[data-peek]').forEach(w=>w.addEventListener('click',e=>{
+    e.stopPropagation();
+    overlay.classList.add('open');
+  }));
+
+  overlay.querySelector('.peek-x')?.addEventListener('click',()=>overlay.classList.remove('open'));
+  overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('open')});
 }
 
 function initReelAudio(){
