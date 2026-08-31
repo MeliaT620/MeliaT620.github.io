@@ -9,7 +9,7 @@
   </div>
 
   <div class="learning-device-wrap">
-    <div class="learning-device" aria-label="Mine English Learning Demo">
+    <div class="learning-device mine-device" aria-label="Mine English Learning Demo">
       <div class="device-speaker"></div>
       <div class="learning-progress-ui" aria-label="本次学习进度">
         <div class="learning-progress-track"><span id="learningProgressFill"></span></div>
@@ -20,40 +20,52 @@
         <div class="learning-track" id="learningTrack">
           <article class="learning-scene judge-scene" data-stage="review-understand" data-judge="true">
             <div class="scene-stage">Review · Understand</div>
-            <div class="scene-content">
-              <div class="sentence-row review-sentence">
-                <div class="scene-example sentence-text">
-                  The pipe is <mark>made of <span class="core-word" data-peek>lead</span></mark>.
-                </div>
-                <button class="example-audio" data-full="The pipe is made of lead." data-focus="made of lead" data-audio-full="The pipe is made of led." data-audio-focus="made of led" aria-label="播放例句" title="单击高亮部分 · 双击完整句子"><svg class="audio-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5.25 9.25h3.1l3.7-3.1v11.7l-3.7-3.1h-3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.1 9.15a4.2 4.2 0 0 1 0 5.7M17.65 6.9a7.4 7.4 0 0 1 0 10.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
-              </div>
 
-              <div class="response-slot">
-                <div class="recall-prompt">
-                  <strong>这句话是什么意思？</strong>
-                  <span>先在心里说出它的中文意思。</span>
+            <div class="scene-content mine-card-content">
+              <div class="language-block">
+                <div class="sentence-line review-sentence">
+                  <span class="scene-example sentence-content">
+                    The pipe is <mark>made of <span class="core-word" data-peek>lead</span></mark>.
+                  </span>
+                  <button class="example-audio icon-button" data-full="The pipe is made of lead." data-focus="made of lead" data-audio-full="The pipe is made of led." data-audio-focus="made of led" aria-label="播放例句" title="单击高亮部分 · 双击完整句子">
+                    <svg class="audio-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5.25 9.25h3.1l3.7-3.1v11.7l-3.7-3.1h-3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.1 9.15a4.2 4.2 0 0 1 0 5.7M17.65 6.9a7.4 7.4 0 0 1 0 10.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                  </button>
                 </div>
-                <div class="answer-reveal response-answer">
-                  <div class="answer-zh">这根管子是铅制的。</div>
+
+                <div class="response-slot">
+                  <div class="recall-prompt">
+                    <strong>这句话是什么意思？</strong>
+                    <span>先在心里说出它的中文意思。</span>
+                  </div>
+                  <div class="answer-reveal response-answer">
+                    <div class="answer-zh">这根管子是铅制的。</div>
+                  </div>
                 </div>
               </div>
 
               <div class="support-divider"></div>
 
               <div class="answer-reveal support-reveal">
-                <div class="overview-word-block review-word-block">
+                <div class="language-support">
                   <div class="support-word" data-peek>lead</div>
-                  <div class="pron-line">
-                    <span class="accent-switch" data-us="/led/" data-uk="/led/" data-diff="e">
+
+                  <div class="support-row pron-line">
+                    <span class="accent-switch meta-control" data-us="/led/" data-uk="/led/" data-diff="e">
                       <button class="active" data-accent="US">US</button>
+                      <span class="accent-slash" aria-hidden="true">/</span>
                       <button data-accent="UK">UK</button>
                     </span>
-                    <span class="ipa">/l<span class="ipa-diff">e</span>d/</span>
-                    <button class="word-audio" data-pronounce="led" aria-label="播放 lead 名词读音"><svg class="audio-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5.25 9.25h3.1l3.7-3.1v11.7l-3.7-3.1h-3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.1 9.15a4.2 4.2 0 0 1 0 5.7M17.65 6.9a7.4 7.4 0 0 1 0 10.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+                    <div class="support-primary pron-primary">
+                      <span class="ipa">/l<span class="ipa-diff">e</span>d/</span>
+                      <button class="word-audio icon-button" data-pronounce="led" aria-label="播放 lead 名词读音">
+                        <svg class="audio-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5.25 9.25h3.1l3.7-3.1v11.7l-3.7-3.1h-3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.1 9.15a4.2 4.2 0 0 1 0 5.7M17.65 6.9a7.4 7.4 0 0 1 0 10.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                      </button>
+                    </div>
                   </div>
-                  <div class="usage-meaning">
-                    <span class="usage-pos">n. U</span>
-                    <div class="usage-explain">
+
+                  <div class="support-row usage-meaning">
+                    <span class="usage-pos meta-control">n. U</span>
+                    <div class="usage-explain support-primary">
                       <div class="usage-zh">铅</div>
                       <div class="usage-en">a soft, heavy metal</div>
                     </div>
@@ -71,42 +83,54 @@
 
           <article class="learning-scene judge-scene" data-stage="review-express" data-judge="true">
             <div class="scene-stage">Review · Express</div>
-            <div class="scene-content">
-              <div class="scene-chinese express-cue">她会带领这个团队。</div>
 
-              <div class="sentence-row express-sentence-row">
-                <div class="scene-example express-example sentence-text">
-                  She will <span class="blank-target" data-answer="lead the team"><span class="blank-content"><strong class="blank-core">lead</strong> the team</span></span>.
-                </div>
-                <button class="example-audio reveal-only-audio" data-full="She will lead the team." data-focus="lead the team" data-audio-full="She will lead the team." data-audio-focus="lead the team" aria-label="播放例句" title="单击高亮部分 · 双击完整句子"><svg class="audio-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5.25 9.25h3.1l3.7-3.1v11.7l-3.7-3.1h-3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.1 9.15a4.2 4.2 0 0 1 0 5.7M17.65 6.9a7.4 7.4 0 0 1 0 10.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
-              </div>
+            <div class="scene-content mine-card-content">
+              <div class="language-block">
+                <div class="scene-chinese express-cue">她会带领这个团队。</div>
 
-              <div class="response-slot express-response-slot">
-                <div class="recall-prompt">
-                  <strong>这句话用英语怎么说？</strong>
-                  <span>先在心里补全这句自然英文。</span>
+                <div class="sentence-line express-sentence-row">
+                  <span class="scene-example express-example sentence-content">
+                    She will <span class="blank-target" data-answer="lead the team"><span class="blank-content"><strong class="blank-core">lead</strong> the team</span></span>.
+                  </span>
+                  <button class="example-audio icon-button reveal-only-audio" data-full="She will lead the team." data-focus="lead the team" data-audio-full="She will lead the team." data-audio-focus="lead the team" aria-label="播放例句" title="单击高亮部分 · 双击完整句子">
+                    <svg class="audio-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5.25 9.25h3.1l3.7-3.1v11.7l-3.7-3.1h-3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.1 9.15a4.2 4.2 0 0 1 0 5.7M17.65 6.9a7.4 7.4 0 0 1 0 10.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                  </button>
                 </div>
-                <div class="answer-reveal response-answer express-confirmation">
-                  <span><strong>lead</strong> the team</span>
+
+                <div class="response-slot express-response-slot">
+                  <div class="recall-prompt">
+                    <strong>这句话用英语怎么说？</strong>
+                    <span>先在心里补全这句自然英文。</span>
+                  </div>
+                  <div class="answer-reveal response-answer express-confirmation">
+                    <span><strong>lead</strong> the team</span>
+                  </div>
                 </div>
               </div>
 
               <div class="support-divider"></div>
 
               <div class="answer-reveal support-reveal">
-                <div class="overview-word-block review-word-block">
+                <div class="language-support">
                   <div class="support-word" data-peek>lead</div>
-                  <div class="pron-line">
-                    <span class="accent-switch" data-us="/liːd/" data-uk="/liːd/" data-diff="iː">
+
+                  <div class="support-row pron-line">
+                    <span class="accent-switch meta-control" data-us="/liːd/" data-uk="/liːd/" data-diff="iː">
                       <button class="active" data-accent="US">US</button>
+                      <span class="accent-slash" aria-hidden="true">/</span>
                       <button data-accent="UK">UK</button>
                     </span>
-                    <span class="ipa">/l<span class="ipa-diff">iː</span>d/</span>
-                    <button class="word-audio" data-pronounce="leed" aria-label="播放 lead 动词读音"><svg class="audio-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5.25 9.25h3.1l3.7-3.1v11.7l-3.7-3.1h-3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.1 9.15a4.2 4.2 0 0 1 0 5.7M17.65 6.9a7.4 7.4 0 0 1 0 10.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+                    <div class="support-primary pron-primary">
+                      <span class="ipa">/l<span class="ipa-diff">iː</span>d/</span>
+                      <button class="word-audio icon-button" data-pronounce="leed" aria-label="播放 lead 动词读音">
+                        <svg class="audio-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5.25 9.25h3.1l3.7-3.1v11.7l-3.7-3.1h-3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.1 9.15a4.2 4.2 0 0 1 0 5.7M17.65 6.9a7.4 7.4 0 0 1 0 10.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                      </button>
+                    </div>
                   </div>
-                  <div class="usage-meaning">
-                    <span class="usage-pos">VT</span>
-                    <div class="usage-explain">
+
+                  <div class="support-row usage-meaning">
+                    <span class="usage-pos meta-control">VT</span>
+                    <div class="usage-explain support-primary">
                       <div class="usage-zh">带领；领导</div>
                       <div class="usage-en">to guide or direct a person or group</div>
                     </div>
@@ -144,18 +168,19 @@
     <div class="device-caption">交互演示 · 左右判断，向上滑继续</div>
   </div>
 
-  <div class="wrap coach-preview-outside">
-    <div>
-      <span>Coach · Pro · Concept Preview</span>
-      <h3>Basic Example 已经建立以后，再把 Depth 往前推一点。</h3>
-      <p>Coach 最终仍会自然进入 Learning Stream；当前网页只展示概念，不把尚未定型的交互塞进手机 Demo。</p>
-    </div>
+  <div class="wrap coach-preview-outside coach-quiet">
+    <span>Coach · Pro · Concept Preview</span>
+    <h3>Basic Example 已经建立以后，再把 Depth 往前推一点。</h3>
+    <p>Coach 最终仍会自然进入 Learning Stream；当前网页只展示概念，不把尚未定型的交互塞进手机 Demo。</p>
     <div class="coach-preview-tags"><span>new Example</span><span>迁移</span><span>辨析</span></div>
   </div>
 
   <div class="wrap small-thoughts">
-    <div class="small-thoughts-head"><span>Some small decisions we cared about</span><h3>一些我们认真想过的小事。</h3></div>
-    <div class="thought-stack">
+    <div class="small-thoughts-head">
+      <span>Some small decisions we cared about</span>
+      <h3>一些我们认真想过的小事。</h3>
+    </div>
+    <div class="thought-stack editorial-thoughts">
       <article><b>新 Word 先有一张地图。</b><p>第一次先抓住核心概念和简短的 Meaning Story；以后想回看，只需点一下 Word，不打断当前学习。</p></article>
       <article><b>哪里不稳，就只修哪里。</b><p>一个 Usage 不会，不会把整个 Word 重新塞回来。只有多个 Usage 反复混淆，才重新连接整体。</p></article>
       <article><b>信息先被消化，再交给你。</b><p>不同来源的释义、助记、搭配与扩展说明先在后台整理成一个真正能理解的解释。</p></article>
@@ -174,33 +199,45 @@
     </div>
 
     <div class="reflection-device-wrap">
-      <div class="reflection-device">
+      <div class="reflection-device mine-device">
         <div class="device-speaker"></div>
-        <div class="reflection-screen">
+        <div class="reflection-screen mine-reflection-screen">
           <div class="reflection-stage"><span>TODAY</span><span>Reflection</span></div>
 
-          <div class="reflection-card">
-            <div class="sentence-row reflection-sentence-row">
-              <div class="reflection-example sentence-text">The pipe is <mark>made of <span class="core-word" data-peek>lead</span></mark>.</div>
-              <button class="example-audio" data-full="The pipe is made of lead." data-focus="made of lead" data-audio-full="The pipe is made of led." data-audio-focus="made of led" aria-label="播放例句" title="单击高亮部分 · 双击完整句子"><svg class="audio-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5.25 9.25h3.1l3.7-3.1v11.7l-3.7-3.1h-3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.1 9.15a4.2 4.2 0 0 1 0 5.7M17.65 6.9a7.4 7.4 0 0 1 0 10.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+          <div class="reflection-card mine-card-content">
+            <div class="language-block">
+              <div class="sentence-line reflection-sentence-row">
+                <span class="reflection-example sentence-content">The pipe is <mark>made of <span class="core-word" data-peek>lead</span></mark>.</span>
+                <button class="example-audio icon-button" data-full="The pipe is made of lead." data-focus="made of lead" data-audio-full="The pipe is made of led." data-audio-focus="made of led" aria-label="播放例句" title="单击高亮部分 · 双击完整句子">
+                  <svg class="audio-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5.25 9.25h3.1l3.7-3.1v11.7l-3.7-3.1h-3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.1 9.15a4.2 4.2 0 0 1 0 5.7M17.65 6.9a7.4 7.4 0 0 1 0 10.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+
+              <div class="reflection-translation">这根管子是铅制的。</div>
             </div>
 
-            <div class="reflection-translation">这根管子是铅制的。</div>
             <div class="support-divider"></div>
 
-            <div class="reflection-support">
+            <div class="reflection-support language-support">
               <div class="support-word" data-peek>lead</div>
-              <div class="pron-line">
-                <span class="accent-switch" data-us="/led/" data-uk="/led/" data-diff="e">
+
+              <div class="support-row pron-line">
+                <span class="accent-switch meta-control" data-us="/led/" data-uk="/led/" data-diff="e">
                   <button class="active" data-accent="US">US</button>
+                  <span class="accent-slash" aria-hidden="true">/</span>
                   <button data-accent="UK">UK</button>
                 </span>
-                <span class="ipa">/l<span class="ipa-diff">e</span>d/</span>
-                <button class="word-audio" data-pronounce="led" aria-label="播放 lead 名词读音"><svg class="audio-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5.25 9.25h3.1l3.7-3.1v11.7l-3.7-3.1h-3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.1 9.15a4.2 4.2 0 0 1 0 5.7M17.65 6.9a7.4 7.4 0 0 1 0 10.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+                <div class="support-primary pron-primary">
+                  <span class="ipa">/l<span class="ipa-diff">e</span>d/</span>
+                  <button class="word-audio icon-button" data-pronounce="led" aria-label="播放 lead 名词读音">
+                    <svg class="audio-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M5.25 9.25h3.1l3.7-3.1v11.7l-3.7-3.1h-3.1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15.1 9.15a4.2 4.2 0 0 1 0 5.7M17.65 6.9a7.4 7.4 0 0 1 0 10.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                  </button>
+                </div>
               </div>
-              <div class="usage-meaning">
-                <span class="usage-pos">n. U</span>
-                <div class="usage-explain">
+
+              <div class="support-row usage-meaning">
+                <span class="usage-pos meta-control">n. U</span>
+                <div class="usage-explain support-primary">
                   <div class="usage-zh">铅</div>
                   <div class="usage-en">a soft, heavy metal</div>
                 </div>
@@ -208,15 +245,25 @@
             </div>
           </div>
 
-          <div class="danmaku-layer" id="danmakuLayer" aria-label="高赞评论弹幕">
-            <div class="danmaku-bubble" id="danmakuBubble"></div>
-          </div>
+          <div class="live-comments" id="liveComments" aria-label="高赞评论"></div>
 
           <div class="reflection-actions" aria-label="Reflection actions">
-            <button class="social-action like-action" data-social="like" data-base="5" aria-pressed="false" title="Like"><span>♡</span><small class="social-count">5</small></button>
-            <button class="social-action save-action" data-social="save" data-base="1" aria-pressed="false" title="Save"><span>☆</span><small class="social-count">1</small></button>
-            <button class="social-action share-action" data-social="share" title="Share"><span>↗</span><small>Share</small></button>
-            <button class="social-action comment-action active" data-social="comment" aria-pressed="true" title="Comment"><span>💬</span><small>24</small></button>
+            <button class="social-action like-action" data-social="like" data-base="5" aria-pressed="false" title="Like">
+              <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.4 4.7 13.5C1.1 10.1 3.7 4.4 8.2 5.2c1.6.3 2.8 1.3 3.8 2.7 1-1.4 2.2-2.4 3.8-2.7 4.5-.8 7.1 4.9 3.5 8.3L12 20.4Z"/></svg>
+              <small class="social-count">5</small>
+            </button>
+            <button class="social-action save-action" data-social="save" data-base="1" aria-pressed="false" title="Save">
+              <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></svg>
+              <small class="social-count">1</small>
+            </button>
+            <button class="social-action share-action" data-social="share" title="Share">
+              <svg class="action-icon line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16.5 7.5M10.5 7.5h6v6"/><path d="M17 14.5v3a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3"/></svg>
+              <small>Share</small>
+            </button>
+            <button class="social-action comment-action active" data-social="comment" aria-pressed="true" title="Comment">
+              <svg class="action-icon line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5h14v10H9l-4 3v-13Z"/></svg>
+              <small>24</small>
+            </button>
           </div>
 
           <div class="reflection-toast" id="reflectionToast" role="status"></div>
