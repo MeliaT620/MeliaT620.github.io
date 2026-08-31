@@ -1,0 +1,247 @@
+/* Mine English v33 — consistent device scale, quiet metadata, stable two-zone Learning cards. */
+
+/* ------------------------------------------------------------
+   1. Stable Learning composition: upper task / lower support.
+   The upper content never moves when an answer is revealed.
+   ------------------------------------------------------------ */
+.judge-scene .response-slot{
+  min-height:38px!important;
+  margin-top:14px!important;
+}
+.judge-scene .recall-prompt,
+.judge-scene .response-answer{
+  top:0!important;
+}
+.judge-scene .recall-prompt strong,
+.judge-scene .answer-zh{
+  margin:0!important;
+  line-height:1.55!important;
+}
+
+/* The lower half is completely silent before the learner answers. */
+.judge-scene:not([data-choice]) .support-divider,
+.judge-scene:not([data-choice]) .support-reveal{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+/* Put the lexical support at a stable lower-zone anchor instead of letting
+   revealed content reflow the card. */
+.judge-scene .support-divider{
+  position:absolute!important;
+  left:24px!important;
+  right:24px!important;
+  top:49.5%!important;
+  width:auto!important;
+  margin:0!important;
+  transition:opacity .16s ease!important;
+}
+.judge-scene .support-reveal{
+  position:absolute!important;
+  left:24px!important;
+  right:24px!important;
+  top:53.5%!important;
+  margin:0!important;
+}
+.judge-scene[data-choice] .support-divider{
+  opacity:1!important;
+  visibility:visible!important;
+}
+
+/* Keep the prompt and the answer on the exact same top edge. */
+.recall-prompt strong{
+  font-size:9.8px!important;
+  color:#4A5650!important;
+  font-weight:650!important;
+}
+.recall-prompt span{
+  margin-top:3px!important;
+  font-size:7.2px!important;
+  color:#9AA39F!important;
+}
+.answer-zh{
+  font-size:10.4px!important;
+  color:#4A5650!important;
+}
+.express-confirmation{
+  font-size:8.2px!important;
+  color:#7E8983!important;
+}
+
+/* ------------------------------------------------------------
+   2. One scale system for all lexical metadata.
+   These are supporting details, never primary controls.
+   ------------------------------------------------------------ */
+.support-word{
+  font-size:15.6px!important;
+  line-height:1.18!important;
+  font-weight:720!important;
+}
+.pron-line{
+  margin-top:7px!important;
+  gap:5px!important;
+  min-height:20px!important;
+}
+.accent-switch{
+  gap:3px!important;
+}
+.accent-switch button{
+  min-width:24px!important;
+  height:19px!important;
+  padding:0 5px!important;
+  border-radius:7px!important;
+  border-width:1px!important;
+  font-size:6.2px!important;
+  letter-spacing:.01em!important;
+  font-weight:760!important;
+}
+.ipa{
+  font-size:9.1px!important;
+  line-height:1.2!important;
+}
+.ipa-diff::after{
+  bottom:-4px!important;
+  height:1.5px!important;
+}
+.word-audio{
+  width:18px!important;
+  height:18px!important;
+  min-width:18px!important;
+  margin-left:0!important;
+}
+.word-audio .audio-icon{
+  width:13px!important;
+  height:13px!important;
+}
+.usage-meaning{
+  grid-template-columns:auto 1fr!important;
+  column-gap:9px!important;
+  margin-top:12px!important;
+}
+.usage-pos{
+  min-width:35px!important;
+  min-height:22px!important;
+  height:22px!important;
+  padding:0 7px!important;
+  border-radius:8px!important;
+  font-size:6.2px!important;
+  letter-spacing:.07em!important;
+  font-weight:730!important;
+}
+.usage-zh{
+  font-size:13.2px!important;
+  line-height:1.3!important;
+  font-weight:740!important;
+}
+.usage-en{
+  margin-top:3px!important;
+  font-size:8.4px!important;
+  line-height:1.45!important;
+}
+
+/* Reflection uses the exact same lexical scale. */
+.reflection-support{
+  padding-right:28px!important;
+}
+.reflection-support .support-word{
+  font-size:15.6px!important;
+}
+
+/* ------------------------------------------------------------
+   3. Reflection action rail: attached, not a separate toolbar.
+   ------------------------------------------------------------ */
+.reflection-actions{
+  right:5px!important;
+  top:49%!important;
+  transform:translateY(-27%)!important;
+  gap:5px!important;
+}
+.social-action{
+  width:26px!important;
+  min-height:31px!important;
+  padding:3px 1px!important;
+  border-radius:9px!important;
+  box-shadow:0 2px 8px rgba(25,55,43,.04)!important;
+}
+.social-action span{
+  font-size:14px!important;
+  line-height:1!important;
+}
+.social-action small{
+  margin-top:2px!important;
+  font-size:5.3px!important;
+  line-height:1.05!important;
+}
+
+/* ------------------------------------------------------------
+   4. Sentence/audio scale: quiet accessory, not another control.
+   ------------------------------------------------------------ */
+.example-audio{
+  width:18px!important;
+  height:18px!important;
+  min-width:18px!important;
+  margin-left:.22em!important;
+  vertical-align:-.15em!important;
+}
+.example-audio .audio-icon{
+  width:13px!important;
+  height:13px!important;
+}
+
+@media(max-width:560px){
+  .judge-scene .support-divider{
+    left:18px!important;
+    right:18px!important;
+    top:49.5%!important;
+  }
+  .judge-scene .support-reveal{
+    left:18px!important;
+    right:18px!important;
+    top:53.5%!important;
+  }
+  .judge-scene .response-slot{
+    min-height:34px!important;
+    margin-top:12px!important;
+  }
+  .recall-prompt strong{font-size:8.7px!important}
+  .recall-prompt span{font-size:6.5px!important}
+  .answer-zh{font-size:9.4px!important}
+
+  .support-word,
+  .reflection-support .support-word{font-size:14.4px!important}
+  .pron-line{margin-top:6px!important;gap:4px!important}
+  .accent-switch button{
+    min-width:22px!important;
+    height:18px!important;
+    padding:0 4px!important;
+    border-radius:6px!important;
+    font-size:5.8px!important;
+  }
+  .ipa{font-size:8.4px!important}
+  .word-audio{width:17px!important;height:17px!important;min-width:17px!important}
+  .word-audio .audio-icon{width:12px!important;height:12px!important}
+  .usage-meaning{margin-top:10px!important;column-gap:8px!important}
+  .usage-pos{
+    min-width:32px!important;
+    min-height:20px!important;
+    height:20px!important;
+    padding:0 6px!important;
+    border-radius:7px!important;
+    font-size:5.8px!important;
+  }
+  .usage-zh{font-size:12px!important}
+  .usage-en{font-size:7.8px!important}
+
+  .reflection-support{padding-right:25px!important}
+  .reflection-actions{right:4px!important;gap:4px!important}
+  .social-action{
+    width:24px!important;
+    min-height:29px!important;
+    border-radius:8px!important;
+  }
+  .social-action span{font-size:13px!important}
+  .social-action small{font-size:5px!important}
+  .example-audio{width:17px!important;height:17px!important;min-width:17px!important}
+  .example-audio .audio-icon{width:12px!important;height:12px!important}
+}
