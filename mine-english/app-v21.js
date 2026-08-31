@@ -1,0 +1,72 @@
+(async()=>{
+  const host=document.getElementById('contentHost');
+  const parts=await Promise.all([1,2,3].map(i=>fetch(`content-${i}.html`).then(r=>r.text())));
+  host.innerHTML=parts.join('\n');
+  initPage();
+})();
+
+function initPage(){
+  const progress=document.getElementById('scrollProgress');
+  const toc=document.getElementById('tocPanel');
+  const backdrop=document.getElementById('tocBackdrop');
+  const btn=document.getElementById('tocBtn');
+  const close=document.getElementById('tocClose');
+  const links=[...document.querySelectorAll('.toc-links a')];
+  const setToc=open=>{toc.classList.toggle('open',open);backdrop.classList.toggle('open',open);btn.setAttribute('aria-expanded',open?'true':'false')};
+  btn?.addEventListener('click',()=>setToc(!toc.classList.contains('open')));close?.addEventListener('click',()=>setToc(false));backdrop?.addEventListener('click',()=>setToc(false));links.forEach(a=>a.addEventListener('click',()=>setToc(false)));
+  const update=()=>{const h=document.documentElement,max=h.scrollHeight-h.clientHeight,p=max>0?h.scrollTop/max*100:0;progress.style.width=p+'%';progress.style.setProperty('--progress',p)};
+  document.addEventListener('scroll',update,{passive:true});update();
+  const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting) links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{threshold:.18,rootMargin:'-15% 0px -60% 0px'});document.querySelectorAll('section[id]').forEach(s=>so.observe(s));
+  initWordPeek();initJudgeScenes();initAccentToggles();initAudio();initReelAudio();
+}
+
+function initJudgeScenes(){
+  document.querySelectorAll('.judge-scene').forEach(scene=>{
+    const threshold=42;
+    let active=false,startX=0,startY=0,lastX=0;
+    const setGlow=(dx)=>{
+      const mag=Math.min(Math.abs(dx)/95,1),eased=Math.pow(mag,.72);
+      if(dx<0){scene.style.setProperty('--left-glow',eased.toFixed(3));scene.style.setProperty('--right-glow','0');scene.style.setProperty('--left-spread',(7+eased*25).toFixed(1)+'px');scene.style.setProperty('--left-width',(2.2+eased*2.2).toFixed(1)+'px')}
+      else if(dx>0){scene.style.setProperty('--right-glow',eased.toFixed(3));scene.style.setProperty('--left-glow','0');scene.style.setProperty('--right-spread',(7+eased*25).toFixed(1)+'px');scene.style.setProperty('--right-width',(2.2+eased*2.2).toFixed(1)+'px')}
+    };
+    const reveal=(choice)=>{scene.classList.remove('known','not-yet');scene.classList.add(choice==='known'?'known':'not-yet');scene.dataset.choice=choice;scene.querySelectorAll('.answer-reveal').forEach(el=>el.classList.add('visible'));scene.querySelectorAll('.blank-target').forEach(el=>el.classList.add('revealed'));scene.querySelectorAll('.reveal-only-audio').forEach(el=>el.classList.add('visible'));scene.style.removeProperty('--left-glow');scene.style.removeProperty('--right-glow')};
+    const clearTransient=()=>{if(scene.dataset.choice)return;scene.style.setProperty('--left-glow','0');scene.style.setProperty('--right-glow','0')};
+    const onStart=(x,y)=>{active=true;startX=lastX=x;startY=y};
+    const onMove=(x,y,e)=>{if(!active)return;lastX=x;const dx=x-startX,dy=y-startY;if(Math.abs(dx)>Math.abs(dy)+6){if(e?.cancelable)e.preventDefault();setGlow(dx)}};
+    const onEnd=()=>{if(!active)return;const dx=lastX-startX;active=false;if(dx<=-threshold)reveal('known');else if(dx>=threshold)reveal('not-yet');else clearTransient()};
+    scene.addEventListener('pointerdown',e=>{if(e.target.closest('button,a'))return;onStart(e.clientX,e.clientY);try{scene.setPointerCapture(e.pointerId)}catch(_){}});
+    scene.addEventListener('pointermove',e=>onMove(e.clientX,e.clientY,e));
+    scene.addEventListener('pointerup',e=>{onEnd();try{scene.releasePointerCapture(e.pointerId)}catch(_){}});scene.addEventListener('pointercancel',onEnd);
+    scene.addEventListener('touchstart',e=>{if(e.target.closest('button,a'))return;const t=e.touches[0];if(t)onStart(t.clientX,t.clientY)},{passive:true});
+    scene.addEventListener('touchmove',e=>{const t=e.touches[0];if(t)onMove(t.clientX,t.clientY,e)},{passive:false});scene.addEventListener('touchend',onEnd,{passive:true});
+    let wheelDx=0,wheelTimer=null;
+    scene.addEventListener('wheel',e=>{if(Math.abs(e.deltaX)<=Math.abs(e.deltaY))return;e.preventDefault();wheelDx+=e.deltaX;setGlow(wheelDx>0?-Math.abs(wheelDx):Math.abs(wheelDx));clearTimeout(wheelTimer);wheelTimer=setTimeout(()=>{if(wheelDx>threshold)reveal('known');else if(wheelDx<-threshold)reveal('not-yet');else clearTransient();wheelDx=0},120)},{passive:false});
+  });
+}
+
+function initAccentToggles(){
+  const renderIpa=(raw,diff)=>{if(!raw)return '';if(!diff)return raw;const i=raw.lastIndexOf(diff);if(i<0)return raw;return raw.slice(0,i)+'<span class="ipa-diff">'+diff+'</span>'+raw.slice(i+diff.length)};
+  document.addEventListener('click',e=>{const btn=e.target.closest('.accent-switch button');if(!btn)return;e.preventDefault();e.stopPropagation();const sw=btn.closest('.accent-switch'),line=sw.closest('.pron-line'),ipa=line?.querySelector('.ipa');sw.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b===btn));const raw=btn.dataset.accent==='UK'?sw.dataset.uk:sw.dataset.us;if(ipa)ipa.innerHTML=renderIpa(raw,sw.dataset.diff||'')});
+}
+
+const DELIBERATE_AUDIO_PATHS={adj_US:'audio/deliberate_adj_us.mp3',adj_UK:'audio/deliberate_adj_uk.mp3',verb_US:'audio/deliberate_verb_us.mp3',verb_UK:'audio/deliberate_verb_uk.mp3'};
+
+function initAudio(){
+  const speak=(text,lang='en-US',rate=.92)=>{if(!text||!('speechSynthesis' in window))return;try{window.speechSynthesis.cancel();const utter=new SpeechSynthesisUtterance(text);utter.lang=lang;utter.rate=rate;utter.volume=1;window.speechSynthesis.speak(utter)}catch(_){}};
+  const getScope=el=>el.closest('.learning-scene,.peek-sheet,.reflection-screen')||document;
+  const getAccent=el=>getScope(el).querySelector('.accent-switch button.active')?.dataset.accent==='UK'?'UK':'US';
+  document.addEventListener('click',e=>{const wordBtn=e.target.closest('.word-audio');if(!wordBtn)return;e.preventDefault();e.stopPropagation();const reading=wordBtn.dataset.reading||'adj',accent=getAccent(wordBtn),src=DELIBERATE_AUDIO_PATHS[reading+'_'+accent];wordBtn.classList.add('playing');setTimeout(()=>wordBtn.classList.remove('playing'),500);const audio=new Audio(src);audio.preload='auto';audio.volume=1;audio.play().catch(()=>speak('deliberate',accent==='UK'?'en-GB':'en-US',.86))});
+  const timers=new WeakMap();
+  document.addEventListener('click',e=>{const btn=e.target.closest('.example-audio');if(!btn)return;e.preventDefault();e.stopPropagation();const old=timers.get(btn);if(old)clearTimeout(old);const timer=setTimeout(()=>{const accent=getAccent(btn);btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),420);speak(btn.dataset.focus||btn.dataset.full||'',accent==='UK'?'en-GB':'en-US',.9);timers.delete(btn)},230);timers.set(btn,timer)});
+  document.addEventListener('dblclick',e=>{const btn=e.target.closest('.example-audio');if(!btn)return;e.preventDefault();e.stopPropagation();const old=timers.get(btn);if(old)clearTimeout(old);timers.delete(btn);const accent=getAccent(btn);btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),500);speak(btn.dataset.full||btn.dataset.focus||'',accent==='UK'?'en-GB':'en-US',.92)});
+}
+
+function initWordPeek(){
+  let overlay=document.getElementById('globalWordPeek');
+  if(!overlay){overlay=document.createElement('div');overlay.id='globalWordPeek';overlay.className='global-word-peek';overlay.innerHTML=`<div class="peek-sheet example-first-peek"><button class="peek-x" aria-label="关闭">×</button><small>WORD OVERVIEW</small><div class="peek-example">It was a <mark><span class="core-word">deliberate</span> lie</mark>.<button class="example-audio peek-example-audio" data-full="It was a deliberate lie." data-focus="a deliberate lie" aria-label="播放例句">🔊</button></div><div class="peek-translation">这是一个蓄意的谎言。</div><div class="word-divider peek-divider"></div><div class="peek-word">deliberate</div><div class="pron-line peek-pron"><span class="accent-switch" data-us="/dɪˈlɪb.ɚ.ət/" data-uk="/dɪˈlɪb.ər.ət/" data-diff="ət"><button class="active" data-accent="US">US</button><button data-accent="UK">UK</button></span><span class="ipa">/dɪˈlɪb.ɚ.<span class="ipa-diff">ət</span>/</span><button class="word-audio" data-reading="adj" aria-label="播放 deliberate 形容词读音">🔊</button></div><div class="micro-divider"></div><div class="usage-meaning peek-usage"><span class="usage-pos">adj.</span><div class="usage-explain"><div class="usage-zh">故意的；蓄意的</div><div class="usage-en">done consciously and intentionally</div></div></div><div class="semantic-bridge peek-bridge">不是随手发生，而是经过意识与考虑。</div><div class="overview-story peek-story">作形容词时，它强调某件事是有意识地做出的；作动词时，则进一步表示经过仔细考虑或讨论后再作决定。</div></div>`;document.body.appendChild(overlay)}
+  document.querySelectorAll('[data-peek]').forEach(w=>w.addEventListener('click',e=>{e.stopPropagation();overlay.classList.add('open')}));overlay.querySelector('.peek-x')?.addEventListener('click',()=>overlay.classList.remove('open'));overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('open')});
+}
+
+function initReelAudio(){
+  if(!('speechSynthesis' in window))return;const played=new WeakSet();const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(!e.isIntersecting||e.intersectionRatio<=.72||played.has(e.target))return;const btn=e.target.querySelector('.example-audio'),focus=btn?.dataset.focus;if(!focus)return;played.add(e.target);const accent=e.target.querySelector('.accent-switch button.active')?.dataset.accent==='UK'?'en-GB':'en-US';window.speechSynthesis.cancel();const utter=new SpeechSynthesisUtterance(focus);utter.lang=accent;utter.rate=.9;setTimeout(()=>window.speechSynthesis.speak(utter),260)}),{threshold:[.72,.86]});document.querySelectorAll('.learning-scene').forEach(scene=>io.observe(scene));
+}
