@@ -18,7 +18,7 @@ function initPage(){
   const update=()=>{const h=document.documentElement,max=h.scrollHeight-h.clientHeight,p=max>0?h.scrollTop/max*100:0;progress.style.width=p+'%';progress.style.setProperty('--progress',p)};
   document.addEventListener('scroll',update,{passive:true});update();
   const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting) links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{threshold:.18,rootMargin:'-15% 0px -60% 0px'});document.querySelectorAll('section[id]').forEach(s=>so.observe(s));
-  initJudgeScenes();initAccentToggles();initAudio();initWordPeek();
+  initJudgeScenes();initAccentToggles();initAudio();initWordPeek();initSceneAutoAudio();
 }
 
 function initJudgeScenes(){
@@ -116,4 +116,26 @@ function initWordPeek(){
   };
   document.querySelectorAll('[data-peek]').forEach(w=>w.addEventListener('click',e=>{e.stopPropagation();const d=data[w.dataset.peek]||data.deliberate;overlay.querySelector('h4').textContent=w.dataset.peek;overlay.querySelector('strong').textContent=d.core;overlay.querySelector('p').textContent=d.story;overlay.classList.add('open')}));
   overlay.querySelector('.peek-x').addEventListener('click',()=>overlay.classList.remove('open'));overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('open')});
+}
+
+function initSceneAutoAudio(){
+  if(!('speechSynthesis' in window))return;
+  const played=new WeakSet();
+  const speakFocus=scene=>{
+    const btn=scene.querySelector('.example-audio[data-focus]');
+    if(!btn||played.has(scene)||scene.dataset.stage==='coach')return;
+    const accent=scene.querySelector('.accent-switch button.active')?.dataset.accent==='UK'?'en-GB':'en-US';
+    const text=btn.dataset.focus;
+    if(!text)return;
+    played.add(scene);
+    const utter=new SpeechSynthesisUtterance(text);
+    utter.lang=accent;utter.rate=.9;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utter);
+    btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),450);
+  };
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.72)speakFocus(e.target)});
+  },{threshold:[.72,.82]});
+  document.querySelectorAll('.learning-scene').forEach(scene=>observer.observe(scene));
 }
