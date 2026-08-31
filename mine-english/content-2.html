@@ -19,9 +19,8 @@
       <div class="learning-reel" id="learningReel" tabindex="0">
         <div class="learning-track" id="learningTrack">
           <article class="learning-scene judge-scene" data-stage="review-understand" data-judge="true">
-            <div class="scene-stage">Review · Understand</div>
             <div class="scene-content demo-content">
-              <div class="demo-upper audio-zone" data-focus-audio="made of led" data-full-audio="The pipe is made of led.">
+              <div class="demo-upper" data-focus-audio="made of led" data-full-audio="The pipe is made of led.">
                 <div class="sentence-line">
                   <span class="scene-example">The pipe is <mark>made of <span class="core-word" data-peek>lead</span></mark>.</span>
                 </div>
@@ -38,7 +37,7 @@
 
               <div class="support-divider"></div>
 
-              <div class="demo-lower audio-zone answer-reveal support-reveal" data-word-audio="led">
+              <div class="demo-lower answer-reveal support-reveal" data-word-audio="led">
                 <div class="support-word" data-peek>lead</div>
                 <div class="support-grid">
                   <button class="meta-control accent-toggle" type="button" data-accent="US" data-us="/led/" data-uk="/led/">US</button>
@@ -56,25 +55,24 @@
           </article>
 
           <article class="learning-scene judge-scene" data-stage="review-express" data-judge="true">
-            <div class="scene-stage">Review · Express</div>
             <div class="scene-content demo-content">
-              <div class="demo-upper audio-zone" data-focus-audio="lead the team" data-full-audio="She will lead the team.">
+              <div class="demo-upper" data-focus-audio="lead the team" data-full-audio="She will lead the team.">
                 <div class="scene-chinese express-cue">她会带领这个团队。</div>
                 <div class="sentence-line">
-                  <span class="scene-example express-example">She will <span class="blank-target" data-answer="lead the team"><span class="blank-content"><strong class="blank-core">lead</strong> the team</span></span>.</span>
+                  <span class="scene-example express-example">She will <span class="word-blanks"><span class="word-blank" data-word="lead"><span class="blank-text">lead</span></span><span class="word-blank" data-word="the"><span class="blank-text">the</span></span><span class="word-blank" data-word="team"><span class="blank-text">team</span></span></span>.</span>
                 </div>
-                <div class="response-slot">
+                <div class="response-slot express-response-slot">
                   <div class="recall-prompt">
                     <strong>这句话用英语怎么说？</strong>
                     <span>先在心里补全这句自然英文。</span>
                   </div>
-                  <div class="answer-reveal response-answer"><div class="answer-zh">很好，现在看完整表达。</div></div>
+                  <div class="answer-reveal response-answer" aria-hidden="true"></div>
                 </div>
               </div>
 
               <div class="support-divider"></div>
 
-              <div class="demo-lower audio-zone answer-reveal support-reveal" data-word-audio="leed">
+              <div class="demo-lower answer-reveal support-reveal" data-word-audio="leed">
                 <div class="support-word" data-peek>lead</div>
                 <div class="support-grid">
                   <button class="meta-control accent-toggle" type="button" data-accent="US" data-us="/liːd/" data-uk="/liːd/">US</button>
@@ -92,7 +90,6 @@
           </article>
 
           <article class="learning-scene complete-scene" data-stage="complete">
-            <div class="scene-stage">Complete</div>
             <div class="complete-card">
               <div class="complete-check">✓</div>
               <h3>今天的语言，<br>已经更像你的了。</h3>
@@ -112,9 +109,10 @@
   </div>
 
   <div class="wrap coach-preview-outside coach-quiet">
-    <span>Coach · Pro · Concept Preview</span>
-    <h3>Basic Example 已经建立以后，再把 Depth 往前推一点。</h3>
-    <p>Coach 最终仍会自然进入 Learning Stream；当前网页只展示概念。</p>
+    <span>Coach · Pro</span>
+    <h3>会了以后，不是结束。<br>再把这段语言往真实使用里推一点。</h3>
+    <p>当 Basic Example 已经稳定，Coach 会在合适的时候换一个语境、做一次迁移，或者把容易混淆的表达放到一起。</p>
+    <div class="coach-mini-examples"><span>换一个新语境</span><span>迁移到真实表达</span><span>近义辨析</span></div>
   </div>
 
   <div class="wrap small-thoughts">
@@ -138,20 +136,20 @@
     </div>
 
     <div class="reflection-stage-wrap">
-      <div class="reflection-callout callout-upper" aria-hidden="true"><span class="callout-dot"></span><span class="callout-line"></span><small>横线之上<br>轻触播放高亮 · 双击整句</small></div>
-      <div class="reflection-callout callout-lower" aria-hidden="true"><span class="callout-dot"></span><span class="callout-line"></span><small>横线之下<br>轻触播放单词</small></div>
+      <div class="reflection-callout callout-upper" aria-hidden="true"><span class="callout-dot"></span><span class="callout-line"></span><small>轻触高亮<br>双击整句</small></div>
+      <div class="reflection-callout callout-lower" aria-hidden="true"><span class="callout-dot"></span><span class="callout-line"></span><small>轻触下方<br>播放单词</small></div>
 
       <div class="reflection-device mine-device">
         <div class="device-speaker"></div>
         <div class="reflection-screen">
-          <div class="reflection-stage"><span>TODAY</span><span>Reflection</span></div>
+          <div class="reflection-progress" aria-hidden="true"><span></span></div>
           <div class="reflection-card demo-content">
-            <div class="demo-upper audio-zone" data-focus-audio="made of led" data-full-audio="The pipe is made of led.">
+            <div class="demo-upper" data-focus-audio="made of led" data-full-audio="The pipe is made of led.">
               <div class="sentence-line"><span class="reflection-example">The pipe is <mark>made of <span class="core-word" data-peek>lead</span></mark>.</span></div>
               <div class="reflection-translation">这根管子是铅制的。</div>
             </div>
             <div class="support-divider"></div>
-            <div class="demo-lower audio-zone reflection-support" data-word-audio="led">
+            <div class="demo-lower reflection-support" data-word-audio="led">
               <div class="support-word" data-peek>lead</div>
               <div class="support-grid">
                 <button class="meta-control accent-toggle" type="button" data-accent="US" data-us="/led/" data-uk="/led/">US</button>
