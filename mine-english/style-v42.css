@@ -1,4 +1,4 @@
-/* Mine English v46 — reflection polish, reward icons, glass controls. */
+/* Mine English v47 — reflection polish, reward icons, human-care value system. */
 :root{--v42-green:#15966f;--v42-yellow:#f0c74d;--v42-ink:#1b2521;--v42-text:#68736d;}
 
 /* IPA: yellow means pay attention. Bold color only; no underline. */
@@ -22,15 +22,19 @@
 #reflection .live-comment{bottom:0!important;}
 @media(max-width:560px){#reflection .reflection-actions,#reflection .live-comments{bottom:45px!important;}}
 
-/* Reflection callout for tapping a word to open Word Overview. */
-#reflection .callout-word{left:-132px!important;right:auto!important;top:47%!important;display:flex!important;align-items:center!important;flex-direction:row-reverse!important;}
-#reflection .callout-word .callout-line{width:82px!important;}
-#reflection .callout-word small{text-align:right!important;white-space:nowrap!important;line-height:1.45!important;}
-#reflection .callout-word .callout-dot{transform:translateX(3px)!important;}
+/* Reflection callouts. JS now locks their vertical position to the actual target DOM. */
+#reflection .callout-word{left:calc(50% - 244px)!important;right:auto!important;display:flex!important;align-items:center!important;flex-direction:row!important;}
+#reflection .callout-word small{order:0!important;text-align:right!important;white-space:nowrap!important;line-height:1.45!important;margin-right:3px!important;}
+#reflection .callout-word .callout-line{order:1!important;width:74px!important;}
+#reflection .callout-word .callout-dot{order:2!important;transform:translateX(4px)!important;}
+#reflection .callout-lower .callout-line{width:54px!important;}
+#reflection .callout-upper .callout-line{width:52px!important;}
 @media(max-width:720px){
-  #reflection .callout-word{left:-112px!important;top:46%!important;}
-  #reflection .callout-word .callout-line{width:68px!important;}
-  #reflection .callout-word small{font-size:8px!important;}
+  #reflection .callout-word{left:calc(50% - 218px)!important;}
+  #reflection .callout-word .callout-line{width:58px!important;}
+  #reflection .callout-word small{font-size:6.4px!important;}
+  #reflection .callout-lower .callout-line{width:42px!important;}
+  #reflection .callout-upper .callout-line{width:40px!important;}
 }
 
 /* Word Overview is explicitly a concept sketch, not final visual design. */
@@ -47,38 +51,65 @@
 .reward-mode-mark.coin{background:linear-gradient(145deg,#f7db6c,#efc34a)!important;color:#9a7411!important;}
 .coin-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;}
 
-/* Reward flows live across the whole card, aligned with the icon + content frame rather than paragraph text. */
+/* Reward flows: use the width of the card; no large dead margins. */
 .reward-mode>.reward-flow{
   grid-column:1/-1!important;
-  width:100%!important;
-  margin:5px 0 0!important;
+  width:calc(100% + 20px)!important;
+  margin:8px -10px 0!important;
   display:flex!important;
   align-items:center!important;
-  justify-content:center!important;
+  justify-content:space-between!important;
   flex-wrap:nowrap!important;
-  gap:4px!important;
+  gap:2px!important;
   white-space:nowrap!important;
 }
-.reward-mode>.reward-flow span{padding:4px 7px!important;font-size:8.5px!important;}
-.reward-mode>.reward-flow i{margin:0 1px!important;font-size:9px!important;}
+.reward-mode>.reward-flow span{padding:5px 8px!important;font-size:9px!important;flex:0 0 auto!important;}
+.reward-mode>.reward-flow i{margin:0!important;font-size:10px!important;flex:0 0 auto!important;}
 @media(max-width:560px){
-  .reward-mode>.reward-flow{gap:2px!important;}
-  .reward-mode>.reward-flow span{padding:4px 5px!important;font-size:7.4px!important;}
-  .reward-mode>.reward-flow i{font-size:8px!important;margin:0!important;}
+  .reward-mode>.reward-flow{width:calc(100% + 12px)!important;margin:8px -6px 0!important;gap:1px!important;}
+  .reward-mode>.reward-flow span{padding:4px 5px!important;font-size:7.7px!important;}
+  .reward-mode>.reward-flow i{font-size:8.5px!important;}
 }
 
-/* Human-care narrative: response -> reward -> recovery. */
-.human-sequence{display:flex;flex-direction:column;gap:22px;margin-top:26px;}
-.encouragement-card-wide{width:100%!important;min-height:0!important;box-sizing:border-box!important;}
-.human-sequence .reward-system-v40{margin-top:0!important;}
-.recovery-wide{width:100%!important;min-height:0!important;box-sizing:border-box!important;display:grid!important;grid-template-columns:44px 1fr!important;gap:16px!important;align-items:start!important;}
-.recovery-belief{margin-top:16px!important;padding:13px 15px!important;border-radius:14px!important;background:rgba(21,150,111,.055)!important;color:#477965!important;font-size:11px!important;font-weight:650!important;line-height:1.65!important;}
-.recovery-wide h3{font-size:22px!important;}
+/* Human care is a value system, presented as three consistent cards. */
+.human-values-head{max-width:760px!important;margin-inline:auto!important;}
+.human-values-head>p{max-width:650px!important;margin:16px auto 0!important;color:#6e7973!important;line-height:1.8!important;text-align:center!important;}
+.human-sequence-v47{display:flex!important;flex-direction:column!important;gap:18px!important;margin-top:32px!important;}
+.human-value-card{
+  padding:30px!important;
+  border:1px solid rgba(24,35,31,.065)!important;
+  border-radius:22px!important;
+  background:rgba(255,255,255,.78)!important;
+  box-shadow:0 12px 40px rgba(35,58,48,.035)!important;
+  box-sizing:border-box!important;
+}
+.human-value-card>span{
+  display:block!important;
+  color:var(--v42-green)!important;
+  font-size:9px!important;
+  font-weight:760!important;
+  letter-spacing:.13em!important;
+  text-transform:uppercase!important;
+}
+.human-value-card>h3{margin:10px 0 13px!important;color:var(--v42-ink)!important;font-size:21px!important;line-height:1.4!important;}
+.human-value-card>p{margin:0 0 11px!important;color:var(--v42-text)!important;line-height:1.8!important;}
+.compact-human-lines{margin:18px 0 17px!important;display:flex!important;gap:8px!important;flex-wrap:wrap!important;}
+.compact-human-lines strong{padding:7px 10px!important;border-radius:999px!important;background:rgba(21,150,111,.055)!important;color:#477965!important;font-size:10px!important;font-weight:650!important;}
+.forgetting-card blockquote{margin:18px 0 0!important;}
+.response-value-card .response-intro{max-width:720px!important;margin-bottom:20px!important;}
+.reward-system-integrated{margin:0!important;padding:26px!important;border-radius:18px!important;background:rgba(248,252,250,.76)!important;box-shadow:none!important;}
+.reward-system-integrated .reward-system-head{margin-bottom:22px!important;}
+.reward-system-integrated .reward-system-head h3{font-size:22px!important;}
+.recovery-card-v47 .recovery-belief{margin-top:17px!important;}
+.recovery-card-v47 .recovery-tags{margin-top:16px!important;}
+.recovery-card-v47 .recovery-tags span{white-space:nowrap!important;}
 @media(max-width:720px){
-  .human-sequence{gap:16px!important;}
-  .recovery-wide{grid-template-columns:36px 1fr!important;padding:23px!important;gap:12px!important;}
-  .recovery-wide h3{font-size:18px!important;}
-  .recovery-belief{font-size:10px!important;}
+  .human-value-card{padding:23px!important;}
+  .human-value-card>h3{font-size:18px!important;}
+  .compact-human-lines{gap:6px!important;}
+  .compact-human-lines strong{font-size:8.5px!important;padding:6px 8px!important;}
+  .reward-system-integrated{padding:20px 15px!important;}
+  .reward-system-integrated .reward-system-head h3{font-size:19px!important;}
 }
 
 /* Brand / hero CTA: keep the frosted language, but make the Mine mark crisper and deeper. */
