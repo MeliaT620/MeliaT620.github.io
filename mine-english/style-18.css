@@ -1,0 +1,66 @@
+/* v27 — keep Reflection audio inline; make quiet comments readable */
+
+/* Reflection example audio should stay visually attached to the sentence, never become a lonely next line. */
+.reflection-example .example-audio{
+  display:inline-grid!important;
+  width:19px!important;
+  height:19px!important;
+  min-width:19px!important;
+  margin-left:3px!important;
+  padding:0!important;
+  vertical-align:-3px!important;
+  flex:none!important;
+}
+.reflection-example .example-audio svg{
+  width:11px!important;
+  height:11px!important;
+}
+
+/* Give the sentence a little more usable width before it wraps. */
+.reflection-card{
+  padding-right:24px!important;
+}
+
+/* Comments remain secondary in placement/motion, but the text itself must be legible. */
+.danmaku-layer{
+  opacity:.94!important;
+}
+.danmaku{
+  background:rgba(255,255,255,.84)!important;
+  border-color:rgba(23,33,29,.07)!important;
+  color:rgba(38,50,44,.88)!important;
+  box-shadow:0 4px 14px rgba(26,55,44,.055)!important;
+  backdrop-filter:blur(9px)!important;
+  -webkit-backdrop-filter:blur(9px)!important;
+  font-weight:500!important;
+}
+.danmaku b{
+  color:rgba(174,93,117,.86)!important;
+  font-weight:650!important;
+}
+
+@media(max-width:560px){
+  .reflection-card{padding-right:21px!important}
+  .reflection-example{
+    font-size:16.7px!important;
+    letter-spacing:-.018em!important;
+  }
+  .reflection-example .example-audio{
+    width:18px!important;
+    height:18px!important;
+    min-width:18px!important;
+    margin-left:2px!important;
+    vertical-align:-3px!important;
+  }
+  .reflection-example .example-audio svg{
+    width:10.5px!important;
+    height:10.5px!important;
+  }
+  .danmaku{
+    max-width:188px!important;
+    padding:6px 9px!important;
+    font-size:8.6px!important;
+    line-height:1.42!important;
+  }
+  .danmaku b{font-size:7.4px!important}
+}
