@@ -1,0 +1,160 @@
+/* v24 — smaller mobile reel, swipe-up cue, gated progression, highlight-only Express */
+
+/* Express: preserve the exact natural-unit highlight and width; hide only the letters. */
+.blank-target,
+.blank-target.revealed{
+  border:0!important;
+  border-bottom:0!important;
+  box-shadow:none!important;
+  text-decoration:none!important;
+  padding:0 2px!important;
+  border-radius:3px!important;
+  background:linear-gradient(180deg,transparent 60%,rgba(16,185,129,.15) 60%)!important;
+}
+.blank-target .blank-content{visibility:hidden!important}
+.blank-target.revealed .blank-content{visibility:visible!important}
+.blank-target.revealed .blank-core{color:var(--accent-dark)!important;font-weight:800!important}
+
+/* The gesture is finger-up to continue, so the visual cue points upward too. */
+.learning-scene .scene-next{font-size:0!important}
+.learning-scene:not(.complete-scene) .scene-next::before{
+  content:"↑";
+  display:inline-block;
+  color:var(--accent-dark);
+  font-size:15px;
+  font-weight:650;
+  line-height:1;
+  opacity:.58;
+}
+.learning-scene.judge-scene:not([data-choice]) .scene-next::before{opacity:.16}
+.learning-scene.judge-scene[data-choice] .scene-next::before{opacity:.58}
+.device-caption{font-size:0!important}
+.device-caption::after{
+  content:"交互演示 · 左右判断，向上滑继续";
+  color:var(--muted-2);
+  font-size:8px;
+  letter-spacing:.015em;
+}
+
+/* Prevent elastic overscroll from making an unanswered scene look navigable. */
+.learning-reel{overscroll-behavior:contain!important}
+.learning-reel.is-answer-locked{scroll-snap-type:y mandatory!important}
+
+@media(max-width:560px){
+  /* Leave enough page around the product preview that the whole phone can be seen in mobile Safari. */
+  .learning-device,
+  .reflection-device{
+    width:min(286px,calc(100vw - 82px))!important;
+    padding:5px!important;
+    border-radius:32px!important;
+  }
+
+  .learning-device .learning-reel,
+  .reflection-screen{
+    border-radius:27px!important;
+  }
+
+  .device-speaker{
+    top:9px!important;
+    width:47px!important;
+    height:12px!important;
+  }
+  .learning-device::after{
+    bottom:8px!important;
+    width:53px!important;
+    height:2px!important;
+  }
+
+  .learning-device .learning-scene{
+    padding:41px 17px 15px!important;
+  }
+  .learning-device .scene-content{
+    min-height:calc(100% - 45px)!important;
+  }
+
+  .learning-progress-ui{
+    top:25px!important;
+    left:18px!important;
+    right:18px!important;
+    gap:6px!important;
+  }
+  .learning-progress-track{height:2.5px!important}
+  .learning-progress-ui small{font-size:6px!important}
+
+  .learning-device .scene-stage,
+  .reflection-stage{font-size:6.3px!important}
+
+  .learning-device .scene-example,
+  .learning-device .review-example-first,
+  .learning-device .express-example,
+  .reflection-example{
+    font-size:17.3px!important;
+    line-height:1.5!important;
+  }
+  .learning-device .review-example-first,
+  .reflection-example{margin-top:44px!important}
+
+  .learning-device .express-cue{
+    margin-top:43px!important;
+    font-size:10.5px!important;
+  }
+  .learning-device .express-example{margin-top:11px!important}
+
+  .learning-device .answer-zh,
+  .reflection-translation{
+    font-size:10px!important;
+    line-height:1.6!important;
+  }
+
+  .learning-device .answer-zh::after,
+  .reflection-translation::after{
+    margin:16px 0 15px!important;
+  }
+
+  .learning-device .support-word,
+  .reflection-support .support-word{font-size:16.5px!important}
+
+  .learning-device .pron-line,
+  .reflection-support .pron-line{margin-top:7px!important}
+  .learning-device .pron-line .ipa,
+  .reflection-support .pron-line .ipa{font-size:8.7px!important}
+  .learning-device .accent-switch button,
+  .reflection-support .accent-switch button{font-size:6.8px!important;min-width:23px!important}
+  .learning-device .word-audio,
+  .reflection-support .word-audio{width:20px!important;height:20px!important}
+
+  .learning-device .usage-meaning,
+  .reflection-support .usage-meaning{margin-top:12px!important;column-gap:8px!important}
+  .learning-device .usage-pos,
+  .reflection-support .usage-pos{font-size:7px!important}
+  .learning-device .usage-zh,
+  .reflection-support .usage-zh{font-size:14px!important}
+  .learning-device .usage-en,
+  .reflection-support .usage-en{margin-top:4px!important;font-size:8.8px!important}
+
+  .learning-device .gesture-hint{font-size:6.2px!important}
+  .learning-scene:not(.complete-scene) .scene-next::before{font-size:13px!important}
+
+  .reflection-screen{padding:41px 16px 21px!important}
+  .reflection-card{padding-right:28px!important}
+  .reflection-actions{right:3px!important;gap:6px!important}
+  .reflection-actions .social-action{width:27px!important;min-height:34px!important}
+  .reflection-actions .social-action>span{font-size:15px!important}
+  .reflection-actions .social-action small{font-size:5.5px!important}
+
+  .complete-check{width:35px!important;height:35px!important;margin-bottom:12px!important;font-size:16px!important}
+  .complete-card h3{font-size:19px!important}
+  .complete-time{margin-top:18px!important}
+  .complete-time strong{font-size:21px!important}
+  .complete-stats{margin-top:15px!important;gap:4px!important}
+  .complete-stats div{padding:8px 3px!important}
+  .complete-stats strong{font-size:14px!important}
+  .complete-stats span{font-size:6.7px!important}
+  .coin-reward{margin-top:16px!important;padding:9px 10px!important}
+  .coin-mark{width:28px!important;height:28px!important;font-size:10px!important}
+  .coin-reward strong{font-size:12px!important}
+  .complete-card p{margin-top:14px!important;font-size:9px!important}
+
+  .device-caption{margin-top:8px!important}
+  .device-caption::after{font-size:7px!important}
+}
