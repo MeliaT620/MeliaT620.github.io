@@ -1,0 +1,59 @@
+/* v28 — serial Reflection comments + clearer Review question prompt */
+
+/* Review · Understand should tell the learner what to think about before the answer appears. */
+.judge-question{
+  margin-top:18px;
+  display:grid;
+  gap:4px;
+  text-align:left;
+  transition:opacity .16s ease,transform .16s ease;
+}
+.judge-question strong{
+  color:var(--text-2);
+  font-size:11px;
+  font-weight:650;
+  line-height:1.5;
+}
+.judge-question span{
+  color:var(--muted-2);
+  font-size:8.5px;
+  line-height:1.5;
+}
+[data-stage="review-understand"][data-choice] .judge-question{
+  display:none!important;
+}
+
+/* One readable comment at a time. Each item owns half of the 16 s cycle. */
+.danmaku{
+  bottom:46px!important;
+  animation:mineCommentRiseSerial 16s ease-out infinite!important;
+  opacity:0;
+}
+.danmaku-a{
+  left:13px!important;
+  animation-delay:0s!important;
+}
+.danmaku-b{
+  left:18px!important;
+  animation-delay:-8s!important;
+  animation-duration:16s!important;
+}
+@keyframes mineCommentRiseSerial{
+  0%{transform:translateY(14px);opacity:0}
+  6%{opacity:.94}
+  34%{opacity:.94}
+  45%{transform:translateY(-92px);opacity:0}
+  100%{transform:translateY(-92px);opacity:0}
+}
+
+@media(max-width:560px){
+  .judge-question{margin-top:14px;gap:3px}
+  .judge-question strong{font-size:9.5px}
+  .judge-question span{font-size:7.5px}
+  .danmaku{bottom:42px!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .danmaku-a{opacity:.86!important;animation:none!important;bottom:52px!important}
+  .danmaku-b{display:none!important}
+}
