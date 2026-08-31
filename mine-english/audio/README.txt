@@ -1,0 +1,1 @@
+Pronunciation audio assets for the Mine English interactive demo. Generated for the deliberate adjective/verb pronunciation contrast.
