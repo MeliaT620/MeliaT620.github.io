@@ -64,10 +64,14 @@ function initAccentToggles(){
 
 function initAudio(){
   const speak=(text,lang='en-US',rate=.92)=>{
-    if(!('speechSynthesis' in window))return;
+    if(!('speechSynthesis' in window)||!text)return;
     window.speechSynthesis.cancel();
     const utter=new SpeechSynthesisUtterance(text);utter.lang=lang;utter.rate=rate;
     window.speechSynthesis.speak(utter);
+  };
+  const getAccent=el=>{
+    const scene=el.closest('.learning-scene');
+    return scene?.querySelector('.accent-switch button.active')?.dataset.accent==='UK'?'en-GB':'en-US';
   };
 
   document.querySelectorAll('.word-audio').forEach(btn=>{
@@ -75,18 +79,27 @@ function initAudio(){
       e.stopPropagation();
       const row=btn.closest('.word-pron-row');
       const accent=row?.querySelector('.accent-switch button.active')?.dataset.accent==='UK'?'en-GB':'en-US';
-      btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),500);
+      btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),420);
       speak(btn.dataset.word||'',accent,.9);
     });
   });
 
   document.querySelectorAll('.example-audio').forEach(btn=>{
+    let timer=null;
     btn.addEventListener('click',e=>{
       e.stopPropagation();
-      const scene=btn.closest('.learning-scene');
-      const accent=scene?.querySelector('.accent-switch button.active')?.dataset.accent==='UK'?'en-GB':'en-US';
-      btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),650);
-      speak(btn.dataset.full||'',accent,.92);
+      if(timer)clearTimeout(timer);
+      timer=setTimeout(()=>{
+        btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),420);
+        speak(btn.dataset.focus||btn.dataset.full||'',getAccent(btn),.9);
+        timer=null;
+      },220);
+    });
+    btn.addEventListener('dblclick',e=>{
+      e.preventDefault();e.stopPropagation();
+      if(timer){clearTimeout(timer);timer=null;}
+      btn.classList.add('playing');setTimeout(()=>btn.classList.remove('playing'),520);
+      speak(btn.dataset.full||btn.dataset.focus||'',getAccent(btn),.92);
     });
   });
 }
