@@ -1,4 +1,4 @@
-/* Mine English v37 — interaction layer for the quiet demo system. */
+/* Mine English v44 — interaction layer for the quiet demo system. */
 (function(){
   const heart='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.2 4.9 13.5C1.4 10.2 3.8 4.8 8.2 5.4c1.6.2 2.9 1.2 3.8 2.6.9-1.4 2.2-2.4 3.8-2.6 4.4-.6 6.8 4.8 3.3 8.1L12 20.2Z"/></svg>';
   const star='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.8 2.5 5.1 5.6.8-4.1 4 1 5.6-5-2.6-5 2.6 1-5.6-4.1-4 5.6-.8L12 3.8Z"/></svg>';
@@ -73,7 +73,7 @@
     if(!sheet)return false;
     sheet.innerHTML=`
       <button class="peek-x" aria-label="关闭">×</button>
-      <small>WORD OVERVIEW</small>
+      <div class="peek-overview-head"><small>WORD OVERVIEW</small><span class="peek-concept">概念示意</span></div>
       <div class="peek-word">lead</div>
       <div class="peek-pron-summary">/led/ · /liːd/</div>
       <div class="peek-bridge">同一个拼写，会进入两个完全不同的 Usage 和读音。</div>
