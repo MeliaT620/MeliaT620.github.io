@@ -1,0 +1,58 @@
+/* v26 — hard reset for unrevealed Express: preserve width only, paint nothing. */
+
+.learning-device .learning-scene[data-stage="review-express"]:not([data-choice]) .blank-target,
+.learning-device .learning-scene[data-stage="review-express"]:not([data-choice]) .blank-target.revealed{
+  background:none!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  border-top:0!important;
+  border-right:0!important;
+  border-bottom:0!important;
+  border-left:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  text-decoration:none!important;
+  filter:none!important;
+  -webkit-box-shadow:none!important;
+}
+
+.learning-device .learning-scene[data-stage="review-express"]:not([data-choice]) .blank-target::before,
+.learning-device .learning-scene[data-stage="review-express"]:not([data-choice]) .blank-target::after,
+.learning-device .learning-scene[data-stage="review-express"]:not([data-choice]) .blank-content::before,
+.learning-device .learning-scene[data-stage="review-express"]:not([data-choice]) .blank-content::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+
+.learning-device .learning-scene[data-stage="review-express"]:not([data-choice]) .blank-content,
+.learning-device .learning-scene[data-stage="review-express"]:not([data-choice]) .blank-core{
+  visibility:hidden!important;
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  text-shadow:none!important;
+  background:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+
+/* Once answered, restore only the intended natural-unit highlight. */
+.learning-device .learning-scene[data-stage="review-express"][data-choice] .blank-target.revealed{
+  background:linear-gradient(180deg,transparent 64%,rgba(16,185,129,.12) 64%)!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.learning-device .learning-scene[data-stage="review-express"][data-choice] .blank-target.revealed .blank-content{
+  visibility:visible!important;
+  color:inherit!important;
+  -webkit-text-fill-color:currentColor!important;
+}
+.learning-device .learning-scene[data-stage="review-express"][data-choice] .blank-target.revealed .blank-core{
+  visibility:visible!important;
+  color:var(--accent-dark)!important;
+  -webkit-text-fill-color:var(--accent-dark)!important;
+  font-weight:800!important;
+}
