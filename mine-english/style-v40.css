@@ -1,0 +1,251 @@
+/* Mine English v40 — Reflection lock-in + reward/recovery system. */
+:root{
+  --v40-green:#15966f;
+  --v40-mint:#dff7ee;
+  --v40-yellow:#f0c74d;
+  --v40-pink:#d989a2;
+  --v40-ink:#1b2521;
+  --v40-text:#59645e;
+  --v40-muted:#98a19c;
+}
+
+/* Reflection: keep the accepted composition, only tighten paired content. */
+#reflection .reflection-translation{
+  margin-top:8px!important;
+}
+#reflection .reflection-card .support-divider{
+  margin-top:13px!important;
+}
+#reflection .reflection-actions{
+  top:auto!important;
+  bottom:58px!important;
+  transform:none!important;
+}
+#reflection .live-comments{
+  bottom:58px!important;
+}
+@media(max-width:560px){
+  #reflection .reflection-translation{margin-top:7px!important}
+  #reflection .reflection-card .support-divider{margin-top:12px!important}
+  #reflection .reflection-actions,#reflection .live-comments{bottom:52px!important}
+}
+
+/* Learning intro: make the principle feel like a principle. */
+#learning .linear-note strong{
+  display:block!important;
+  margin-bottom:7px!important;
+  color:var(--v40-green)!important;
+  font-size:1.04em!important;
+  font-weight:760!important;
+}
+
+/* Repair principle: larger copy, horizontal logic, right arrow. */
+.repair-principle{
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-wrap:nowrap!important;
+  gap:12px!important;
+}
+.repair-principle>div{
+  flex:0 1 320px!important;
+  min-width:0!important;
+}
+.repair-principle span{
+  font-size:11px!important;
+  line-height:1.3!important;
+}
+.repair-principle b{
+  font-size:14px!important;
+  line-height:1.3!important;
+}
+.repair-principle>i{
+  transform:none!important;
+  font-style:normal!important;
+  font-size:18px!important;
+}
+@media(max-width:560px){
+  .repair-principle{gap:6px!important;padding-inline:7px!important}
+  .repair-principle>div{padding:10px 7px!important;flex:1 1 0!important}
+  .repair-principle span{font-size:7.4px!important}
+  .repair-principle b{font-size:9.5px!important;white-space:nowrap!important}
+  .repair-principle>i{font-size:11px!important;flex:0 0 auto!important}
+}
+
+/* Complete page: Learning Reward is not Mine Coins. */
+.learning-reward-complete .coin-mark{
+  background:linear-gradient(145deg,#f4d66c,#e9bf46)!important;
+  color:#fff!important;
+}
+.learning-reward-complete strong{
+  color:#8d6f16!important;
+}
+
+/* Human care composition */
+.care-grid-v40{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:18px!important;
+  align-items:stretch!important;
+}
+.encouragement-card,
+.recovery-v40{
+  min-height:100%!important;
+  box-sizing:border-box!important;
+  border:1px solid rgba(24,35,31,.07)!important;
+  border-radius:22px!important;
+  background:rgba(255,255,255,.72)!important;
+  box-shadow:0 12px 40px rgba(35,58,48,.035)!important;
+}
+.encouragement-card{
+  padding:30px!important;
+}
+.encouragement-card>span,
+.recovery-v40>div>span,
+.reward-system-head>span,
+.reward-mode small{
+  color:var(--v40-green)!important;
+  font-size:9px!important;
+  font-weight:760!important;
+  letter-spacing:.13em!important;
+  text-transform:uppercase!important;
+}
+.encouragement-card h3,
+.recovery-v40 h3{
+  margin:10px 0 12px!important;
+  color:var(--v40-ink)!important;
+  font-size:20px!important;
+  line-height:1.35!important;
+}
+.encouragement-card p,
+.recovery-v40 p{
+  color:var(--v40-text)!important;
+  line-height:1.8!important;
+}
+.encouragement-line{
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  margin-top:20px!important;
+  color:#748079!important;
+  font-size:10px!important;
+}
+.encouragement-line b{color:var(--v40-green)!important;font-weight:680!important}
+.encouragement-line i{font-style:normal!important;color:#b2bbb6!important}
+.recovery-v40{padding:28px!important}
+.recovery-v40 .recovery-icon{
+  width:36px!important;height:36px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  border-radius:50%!important;
+  background:var(--v40-mint)!important;color:var(--v40-green)!important;
+  font-size:18px!important;
+}
+.recovery-v40 .recovery-tags{margin-top:18px!important}
+
+/* Dual reward system */
+.reward-system-v40{
+  margin-top:26px!important;
+  padding:38px!important;
+  border-radius:26px!important;
+  border:1px solid rgba(24,35,31,.065)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.84),rgba(248,252,250,.88))!important;
+  box-shadow:0 16px 52px rgba(35,58,48,.035)!important;
+}
+.reward-system-head{
+  max-width:650px!important;
+  margin:0 auto 28px!important;
+  text-align:center!important;
+}
+.reward-system-head h3{
+  margin:8px 0 10px!important;
+  color:var(--v40-ink)!important;
+  font-size:25px!important;
+}
+.reward-system-head p{
+  margin:0!important;
+  color:var(--v40-text)!important;
+  line-height:1.7!important;
+}
+.reward-dual{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:16px!important;
+}
+.reward-mode{
+  display:grid!important;
+  grid-template-columns:42px 1fr!important;
+  gap:15px!important;
+  padding:25px!important;
+  border-radius:20px!important;
+  border:1px solid rgba(24,35,31,.06)!important;
+  background:#fff!important;
+}
+.reward-mode-mark{
+  width:38px!important;height:38px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  border-radius:50%!important;
+  background:linear-gradient(145deg,#f6dc79,#edc24b)!important;
+  color:#fff!important;font-weight:800!important;
+}
+.reward-mode-mark.coin{
+  background:linear-gradient(145deg,#52dbb0,#27c796)!important;
+}
+.reward-mode h4{
+  margin:7px 0 10px!important;
+  color:var(--v40-ink)!important;
+  font-size:17px!important;
+  line-height:1.45!important;
+}
+.reward-mode p{
+  margin:0 0 10px!important;
+  color:var(--v40-text)!important;
+  font-size:12px!important;
+  line-height:1.75!important;
+}
+.reward-mode .coin-note{
+  color:#67736d!important;
+  font-weight:520!important;
+}
+.reward-flow{
+  display:flex!important;
+  align-items:center!important;
+  flex-wrap:wrap!important;
+  gap:6px!important;
+  margin-top:15px!important;
+  color:#758079!important;
+  font-size:9px!important;
+}
+.reward-flow span{
+  padding:5px 8px!important;
+  border-radius:999px!important;
+  background:#f6f9f7!important;
+}
+.reward-flow i{font-style:normal!important;color:#b4bcb8!important}
+.reward-principle-v40{
+  display:flex!important;
+  justify-content:center!important;
+  align-items:baseline!important;
+  gap:12px!important;
+  margin-top:27px!important;
+  text-align:center!important;
+}
+.reward-principle-v40 strong{
+  color:var(--v40-green)!important;
+  font-size:16px!important;
+}
+.reward-principle-v40 span{
+  color:#7c8681!important;
+  font-size:11px!important;
+}
+
+@media(max-width:720px){
+  .care-grid-v40,.reward-dual{grid-template-columns:1fr!important}
+  .encouragement-card,.recovery-v40{padding:24px!important}
+  .reward-system-v40{padding:28px 20px!important}
+  .reward-mode{grid-template-columns:34px 1fr!important;padding:20px!important}
+  .reward-mode-mark{width:32px!important;height:32px!important;font-size:12px!important}
+  .reward-system-head h3{font-size:21px!important}
+  .reward-mode h4{font-size:15px!important}
+  .reward-principle-v40{flex-direction:column!important;align-items:center!important;gap:5px!important}
+}
