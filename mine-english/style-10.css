@@ -1,0 +1,281 @@
+/* v17 — word → pronunciation → example → translation → POS/meaning */
+
+.scene-content{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+}
+
+/* The word owns one line. No POS or accent clutter beside it. */
+.word-only{
+  display:block!important;
+  margin:86px 0 0!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  color:var(--text)!important;
+  font-size:clamp(42px,5vw,54px)!important;
+  font-weight:780!important;
+  letter-spacing:-.05em!important;
+  line-height:1!important;
+  text-align:left!important;
+}
+.word-only.static{cursor:default!important}
+
+/* Pronunciation is exactly one compact row below the word. */
+.pron-line{
+  display:flex!important;
+  align-items:center!important;
+  flex-wrap:nowrap!important;
+  gap:9px!important;
+  min-height:30px!important;
+  margin-top:15px!important;
+  color:var(--muted)!important;
+}
+.pron-line .accent-switch{
+  display:inline-flex!important;
+  gap:4px!important;
+  margin:0!important;
+}
+.pron-line .accent-switch button{
+  min-width:30px!important;
+  height:23px!important;
+  padding:0 7px!important;
+  border:1px solid rgba(23,33,29,.08)!important;
+  border-radius:7px!important;
+  background:rgba(23,33,29,.025)!important;
+  color:var(--muted-2)!important;
+  box-shadow:none!important;
+  font-size:8px!important;
+  line-height:21px!important;
+}
+.pron-line .accent-switch button::after{display:none!important}
+.pron-line .accent-switch button.active{
+  border-color:rgba(16,185,129,.16)!important;
+  background:rgba(16,185,129,.075)!important;
+  color:var(--accent-dark)!important;
+}
+.pron-line .ipa{
+  display:inline!important;
+  width:auto!important;
+  margin:0!important;
+  color:#59655F!important;
+  font-size:12px!important;
+  line-height:1!important;
+  letter-spacing:.004em!important;
+}
+.ipa-diff{
+  position:relative;
+  color:var(--text)!important;
+  font-weight:760!important;
+}
+.ipa-diff::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;
+  bottom:-3px;
+  height:2px;
+  border-radius:2px;
+  background:rgba(245,213,110,.95);
+}
+.pron-line .word-audio{
+  width:27px!important;height:27px!important;
+  margin-left:1px!important;
+}
+
+/* Example follows immediately; no giant empty gap. */
+.scene-example{
+  width:100%!important;
+  max-width:650px!important;
+  margin-top:46px!important;
+  font-size:clamp(25px,3.3vw,31px)!important;
+  line-height:1.5!important;
+  text-align:left!important;
+}
+.scene-example .example-audio{
+  margin-left:7px!important;
+}
+
+/* Translation belongs to the revealed answer, directly below the sentence. */
+.answer-reveal{
+  width:100%!important;
+  max-width:650px!important;
+  margin-top:20px!important;
+  text-align:left!important;
+}
+.answer-zh{
+  color:var(--text-2)!important;
+  font-size:14px!important;
+  line-height:1.65!important;
+}
+
+/* POS is now semantic scaffolding, not word-header metadata. */
+.usage-meaning{
+  display:grid!important;
+  grid-template-columns:44px minmax(0,1fr)!important;
+  column-gap:14px!important;
+  align-items:start!important;
+  width:100%!important;
+  margin-top:21px!important;
+  text-align:left!important;
+}
+.usage-pos{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:25px!important;
+  padding:4px 7px!important;
+  border-radius:8px!important;
+  background:rgba(23,33,29,.045)!important;
+  color:var(--muted)!important;
+  font-size:9px!important;
+  font-weight:760!important;
+  letter-spacing:.025em!important;
+}
+.usage-explain{
+  min-width:0!important;
+  padding-top:1px!important;
+  text-align:left!important;
+}
+.usage-zh{
+  color:var(--text)!important;
+  font-size:20px!important;
+  font-weight:720!important;
+  line-height:1.42!important;
+  letter-spacing:-.015em!important;
+  text-align:left!important;
+}
+.usage-en{
+  margin-top:7px!important;
+  color:var(--muted)!important;
+  font-size:12.5px!important;
+  line-height:1.7!important;
+  text-align:left!important;
+}
+
+/* Express keeps its special task order, but the header stays identical. */
+.express-cue{
+  margin-top:45px!important;
+  color:var(--text-2)!important;
+  font-size:14px!important;
+  line-height:1.65!important;
+  text-align:left!important;
+}
+.express-example{
+  margin-top:13px!important;
+}
+.compact-answer{
+  margin-top:17px!important;
+}
+
+/* Old header metadata is no longer part of this card hierarchy. */
+.word-pron-row,.word-main,.pos-tag{}
+
+/* Let the pronunciation contrast itself be visible without adding a lecture. */
+[data-stage="review-understand"] .ipa-diff,
+[data-stage="review-express"] .ipa-diff{
+  text-decoration:none!important;
+}
+[data-stage="grow"] .ipa-diff{
+  text-decoration:none!important;
+}
+
+/* Reduce dead vertical space while preserving the reel feeling. */
+.learning-scene{
+  padding-top:31px!important;
+}
+.scene-stage{
+  align-self:flex-start!important;
+}
+.scene-content{
+  min-height:calc(100% - 92px)!important;
+}
+
+/* Phone-width behavior */
+@media(max-width:760px){
+  .word-only{
+    margin-top:68px!important;
+    font-size:43px!important;
+  }
+  .pron-line{
+    gap:7px!important;
+    margin-top:13px!important;
+  }
+  .pron-line .accent-switch button{
+    min-width:28px!important;
+    padding:0 6px!important;
+  }
+  .pron-line .ipa{
+    font-size:11px!important;
+  }
+  .scene-example{
+    margin-top:38px!important;
+    font-size:23px!important;
+  }
+  .usage-meaning{
+    grid-template-columns:40px minmax(0,1fr)!important;
+    column-gap:11px!important;
+  }
+  .usage-zh{font-size:18px!important}
+  .usage-en{font-size:11.5px!important}
+}
+
+/* v18 — Example-first overview/review + smaller reel */
+.learning-reel{width:min(calc(100% - 32px),820px)!important;height:min(70svh,660px)!important;min-height:540px!important;border-radius:24px!important}
+.learning-scene{padding:27px clamp(24px,5vw,50px) 20px!important}
+.scene-content{min-height:calc(100% - 78px)!important}
+.overview-example,.review-example-first{margin-top:82px!important;font-size:clamp(28px,3.7vw,35px)!important;line-height:1.48!important}
+.core-word{color:var(--accent-dark)!important;font-weight:780!important}
+.scene-example mark{color:inherit!important;background:linear-gradient(180deg,transparent 63%,rgba(16,185,129,.13) 63%)!important}
+.scene-example mark .core-word{color:var(--accent-dark)!important}
+.overview-translation{margin-top:20px!important;color:var(--text-2)!important;font-size:14px!important;line-height:1.7!important;text-align:left!important}
+.word-divider{width:100%;max-width:650px;height:1px;margin:30px 0 26px;background:linear-gradient(90deg,rgba(23,33,29,.09),rgba(23,33,29,.035) 72%,transparent)}
+.compact-divider{margin:20px 0 20px!important}
+.overview-word-block{width:100%;max-width:650px;text-align:left}
+.overview-word{color:var(--text);font-size:34px;line-height:1;font-weight:770;letter-spacing:-.045em}
+.overview-word.smaller{font-size:28px}
+.overview-word-block .pron-line{margin-top:13px!important}
+.overview-usage{margin-top:19px!important}
+.semantic-bridge{margin-top:23px;color:var(--accent-dark);font-size:15px;line-height:1.65;font-weight:760}
+.overview-story{margin-top:11px;max-width:620px;color:var(--muted);font-size:12px;line-height:1.8}
+.review-word-block{margin-top:0}
+.answer-reveal{margin-top:17px!important}
+.answer-reveal .word-divider + .overview-word-block{margin-top:0}
+.pron-line{flex-wrap:nowrap!important;white-space:nowrap}
+.pron-line .ipa{width:auto!important;white-space:nowrap!important}
+.pron-line .word-audio{flex:0 0 auto}
+.ipa-diff::after{background:#F2D15A!important;height:2px!important}
+.ipa-diff{font-weight:790!important}
+.learning-reel-shell{position:relative}
+.learning-reel::after{content:"";pointer-events:none;position:sticky;display:block;bottom:0;left:0;width:100%;height:22px;background:linear-gradient(180deg,transparent,rgba(252,254,253,.88))}
+.demo-tail-hint{display:block;margin:11px auto 0;text-align:center;color:var(--muted-2);font-size:9px}
+.demo-tail-hint::after{content:"网页还在继续 ↓"}
+.express-cue{margin-top:75px!important}
+.express-example{margin-top:14px!important}
+@media(max-width:760px){.learning-reel{width:min(calc(100% - 18px),820px)!important;height:68svh!important;min-height:515px!important}.overview-example,.review-example-first{margin-top:62px!important;font-size:25px!important}.express-cue{margin-top:58px!important}.overview-word{font-size:31px}.overview-word.smaller{font-size:26px}.pron-line{gap:6px!important}.pron-line .ipa{font-size:10.5px!important}.word-divider{margin:24px 0 21px}.usage-meaning{margin-top:17px!important}}
+
+/* v19 — Example-first Word Overview, reliable pronunciation, compact learning reel */
+.micro-divider{width:52px;height:1px;margin:18px 0 16px;background:rgba(23,33,29,.12)}
+.example-first-peek{width:min(760px,calc(100vw - 34px))!important;max-height:min(84vh,760px)!important;overflow-y:auto!important;padding:30px 34px 32px!important;text-align:left!important}
+.example-first-peek>small{display:block;margin-bottom:0!important;color:var(--accent-dark)!important;font-size:9px!important;font-weight:780!important;letter-spacing:.14em!important}
+.peek-example{margin-top:55px;max-width:650px;color:var(--text);font-size:clamp(27px,3.5vw,35px);line-height:1.5;letter-spacing:-.025em}
+.peek-example mark{background:linear-gradient(180deg,transparent 63%,rgba(16,185,129,.13) 63%)}
+.peek-example .core-word{color:var(--accent-dark);font-weight:780}
+.peek-example-audio{margin-left:7px!important;vertical-align:-5px!important}
+.peek-translation{margin-top:18px;color:var(--text-2);font-size:14px;line-height:1.7}
+.peek-divider{margin:27px 0 24px!important}
+.peek-word{color:var(--text);font-size:35px;font-weight:780;line-height:1;letter-spacing:-.045em}
+.peek-pron{margin-top:13px!important}
+.peek-usage{margin-top:0!important}
+.peek-bridge{margin-top:22px!important;color:var(--accent-dark)!important;font-weight:780!important}
+.peek-story{margin-top:10px!important;color:var(--muted)!important;font-size:12px!important;line-height:1.82!important}
+.global-word-peek .peek-x{top:17px!important;right:20px!important;width:32px!important;height:32px!important;border-radius:50%!important;color:var(--muted)!important;background:transparent!important}
+.global-word-peek .peek-x:hover{background:rgba(23,33,29,.045)!important}
+.learning-reel{max-width:800px!important;height:min(66svh,620px)!important;min-height:505px!important}
+.demo-tail-hint{margin-top:10px!important;min-height:16px}
+.ipa-diff{color:var(--text)!important;font-weight:800!important}
+.ipa-diff::after{background:#F2D15A!important}
+.review-example-first,.overview-example{margin-top:58px!important}
+.review-word-block .micro-divider{margin-top:16px!important}
+.answer-reveal .usage-meaning{margin-top:0!important}
+@media(max-width:760px){.example-first-peek{width:calc(100vw - 18px)!important;max-height:86vh!important;padding:25px 22px 27px!important}.peek-example{margin-top:48px;font-size:24px}.peek-word{font-size:31px}.learning-reel{width:calc(100% - 16px)!important;height:64svh!important;min-height:485px!important}.review-example-first,.overview-example{margin-top:45px!important}}
