@@ -1,0 +1,41 @@
+/* Mine English v42 — reflection polish, reward icons, Mine Library. */
+:root{--v42-green:#15966f;--v42-yellow:#f0c74d;--v42-ink:#1b2521;--v42-text:#68736d;}
+
+/* IPA: yellow means pay attention. Bold color only; no underline. */
+#reflection .ipa-diff,.learning-device .ipa-diff{color:var(--v42-yellow)!important;font-weight:780!important;}
+#reflection .ipa-diff::after,.learning-device .ipa-diff::after{display:none!important;content:none!important;}
+
+/* Compact, aligned pronunciation / POS tags. */
+#reflection .support-grid,.learning-device .support-grid{grid-template-columns:24px 1fr!important;column-gap:7px!important;row-gap:5px!important;align-items:center!important;}
+#reflection .meta-control,.learning-device .meta-control{width:24px!important;min-width:24px!important;height:13px!important;min-height:13px!important;padding:0!important;border-radius:999px!important;font-size:4.9px!important;line-height:1!important;display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;}
+#reflection .support-primary,.learning-device .support-primary{min-height:13px!important;align-items:center!important;}
+#reflection .ipa,.learning-device .ipa{line-height:1!important;}
+
+/* Reflection comments and social rail share the same visual bottom. */
+#reflection .reflection-actions{bottom:48px!important;}
+#reflection .live-comments{bottom:48px!important;height:112px!important;}
+#reflection .live-comment{bottom:0!important;}
+@media(max-width:560px){#reflection .reflection-actions,#reflection .live-comments{bottom:45px!important;}}
+
+/* Seed / Coin language */
+.seed-icon{background:rgba(21,150,111,.10)!important;color:var(--v42-green)!important;}
+.seed-icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;}
+.learning-reward-complete .seed-icon{background:rgba(21,150,111,.10)!important;color:var(--v42-green)!important;}
+.learning-reward-complete strong{color:var(--v42-green)!important;}
+.reward-mode-mark.seed{background:rgba(21,150,111,.09)!important;color:var(--v42-green)!important;}
+.reward-mode-mark.coin{background:linear-gradient(145deg,#f7db6c,#efc34a)!important;color:#9a7411!important;}
+.coin-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;}
+
+/* Mine Library: quiet language assets, not a generic collection folder. */
+.mine-library{padding:96px 0 84px;background:linear-gradient(180deg,rgba(247,251,249,.55),rgba(255,255,255,.95));}
+.mine-library .section-head{max-width:660px;margin:0 auto;text-align:center;}
+.mine-library .section-head p{max-width:560px;margin:14px auto 0;color:#77817c;line-height:1.75;}
+.library-grid{max-width:760px;margin:38px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.library-grid article{padding:27px 28px;border:1px solid rgba(24,35,31,.065);border-radius:20px;background:rgba(255,255,255,.82);box-shadow:0 12px 42px rgba(35,58,48,.03);}
+.library-grid article>span{display:block;color:var(--v42-green);font-size:10px;font-weight:760;letter-spacing:.09em;margin-bottom:12px;}
+.library-grid article strong{display:block;color:var(--v42-ink);font-size:17px;line-height:1.45;}
+.library-grid article p{margin:9px 0 0;color:var(--v42-text);font-size:12px;line-height:1.75;}
+.library-path{display:flex;align-items:center;justify-content:center;gap:10px;margin:26px auto 0;color:#819089;font-size:10px;}
+.library-path span{padding:6px 10px;border-radius:999px;background:rgba(21,150,111,.055);color:var(--v42-green);font-weight:650;}
+.library-path i{font-style:normal;color:#b4bcb8;}
+@media(max-width:640px){.mine-library{padding:72px 22px 66px}.library-grid{grid-template-columns:1fr;gap:12px}.library-grid article{padding:22px}.library-path{gap:6px;font-size:8px}.library-path span{padding:5px 7px}}
