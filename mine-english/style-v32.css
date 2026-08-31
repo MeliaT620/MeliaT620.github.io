@@ -109,6 +109,12 @@
 .reflection-support{padding-right:35px!important}
 .reflection-sentence-row{max-width:100%!important}
 
+/* Only the active page owns bottom navigation cues; this prevents arrows from peeking at page boundaries. */
+.learning-scene:not(.is-current) .gesture-hint,
+.learning-scene:not(.is-current) .scene-next{
+  visibility:hidden!important;
+}
+
 @media(max-width:560px){
   .scene-example,
   .reflection-example{
