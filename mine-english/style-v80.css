@@ -1,4 +1,4 @@
-/* Mine English v89 — global mobile gutter + Reflection social-state contract + memory-row alignment + centered Learning chapter header + Mine Garden offer header. */
+/* Mine English v90 — global mobile gutter + Reflection social-state contract + memory-row alignment + centered Learning chapter header + Mine Garden offer header. */
 
 :root{
   --mine-mobile-gutter:30px;
@@ -95,7 +95,8 @@
   letter-spacing:-.01em!important;
 }
 
-/* Grow My Tree: title and the two-line price block share one bottom baseline. */
+/* Grow My Tree: the price is a real two-line information box, with its own height and padding,
+   then the whole box shares the title's bottom edge. */
 #garden .tree-offer-grid-v72{
   display:block!important;
 }
@@ -116,13 +117,16 @@
   margin:0!important;
 }
 #garden .tree-offer-price-v72{
-  min-height:0!important;
+  width:150px!important;
+  height:66px!important;
+  min-height:66px!important;
   margin:0!important;
-  padding:0 0 2px!important;
+  padding:8px 0 7px!important;
+  box-sizing:border-box!important;
   border:0!important;
   display:flex!important;
   flex-direction:column!important;
-  justify-content:flex-end!important;
+  justify-content:space-between!important;
   align-items:flex-end!important;
   align-self:end!important;
   text-align:right!important;
@@ -142,7 +146,7 @@
 }
 #garden .tree-offer-price-v72 small{
   display:block!important;
-  margin-top:4px!important;
+  margin:0!important;
   line-height:1.15!important;
   text-align:right!important;
   white-space:nowrap!important;
@@ -307,15 +311,19 @@
     line-height:1.72!important;
   }
 
-  /* Mobile follows the exact same bottom-alignment contract. */
+  /* Mobile keeps the same two-line price-box contract, only scaled down. */
   #garden .tree-offer-head-v86{
     grid-template-columns:minmax(0,1fr) 112px!important;
     gap:14px!important;
     align-items:end!important;
   }
   #garden .tree-offer-price-v72{
-    padding:0 0 2px!important;
+    width:112px!important;
+    height:58px!important;
+    min-height:58px!important;
+    padding:7px 0 6px!important;
     border:0!important;
+    justify-content:space-between!important;
     align-items:flex-end!important;
     align-self:end!important;
   }
@@ -326,7 +334,7 @@
     font-size:7.5px!important;
   }
   #garden .tree-offer-price-v72 small{
-    margin-top:4px!important;
+    margin:0!important;
     font-size:6.7px!important;
     line-height:1.1!important;
   }
@@ -354,6 +362,12 @@
     grid-template-columns:minmax(0,1fr) 98px!important;
     gap:11px!important;
   }
+  #garden .tree-offer-price-v72{
+    width:98px!important;
+    height:55px!important;
+    min-height:55px!important;
+    padding:6px 0 5px!important;
+  }
   #garden .tree-offer-price-v72 strong{font-size:25px!important;}
   #garden .tree-offer-price-v72 span{font-size:7px!important;}
   #garden .tree-offer-price-v72 small{font-size:6.25px!important;}
@@ -364,6 +378,12 @@
   #garden .tree-offer-head-v86{
     grid-template-columns:minmax(0,1fr) 92px!important;
     gap:9px!important;
+  }
+  #garden .tree-offer-price-v72{
+    width:92px!important;
+    height:53px!important;
+    min-height:53px!important;
+    padding:5px 0 5px!important;
   }
   #garden .tree-offer-price-v72 strong{font-size:23px!important;}
 }
