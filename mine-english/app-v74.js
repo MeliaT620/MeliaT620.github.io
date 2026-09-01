@@ -1,13 +1,13 @@
-/* Mine English v81 — three-page Learning reel with one-page lock, spatial audio and real Review timing. */
+/* Mine English v82 — three-page Learning reel with hard one-page drag clamp, momentum-burst lock, spatial audio and real Review timing. */
 (function(){
-  function initLearningV81(){
+  function initLearningV82(){
     const screen=document.getElementById('learningScreenV74');
     const device=document.getElementById('learningDeviceV74');
     const track=document.getElementById('learningTrackV77');
     const progress=document.getElementById('learningProgressV77');
     if(!screen||!device||!track)return false;
-    if(screen.dataset.v81Ready==='1')return true;
-    screen.dataset.v81Ready='1';
+    if(screen.dataset.v82Ready==='1')return true;
+    screen.dataset.v82Ready='1';
 
     const pages=[...track.querySelectorAll('.learning-page-v77')];
     if(!pages.length)return false;
@@ -128,9 +128,10 @@
     const canMoveForward=()=>pageIndex<pages.length-1&&!!pageChoice();
     const canMoveBackward=()=>pageIndex>0;
 
-    /* One-page contract: while a reel is settling, no second settle can be scheduled. */
+    /* One-page settle contract: one transition can target only the current or one adjacent page. */
     const settleTo=target=>{
       if(transitionLocked)return false;
+      target=Math.max(pageIndex-1,Math.min(pageIndex+1,target));
       target=Math.max(0,Math.min(pages.length-1,target));
       transitionLocked=true;
       clearTimeout(settleTimer);
@@ -152,6 +153,7 @@
       return true;
     };
 
+    /* Hard visual clamp: even a huge flick can reveal at most ONE adjacent reel page. */
     const drawVertical=dy=>{
       if(transitionLocked)return;
       screen.classList.add('vertical-dragging');
@@ -159,10 +161,13 @@
       device.classList.remove('swiping-known','swiping-notyet');
       clearGlowVars();
       const goingForward=dy<0,goingBackward=dy>0;
+      const h=screenHeight();
+      const maxTravel=h*.96;
       let allowed=dy;
       if(goingForward&&!canMoveForward())allowed=0;
       else if(goingBackward&&!canMoveBackward())allowed=dy*.10;
       else if(goingForward&&pageIndex>=pages.length-1)allowed=dy*.10;
+      allowed=Math.max(-maxTravel,Math.min(maxTravel,allowed));
       setTrack(baseY()+allowed,false);
     };
 
@@ -258,12 +263,12 @@
     screen.addEventListener('pointerup',e=>{end();try{screen.releasePointerCapture(e.pointerId)}catch(_){}});
     screen.addEventListener('pointercancel',end);
 
-    /* Trackpad/mouse wheel: one physical burst may advance AT MOST one page. */
+    /* Trackpad/mouse wheel: one physical momentum burst may advance AT MOST one page. */
     let wheelX=0,wheelY=0,wheelMode='pending',wheelTimer=0;
-    let wheelPageCommitted=false,wheelReleaseTimer=0;
-    const releaseWheelLockLater=(delay=420)=>{
-      clearTimeout(wheelReleaseTimer);
-      wheelReleaseTimer=setTimeout(()=>{wheelPageCommitted=false},delay);
+    let wheelBurstLocked=false,wheelQuietTimer=0;
+    const scheduleWheelUnlock=()=>{
+      clearTimeout(wheelQuietTimer);
+      wheelQuietTimer=setTimeout(()=>{wheelBurstLocked=false},650);
     };
     const finishWheel=()=>{
       suppressAudioUntil=Date.now()+340;
@@ -276,8 +281,8 @@
         let target=pageIndex;
         if(wheelY>threshold&&canMoveForward())target=pageIndex+1;
         else if(wheelY<-threshold&&canMoveBackward())target=pageIndex-1;
-        wheelPageCommitted=true;
-        releaseWheelLockLater(500);
+        wheelBurstLocked=true;
+        scheduleWheelUnlock();
         settleTo(target);
       }else syncPersistent();
       wheelX=wheelY=0;wheelMode='pending';
@@ -285,9 +290,10 @@
 
     screen.addEventListener('wheel',e=>{
       ensureSessionStarted();
-      if(wheelPageCommitted||transitionLocked){
+      if(wheelBurstLocked||transitionLocked){
         e.preventDefault();
-        releaseWheelLockLater(260);
+        /* Every inertia event extends the quiet window. Unlock only after the burst is truly over. */
+        if(wheelBurstLocked)scheduleWheelUnlock();
         return;
       }
       const ax=Math.abs(e.deltaX),ay=Math.abs(e.deltaY);
@@ -325,8 +331,8 @@
   }
 
   function boot(){
-    if(initLearningV81())return;
-    const timer=setInterval(()=>{if(initLearningV81())clearInterval(timer)},120);
+    if(initLearningV82())return;
+    const timer=setInterval(()=>{if(initLearningV82())clearInterval(timer)},120);
     setTimeout(()=>clearInterval(timer),6000);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});
