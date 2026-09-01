@@ -1,0 +1,158 @@
+@import url('./style-v76.css?v=76');
+
+/* Mine English v77 — two-page Learning reel built on the accepted v76 page. */
+
+/* ---------- Reel geometry ---------- */
+#learning .learning-reel-v77{touch-action:none!important;overscroll-behavior:contain!important;}
+#learning .learning-track-v77{
+  position:absolute!important;
+  z-index:1!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+}
+#learning .learning-track-v77.is-settling{
+  transition:transform .29s cubic-bezier(.22,.72,.22,1)!important;
+}
+#learning .learning-page-v77{
+  position:relative!important;
+  flex:0 0 100%!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  background:transparent!important;
+  box-sizing:border-box!important;
+}
+#learning .learning-page-v77 .learning-card-v74{position:absolute!important;inset:0!important;}
+
+/* During a vertical reel gesture, judgment glow gets out of the way completely. */
+#learning .learning-screen-v74.vertical-dragging::before,
+#learning .learning-screen-v74.vertical-dragging::after,
+#learning .learning-screen-v74.vertical-settling::before,
+#learning .learning-screen-v74.vertical-settling::after{opacity:0!important;}
+
+/* Progress: page 1 = half, page 2 = full. */
+#learning .learning-progress-v77 span{
+  width:50%!important;
+  transition:width .28s cubic-bezier(.22,.72,.22,1)!important;
+}
+
+/* ---------- Page-scoped answer reveal ----------
+   v75 used screen[data-choice] because there was only one page.
+   v77 makes each reel page own its answer state. */
+#learning .learning-page-v77[data-choice] .learning-question-v74{
+  opacity:0!important;
+  visibility:hidden!important;
+  transform:translateY(-2px)!important;
+}
+#learning .learning-page-v77[data-choice] .learning-answer-v75{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+}
+#learning .learning-page-v77[data-choice] .learning-support-v75{
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  transform:none!important;
+}
+
+/* Tiny next-page cue: unavailable before judgment, quietly alive afterwards. */
+#learning .learning-next-v77{
+  position:absolute!important;
+  left:50%!important;
+  bottom:8px!important;
+  transform:translateX(-50%)!important;
+  color:#9da7a2!important;
+  font-size:9px!important;
+  line-height:1!important;
+  font-weight:500!important;
+  opacity:.13!important;
+  transition:opacity .18s ease,color .18s ease,transform .18s ease!important;
+  pointer-events:none!important;
+}
+#learning .learning-page-v77[data-choice] .learning-next-v77{
+  color:#69a895!important;
+  opacity:.62!important;
+}
+
+/* ---------- Page 02 · Review Express ---------- */
+#learning .learning-express-upper-v77{margin-top:88px!important;}
+#learning .learning-express-cue-v77{
+  margin:0!important;
+  color:#53605a!important;
+  font-size:9.6px!important;
+  line-height:1.5!important;
+  font-weight:600!important;
+  text-align:left!important;
+}
+#learning .learning-express-sentence-v77{
+  margin-top:14px!important;
+  padding:0!important;
+  text-align:left!important;
+}
+
+/* Keep all of “lead the team” hidden. Each word keeps its natural width as an underline. */
+#learning .express-blank-group-v77{
+  display:inline-flex!important;
+  align-items:baseline!important;
+  gap:.18em!important;
+  vertical-align:baseline!important;
+  padding:0 .035em!important;
+  border-radius:3px!important;
+  background:transparent!important;
+}
+#learning .express-blank-word-v77{
+  position:relative!important;
+  display:inline-block!important;
+  line-height:1.08!important;
+  border-bottom:1px solid rgba(65,79,72,.28)!important;
+  color:transparent!important;
+  text-align:center!important;
+  box-sizing:border-box!important;
+}
+#learning .express-blank-word-v77[data-word="lead"]{min-width:2.35em!important;}
+#learning .express-blank-word-v77[data-word="the"]{min-width:1.62em!important;}
+#learning .express-blank-word-v77[data-word="team"]{min-width:2.42em!important;}
+#learning .express-blank-text-v77{visibility:hidden!important;white-space:nowrap!important;}
+
+/* After judgment, reveal the WHOLE natural unit with the same accepted Reflection highlight. */
+#learning .learning-express-page-v77[data-choice] .express-blank-group-v77{
+  background:linear-gradient(to bottom,transparent 17%,rgba(40,203,154,.14) 17%,rgba(40,203,154,.14) 84%,transparent 84%)!important;
+}
+#learning .learning-express-page-v77[data-choice] .express-blank-word-v77{
+  min-width:0!important;
+  width:auto!important;
+  border-bottom-color:transparent!important;
+  color:inherit!important;
+}
+#learning .learning-express-page-v77[data-choice] .express-blank-text-v77{visibility:visible!important;}
+#learning .learning-express-page-v77[data-choice] .express-blank-word-v77[data-word="lead"] .express-blank-text-v77{
+  color:#0b966d!important;
+  font-weight:780!important;
+}
+
+/* Express support starts naturally after the sentence; no extra prompt/card. */
+#learning .learning-express-support-v77{margin-top:0!important;}
+#learning .learning-express-support-v77 .support-divider{margin-top:20px!important;}
+
+/* The active page's low-presence judgment labels are slightly easier to read. */
+#learning .learning-page-v77 .learning-gesture-v74>span{transition:opacity .12s ease,transform .12s ease!important;}
+
+@media(max-width:720px){
+  #learning .learning-express-upper-v77{margin-top:82px!important;}
+  #learning .learning-express-cue-v77{font-size:8.8px!important;}
+  #learning .learning-express-sentence-v77{margin-top:13px!important;}
+}
+
+@media(max-width:430px){
+  #learning .learning-express-upper-v77{margin-top:79px!important;}
+  #learning .learning-express-cue-v77{font-size:8.6px!important;}
+  #learning .learning-express-sentence-v77{margin-top:12px!important;}
+  #learning .learning-express-support-v77 .support-divider{margin-top:18px!important;}
+}
