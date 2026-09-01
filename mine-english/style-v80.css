@@ -1,4 +1,4 @@
-/* Mine English v85 — global mobile gutter + Reflection social-state contract + memory-row alignment + centered Learning chapter header. */
+/* Mine English v86 — global mobile gutter + Reflection social-state contract + memory-row alignment + centered Learning chapter header + Mine Garden offer header. */
 
 :root{
   --mine-mobile-gutter:30px;
@@ -93,6 +93,57 @@
   line-height:1.75!important;
   font-weight:700!important;
   letter-spacing:-.01em!important;
+}
+
+/* Grow My Tree: the price belongs to the header, not a detached block below the copy. */
+#garden .tree-offer-grid-v72{
+  display:block!important;
+}
+#garden .tree-offer-copy-v72{
+  width:100%!important;
+}
+#garden .tree-offer-head-v86{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  gap:24px!important;
+  align-items:start!important;
+  width:100%!important;
+}
+#garden .tree-offer-head-v86 .editorial-subhead-v71{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
+}
+#garden .tree-offer-price-v72{
+  min-height:0!important;
+  margin:0!important;
+  padding:4px 0 0!important;
+  border:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  align-items:flex-end!important;
+  text-align:right!important;
+  white-space:nowrap!important;
+}
+#garden .tree-offer-price-v72>div{
+  display:flex!important;
+  align-items:baseline!important;
+  justify-content:flex-end!important;
+  gap:5px!important;
+  white-space:nowrap!important;
+}
+#garden .tree-offer-price-v72 strong{
+  font-size:32px!important;
+}
+#garden .tree-offer-price-v72 small{
+  margin-top:7px!important;
+  text-align:right!important;
+}
+#garden .tree-offer-copy-v72>p{
+  max-width:none!important;
+  margin-top:18px!important;
 }
 
 @media(max-width:720px){
@@ -213,8 +264,48 @@
     font-size:11.8px!important;
     line-height:1.72!important;
   }
+
+  /* Keep title and price together in the first visual row on mobile too. */
+  #garden .tree-offer-head-v86{
+    grid-template-columns:minmax(0,1fr) 112px!important;
+    gap:14px!important;
+    align-items:start!important;
+  }
+  #garden .tree-offer-price-v72{
+    padding-top:3px!important;
+    border:0!important;
+    align-items:flex-end!important;
+  }
+  #garden .tree-offer-price-v72 strong{
+    font-size:27px!important;
+  }
+  #garden .tree-offer-price-v72 span{
+    font-size:7.5px!important;
+  }
+  #garden .tree-offer-price-v72 small{
+    margin-top:6px!important;
+    font-size:6.7px!important;
+  }
+  #garden .tree-offer-copy-v72>p{
+    margin-top:17px!important;
+  }
+}
+
+@media(max-width:430px){
+  #garden .tree-offer-head-v86{
+    grid-template-columns:minmax(0,1fr) 98px!important;
+    gap:11px!important;
+  }
+  #garden .tree-offer-price-v72 strong{font-size:25px!important;}
+  #garden .tree-offer-price-v72 span{font-size:7px!important;}
+  #garden .tree-offer-price-v72 small{font-size:6.25px!important;}
 }
 
 @media(max-width:370px){
   :root{--mine-mobile-gutter:26px;}
+  #garden .tree-offer-head-v86{
+    grid-template-columns:minmax(0,1fr) 92px!important;
+    gap:9px!important;
+  }
+  #garden .tree-offer-price-v72 strong{font-size:23px!important;}
 }
