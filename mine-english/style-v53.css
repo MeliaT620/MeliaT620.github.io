@@ -1,0 +1,77 @@
+/* Mine English v53 — Reflection vertical rhythm normalized around the divider. */
+:root{--v53-gap:26px;--v53-line:rgba(28,48,40,.075);}
+
+/* The upper content should start much closer to the progress bar. */
+#reflection .reflection-card{padding-top:34px!important;}
+#reflection .reflection-card .demo-upper{transform:none!important;margin:0!important;}
+#reflection .reflection-card .sentence-line{margin:0!important;}
+#reflection .reflection-translation{margin-top:6px!important;line-height:1.45!important;}
+
+/* Divider sits between two content blocks with equal breathing room. */
+#reflection .reflection-card .support-divider{
+  width:86%!important;
+  height:1px!important;
+  margin:var(--v53-gap) auto var(--v53-gap)!important;
+  background:var(--v53-line)!important;
+  border:0!important;
+}
+#reflection .reflection-card .reflection-support{transform:none!important;margin:0!important;}
+#reflection .reflection-card .support-word{margin:0 0 11px!important;}
+
+/* Callout styling is intentionally simple and horizontal. */
+#reflection .reflection-stage-v51 .reflection-callout{
+  display:flex!important;
+  align-items:center!important;
+  gap:4px!important;
+  transform:none!important;
+  margin:0!important;
+  right:auto!important;
+  z-index:30!important;
+  pointer-events:none!important;
+}
+#reflection .reflection-stage-v51 .reflection-callout small{
+  display:block!important;
+  white-space:nowrap!important;
+  font-size:8.5px!important;
+  line-height:1.42!important;
+  color:#68756f!important;
+  font-weight:560!important;
+  letter-spacing:0!important;
+}
+#reflection .reflection-stage-v51 .reflection-callout .callout-line{
+  width:30px!important;
+  min-width:30px!important;
+  height:1px!important;
+  background:rgba(83,113,101,.36)!important;
+  transform:none!important;
+}
+#reflection .reflection-stage-v51 .reflection-callout .callout-dot{
+  width:6px!important;height:6px!important;min-width:6px!important;min-height:6px!important;
+  border-radius:50%!important;background:#8ba59a!important;box-shadow:none!important;transform:none!important;
+}
+
+/* Left overview: text -> line -> dot -> lead. */
+#reflection .callout-overview-v51 small{order:0!important;text-align:right!important;}
+#reflection .callout-overview-v51 .callout-line{order:1!important;}
+#reflection .callout-overview-v51 .callout-dot{order:2!important;}
+
+/* Both audio hints live on the right: dot -> line -> text. */
+#reflection .callout-audio-v51 .callout-dot,
+#reflection .callout-word-audio-v51 .callout-dot{order:0!important;}
+#reflection .callout-audio-v51 .callout-line,
+#reflection .callout-word-audio-v51 .callout-line{order:1!important;}
+#reflection .callout-audio-v51 small,
+#reflection .callout-word-audio-v51 small{order:2!important;text-align:left!important;}
+
+@media(max-width:720px){
+  :root{--v53-gap:23px;}
+  #reflection .reflection-card{padding-top:30px!important;}
+  #reflection .reflection-stage-v51 .reflection-callout small{font-size:7.8px!important;}
+  #reflection .reflection-stage-v51 .reflection-callout .callout-line{width:20px!important;min-width:20px!important;}
+}
+@media(max-width:430px){
+  :root{--v53-gap:21px;}
+  #reflection .reflection-card{padding-top:28px!important;}
+  #reflection .reflection-stage-v51 .reflection-callout small{font-size:7.4px!important;}
+  #reflection .reflection-stage-v51 .reflection-callout .callout-line{width:16px!important;min-width:16px!important;}
+}
