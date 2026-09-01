@@ -1,0 +1,46 @@
+/* Mine English v76 — Learning visual calibration against accepted Reflection + v22 edge behavior. */
+
+/* Phrase highlight: use the exact currently-effective Reflection marker geometry (v39 lock-in). */
+#learning .learning-upper-v74 .reflection-example mark{
+  box-shadow:none!important;
+  background:linear-gradient(to bottom,transparent 17%,rgba(40,203,154,.14) 17%,rgba(40,203,154,.14) 84%,transparent 84%)!important;
+  border-radius:3px!important;
+  padding:0 .035em!important;
+  -webkit-box-decoration-break:clone!important;
+  box-decoration-break:clone!important;
+  color:inherit!important;
+}
+#learning .learning-upper-v74 .reflection-example mark .core-word{
+  color:#0b966d!important;
+  font-weight:780!important;
+}
+
+/* Pronunciation emphasis: Reflection uses the vowel itself in yellow, never an underline. */
+#learning .learning-support-v75 .ipa-diff{
+  position:relative!important;
+  color:#f0c74d!important;
+  font-weight:780!important;
+}
+#learning .learning-support-v75 .ipa-diff::after{
+  content:none!important;
+  display:none!important;
+}
+
+/* Smooth sparse-pointer updates without turning the edge into a blurry panel. */
+#learning .learning-screen-v74::before,
+#learning .learning-screen-v74::after{
+  transition:opacity .055s linear,width .055s linear,box-shadow .055s linear!important;
+}
+
+/* During reconsideration both edges are controlled continuously by JS.
+   These declarations deliberately outrank the persistent answered-state light. */
+#learning .learning-screen-v74.reconsidering::before{
+  opacity:var(--left-glow)!important;
+  width:var(--left-width)!important;
+  box-shadow:0 0 var(--left-spread) rgba(16,185,129,.82),0 0 var(--left-spread2) rgba(16,185,129,.24)!important;
+}
+#learning .learning-screen-v74.reconsidering::after{
+  opacity:var(--right-glow)!important;
+  width:var(--right-width)!important;
+  box-shadow:0 0 var(--right-spread) rgba(240,154,178,.80),0 0 var(--right-spread2) rgba(240,154,178,.23)!important;
+}
