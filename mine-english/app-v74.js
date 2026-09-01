@@ -1,13 +1,13 @@
-/* Mine English v77 — two-page Learning reel with direction-locked gestures. */
+/* Mine English v78 — two-page Learning reel with direction lock + answer-aware spatial audio. */
 (function(){
-  function initLearningV77(){
+  function initLearningV78(){
     const screen=document.getElementById('learningScreenV74');
     const device=document.getElementById('learningDeviceV74');
     const track=document.getElementById('learningTrackV77');
     const progress=document.getElementById('learningProgressV77');
     if(!screen||!device||!track)return false;
-    if(screen.dataset.v77Ready==='1')return true;
-    screen.dataset.v77Ready='1';
+    if(screen.dataset.v78Ready==='1')return true;
+    screen.dataset.v78Ready='1';
 
     const pages=[...track.querySelectorAll('.learning-page-v77')];
     if(!pages.length)return false;
@@ -18,6 +18,8 @@
     let pageIndex=0;
     let active=false,startX=0,startY=0,lastX=0,lastY=0,mode='pending';
     let settleTimer=0;
+    let suppressAudioUntil=0;
+    let audioTimer=0;
 
     const currentPage=()=>pages[pageIndex];
     const pageChoice=()=>currentPage()?.dataset.choice||'';
@@ -116,6 +118,7 @@
       screen.classList.add('vertical-settling');
       device.classList.remove('swiping-known','swiping-notyet');
       clearGlowVars();
+      suppressAudioUntil=Date.now()+380;
       pageIndex=target;
       updateProgress();
       setTrack(baseY(),true);
@@ -177,6 +180,8 @@
       const finalMode=mode;
       active=false;mode='pending';
 
+      if(finalMode!=='pending'||Math.hypot(dx,dy)>10)suppressAudioUntil=Date.now()+360;
+
       if(finalMode==='horizontal'){
         if(dx<=-horizontalThreshold)reveal('known');
         else if(dx>=horizontalThreshold)reveal('not-yet');
@@ -195,6 +200,64 @@
       syncPersistent();
     };
 
+    /* ---------- Learning spatial audio ----------
+       Page 01 before answering: blank tap plays the example sentence.
+       Page 02 before answering: silent, so Express never leaks the answer.
+       After answering: upper region follows Reflection (focus on single, full sentence on double),
+       lower region plays the word reading below the divider. */
+    const speak=(text,lang='en-US',rate=.9)=>{
+      if(!text||!('speechSynthesis' in window))return;
+      try{
+        window.speechSynthesis.cancel();
+        const utter=new SpeechSynthesisUtterance(text);
+        utter.lang=lang;utter.rate=rate;utter.volume=1;
+        window.speechSynthesis.speak(utter);
+      }catch(_){}
+    };
+
+    const localeFor=page=>page?.querySelector('.accent-toggle')?.dataset.accent==='UK'?'en-GB':'en-US';
+
+    const playSpatialAudio=(e,full=false)=>{
+      if(Date.now()<suppressAudioUntil)return;
+      if(e.target.closest('button,a,[data-peek]'))return;
+      const page=currentPage();
+      if(!page)return;
+      const upper=page.querySelector('.learning-upper-v74');
+      const lower=page.querySelector('.demo-lower');
+      const divider=page.querySelector('.support-divider');
+      if(!upper)return;
+
+      const answered=!!page.dataset.choice;
+      if(!answered){
+        if(page.dataset.preanswerAudio==='none')return;
+        const text=upper.dataset.fullAudio||upper.dataset.focusAudio;
+        if(text)speak(text,localeFor(page),.9);
+        return;
+      }
+
+      const boundary=divider?.getBoundingClientRect().top??Infinity;
+      if(e.clientY>boundary&&lower){
+        const word=lower.dataset.wordAudio;
+        if(word)speak(word,localeFor(page),.84);
+        return;
+      }
+
+      const text=full?(upper.dataset.fullAudio||upper.dataset.focusAudio):(upper.dataset.focusAudio||upper.dataset.fullAudio);
+      if(text)speak(text,localeFor(page),.9);
+    };
+
+    screen.addEventListener('click',e=>{
+      if(Date.now()<suppressAudioUntil||e.target.closest('button,a,[data-peek]'))return;
+      clearTimeout(audioTimer);
+      audioTimer=setTimeout(()=>playSpatialAudio(e,false),220);
+    });
+    screen.addEventListener('dblclick',e=>{
+      if(Date.now()<suppressAudioUntil||e.target.closest('button,a,[data-peek]'))return;
+      e.preventDefault();
+      clearTimeout(audioTimer);
+      playSpatialAudio(e,true);
+    });
+
     screen.addEventListener('pointerdown',e=>{
       if(e.target.closest('button,a,[data-peek]'))return;
       start(e.clientX,e.clientY);
@@ -207,6 +270,7 @@
     /* Trackpads: use the same axis dominance and thresholds, but settle after the gesture burst. */
     let wheelX=0,wheelY=0,wheelMode='pending',wheelTimer=0;
     const finishWheel=()=>{
+      suppressAudioUntil=Date.now()+320;
       if(wheelMode==='horizontal'){
         if(wheelX>horizontalThreshold)reveal('known');
         else if(wheelX<-horizontalThreshold)reveal('not-yet');
@@ -228,6 +292,7 @@
         else return;
       }
       e.preventDefault();
+      suppressAudioUntil=Date.now()+320;
       if(wheelMode==='horizontal'){
         wheelX+=e.deltaX;
         setGlow(-wheelX);
@@ -259,8 +324,8 @@
   }
 
   function boot(){
-    if(initLearningV77())return;
-    const timer=setInterval(()=>{if(initLearningV77())clearInterval(timer)},120);
+    if(initLearningV78())return;
+    const timer=setInterval(()=>{if(initLearningV78())clearInterval(timer)},120);
     setTimeout(()=>clearInterval(timer),6000);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});
