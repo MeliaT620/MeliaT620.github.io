@@ -1,4 +1,4 @@
-/* Mine English v77 — two-page Learning reel built on the accepted v76 page. */
+/* Mine English v78 — two-page Learning reel, aligned page rhythm + spatial audio. */
 
 /* ---------- Reel geometry ---------- */
 #learning .learning-reel-v77{touch-action:none!important;overscroll-behavior:contain!important;}
@@ -40,9 +40,7 @@
   transition:width .28s cubic-bezier(.22,.72,.22,1)!important;
 }
 
-/* ---------- Page-scoped answer reveal ----------
-   v75 used screen[data-choice] because there was only one page.
-   v77 makes each reel page own its answer state. */
+/* ---------- Page-scoped answer reveal ---------- */
 #learning .learning-page-v77[data-choice] .learning-question-v74{
   opacity:0!important;
   visibility:hidden!important;
@@ -79,19 +77,20 @@
   opacity:.62!important;
 }
 
-/* ---------- Page 02 · Review Express ---------- */
-#learning .learning-express-upper-v77{margin-top:88px!important;}
-#learning .learning-express-cue-v77{
+/* ---------- Page 02 · Review Express ----------
+   It uses the same vertical anchors as Page 01: English first, Chinese directly beneath. */
+#learning .learning-express-upper-v77{margin-top:94px!important;}
+#learning .learning-express-sentence-v77{
   margin:0!important;
-  color:#53605a!important;
-  font-size:9.6px!important;
-  line-height:1.5!important;
-  font-weight:600!important;
+  padding:0!important;
   text-align:left!important;
 }
-#learning .learning-express-sentence-v77{
-  margin-top:14px!important;
-  padding:0!important;
+#learning .learning-express-cue-v77{
+  margin:6px 0 0!important;
+  color:#53605a!important;
+  font-size:9.6px!important;
+  line-height:1.45!important;
+  font-weight:620!important;
   text-align:left!important;
 }
 
@@ -135,22 +134,20 @@
   font-weight:780!important;
 }
 
-/* Express support starts naturally after the sentence; no extra prompt/card. */
+/* Express support follows the same Chinese -> divider -> lexical support rhythm as Page 01. */
 #learning .learning-express-support-v77{margin-top:0!important;}
-#learning .learning-express-support-v77 .support-divider{margin-top:20px!important;}
+#learning .learning-express-support-v77 .support-divider{margin-top:var(--reflection-gap)!important;}
 
 /* The active page's low-presence judgment labels are slightly easier to read. */
 #learning .learning-page-v77 .learning-gesture-v74>span{transition:opacity .12s ease,transform .12s ease!important;}
 
 @media(max-width:720px){
-  #learning .learning-express-upper-v77{margin-top:82px!important;}
+  #learning .learning-express-upper-v77{margin-top:88px!important;}
   #learning .learning-express-cue-v77{font-size:8.8px!important;}
-  #learning .learning-express-sentence-v77{margin-top:13px!important;}
 }
 
 @media(max-width:430px){
-  #learning .learning-express-upper-v77{margin-top:79px!important;}
+  #learning .learning-express-upper-v77{margin-top:84px!important;}
   #learning .learning-express-cue-v77{font-size:8.6px!important;}
-  #learning .learning-express-sentence-v77{margin-top:12px!important;}
-  #learning .learning-express-support-v77 .support-divider{margin-top:18px!important;}
+  #learning .learning-express-support-v77 .support-divider{margin-top:var(--reflection-gap)!important;}
 }
