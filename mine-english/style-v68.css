@@ -1,0 +1,357 @@
+/* Mine English v68 — Markdown-like hierarchy: chapter > subsection > body > inserted visual. */
+:root{
+  --v68-ink:#1c2622;
+  --v68-text:#68736e;
+  --v68-muted:#8a948f;
+  --v68-green:#15966f;
+  --v68-line:rgba(28,38,34,.075);
+  --v68-soft:rgba(248,251,249,.72);
+  --v68-warm:rgba(255,249,232,.34);
+  --v68-warm-line:rgba(203,158,52,.18);
+  --v68-chapter:38px;
+  --v68-sub:20px;
+  --v68-body:13px;
+  --v68-sub-gap:62px;
+}
+
+/* =========================================================
+   1. CHAPTER — exactly one visual language across 5 chapters
+   ========================================================= */
+#memory,#learning,#human,#garden,#journey{
+  padding:118px 0!important;
+  background:#fff!important;
+  border:0!important;
+}
+#memory + #learning,#learning + #human,#human + #garden,#garden + #journey{
+  border-top:0!important;
+}
+
+#memory>.wrap>.section-head,
+#learning>.wrap.learning-intro>.section-head,
+#human>.wrap>.section-head,
+#garden .garden-section-head-v50,
+#journey .journey{
+  max-width:760px!important;
+  margin:0 auto 58px!important;
+  padding:0!important;
+  text-align:center!important;
+}
+
+#memory .section-head .kicker,
+#learning>.wrap.learning-intro>.section-head .kicker,
+#human>.wrap>.section-head .kicker,
+#garden .garden-section-head-v50 .kicker,
+#journey .kicker{
+  margin:0 0 12px!important;
+  color:#6b9585!important;
+  font-size:8.5px!important;
+  line-height:1.2!important;
+  font-weight:760!important;
+  letter-spacing:.16em!important;
+  text-transform:uppercase!important;
+}
+
+#memory>.wrap>.section-head h2,
+#learning>.wrap.learning-intro>.section-head h2,
+#human>.wrap>.section-head h2,
+#garden .garden-section-head-v50 h2,
+#journey h2{
+  margin:0!important;
+  color:var(--v68-ink)!important;
+  font-size:var(--v68-chapter)!important;
+  line-height:1.22!important;
+  font-weight:720!important;
+  letter-spacing:-.035em!important;
+}
+
+#memory>.wrap>.section-head>p,
+#learning>.wrap.learning-intro>.section-head>p,
+#human>.wrap>.section-head>p,
+#garden .garden-section-head-v50>p,
+#journey .journey-intro-v50{
+  max-width:620px!important;
+  margin:17px auto 0!important;
+  color:var(--v68-text)!important;
+  font-size:var(--v68-body)!important;
+  line-height:1.82!important;
+  text-align:center!important;
+}
+
+/* The old extra Learning note behaves like duplicated prose, not another component. */
+#learning .linear-note{display:none!important;}
+
+/* =========================================================
+   2. SUBSECTION — one H3 scale, one alignment, one spacing rule
+   ========================================================= */
+.editorial-subsection-v68,
+#learning .coach-preview-outside,
+#human .human-value-card,
+#garden .tree-challenge-v50,
+#garden .garden-continuity-v50,
+#garden .garden-keepsake-v50{
+  max-width:860px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+.editorial-subhead-v68,
+#learning .coach-preview-outside,
+#human .human-value-card,
+#garden .tree-challenge-v50,
+#garden .garden-continuity-v50,
+#garden .garden-keepsake-v50{
+  text-align:left!important;
+}
+
+.editorial-subhead-v68>span,
+.editorial-subhead-v68>.kicker,
+#learning .coach-preview-outside>span,
+#human .human-value-card>span,
+#garden .tree-challenge-head-v50 span,
+#garden .garden-continuity-v50>span,
+#garden .garden-keepsake-v50>span{
+  display:block!important;
+  margin:0 0 9px!important;
+  color:#6f9788!important;
+  font-size:8px!important;
+  line-height:1.2!important;
+  font-weight:760!important;
+  letter-spacing:.14em!important;
+  text-transform:uppercase!important;
+}
+
+.editorial-subhead-v68 h3,
+#learning .coach-preview-outside h3,
+#human .human-value-card>h3,
+#garden .tree-challenge-v50 h3,
+#garden .garden-continuity-v50 h3,
+#garden .garden-keepsake-v50 h3{
+  margin:0!important;
+  color:var(--v68-ink)!important;
+  font-size:var(--v68-sub)!important;
+  line-height:1.45!important;
+  font-weight:680!important;
+  letter-spacing:-.018em!important;
+  text-align:left!important;
+}
+
+.editorial-subhead-v68 p,
+#learning .coach-preview-outside>p,
+#human .human-value-card>p,
+#garden .tree-challenge-v50>p,
+#garden .garden-continuity-v50>p,
+#garden .garden-keepsake-v50>p{
+  max-width:700px!important;
+  margin:11px 0 0!important;
+  color:var(--v68-text)!important;
+  font-size:var(--v68-body)!important;
+  line-height:1.82!important;
+  text-align:left!important;
+}
+
+/* Subsections are separated by whitespace, never a chapter-like long rule. */
+#learning .learning-subsection-v68{margin-top:0!important;margin-bottom:24px!important;}
+#learning .coach-preview-outside{margin-top:var(--v68-sub-gap)!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;}
+#learning .learning-reflection-subsection-v65{margin-top:var(--v68-sub-gap)!important;padding:0!important;border:0!important;background:transparent!important;}
+#reflection>.wrap>.section-head{max-width:860px!important;margin:0 auto 30px!important;padding:0!important;text-align:left!important;}
+#reflection .section-head h3{font-size:var(--v68-sub)!important;line-height:1.45!important;}
+#reflection .section-head p{margin-top:11px!important;}
+
+/* =========================================================
+   3. BODY — no accidental headings
+   ========================================================= */
+#human .human-sequence{max-width:860px!important;margin:0 auto!important;}
+#human .human-value-card{
+  margin:0 0 var(--v68-sub-gap)!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+#human .human-value-card:last-child{margin-bottom:0!important;}
+#human .response-intro{margin-top:11px!important;}
+#human .forgetting-points{margin:20px 0 18px!important;}
+#human .forgetting-points strong{font-size:12px!important;}
+#human blockquote{max-width:700px!important;margin:20px 0 0!important;}
+
+/* Reward summary is BODY, not a second H3 under the Human Care subsection. */
+#human .reward-system-integrated{
+  margin:28px 0 0!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+#human .reward-system-head{margin:0 0 18px!important;}
+#human .reward-system-head>span{font-size:8px!important;letter-spacing:.13em!important;color:#81968d!important;}
+#human .reward-summary-v68{
+  max-width:720px!important;
+  margin:9px 0 0!important;
+  color:var(--v68-text)!important;
+  font-size:12px!important;
+  line-height:1.8!important;
+}
+
+/* Seeds / Coins are inserted visual components: same geometry, same hierarchy. */
+#human .reward-dual{display:grid!important;grid-template-columns:1fr 1fr!important;gap:16px!important;margin-top:20px!important;}
+#human .reward-mode{
+  padding:22px!important;
+  border-radius:18px!important;
+  border:1px solid rgba(28,38,34,.065)!important;
+  background:rgba(249,252,250,.64)!important;
+  box-shadow:none!important;
+}
+#human .reward-mode.coin-mode{
+  background:var(--v68-warm)!important;
+  border-color:var(--v68-warm-line)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.82)!important;
+}
+#human .reward-mode-mark{width:34px!important;height:34px!important;}
+#human .reward-mode-mark.coin{
+  background:rgba(255,248,225,.56)!important;
+  color:#a8832e!important;
+  border:1px solid rgba(203,158,52,.17)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9)!important;
+}
+#human .reward-mode small{font-size:7.5px!important;letter-spacing:.12em!important;}
+#human .reward-mode h4{
+  margin:7px 0 8px!important;
+  color:var(--v68-ink)!important;
+  font-size:14px!important;
+  line-height:1.5!important;
+  font-weight:660!important;
+}
+#human .reward-mode p{font-size:11.5px!important;line-height:1.76!important;}
+#human .reward-mode>.reward-flow{
+  width:100%!important;
+  margin:16px 0 0!important;
+  padding:12px 0 0!important;
+  border-top:1px solid rgba(28,38,34,.055)!important;
+  background:transparent!important;
+}
+#human .reward-flow span{
+  background:rgba(255,255,255,.56)!important;
+  border:1px solid rgba(28,38,34,.055)!important;
+  color:#65726c!important;
+  box-shadow:none!important;
+}
+#human .coin-mode .reward-flow span:last-child{
+  background:rgba(255,249,232,.42)!important;
+  border-color:rgba(203,158,52,.18)!important;
+  color:#8e742e!important;
+}
+#human .reward-principle-v40{
+  margin:20px 0 0!important;
+  padding:15px 0 0!important;
+  border-top:1px solid var(--v68-line)!important;
+  background:transparent!important;
+}
+#human .reward-principle-v40 strong{font-size:12px!important;}
+#human .reward-principle-v40 span{font-size:11px!important;}
+
+/* =========================================================
+   4. INSERTED VISUALS — cards are illustrations, never hierarchy
+   ========================================================= */
+#memory .usage-memory,
+#garden .garden-hero-v50,
+#journey .words-sentences,
+#journey .year-card{
+  max-width:860px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+#memory .usage-memory{margin-top:0!important;}
+#memory .memory-head strong{font-size:27px!important;line-height:1.1!important;font-weight:700!important;}
+#memory .memory-head span,#memory .memory-head small{font-size:8px!important;}
+#memory .repair-principle{max-width:860px!important;margin:34px auto 0!important;padding:0!important;border:0!important;}
+
+/* Garden visual = one inserted figure, not another heading block. */
+#garden .garden-hero-v50{
+  display:grid!important;
+  grid-template-columns:minmax(250px,.9fr) minmax(0,1.1fr)!important;
+  gap:40px!important;
+  align-items:center!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+#garden .garden-visual-v65{
+  height:330px!important;
+  padding-top:42px!important;
+  overflow:visible!important;
+  border-radius:22px!important;
+  background:linear-gradient(180deg,rgba(245,251,248,.9),rgba(234,245,238,.88))!important;
+}
+#garden .garden-visual-v65 .garden-tree-v50{bottom:55px!important;transform:translateX(-50%) scale(.9)!important;}
+#garden .garden-principles-v65 article{
+  grid-template-columns:68px 1fr!important;
+  gap:14px!important;
+  padding:13px 0!important;
+  border:0!important;
+}
+#garden .garden-principles-v65 strong{font-size:14px!important;font-weight:670!important;}
+#garden .garden-principles-v65 p{font-size:12px!important;line-height:1.7!important;}
+
+#garden .tree-challenge-v50,
+#garden .garden-continuity-v50,
+#garden .garden-keepsake-v50{
+  margin-top:var(--v68-sub-gap)!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+#garden .tree-challenge-head-v50{align-items:baseline!important;gap:26px!important;}
+#garden .tree-challenge-head-v50>strong{font-size:28px!important;line-height:1!important;}
+#garden .tree-challenge-points-v50{margin-top:17px!important;}
+#garden .tree-challenge-points-v50 span{background:var(--v68-soft)!important;border:1px solid rgba(28,38,34,.05)!important;}
+#garden .garden-continuity-v50 blockquote{margin:18px 0 0!important;max-width:700px!important;}
+
+/* Journey visual inserts: same light geometry, no fake subheading. */
+#journey .journey{max-width:760px!important;margin-bottom:44px!important;}
+#journey .words-sentences{
+  margin-top:0!important;
+  padding:18px 20px!important;
+  border:1px solid rgba(28,38,34,.06)!important;
+  border-radius:18px!important;
+  background:var(--v68-soft)!important;
+  box-shadow:none!important;
+}
+#journey .journey-note{max-width:760px!important;margin:20px auto 0!important;color:var(--v68-text)!important;font-size:var(--v68-body)!important;line-height:1.82!important;}
+#journey .year-card{
+  margin-top:42px!important;
+  padding:22px!important;
+  border:1px solid rgba(28,38,34,.06)!important;
+  border-radius:18px!important;
+  background:rgba(249,251,250,.62)!important;
+  box-shadow:none!important;
+}
+#journey .year-card strong{font-size:18px!important;line-height:1.2!important;font-weight:680!important;}
+#journey blockquote{max-width:760px!important;margin:38px auto 0!important;}
+
+/* =========================================================
+   5. MOBILE — same hierarchy, merely smaller
+   ========================================================= */
+@media(max-width:720px){
+  :root{--v68-chapter:29px;--v68-sub:17px;--v68-body:12px;--v68-sub-gap:48px;}
+  #memory,#learning,#human,#garden,#journey{padding:84px 0!important;}
+  #memory>.wrap>.section-head,#learning>.wrap.learning-intro>.section-head,#human>.wrap>.section-head,#garden .garden-section-head-v50,#journey .journey{margin-bottom:42px!important;padding-inline:8px!important;}
+  .editorial-subhead-v68,#learning .coach-preview-outside,#human .human-value-card,#garden .tree-challenge-v50,#garden .garden-continuity-v50,#garden .garden-keepsake-v50{padding-inline:8px!important;}
+  #learning .learning-subsection-v68{margin-bottom:18px!important;}
+  #reflection>.wrap>.section-head{padding-inline:8px!important;margin-bottom:26px!important;}
+  #human .reward-dual{grid-template-columns:1fr!important;gap:12px!important;}
+  #human .reward-mode{padding:18px!important;}
+  #garden .garden-hero-v50{grid-template-columns:1fr!important;gap:24px!important;}
+  #garden .garden-visual-v65{height:250px!important;padding-top:35px!important;}
+  #garden .garden-visual-v65 .garden-tree-v50{bottom:42px!important;transform:translateX(-50%) scale(.82)!important;}
+  #garden .tree-challenge-head-v50{gap:14px!important;align-items:flex-start!important;}
+  #garden .tree-challenge-head-v50>strong{font-size:23px!important;white-space:nowrap!important;}
+  #journey .words-sentences{padding:14px 10px!important;}
+  #journey .year-card{padding:18px!important;gap:20px!important;}
+}
