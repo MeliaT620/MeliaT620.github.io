@@ -1,14 +1,37 @@
-/* Mine English v76 — one Learning page; v22-distance glow with smooth answer reconsideration. */
+/* Mine English v77 — two-page Learning reel with direction-locked gestures. */
 (function(){
-  function initLearningV76(){
+  function initLearningV77(){
     const screen=document.getElementById('learningScreenV74');
     const device=document.getElementById('learningDeviceV74');
-    if(!screen||!device)return false;
-    if(screen.dataset.v76Ready==='1')return true;
-    screen.dataset.v76Ready='1';
+    const track=document.getElementById('learningTrackV77');
+    const progress=document.getElementById('learningProgressV77');
+    if(!screen||!device||!track)return false;
+    if(screen.dataset.v77Ready==='1')return true;
+    screen.dataset.v77Ready='1';
 
-    const threshold=42;
-    let active=false,startX=0,startY=0,lastX=0,mode='pending';
+    const pages=[...track.querySelectorAll('.learning-page-v77')];
+    if(!pages.length)return false;
+
+    const horizontalThreshold=42;
+    const directionStart=12;
+    const directionRatio=1.32;
+    let pageIndex=0;
+    let active=false,startX=0,startY=0,lastX=0,lastY=0,mode='pending';
+    let settleTimer=0;
+
+    const currentPage=()=>pages[pageIndex];
+    const pageChoice=()=>currentPage()?.dataset.choice||'';
+    const screenHeight=()=>Math.max(screen.clientHeight,1);
+    const baseY=()=>-pageIndex*screenHeight();
+
+    const setTrack=(y,animate=false)=>{
+      track.classList.toggle('is-settling',animate);
+      track.style.transform=`translate3d(0,${y}px,0)`;
+    };
+
+    const updateProgress=()=>{
+      if(progress)progress.style.width=(((pageIndex+1)/pages.length)*100).toFixed(1)+'%';
+    };
 
     const setVars=(side,{opacity=0,width=2.2,spread=7,spread2=12}={})=>{
       screen.style.setProperty(`--${side}-glow`,Number(opacity).toFixed(3));
@@ -17,42 +40,49 @@
       screen.style.setProperty(`--${side}-spread2`,Number(spread2).toFixed(1)+'px');
     };
 
-    const resetTransient=()=>{
+    const clearGlowVars=()=>{setVars('left');setVars('right')};
+
+    const syncPersistent=()=>{
+      const choice=pageChoice();
+      screen.classList.remove('known','not-yet','reconsidering');
+      device.classList.remove('swiping-known','swiping-notyet','judged-known','judged-notyet');
+      clearGlowVars();
+      if(choice==='known'){
+        screen.classList.add('known');
+        device.classList.add('judged-known');
+      }else if(choice==='not-yet'){
+        screen.classList.add('not-yet');
+        device.classList.add('judged-notyet');
+      }
+    };
+
+    const resetHorizontal=()=>{
       screen.classList.remove('reconsidering');
       device.classList.remove('swiping-known','swiping-notyet');
-      setVars('left');
-      setVars('right');
+      clearGlowVars();
+      syncPersistent();
     };
 
-    const transientFor=(progress,isPersistent=false)=>{
+    const transientFor=(progressValue,isPersistent=false)=>{
       if(isPersistent){
-        return {
-          opacity:.72+.28*progress,
-          width:4+.4*progress,
-          spread:18+14*progress,
-          spread2:34+20*progress
-        };
+        return {opacity:.72+.28*progressValue,width:4+.4*progressValue,spread:18+14*progressValue,spread2:34+20*progressValue};
       }
-      return {
-        opacity:progress,
-        width:2.2+2.2*progress,
-        spread:7+25*progress,
-        spread2:(7+25*progress)*1.7
-      };
+      const spread=7+25*progressValue;
+      return {opacity:progressValue,width:2.2+2.2*progressValue,spread,spread2:spread*1.7};
     };
 
-    const fadingOld=(progress)=>({
-      opacity:Math.max(0,.72*(1-progress)),
-      width:Math.max(2.2,4-1.8*progress),
-      spread:Math.max(7,18-11*progress),
-      spread2:Math.max(12,34-22*progress)
+    const fadingOld=progressValue=>({
+      opacity:Math.max(0,.72*(1-progressValue)),
+      width:Math.max(2.2,4-1.8*progressValue),
+      spread:Math.max(7,18-11*progressValue),
+      spread2:Math.max(12,34-22*progressValue)
     });
 
     const setGlow=dx=>{
       if(!dx)return;
       const mag=Math.min(Math.abs(dx)/95,1);
       const eased=Math.pow(mag,.72);
-      const current=screen.dataset.choice||'';
+      const current=pageChoice();
       const toward=dx<0?'known':'not-yet';
       const targetSide=toward==='known'?'left':'right';
       const otherSide=targetSide==='left'?'right':'left';
@@ -62,53 +92,107 @@
       screen.classList.add('reconsidering');
       device.classList.toggle('swiping-known',toward==='known');
       device.classList.toggle('swiping-notyet',toward==='not-yet');
-
       setVars(targetSide,transientFor(eased,same));
       if(changing)setVars(otherSide,fadingOld(eased));
       else setVars(otherSide);
     };
 
     const reveal=choice=>{
-      screen.classList.remove('known','not-yet','reconsidering');
-      screen.classList.add(choice==='known'?'known':'not-yet');
-      screen.dataset.choice=choice;
-      device.classList.remove('swiping-known','swiping-notyet','judged-known','judged-notyet');
-      device.classList.add(choice==='known'?'judged-known':'judged-notyet');
-      resetTransient();
+      const page=currentPage();
+      if(!page)return;
+      page.dataset.choice=choice;
+      page.classList.toggle('known',choice==='known');
+      page.classList.toggle('not-yet',choice==='not-yet');
+      syncPersistent();
+    };
+
+    const canMoveForward=()=>pageIndex<pages.length-1&&!!pageChoice();
+    const canMoveBackward=()=>pageIndex>0;
+
+    const settleTo=(target)=>{
+      target=Math.max(0,Math.min(pages.length-1,target));
+      clearTimeout(settleTimer);
+      screen.classList.remove('vertical-dragging','reconsidering');
+      screen.classList.add('vertical-settling');
+      device.classList.remove('swiping-known','swiping-notyet');
+      clearGlowVars();
+      pageIndex=target;
+      updateProgress();
+      setTrack(baseY(),true);
+      settleTimer=setTimeout(()=>{
+        track.classList.remove('is-settling');
+        screen.classList.remove('vertical-settling');
+        syncPersistent();
+      },310);
+    };
+
+    const drawVertical=dy=>{
+      screen.classList.add('vertical-dragging');
+      screen.classList.remove('reconsidering');
+      device.classList.remove('swiping-known','swiping-notyet');
+      clearGlowVars();
+
+      const goingForward=dy<0;
+      const goingBackward=dy>0;
+      let allowed=dy;
+
+      /* No answer, no next page: never expose page 2 underneath. */
+      if(goingForward&&!canMoveForward())allowed=0;
+      else if(goingBackward&&!canMoveBackward())allowed=dy*.10;
+      else if(goingForward&&pageIndex>=pages.length-1)allowed=dy*.10;
+
+      setTrack(baseY()+allowed,false);
     };
 
     const start=(x,y)=>{
       active=true;
       mode='pending';
       startX=lastX=x;
-      startY=y;
-      /* Keep the persistent answered glow visible until a real horizontal drag starts. */
+      startY=lastY=y;
+      track.classList.remove('is-settling');
+      clearTimeout(settleTimer);
     };
 
     const move=(x,y,e)=>{
       if(!active)return;
-      lastX=x;
+      lastX=x;lastY=y;
       const dx=x-startX,dy=y-startY;
+      const ax=Math.abs(dx),ay=Math.abs(dy);
+
       if(mode==='pending'){
-        if(Math.abs(dx)<8&&Math.abs(dy)<8)return;
-        if(Math.abs(dx)>Math.abs(dy)+6)mode='horizontal';
-        else if(Math.abs(dy)>Math.abs(dx)+6){mode='vertical';return;}
+        if(ax<directionStart&&ay<directionStart)return;
+        if(ax>=directionStart&&ax>ay*directionRatio)mode='horizontal';
+        else if(ay>=directionStart&&ay>ax*directionRatio)mode='vertical';
         else return;
       }
-      if(mode!=='horizontal')return;
+
       if(e?.cancelable)e.preventDefault();
-      setGlow(dx);
+      if(mode==='horizontal')setGlow(dx);
+      else if(mode==='vertical')drawVertical(dy);
     };
 
     const end=()=>{
       if(!active)return;
-      const dx=lastX-startX;
+      const dx=lastX-startX,dy=lastY-startY;
       const finalMode=mode;
-      active=false;
-      mode='pending';
-      if(finalMode==='horizontal'&&dx<=-threshold)reveal('known');
-      else if(finalMode==='horizontal'&&dx>=threshold)reveal('not-yet');
-      else resetTransient();
+      active=false;mode='pending';
+
+      if(finalMode==='horizontal'){
+        if(dx<=-horizontalThreshold)reveal('known');
+        else if(dx>=horizontalThreshold)reveal('not-yet');
+        else resetHorizontal();
+        return;
+      }
+
+      if(finalMode==='vertical'){
+        const threshold=Math.max(72,screenHeight()*.15);
+        if(dy<=-threshold&&canMoveForward())settleTo(pageIndex+1);
+        else if(dy>=threshold&&canMoveBackward())settleTo(pageIndex-1);
+        else settleTo(pageIndex);
+        return;
+      }
+
+      syncPersistent();
     };
 
     screen.addEventListener('pointerdown',e=>{
@@ -120,40 +204,63 @@
     screen.addEventListener('pointerup',e=>{end();try{screen.releasePointerCapture(e.pointerId)}catch(_){}});
     screen.addEventListener('pointercancel',end);
 
-    let wheelDx=0,wheelTimer=null;
+    /* Trackpads: use the same axis dominance and thresholds, but settle after the gesture burst. */
+    let wheelX=0,wheelY=0,wheelMode='pending',wheelTimer=0;
+    const finishWheel=()=>{
+      if(wheelMode==='horizontal'){
+        if(wheelX>horizontalThreshold)reveal('known');
+        else if(wheelX<-horizontalThreshold)reveal('not-yet');
+        else resetHorizontal();
+      }else if(wheelMode==='vertical'){
+        const threshold=Math.max(58,screenHeight()*.11);
+        if(wheelY>threshold&&canMoveForward())settleTo(pageIndex+1);
+        else if(wheelY<-threshold&&canMoveBackward())settleTo(pageIndex-1);
+        else settleTo(pageIndex);
+      }
+      wheelX=wheelY=0;wheelMode='pending';
+    };
+
     screen.addEventListener('wheel',e=>{
-      if(Math.abs(e.deltaX)<=Math.abs(e.deltaY))return;
+      const ax=Math.abs(e.deltaX),ay=Math.abs(e.deltaY);
+      if(wheelMode==='pending'){
+        if(ax>ay*1.25)wheelMode='horizontal';
+        else if(ay>ax*1.25)wheelMode='vertical';
+        else return;
+      }
       e.preventDefault();
-      wheelDx+=e.deltaX;
-      setGlow(-wheelDx);
+      if(wheelMode==='horizontal'){
+        wheelX+=e.deltaX;
+        setGlow(-wheelX);
+      }else{
+        wheelY+=e.deltaY;
+        drawVertical(-wheelY);
+      }
       clearTimeout(wheelTimer);
-      wheelTimer=setTimeout(()=>{
-        if(wheelDx>threshold)reveal('known');
-        else if(wheelDx<-threshold)reveal('not-yet');
-        else resetTransient();
-        wheelDx=0;
-      },120);
+      wheelTimer=setTimeout(finishWheel,125);
     },{passive:false});
 
     screen.addEventListener('keydown',e=>{
       if(e.key==='ArrowLeft'){
-        e.preventDefault();
-        setGlow(-60);
-        setTimeout(()=>reveal('known'),90);
+        e.preventDefault();setGlow(-60);setTimeout(()=>reveal('known'),90);
       }else if(e.key==='ArrowRight'){
-        e.preventDefault();
-        setGlow(60);
-        setTimeout(()=>reveal('not-yet'),90);
+        e.preventDefault();setGlow(60);setTimeout(()=>reveal('not-yet'),90);
+      }else if(e.key==='ArrowUp'){
+        e.preventDefault();if(canMoveForward())settleTo(pageIndex+1);else settleTo(pageIndex);
+      }else if(e.key==='ArrowDown'){
+        e.preventDefault();if(canMoveBackward())settleTo(pageIndex-1);else settleTo(pageIndex);
       }
     });
 
-    resetTransient();
+    window.addEventListener('resize',()=>setTrack(baseY(),false),{passive:true});
+    updateProgress();
+    setTrack(0,false);
+    syncPersistent();
     return true;
   }
 
   function boot(){
-    if(initLearningV76())return;
-    const timer=setInterval(()=>{if(initLearningV76())clearInterval(timer)},120);
+    if(initLearningV77())return;
+    const timer=setInterval(()=>{if(initLearningV77())clearInterval(timer)},120);
     setTimeout(()=>clearInterval(timer),6000);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});
