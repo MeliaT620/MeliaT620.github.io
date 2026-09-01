@@ -1,5 +1,4 @@
-/* Mine English v80 — global mobile gutter + Reflection social-state contract.
-   One spacing token for all editorial content; demo devices remain independent visuals. */
+/* Mine English v82 — global mobile gutter + Reflection social-state contract + memory-row alignment. */
 
 :root{
   --mine-mobile-gutter:30px;
@@ -15,6 +14,29 @@
 #reflection .reflection-actions .like-action:not(.active) svg,
 #reflection .reflection-actions .save-action:not(.active) svg{
   fill:none!important;
+}
+
+/* Memory rows: status and POS share one visual row; legends breathe below the curves. */
+#memory .usage-memory .usage-row{
+  position:relative!important;
+}
+#memory .usage-memory .usage-result{
+  top:30px!important;
+  right:18px!important;
+  margin:0!important;
+  line-height:1.2!important;
+}
+#memory .usage-memory .curve-legend{
+  margin-top:15px!important;
+  padding-top:2px!important;
+  line-height:1.35!important;
+}
+/* The item selected for today is important because of its state, not because of a red card fill. */
+#memory .usage-memory .usage-row.fragile.selected{
+  background:transparent!important;
+  background-image:none!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
 }
 
 @media(max-width:720px){
@@ -115,6 +137,15 @@
     padding-left:var(--mine-mobile-gutter)!important;
     padding-right:var(--mine-mobile-gutter)!important;
     box-sizing:border-box!important;
+  }
+
+  /* Mobile memory alignment follows the same row contract. */
+  #memory .usage-memory .usage-result{
+    top:30px!important;
+    right:14px!important;
+  }
+  #memory .usage-memory .curve-legend{
+    margin-top:17px!important;
   }
 }
 
