@@ -1,4 +1,4 @@
-/* Mine English v61 — restore accepted audio hints; only fix Word Overview annotation. */
+/* Mine English v62 — only Word Overview annotation geometry changed. */
 (function(){
   const sprout='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V11"/><path d="M12 13C8.5 13 6 10.5 6 7c3.8 0 6 2.2 6 6Z"/><path d="M12 10c0-3.4 2.5-5.8 6-5.8 0 3.5-2.3 5.8-6 5.8Z"/></svg>';
   const coin='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="5.4"/><path d="M9.4 12h5.2M12 9.4v5.2"/></svg>';
@@ -45,7 +45,7 @@
       return {dot,line,text};
     };
 
-    /* Restore v59 audio annotations exactly: dot inside phone, copy outside. */
+    /* Keep both audio annotations exactly as v61. */
     const placeRight=(el,targetY)=>{
       const parts=resetShell(el,targetY); if(!parts)return;
       const dotSize=parts.dot?.offsetWidth||6;
@@ -59,24 +59,39 @@
       if(parts.text){parts.text.style.setProperty('display','block','important');parts.text.style.setProperty('left',`${Math.round(textLeft)}px`,'important');parts.text.style.setProperty('width',`${Math.round(textWidth)}px`,'important');parts.text.style.setProperty('transform','translateY(-50%)','important');parts.text.style.setProperty('text-align','left','important');}
     };
 
-    /* Only changed part: dot hugs the right edge of lead; line + copy remain inside phone. */
+    /* Word Overview only: lead -> dot -> line -> text, all inside phone, no gaps. */
     const placeOverviewInside=(el,targetY)=>{
       const parts=resetShell(el,targetY); if(!parts)return;
-      const phoneRight=(dr.right-sr.left)-22;
+      const phoneRight=(dr.right-sr.left)-24;
       const dotSize=parts.dot?.offsetWidth||6;
-      const dotX=(wr.right-sr.left)+7;
-      const lineLeft=dotX+dotSize+4;
-      const lineWidth=12;
-      const textLeft=lineLeft+lineWidth+5;
-      const textWidth=Math.max(58,phoneRight-textLeft);
-      if(parts.dot){parts.dot.style.setProperty('display','block','important');parts.dot.style.setProperty('left',`${Math.round(dotX)}px`,'important');parts.dot.style.setProperty('transform','translateY(-50%)','important');}
-      if(parts.line){parts.line.style.setProperty('display','block','important');parts.line.style.setProperty('left',`${Math.round(lineLeft)}px`,'important');parts.line.style.setProperty('width',`${lineWidth}px`,'important');parts.line.style.setProperty('transform','translateY(-50%)','important');}
-      if(parts.text){parts.text.style.setProperty('display','block','important');parts.text.style.setProperty('left',`${Math.round(textLeft)}px`,'important');parts.text.style.setProperty('width',`${Math.round(textWidth)}px`,'important');parts.text.style.setProperty('transform','translateY(-50%)','important');parts.text.style.setProperty('text-align','left','important');}
+      const dotCenterX=(wr.right-sr.left)+6; // hugs the 'd'
+      const dotLeft=dotCenterX-dotSize/2;
+      const lineLeft=dotCenterX;             // starts at dot center: visually connected
+      const lineWidth=14;
+      const textLeft=lineLeft+lineWidth+3;
+      const textWidth=Math.max(66,Math.min(92,phoneRight-textLeft));
+      if(parts.dot){
+        parts.dot.style.setProperty('display','block','important');
+        parts.dot.style.setProperty('left',`${Math.round(dotLeft)}px`,'important');
+        parts.dot.style.setProperty('transform','translateY(-50%)','important');
+      }
+      if(parts.line){
+        parts.line.style.setProperty('display','block','important');
+        parts.line.style.setProperty('left',`${Math.round(lineLeft)}px`,'important');
+        parts.line.style.setProperty('width',`${lineWidth}px`,'important');
+        parts.line.style.setProperty('transform','translateY(-50%)','important');
+      }
+      if(parts.text){
+        parts.text.style.setProperty('display','block','important');
+        parts.text.style.setProperty('left',`${Math.round(textLeft)}px`,'important');
+        parts.text.style.setProperty('width',`${Math.round(textWidth)}px`,'important');
+        parts.text.style.setProperty('transform','translateY(-50%)','important');
+        parts.text.style.setProperty('text-align','left','important');
+      }
     };
 
     placeOverviewInside(stage.querySelector('.callout-overview-v51'),wr.top+wr.height/2);
 
-    /* Restore the previously accepted v59 vertical positions. */
     const upperY=pr.bottom+(rr.top-pr.bottom)*0.74;
     const lowerTarget=ar ? ar.top : (spr.bottom+150);
     const lowerY=spr.bottom+(lowerTarget-spr.bottom)*0.42;
