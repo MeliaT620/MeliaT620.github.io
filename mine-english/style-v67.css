@@ -1,0 +1,342 @@
+/* Mine English v67 — strict editorial hierarchy across all five chapters. */
+:root{
+  --chapter-space:124px;
+  --chapter-space-mobile:88px;
+  --chapter-title:42px;
+  --chapter-title-mobile:30px;
+  --sub-title:20px;
+  --sub-title-mobile:17px;
+  --body-size:13px;
+  --muted:#6f7974;
+  --ink:#1b2521;
+  --green:#15966f;
+  --hairline:rgba(27,37,33,.07);
+}
+
+/* ---------- One chapter system ---------- */
+#memory,
+#learning,
+#human,
+#garden,
+#journey{
+  padding-top:var(--chapter-space)!important;
+  padding-bottom:var(--chapter-space)!important;
+  background:transparent!important;
+  border:0!important;
+}
+#memory + #learning,
+#learning + #human,
+#human + #garden,
+#garden + #journey{
+  border-top:1px solid var(--hairline)!important;
+}
+
+/* Chapter heading = centered, always identical. */
+#memory>.wrap>.section-head,
+#learning>.wrap.learning-intro>.section-head,
+#human>.wrap>.section-head,
+#garden .garden-section-head-v50,
+#journey .journey{
+  text-align:center!important;
+}
+#memory>.wrap>.section-head,
+#learning>.wrap.learning-intro>.section-head,
+#human>.wrap>.section-head,
+#garden .garden-section-head-v50{
+  max-width:720px!important;
+  margin:0 auto 52px!important;
+}
+#memory .section-head .kicker,
+#learning .learning-intro .section-head .kicker,
+#human .human-values-head .kicker,
+#garden .garden-section-head-v50 .kicker,
+#journey .kicker{
+  margin:0 0 13px!important;
+  color:#659783!important;
+  font-size:9px!important;
+  font-weight:760!important;
+  letter-spacing:.16em!important;
+  text-transform:uppercase!important;
+}
+#memory>.wrap>.section-head h2,
+#learning>.wrap.learning-intro>.section-head h2,
+#human>.wrap>.section-head h2,
+#garden .garden-section-head-v50 h2,
+#journey h2{
+  margin:0!important;
+  color:var(--ink)!important;
+  font-size:var(--chapter-title)!important;
+  line-height:1.2!important;
+  letter-spacing:-.038em!important;
+  font-weight:720!important;
+}
+#memory>.wrap>.section-head>p,
+#learning>.wrap.learning-intro>.section-head>p,
+#human>.wrap>.section-head>p,
+#garden .garden-section-head-v50>p,
+#journey .journey-intro-v50{
+  max-width:620px!important;
+  margin:18px auto 0!important;
+  color:var(--muted)!important;
+  font-size:var(--body-size)!important;
+  line-height:1.85!important;
+  text-align:center!important;
+}
+
+/* ---------- Subsections = left aligned and restrained ---------- */
+#memory .usage-memory,
+#memory .repair-principle,
+#learning .learning-device-wrap,
+#learning .coach-preview-outside,
+#learning .learning-reflection-subsection-v65,
+#human .human-sequence,
+#garden .garden-hero-v50,
+#garden .tree-challenge-v50,
+#garden .garden-continuity-v50,
+#garden .garden-keepsake-v50,
+#journey .words-sentences,
+#journey .year-card{
+  max-width:860px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+/* Never use a full-width line to indicate a child subsection. */
+.learning-reflection-subsection-v65,
+#memory .repair-principle,
+#human .human-value-card,
+#garden .tree-challenge-v50,
+#garden .garden-continuity-v50,
+#garden .garden-keepsake-v50,
+#journey .words-sentences,
+#journey .year-card{
+  border-top:0!important;
+}
+
+/* One and only one subheading scale. */
+#memory .memory-head strong,
+#learning .coach-preview-outside h3,
+#reflection .section-head h2,
+#human .human-value-card>h3,
+#human .reward-system-head h3,
+#garden .tree-challenge-v50 h3,
+#garden .garden-continuity-v50 h3,
+#garden .garden-keepsake-v50 h3,
+#journey .year-card strong{
+  font-size:var(--sub-title)!important;
+  line-height:1.42!important;
+  letter-spacing:-.018em!important;
+  font-weight:680!important;
+  color:var(--ink)!important;
+}
+
+/* Reflection is a subsection, not a chapter: deliberately smaller and left-aligned. */
+#reflection{
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+}
+#reflection>.wrap>.section-head{
+  max-width:860px!important;
+  margin:0 auto 32px!important;
+  padding:0!important;
+  text-align:left!important;
+}
+#reflection .section-head .kicker{
+  margin:0 0 9px!important;
+  color:#769a8c!important;
+  font-size:8px!important;
+  letter-spacing:.14em!important;
+}
+#reflection .section-head h2{
+  margin:0!important;
+  text-align:left!important;
+}
+#reflection .section-head p{
+  max-width:660px!important;
+  margin:10px 0 0!important;
+  text-align:left!important;
+  color:var(--muted)!important;
+  font-size:var(--body-size)!important;
+  line-height:1.8!important;
+}
+.learning-reflection-subsection-v65{
+  max-width:none!important;
+  margin-top:86px!important;
+  padding-top:0!important;
+}
+
+/* ---------- Flatten nested-card feeling ---------- */
+#human .human-value-card,
+#garden .tree-challenge-v50,
+#garden .garden-continuity-v50,
+#garden .garden-keepsake-v50,
+#journey .year-card,
+#journey .words-sentences{
+  border:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  border-radius:0!important;
+}
+#human .human-value-card{
+  padding:34px 0!important;
+  margin:0!important;
+  border-bottom:1px solid rgba(27,37,33,.055)!important;
+}
+#human .human-value-card:last-child{border-bottom:0!important;}
+#human .human-value-card>span,
+#garden .tree-challenge-head-v50 span,
+#garden .garden-continuity-v50>span,
+#garden .garden-keepsake-v50>span{
+  font-size:8px!important;
+  letter-spacing:.14em!important;
+  color:#6b9a89!important;
+}
+#human .human-value-card>h3{margin:9px 0 12px!important;}
+#human .human-value-card>p{font-size:var(--body-size)!important;line-height:1.82!important;}
+
+/* Reward area: keep mechanics visible but not another card inside a card. */
+#human .reward-system-integrated{
+  margin:24px 0 0!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  border-radius:0!important;
+}
+#human .reward-system-head{margin-bottom:22px!important;}
+#human .reward-dual{gap:28px!important;}
+#human .reward-mode{
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#human .reward-mode h4{font-size:15px!important;line-height:1.5!important;}
+#human .reward-mode p{font-size:12px!important;line-height:1.78!important;}
+#human .reward-mode>.reward-flow{
+  margin:16px 0 0!important;
+  width:100%!important;
+  border-top:1px solid rgba(27,37,33,.05)!important;
+  padding-top:12px!important;
+}
+#human .reward-principle-v40{margin-top:24px!important;}
+
+/* Memory child content: no competing giant headings. */
+#memory .usage-memory{padding-top:4px!important;}
+#memory .memory-head{margin-bottom:22px!important;}
+#memory .memory-head small{font-size:8px!important;letter-spacing:.14em!important;}
+#memory .usage-row{border-radius:18px!important;}
+#memory .repair-principle{margin-top:38px!important;padding-top:0!important;}
+
+/* Garden: one visual + one compact definition list, then calm text sections. */
+#garden .garden-hero-v50{
+  padding:0!important;
+  gap:42px!important;
+  border:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+}
+#garden .garden-visual-v65{
+  height:340px!important;
+  border-radius:24px!important;
+  overflow:visible!important;
+  padding-top:28px!important;
+}
+#garden .garden-visual-v65 .garden-tree-v50{
+  bottom:64px!important;
+  transform:translateX(-50%) scale(.98)!important;
+}
+#garden .garden-principles-v65 article{
+  grid-template-columns:74px 1fr!important;
+  padding:15px 0!important;
+  border-bottom:1px solid rgba(27,37,33,.055)!important;
+}
+#garden .garden-principles-v65 article:last-child{border-bottom:0!important;}
+#garden .garden-principles-v65 strong{font-size:15px!important;}
+#garden .garden-principles-v65 p{font-size:12px!important;}
+#garden .tree-challenge-v50,
+#garden .garden-continuity-v50,
+#garden .garden-keepsake-v50{
+  padding:34px 0 0!important;
+  margin-top:38px!important;
+}
+#garden .tree-challenge-v50 + .garden-continuity-v50,
+#garden .garden-continuity-v50 + .garden-keepsake-v50{
+  margin-top:44px!important;
+}
+#garden .tree-challenge-head-v50{
+  align-items:baseline!important;
+  gap:24px!important;
+}
+#garden .tree-challenge-points-v50{margin-top:16px!important;}
+
+/* Journey: title system + content, no oversized competing widgets. */
+#journey .journey{
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#journey .journey-intro-v50{margin-bottom:38px!important;}
+#journey .words-sentences{
+  margin-top:0!important;
+  padding:18px 0!important;
+  border-bottom:1px solid rgba(27,37,33,.055)!important;
+}
+#journey .journey-note{margin-top:22px!important;}
+#journey .year-card{
+  margin-top:46px!important;
+  padding:0!important;
+  gap:34px!important;
+}
+#journey blockquote{margin-top:48px!important;}
+
+/* ---------- Mobile ---------- */
+@media(max-width:720px){
+  #memory,#learning,#human,#garden,#journey{
+    padding-top:var(--chapter-space-mobile)!important;
+    padding-bottom:var(--chapter-space-mobile)!important;
+  }
+  #memory>.wrap>.section-head,
+  #learning>.wrap.learning-intro>.section-head,
+  #human>.wrap>.section-head,
+  #garden .garden-section-head-v50{
+    margin-bottom:38px!important;
+    padding-inline:8px!important;
+  }
+  #memory>.wrap>.section-head h2,
+  #learning>.wrap.learning-intro>.section-head h2,
+  #human>.wrap>.section-head h2,
+  #garden .garden-section-head-v50 h2,
+  #journey h2{
+    font-size:var(--chapter-title-mobile)!important;
+  }
+  #memory>.wrap>.section-head>p,
+  #learning>.wrap.learning-intro>.section-head>p,
+  #human>.wrap>.section-head>p,
+  #garden .garden-section-head-v50>p,
+  #journey .journey-intro-v50,
+  #reflection .section-head p{
+    font-size:12px!important;
+  }
+  #memory .memory-head strong,
+  #learning .coach-preview-outside h3,
+  #reflection .section-head h2,
+  #human .human-value-card>h3,
+  #human .reward-system-head h3,
+  #garden .tree-challenge-v50 h3,
+  #garden .garden-continuity-v50 h3,
+  #garden .garden-keepsake-v50 h3,
+  #journey .year-card strong{
+    font-size:var(--sub-title-mobile)!important;
+  }
+  .learning-reflection-subsection-v65{margin-top:64px!important;}
+  #reflection>.wrap>.section-head{margin-bottom:26px!important;padding-inline:8px!important;}
+  #human .human-value-card{padding:28px 0!important;}
+  #human .reward-dual{gap:24px!important;}
+  #garden .garden-hero-v50{gap:26px!important;}
+  #garden .garden-visual-v65{height:260px!important;padding-top:20px!important;overflow:visible!important;}
+  #garden .garden-visual-v65 .garden-tree-v50{bottom:48px!important;transform:translateX(-50%) scale(.9)!important;}
+  #garden .tree-challenge-v50,#garden .garden-continuity-v50,#garden .garden-keepsake-v50{padding-top:28px!important;margin-top:32px!important;}
+  #journey .year-card{margin-top:38px!important;gap:24px!important;}
+}
