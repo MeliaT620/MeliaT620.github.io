@@ -1,0 +1,468 @@
+/* Mine English v70 — one editorial architecture: Chapter > Subsection > Body > Inserted component. */
+:root{
+  --v70-ink:#1b2521;
+  --v70-text:#69736e;
+  --v70-muted:#8b9590;
+  --v70-green:#15966f;
+  --v70-line:rgba(27,37,33,.07);
+  --v70-soft:rgba(247,251,249,.68);
+  --v70-warm:rgba(255,250,236,.46);
+  --v70-warm-line:rgba(195,153,58,.15);
+  --v70-chapter-width:720px;
+  --v70-content-width:860px;
+  --v70-chapter-title:40px;
+  --v70-sub-title:20px;
+  --v70-body:13px;
+  --v70-section-space:116px;
+  --v70-sub-space:64px;
+}
+
+/* =========================================================
+   0. GLOBAL RHYTHM
+   ========================================================= */
+#memory,#learning,#human,#garden,#journey{
+  position:relative!important;
+  padding:var(--v70-section-space) 0!important;
+  margin:0!important;
+  border:0!important;
+  background:#fff!important;
+}
+#learning::before,#human::before,#garden::before,#journey::before{
+  content:''!important;
+  position:absolute!important;
+  top:0!important;
+  left:50%!important;
+  width:44px!important;
+  height:1px!important;
+  transform:translateX(-50%)!important;
+  background:var(--v70-line)!important;
+}
+
+/* Hero CTA must keep the same appearance after visit/click. */
+.hero-link,.hero-link:link,.hero-link:visited,.hero-link:hover,.hero-link:active,.hero-link:focus,.hero-link:focus-visible{
+  background:linear-gradient(135deg,rgba(226,249,242,.72),rgba(246,253,250,.86))!important;
+  border:1px solid rgba(21,150,111,.11)!important;
+  color:#397764!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.86),0 10px 30px rgba(34,93,73,.055)!important;
+  text-decoration:none!important;
+  outline:none!important;
+}
+.hero-link b,.hero-link:visited b,.hero-link:active b{color:#58ab91!important;}
+
+/* =========================================================
+   1. CHAPTER = H2
+   Only chapter headers are centered.
+   ========================================================= */
+#memory>.wrap>.section-head,
+#learning>.wrap.learning-intro>.section-head,
+#human>.wrap>.section-head,
+#garden .garden-section-head-v70,
+#journey .journey-head-v70{
+  max-width:var(--v70-chapter-width)!important;
+  margin:0 auto 58px!important;
+  padding:0!important;
+  text-align:center!important;
+}
+
+#memory .section-head .kicker,
+#learning>.wrap.learning-intro>.section-head .kicker,
+#human>.wrap>.section-head .kicker,
+#garden .garden-section-head-v70 .kicker,
+#journey .journey-head-v70 .kicker{
+  display:block!important;
+  margin:0 0 12px!important;
+  color:#6d9788!important;
+  font-size:8.5px!important;
+  line-height:1.2!important;
+  font-weight:760!important;
+  letter-spacing:.16em!important;
+  text-transform:uppercase!important;
+}
+
+#memory>.wrap>.section-head h2,
+#learning>.wrap.learning-intro>.section-head h2,
+#human>.wrap>.section-head h2,
+#garden .garden-section-head-v70 h2,
+#journey .journey-head-v70 h2{
+  margin:0!important;
+  color:var(--v70-ink)!important;
+  font-size:var(--v70-chapter-title)!important;
+  line-height:1.22!important;
+  font-weight:720!important;
+  letter-spacing:-.038em!important;
+  text-align:center!important;
+}
+
+#memory>.wrap>.section-head>p,
+#learning>.wrap.learning-intro>.section-head>p,
+#human>.wrap>.section-head>p,
+#garden .garden-section-head-v70>p,
+#journey .journey-head-v70>p{
+  max-width:620px!important;
+  margin:17px auto 0!important;
+  color:var(--v70-text)!important;
+  font-size:var(--v70-body)!important;
+  line-height:1.82!important;
+  text-align:center!important;
+}
+
+/* =========================================================
+   2. SUBSECTION = H3
+   Every real child section uses exactly this style.
+   ========================================================= */
+.editorial-stack-v70,
+.editorial-subsection-v70,
+.learning-note-v70,
+.garden-definitions-v70,
+.words-sentences-v70,
+.journey-note-v70,
+.year-card-v70,
+.journey-quote-v70{
+  max-width:var(--v70-content-width)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  box-sizing:border-box!important;
+}
+
+.editorial-subsection-v70{margin-top:var(--v70-sub-space)!important;}
+.editorial-stack-v70>.editorial-subsection-v70:first-child{margin-top:0!important;}
+
+.editorial-subhead-v70{
+  max-width:720px!important;
+  margin:0!important;
+  padding:0!important;
+  text-align:left!important;
+}
+.editorial-subhead-v70>span{
+  display:block!important;
+  margin:0 0 9px!important;
+  color:#6f9788!important;
+  font-size:8px!important;
+  line-height:1.2!important;
+  font-weight:760!important;
+  letter-spacing:.14em!important;
+  text-transform:uppercase!important;
+  text-align:left!important;
+}
+.editorial-subhead-v70 h3{
+  margin:0!important;
+  color:var(--v70-ink)!important;
+  font-size:var(--v70-sub-title)!important;
+  line-height:1.44!important;
+  font-weight:680!important;
+  letter-spacing:-.018em!important;
+  text-align:left!important;
+}
+.editorial-subhead-v70 p,
+.editorial-subsection-v70>p{
+  max-width:720px!important;
+  margin:11px 0 0!important;
+  color:var(--v70-text)!important;
+  font-size:var(--v70-body)!important;
+  line-height:1.82!important;
+  text-align:left!important;
+}
+
+/* =========================================================
+   3. LEARNING / REFLECTION = peer subsections
+   ========================================================= */
+#learning .learning-subsection-v70{margin-top:0!important;margin-bottom:26px!important;}
+#learning .learning-device-wrap{max-width:var(--v70-content-width)!important;margin-left:auto!important;margin-right:auto!important;}
+#learning .learning-note-v70{
+  margin-top:38px!important;
+  padding:18px 20px!important;
+  border-radius:16px!important;
+  background:var(--v70-soft)!important;
+  border:1px solid rgba(27,37,33,.05)!important;
+  text-align:left!important;
+}
+#learning .learning-note-v70>span{
+  display:block!important;
+  margin-bottom:6px!important;
+  color:#7d938a!important;
+  font-size:7.5px!important;
+  font-weight:760!important;
+  letter-spacing:.13em!important;
+}
+#learning .learning-note-v70 p{
+  margin:0!important;
+  color:var(--v70-text)!important;
+  font-size:12px!important;
+  line-height:1.75!important;
+  text-align:left!important;
+}
+#learning .learning-note-v70 strong{color:#4e5d56!important;font-weight:650!important;}
+#reflection.reflection-subsection-v70{margin-top:var(--v70-sub-space)!important;padding:0!important;border:0!important;background:transparent!important;}
+#reflection>.wrap{max-width:none!important;}
+#reflection .editorial-subhead-v70{max-width:var(--v70-content-width)!important;margin:0 auto 30px!important;}
+#reflection .reflection-stage-wrap{margin-top:0!important;}
+
+/* =========================================================
+   4. HUMAN CARE — three H3s, everything else is body/component.
+   ========================================================= */
+#human .editorial-stack-v70{margin-top:0!important;}
+#human .human-subsection-v70{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;}
+#human .human-subsection-v70>p{margin-top:13px!important;}
+#human .human-principles-v70{
+  max-width:700px!important;
+  margin:20px 0!important;
+  padding:0!important;
+  list-style:none!important;
+}
+#human .human-principles-v70 li{
+  position:relative!important;
+  margin:7px 0!important;
+  padding-left:17px!important;
+  color:#456f60!important;
+  font-size:12.5px!important;
+  line-height:1.65!important;
+}
+#human .human-principles-v70 li::before{
+  content:'•'!important;
+  position:absolute!important;
+  left:1px!important;
+  top:-1px!important;
+  color:var(--v70-green)!important;
+  font-size:17px!important;
+}
+#human blockquote{
+  max-width:700px!important;
+  margin:20px 0 0!important;
+  padding:0!important;
+  border:0!important;
+  color:#56766a!important;
+  font-size:12px!important;
+  line-height:1.75!important;
+  text-align:left!important;
+}
+
+/* Reward explanation is an inserted component, not another heading hierarchy. */
+#human .reward-explainer-v70{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:16px!important;
+  margin-top:26px!important;
+}
+#human .reward-item-v70{
+  display:grid!important;
+  grid-template-columns:38px 1fr!important;
+  gap:13px!important;
+  padding:22px!important;
+  border-radius:18px!important;
+  border:1px solid rgba(27,37,33,.055)!important;
+  background:rgba(248,251,249,.62)!important;
+  box-shadow:none!important;
+  text-align:left!important;
+}
+#human .reward-coins-v70{
+  background:var(--v70-warm)!important;
+  border-color:var(--v70-warm-line)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.86)!important;
+}
+#human .reward-item-mark-v70{
+  width:34px!important;
+  height:34px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border-radius:50%!important;
+  box-sizing:border-box!important;
+  font-size:10px!important;
+  font-weight:760!important;
+}
+#human .reward-growth-v70 .reward-item-mark-v70{background:rgba(21,150,111,.09)!important;color:var(--v70-green)!important;}
+#human .reward-coins-v70 .reward-item-mark-v70{background:rgba(255,248,226,.68)!important;color:#9b7b2d!important;border:1px solid rgba(195,153,58,.15)!important;}
+#human .reward-item-v70 small{
+  display:block!important;
+  margin:1px 0 6px!important;
+  color:#81918a!important;
+  font-size:7.5px!important;
+  font-weight:760!important;
+  letter-spacing:.11em!important;
+  text-align:left!important;
+}
+#human .reward-item-v70 strong{
+  display:block!important;
+  color:#33443d!important;
+  font-size:14px!important;
+  line-height:1.45!important;
+  font-weight:660!important;
+  text-align:left!important;
+}
+#human .reward-item-v70 p{
+  margin:8px 0 0!important;
+  color:var(--v70-text)!important;
+  font-size:11.5px!important;
+  line-height:1.75!important;
+  text-align:left!important;
+}
+#human .reward-flow-v70{
+  display:flex!important;
+  align-items:center!important;
+  flex-wrap:wrap!important;
+  gap:5px!important;
+  margin-top:14px!important;
+  text-align:left!important;
+}
+#human .reward-flow-v70 span{
+  padding:4px 7px!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.64)!important;
+  border:1px solid rgba(27,37,33,.05)!important;
+  color:#65716c!important;
+  font-size:8px!important;
+  line-height:1!important;
+}
+#human .reward-flow-v70 i{font-style:normal!important;color:#a1aaa5!important;font-size:9px!important;}
+#human .reward-coins-v70 .reward-flow-v70 span:last-child{background:rgba(255,249,232,.58)!important;border-color:rgba(195,153,58,.14)!important;color:#8f742d!important;}
+#human .reward-conclusion-v70,
+#human .human-emphasis-v70{
+  max-width:720px!important;
+  margin:20px 0 0!important;
+  color:#52665e!important;
+  font-size:12px!important;
+  line-height:1.75!important;
+  text-align:left!important;
+}
+
+/* =========================================================
+   5. MY GARDEN — text-first, no decorative tree card.
+   ========================================================= */
+#garden .garden-definitions-v70{
+  display:grid!important;
+  grid-template-columns:repeat(4,1fr)!important;
+  gap:26px!important;
+  margin-top:0!important;
+  margin-bottom:0!important;
+  padding:0!important;
+}
+#garden .garden-definitions-v70>div{margin:0!important;padding:0!important;}
+#garden .garden-definitions-v70 dt{
+  margin:0 0 6px!important;
+  color:#326d59!important;
+  font-size:15px!important;
+  line-height:1.3!important;
+  font-weight:680!important;
+}
+#garden .garden-definitions-v70 dd{
+  margin:0!important;
+  color:var(--v70-text)!important;
+  font-size:11.5px!important;
+  line-height:1.72!important;
+}
+#garden .garden-stack-v70{margin-top:72px!important;}
+#garden .garden-subsection-v70{padding:0!important;border:0!important;background:transparent!important;}
+#garden .garden-title-row-v70{
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:space-between!important;
+  gap:28px!important;
+}
+#garden .garden-price-v70{
+  flex:0 0 auto!important;
+  color:#28705a!important;
+  font-size:29px!important;
+  line-height:1!important;
+  font-weight:720!important;
+  white-space:nowrap!important;
+}
+#garden .garden-price-v70 small{font-size:9px!important;color:#8d9792!important;font-weight:600!important;}
+#garden .garden-meta-v70{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:7px!important;
+  margin-top:17px!important;
+}
+#garden .garden-meta-v70 span{
+  padding:6px 9px!important;
+  border-radius:999px!important;
+  background:var(--v70-soft)!important;
+  border:1px solid rgba(27,37,33,.05)!important;
+  color:#5d766d!important;
+  font-size:8px!important;
+  line-height:1!important;
+}
+#garden blockquote{
+  max-width:700px!important;
+  margin:18px 0 0!important;
+  padding:0!important;
+  border:0!important;
+  color:#4e7466!important;
+  font-size:12px!important;
+  line-height:1.75!important;
+  text-align:left!important;
+}
+
+/* =========================================================
+   6. WORDS -> REAL LANGUAGE
+   ========================================================= */
+#journey .words-sentences-v70{
+  margin-top:0!important;
+  padding:18px 20px!important;
+  border-radius:17px!important;
+  background:var(--v70-soft)!important;
+  border:1px solid rgba(27,37,33,.05)!important;
+  box-shadow:none!important;
+}
+#journey .journey-note-v70{
+  margin-top:20px!important;
+  color:var(--v70-text)!important;
+  font-size:var(--v70-body)!important;
+  line-height:1.82!important;
+  text-align:left!important;
+}
+#journey .year-card-v70{
+  margin-top:42px!important;
+  padding:22px 24px!important;
+  border-radius:18px!important;
+  background:rgba(249,251,250,.64)!important;
+  border:1px solid rgba(27,37,33,.05)!important;
+  box-shadow:none!important;
+}
+#journey .year-card-v70 strong{font-size:18px!important;line-height:1.2!important;}
+#journey .journey-quote-v70{
+  margin-top:38px!important;
+  padding:0!important;
+  border:0!important;
+  color:#4e6c61!important;
+  text-align:left!important;
+}
+#journey .signature{max-width:var(--v70-content-width)!important;margin:28px auto 0!important;text-align:left!important;}
+
+/* =========================================================
+   7. MEMORY — preserve its visual, keep it under the same chapter rhythm.
+   ========================================================= */
+#memory .usage-memory,#memory .repair-principle{max-width:var(--v70-content-width)!important;margin-left:auto!important;margin-right:auto!important;}
+#memory .usage-memory{margin-top:0!important;}
+#memory .repair-principle{margin-top:36px!important;}
+
+@media(max-width:720px){
+  :root{
+    --v70-chapter-title:29px;
+    --v70-sub-title:17px;
+    --v70-body:12px;
+    --v70-section-space:86px;
+    --v70-sub-space:50px;
+  }
+  #memory>.wrap>.section-head,#learning>.wrap.learning-intro>.section-head,#human>.wrap>.section-head,#garden .garden-section-head-v70,#journey .journey-head-v70{margin-bottom:42px!important;padding-inline:8px!important;}
+  .editorial-subsection-v70,.learning-note-v70,.garden-definitions-v70,.words-sentences-v70,.journey-note-v70,.year-card-v70,.journey-quote-v70{max-width:calc(100% - 32px)!important;}
+  .editorial-subhead-v70{max-width:none!important;}
+  #learning .learning-subsection-v70{margin-bottom:20px!important;}
+  #learning .learning-note-v70{margin-top:30px!important;padding:15px 16px!important;}
+  #reflection .editorial-subhead-v70{max-width:calc(100% - 32px)!important;margin-bottom:26px!important;}
+  #human .reward-explainer-v70{grid-template-columns:1fr!important;gap:12px!important;margin-top:22px!important;}
+  #human .reward-item-v70{grid-template-columns:34px 1fr!important;padding:18px!important;}
+  #garden .garden-definitions-v70{grid-template-columns:1fr 1fr!important;gap:22px 24px!important;}
+  #garden .garden-stack-v70{margin-top:58px!important;}
+  #garden .garden-title-row-v70{align-items:flex-start!important;gap:14px!important;}
+  #garden .garden-price-v70{font-size:23px!important;}
+  #journey .words-sentences-v70{padding:15px 12px!important;}
+  #journey .year-card-v70{padding:18px!important;}
+}
+
+@media(max-width:480px){
+  #garden .garden-definitions-v70{grid-template-columns:1fr!important;gap:18px!important;}
+  #garden .garden-title-row-v70{display:block!important;}
+  #garden .garden-price-v70{display:block!important;margin-top:14px!important;}
+  #human .reward-flow-v70{gap:4px!important;}
+}
