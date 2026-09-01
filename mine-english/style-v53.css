@@ -1,28 +1,47 @@
-/* Mine English v54 — Reflection content follows a compact vertical flow. */
-:root{--reflection-gap:22px;--reflection-line:rgba(28,48,40,.075)}
+/* Mine English v55 — Reflection root layout reset. */
+:root{--reflection-gap:20px;--reflection-line:rgba(28,48,40,.075)}
 
-/* Critical fix: older styles were vertically centering / distributing the card.
-   Make the knowledge content a normal top-down flow below the progress bar. */
+/* HARD RESET: old Reflection layers positioned the card itself vertically.
+   Pin the content canvas to the phone screen; all spacing below is ours. */
+#reflection .reflection-screen{position:relative!important;overflow:hidden!important;}
 #reflection .reflection-card{
+  position:absolute!important;
+  inset:0!important;
+  top:0!important;
+  right:0!important;
+  bottom:0!important;
+  left:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
   display:block!important;
-  padding:0 27px 0!important;
-  box-sizing:border-box!important;
-}
-#reflection .reflection-card .demo-upper{
-  position:relative!important;
   transform:none!important;
   margin:0!important;
+  padding:0 27px!important;
+  box-sizing:border-box!important;
+  align-items:initial!important;
+  justify-content:initial!important;
+}
+
+/* Progress owns the top; content begins immediately after one deliberate gap. */
+#reflection .reflection-card .demo-upper{
+  position:relative!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  transform:none!important;
+  margin:94px 0 0!important;
   padding:0!important;
 }
-#reflection .reflection-card .sentence-line{margin:0!important;padding:0!important}
-#reflection .reflection-example{display:block!important}
-#reflection .reflection-translation{margin:6px 0 0!important;padding:0!important;line-height:1.45!important}
+#reflection .reflection-card .sentence-line{margin:0!important;padding:0!important;}
+#reflection .reflection-example{display:block!important;}
+#reflection .reflection-translation{margin:6px 0 0!important;padding:0!important;line-height:1.45!important;}
 
-/* The whole content stack starts a modest, fixed distance below the progress bar. */
-#reflection .reflection-card .demo-upper{margin-top:86px!important}
-
-/* Equal breathing room above and below the divider. */
+/* Divider = exact equal breathing room above and below. */
 #reflection .reflection-card .support-divider{
+  position:relative!important;
   display:block!important;
   width:100%!important;
   height:1px!important;
@@ -30,22 +49,35 @@
   padding:0!important;
   border:0!important;
   background:var(--reflection-line)!important;
+  transform:none!important;
 }
 #reflection .reflection-card .reflection-support{
   position:relative!important;
+  top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
   transform:none!important;
   margin:0!important;
   padding:0!important;
 }
-#reflection .reflection-card .support-word{margin:0 0 11px!important;padding:0!important}
+#reflection .reflection-card .support-word{margin:0 0 11px!important;padding:0!important;}
 
-/* Keep annotations readable; JS places them against actual targets. */
-#reflection .reflection-stage-v51 .reflection-callout{display:flex!important;align-items:center!important;gap:4px!important;transform:none!important;margin:0!important;right:auto!important;z-index:30!important;pointer-events:none!important}
-#reflection .reflection-stage-v51 .reflection-callout small{display:block!important;white-space:nowrap!important;font-size:8.5px!important;line-height:1.42!important;color:#68756f!important;font-weight:560!important;letter-spacing:0!important}
-#reflection .reflection-stage-v51 .reflection-callout .callout-line{width:28px!important;min-width:28px!important;height:1px!important;background:rgba(83,113,101,.36)!important;transform:none!important}
-#reflection .reflection-stage-v51 .reflection-callout .callout-dot{width:6px!important;height:6px!important;min-width:6px!important;min-height:6px!important;border-radius:50%!important;background:#8ba59a!important;box-shadow:none!important;transform:none!important}
-#reflection .callout-overview-v51 small{order:0!important;text-align:right!important}#reflection .callout-overview-v51 .callout-line{order:1!important}#reflection .callout-overview-v51 .callout-dot{order:2!important}
-#reflection .callout-audio-v51 .callout-dot,#reflection .callout-word-audio-v51 .callout-dot{order:0!important}#reflection .callout-audio-v51 .callout-line,#reflection .callout-word-audio-v51 .callout-line{order:1!important}#reflection .callout-audio-v51 small,#reflection .callout-word-audio-v51 small{order:2!important;text-align:left!important}
+/* Annotation styling; geometry JS supplies actual x/y. */
+#reflection .reflection-stage-v51 .reflection-callout{display:flex!important;align-items:center!important;gap:4px!important;transform:none!important;margin:0!important;right:auto!important;z-index:30!important;pointer-events:none!important;}
+#reflection .reflection-stage-v51 .reflection-callout small{display:block!important;white-space:nowrap!important;font-size:8.3px!important;line-height:1.42!important;color:#68756f!important;font-weight:560!important;letter-spacing:0!important;}
+#reflection .reflection-stage-v51 .reflection-callout .callout-line{width:26px!important;min-width:26px!important;height:1px!important;background:rgba(83,113,101,.36)!important;transform:none!important;}
+#reflection .reflection-stage-v51 .reflection-callout .callout-dot{width:6px!important;height:6px!important;min-width:6px!important;min-height:6px!important;border-radius:50%!important;background:#8ba59a!important;box-shadow:none!important;transform:none!important;}
+#reflection .callout-overview-v51 small{order:0!important;text-align:right!important;}#reflection .callout-overview-v51 .callout-line{order:1!important;}#reflection .callout-overview-v51 .callout-dot{order:2!important;}
+#reflection .callout-audio-v51 .callout-dot,#reflection .callout-word-audio-v51 .callout-dot{order:0!important;}#reflection .callout-audio-v51 .callout-line,#reflection .callout-word-audio-v51 .callout-line{order:1!important;}#reflection .callout-audio-v51 small,#reflection .callout-word-audio-v51 small{order:2!important;text-align:left!important;}
 
-@media(max-width:720px){:root{--reflection-gap:20px}#reflection .reflection-card{padding-left:25px!important;padding-right:25px!important}#reflection .reflection-card .demo-upper{margin-top:78px!important}#reflection .reflection-stage-v51 .reflection-callout small{font-size:7.8px!important}#reflection .reflection-stage-v51 .reflection-callout .callout-line{width:18px!important;min-width:18px!important}}
-@media(max-width:430px){:root{--reflection-gap:18px}#reflection .reflection-card .demo-upper{margin-top:72px!important}#reflection .reflection-stage-v51 .reflection-callout small{font-size:7.4px!important}#reflection .reflection-stage-v51 .reflection-callout .callout-line{width:14px!important;min-width:14px!important}}
+@media(max-width:720px){
+  :root{--reflection-gap:19px;}
+  #reflection .reflection-card{padding:0 25px!important;}
+  #reflection .reflection-card .demo-upper{margin-top:88px!important;}
+  #reflection .reflection-stage-v51 .reflection-callout small{font-size:7.7px!important;}
+  #reflection .reflection-stage-v51 .reflection-callout .callout-line{width:18px!important;min-width:18px!important;}
+}
+@media(max-width:430px){
+  :root{--reflection-gap:18px;}
+  #reflection .reflection-card .demo-upper{margin-top:84px!important;}
+  #reflection .reflection-stage-v51 .reflection-callout small{font-size:7.3px!important;}
+  #reflection .reflection-stage-v51 .reflection-callout .callout-line{width:14px!important;min-width:14px!important;}
+}
