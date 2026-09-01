@@ -1,4 +1,4 @@
-/* Mine English v78 — two-page Learning reel, aligned page rhythm + spatial audio. */
+/* Mine English v79 — three-page Learning reel, Review Complete + slightly deeper shared highlight. */
 
 /* ---------- Reel geometry ---------- */
 #learning .learning-reel-v77{touch-action:none!important;overscroll-behavior:contain!important;}
@@ -34,10 +34,22 @@
 #learning .learning-screen-v74.vertical-settling::before,
 #learning .learning-screen-v74.vertical-settling::after{opacity:0!important;}
 
-/* Progress: page 1 = half, page 2 = full; JS owns the actual width. */
+/* Progress is owned by JS: 1/3 -> 2/3 -> 3/3. */
 #learning .learning-progress-v77 span{
-  width:50%;
+  width:33.333%;
   transition:width .28s cubic-bezier(.22,.72,.22,1)!important;
+}
+
+/* ---------- Shared highlight ----------
+   Same accepted 17–84% marker geometry, only a little deeper than v76. */
+#learning .learning-upper-v74 .reflection-example mark,
+#reflection .reflection-example mark{
+  box-shadow:none!important;
+  background:linear-gradient(to bottom,transparent 17%,rgba(40,203,154,.175) 17%,rgba(40,203,154,.175) 84%,transparent 84%)!important;
+  border-radius:3px!important;
+}
+#learning .learning-express-page-v77[data-choice] .express-blank-group-v77{
+  background:linear-gradient(to bottom,transparent 17%,rgba(40,203,154,.175) 17%,rgba(40,203,154,.175) 84%,transparent 84%)!important;
 }
 
 /* ---------- Page-scoped answer reveal ---------- */
@@ -118,10 +130,7 @@
 #learning .express-blank-word-v77[data-word="team"]{min-width:2.42em!important;}
 #learning .express-blank-text-v77{visibility:hidden!important;white-space:nowrap!important;}
 
-/* After judgment, reveal the WHOLE natural unit with the same accepted Reflection highlight. */
-#learning .learning-express-page-v77[data-choice] .express-blank-group-v77{
-  background:linear-gradient(to bottom,transparent 17%,rgba(40,203,154,.14) 17%,rgba(40,203,154,.14) 84%,transparent 84%)!important;
-}
+/* After judgment, reveal the WHOLE natural unit. */
 #learning .learning-express-page-v77[data-choice] .express-blank-word-v77{
   min-width:0!important;
   width:auto!important;
@@ -141,13 +150,146 @@
 /* The active page's low-presence judgment labels are slightly easier to read. */
 #learning .learning-page-v77 .learning-gesture-v74>span{transition:opacity .12s ease,transform .12s ease!important;}
 
+/* ---------- Page 03 · Review Complete ---------- */
+#learning .learning-complete-page-v79{background:#fcfefd!important;}
+#learning .learning-complete-v79{
+  position:absolute!important;
+  inset:0!important;
+  box-sizing:border-box!important;
+  padding:82px 28px 28px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  text-align:center!important;
+}
+#learning .learning-complete-kicker-v79{
+  display:block!important;
+  margin:0 0 17px!important;
+  color:#7f9e92!important;
+  font-size:6.4px!important;
+  line-height:1!important;
+  font-weight:760!important;
+  letter-spacing:.15em!important;
+}
+#learning .learning-complete-check-v79{
+  width:34px!important;
+  height:34px!important;
+  display:grid!important;
+  place-items:center!important;
+  margin:0 auto 14px!important;
+  border-radius:50%!important;
+  background:rgba(21,150,111,.09)!important;
+  color:#15966f!important;
+  font-size:15px!important;
+  line-height:1!important;
+  font-weight:720!important;
+}
+#learning .learning-complete-v79 h3{
+  margin:0!important;
+  color:#1b2521!important;
+  font-size:17px!important;
+  line-height:1.35!important;
+  font-weight:700!important;
+  letter-spacing:-.025em!important;
+}
+#learning .learning-complete-summary-v79{
+  max-width:190px!important;
+  margin:9px auto 0!important;
+  color:#6f7b75!important;
+  font-size:8.2px!important;
+  line-height:1.65!important;
+}
+#learning .learning-seed-reward-v79{
+  width:100%!important;
+  max-width:194px!important;
+  margin:22px auto 0!important;
+  padding:13px 15px!important;
+  box-sizing:border-box!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:11px!important;
+  border:1px solid rgba(21,150,111,.075)!important;
+  border-radius:16px!important;
+  background:linear-gradient(135deg,rgba(239,250,246,.82),rgba(249,253,251,.92))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.88)!important;
+  text-align:left!important;
+}
+#learning .learning-seed-mark-v79{
+  flex:0 0 35px!important;
+  width:35px!important;
+  height:35px!important;
+  display:grid!important;
+  place-items:center!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:rgba(21,150,111,.10)!important;
+  color:#15966f!important;
+  box-shadow:none!important;
+}
+#learning .learning-seed-mark-v79 svg{
+  width:19px!important;
+  height:19px!important;
+  fill:none!important;
+  stroke:currentColor!important;
+  stroke-width:1.75!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+}
+#learning .learning-seed-copy-v79{min-width:0!important;}
+#learning .learning-seed-copy-v79 small{
+  display:block!important;
+  margin:0 0 4px!important;
+  color:#76a08f!important;
+  font-size:5.8px!important;
+  line-height:1!important;
+  font-weight:760!important;
+  letter-spacing:.12em!important;
+}
+#learning .learning-seed-copy-v79 strong{
+  display:block!important;
+  color:#26725a!important;
+  font-size:13px!important;
+  line-height:1.1!important;
+  font-weight:760!important;
+  letter-spacing:-.015em!important;
+}
+#learning .learning-seed-copy-v79 span{
+  display:block!important;
+  margin-top:4px!important;
+  color:#7d8b84!important;
+  font-size:6.7px!important;
+  line-height:1.3!important;
+}
+#learning .learning-complete-care-v79{
+  max-width:195px!important;
+  margin:20px auto 0!important;
+  color:#64736c!important;
+  font-size:8px!important;
+  line-height:1.72!important;
+}
+#learning .learning-complete-back-v79{
+  position:absolute!important;
+  left:50%!important;
+  bottom:21px!important;
+  transform:translateX(-50%)!important;
+  color:#a6afaa!important;
+  font-size:6.5px!important;
+  line-height:1!important;
+  font-weight:520!important;
+  white-space:nowrap!important;
+}
+
 @media(max-width:720px){
   #learning .learning-express-upper-v77{margin-top:88px!important;}
   #learning .learning-express-cue-v77{font-size:8.8px!important;}
+  #learning .learning-complete-v79{padding-top:76px!important;}
 }
 
 @media(max-width:430px){
   #learning .learning-express-upper-v77{margin-top:84px!important;}
   #learning .learning-express-cue-v77{font-size:8.6px!important;}
   #learning .learning-express-support-v77 .support-divider{margin-top:var(--reflection-gap)!important;}
+  #learning .learning-complete-v79{padding-top:72px!important;}
+  #learning .learning-complete-summary-v79{font-size:7.8px!important;}
+  #learning .learning-complete-care-v79{font-size:7.7px!important;}
 }
