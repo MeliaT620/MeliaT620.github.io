@@ -1,13 +1,13 @@
-/* Mine English v78 — two-page Learning reel with direction lock + answer-aware spatial audio. */
+/* Mine English v79 — three-page Learning reel with direction lock, spatial audio and Review Complete. */
 (function(){
-  function initLearningV78(){
+  function initLearningV79(){
     const screen=document.getElementById('learningScreenV74');
     const device=document.getElementById('learningDeviceV74');
     const track=document.getElementById('learningTrackV77');
     const progress=document.getElementById('learningProgressV77');
     if(!screen||!device||!track)return false;
-    if(screen.dataset.v78Ready==='1')return true;
-    screen.dataset.v78Ready='1';
+    if(screen.dataset.v79Ready==='1')return true;
+    screen.dataset.v79Ready='1';
 
     const pages=[...track.querySelectorAll('.learning-page-v77')];
     if(!pages.length)return false;
@@ -23,6 +23,7 @@
 
     const currentPage=()=>pages[pageIndex];
     const pageChoice=()=>currentPage()?.dataset.choice||'';
+    const isComplete=()=>currentPage()?.dataset.complete==='true';
     const screenHeight=()=>Math.max(screen.clientHeight,1);
     const baseY=()=>-pageIndex*screenHeight();
 
@@ -81,7 +82,7 @@
     });
 
     const setGlow=dx=>{
-      if(!dx)return;
+      if(!dx||isComplete())return;
       const mag=Math.min(Math.abs(dx)/95,1);
       const eased=Math.pow(mag,.72);
       const current=pageChoice();
@@ -100,6 +101,7 @@
     };
 
     const reveal=choice=>{
+      if(isComplete())return;
       const page=currentPage();
       if(!page)return;
       page.dataset.choice=choice;
@@ -139,7 +141,7 @@
       const goingBackward=dy>0;
       let allowed=dy;
 
-      /* No answer, no next page: never expose page 2 underneath. */
+      /* No answer, no next page: never expose the next learning state underneath. */
       if(goingForward&&!canMoveForward())allowed=0;
       else if(goingBackward&&!canMoveBackward())allowed=dy*.10;
       else if(goingForward&&pageIndex>=pages.length-1)allowed=dy*.10;
@@ -164,7 +166,7 @@
 
       if(mode==='pending'){
         if(ax<directionStart&&ay<directionStart)return;
-        if(ax>=directionStart&&ax>ay*directionRatio)mode='horizontal';
+        if(ax>=directionStart&&ax>ay*directionRatio)mode=isComplete()?'blocked':'horizontal';
         else if(ay>=directionStart&&ay>ax*directionRatio)mode='vertical';
         else return;
       }
@@ -200,11 +202,7 @@
       syncPersistent();
     };
 
-    /* ---------- Learning spatial audio ----------
-       Page 01 before answering: blank tap plays the example sentence.
-       Page 02 before answering: silent, so Express never leaks the answer.
-       After answering: upper region follows Reflection (focus on single, full sentence on double),
-       lower region plays the word reading below the divider. */
+    /* ---------- Learning spatial audio ---------- */
     const speak=(text,lang='en-US',rate=.9)=>{
       if(!text||!('speechSynthesis' in window))return;
       try{
@@ -218,7 +216,7 @@
     const localeFor=page=>page?.querySelector('.accent-toggle')?.dataset.accent==='UK'?'en-GB':'en-US';
 
     const playSpatialAudio=(e,full=false)=>{
-      if(Date.now()<suppressAudioUntil)return;
+      if(Date.now()<suppressAudioUntil||isComplete())return;
       if(e.target.closest('button,a,[data-peek]'))return;
       const page=currentPage();
       if(!page)return;
@@ -267,7 +265,7 @@
     screen.addEventListener('pointerup',e=>{end();try{screen.releasePointerCapture(e.pointerId)}catch(_){}});
     screen.addEventListener('pointercancel',end);
 
-    /* Trackpads: use the same axis dominance and thresholds, but settle after the gesture burst. */
+    /* Trackpads use the same direction lock and thresholds. */
     let wheelX=0,wheelY=0,wheelMode='pending',wheelTimer=0;
     const finishWheel=()=>{
       suppressAudioUntil=Date.now()+320;
@@ -280,6 +278,8 @@
         if(wheelY>threshold&&canMoveForward())settleTo(pageIndex+1);
         else if(wheelY<-threshold&&canMoveBackward())settleTo(pageIndex-1);
         else settleTo(pageIndex);
+      }else{
+        syncPersistent();
       }
       wheelX=wheelY=0;wheelMode='pending';
     };
@@ -287,7 +287,7 @@
     screen.addEventListener('wheel',e=>{
       const ax=Math.abs(e.deltaX),ay=Math.abs(e.deltaY);
       if(wheelMode==='pending'){
-        if(ax>ay*1.25)wheelMode='horizontal';
+        if(ax>ay*1.25)wheelMode=isComplete()?'blocked':'horizontal';
         else if(ay>ax*1.25)wheelMode='vertical';
         else return;
       }
@@ -296,7 +296,7 @@
       if(wheelMode==='horizontal'){
         wheelX+=e.deltaX;
         setGlow(-wheelX);
-      }else{
+      }else if(wheelMode==='vertical'){
         wheelY+=e.deltaY;
         drawVertical(-wheelY);
       }
@@ -305,9 +305,9 @@
     },{passive:false});
 
     screen.addEventListener('keydown',e=>{
-      if(e.key==='ArrowLeft'){
+      if(e.key==='ArrowLeft'&&!isComplete()){
         e.preventDefault();setGlow(-60);setTimeout(()=>reveal('known'),90);
-      }else if(e.key==='ArrowRight'){
+      }else if(e.key==='ArrowRight'&&!isComplete()){
         e.preventDefault();setGlow(60);setTimeout(()=>reveal('not-yet'),90);
       }else if(e.key==='ArrowUp'){
         e.preventDefault();if(canMoveForward())settleTo(pageIndex+1);else settleTo(pageIndex);
@@ -324,8 +324,8 @@
   }
 
   function boot(){
-    if(initLearningV78())return;
-    const timer=setInterval(()=>{if(initLearningV78())clearInterval(timer)},120);
+    if(initLearningV79())return;
+    const timer=setInterval(()=>{if(initLearningV79())clearInterval(timer)},120);
     setTimeout(()=>clearInterval(timer),6000);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});
