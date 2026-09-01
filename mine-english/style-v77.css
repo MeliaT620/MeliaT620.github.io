@@ -1,5 +1,3 @@
-@import url('./style-v76.css?v=76');
-
 /* Mine English v77 — two-page Learning reel built on the accepted v76 page. */
 
 /* ---------- Reel geometry ---------- */
@@ -36,9 +34,9 @@
 #learning .learning-screen-v74.vertical-settling::before,
 #learning .learning-screen-v74.vertical-settling::after{opacity:0!important;}
 
-/* Progress: page 1 = half, page 2 = full. */
+/* Progress: page 1 = half, page 2 = full; JS owns the actual width. */
 #learning .learning-progress-v77 span{
-  width:50%!important;
+  width:50%;
   transition:width .28s cubic-bezier(.22,.72,.22,1)!important;
 }
 
