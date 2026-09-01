@@ -1,8 +1,8 @@
 @import url('./style-v71.css?v=71');
 
-/* Mine English v72 — focused refinement of callout, Grow My Tree offer, and ending. */
+/* Mine English v73 — current consolidated refinement layer. */
 
-/* 1) Review principle becomes a real callout block, not loose highlighted text. */
+/* Review principle: real callout block. */
 #human .review-callout-v72{
   width:100%!important;
   max-width:var(--v71-text-width)!important;
@@ -15,190 +15,225 @@
   box-shadow:inset 0 1px 0 rgba(255,255,255,.88)!important;
   text-align:left!important;
 }
-#human .review-callout-v72>span{
-  display:inline-flex!important;
-  align-items:center!important;
-  margin:0 0 9px!important;
-  padding:5px 9px!important;
-  border-radius:999px!important;
-  background:rgba(255,255,255,.78)!important;
-  border:1px solid rgba(21,150,111,.09)!important;
-  color:#66877b!important;
-  font-size:7.5px!important;
-  line-height:1!important;
-  font-weight:760!important;
-  letter-spacing:.12em!important;
-}
-#human .review-callout-v72 p{
-  margin:0!important;
-  color:#566961!important;
-  font-size:12px!important;
-  line-height:1.78!important;
-  text-align:left!important;
-}
-#human .review-callout-v72 strong{
-  color:#2f6854!important;
-  font-weight:680!important;
+#human .review-callout-v72>span{display:inline-flex!important;align-items:center!important;margin:0 0 9px!important;padding:5px 9px!important;border-radius:999px!important;background:rgba(255,255,255,.78)!important;border:1px solid rgba(21,150,111,.09)!important;color:#66877b!important;font-size:7.5px!important;line-height:1!important;font-weight:760!important;letter-spacing:.12em!important;}
+#human .review-callout-v72 p{margin:0!important;color:#566961!important;font-size:12px!important;line-height:1.78!important;text-align:left!important;}
+#human .review-callout-v72 strong{color:#2f6854!important;font-weight:680!important;}
+
+/* Grow My Tree offer. */
+#garden .tree-offer-v72{width:100%!important;max-width:var(--v71-text-width)!important;margin-left:auto!important;margin-right:auto!important;padding:28px!important;box-sizing:border-box!important;border-radius:22px!important;background:linear-gradient(145deg,rgba(244,251,247,.94),rgba(252,250,241,.72))!important;border:1px solid rgba(49,111,87,.085)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.9)!important;}
+#garden .tree-offer-grid-v72{display:grid!important;grid-template-columns:minmax(0,1fr) 154px!important;gap:30px!important;align-items:center!important;}
+#garden .tree-offer-copy-v72 .editorial-subhead-v71{width:100%!important;max-width:none!important;margin:0!important;}
+#garden .tree-offer-copy-v72>p{max-width:520px!important;margin:13px 0 0!important;color:var(--v71-text)!important;font-size:var(--v71-body)!important;line-height:1.82!important;text-align:left!important;}
+#garden .tree-offer-price-v72{min-height:112px!important;padding-left:24px!important;border-left:1px solid rgba(49,111,87,.10)!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:flex-start!important;text-align:left!important;}
+#garden .tree-offer-price-v72>div{display:flex!important;align-items:baseline!important;gap:5px!important;white-space:nowrap!important;}
+#garden .tree-offer-price-v72 strong{color:#247258!important;font-size:34px!important;line-height:1!important;font-weight:730!important;letter-spacing:-.03em!important;}
+#garden .tree-offer-price-v72 span{color:#858f8a!important;font-size:9px!important;line-height:1!important;font-weight:600!important;}
+#garden .tree-offer-price-v72 small{display:block!important;margin-top:10px!important;color:#72827a!important;font-size:8px!important;line-height:1.4!important;font-weight:650!important;letter-spacing:.02em!important;}
+#garden .tree-offer-v72 .garden-meta-v71{max-width:none!important;margin:22px 0 0!important;padding-top:17px!important;border-top:1px solid rgba(49,111,87,.075)!important;}
+#garden .tree-offer-v72 .garden-meta-v71 span{background:rgba(255,255,255,.58)!important;}
+
+/* Ending = independent epilogue. */
+.site-ending-v72{position:relative!important;margin:0!important;padding:104px 0 110px!important;background:linear-gradient(180deg,#fff 0%,rgba(246,251,248,.92) 100%)!important;border-top:1px solid rgba(27,37,33,.055)!important;}
+.site-ending-v72 .ending-inner-v72{width:100%!important;max-width:720px!important;margin:0 auto!important;padding:0 24px!important;box-sizing:border-box!important;text-align:center!important;}
+.site-ending-v72 .ending-inner-v72>span{display:block!important;margin:0 0 14px!important;color:#719688!important;font-size:8px!important;line-height:1!important;font-weight:760!important;letter-spacing:.18em!important;}
+.site-ending-v72 h2{margin:0!important;color:var(--v71-ink)!important;font-size:31px!important;line-height:1.28!important;font-weight:700!important;letter-spacing:-.025em!important;text-align:center!important;}
+.site-ending-v72 p{margin:16px 0 0!important;color:#6e7973!important;font-size:14px!important;line-height:1.75!important;text-align:center!important;}
+.site-ending-v72 p strong{color:#3d755f!important;font-weight:680!important;}
+.site-ending-v72 .signature{margin-top:38px!important;color:#9aa39f!important;font-size:10px!important;letter-spacing:.04em!important;text-align:center!important;}
+
+/* Coin background: filled like Seed, no outer stroke. */
+#human .reward-coins-v71 .reward-item-mark-v71{
+  border:0!important;
+  box-shadow:none!important;
+  background:rgba(240,199,77,.18)!important;
+  color:#9a7411!important;
 }
 
-/* 2) Grow My Tree is one coherent offer block with one shared alignment axis. */
-#garden .tree-offer-v72{
-  width:100%!important;
+/* All five chapters, including the first one, get the same chapter separator. */
+#memory::before,#learning::before,#human::before,#garden::before,#journey::before{
+  content:''!important;
+  position:absolute!important;
+  top:0!important;
+  left:50%!important;
+  width:44px!important;
+  height:1px!important;
+  transform:translateX(-50%)!important;
+  background:var(--v71-line)!important;
+}
+
+/* One text axis across child content. */
+#memory .usage-memory,#memory .repair-principle,
+#learning .editorial-subhead-v71,#learning .learning-note-v71,
+#reflection .editorial-subhead-v71,
+#human .editorial-subhead-v71,#human .human-subsection-v71>p,#human .human-principles-v71,#human .review-callout-v72,#human .reward-explainer-v71,#human .reward-conclusion-v71,#human .human-emphasis-v71,
+#garden .garden-language-v71,#garden .tree-offer-v72,#garden .editorial-subhead-v71,#garden .garden-subsection-v71>p,#garden blockquote,
+#journey .words-sentences-v71,#journey .journey-note-v71,#journey .year-card-v71{
   max-width:var(--v71-text-width)!important;
   margin-left:auto!important;
   margin-right:auto!important;
-  padding:28px!important;
   box-sizing:border-box!important;
-  border-radius:22px!important;
-  background:linear-gradient(145deg,rgba(244,251,247,.94),rgba(252,250,241,.72))!important;
-  border:1px solid rgba(49,111,87,.085)!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.9)!important;
 }
-#garden .tree-offer-grid-v72{
-  display:grid!important;
-  grid-template-columns:minmax(0,1fr) 154px!important;
-  gap:30px!important;
-  align-items:center!important;
-}
-#garden .tree-offer-copy-v72 .editorial-subhead-v71{
+
+/* ---------------------------------------------------------
+   Learning: one page only, same physical phone as Reflection.
+   --------------------------------------------------------- */
+#learning .learning-single-wrap-v73{
   width:100%!important;
-  max-width:none!important;
-  margin:0!important;
-}
-#garden .tree-offer-copy-v72>p{
-  max-width:520px!important;
-  margin:13px 0 0!important;
-  color:var(--v71-text)!important;
-  font-size:var(--v71-body)!important;
-  line-height:1.82!important;
-  text-align:left!important;
-}
-#garden .tree-offer-price-v72{
-  min-height:112px!important;
-  padding-left:24px!important;
-  border-left:1px solid rgba(49,111,87,.10)!important;
+  max-width:var(--v71-content-width)!important;
+  margin:30px auto 0!important;
   display:flex!important;
   flex-direction:column!important;
-  justify-content:center!important;
-  align-items:flex-start!important;
+  align-items:center!important;
+}
+#learning .learning-single-device-v73{
+  --left-glow:0;
+  --right-glow:0;
+  position:relative!important;
+  overflow:visible!important;
+}
+#learning .learning-single-screen-v73{
+  position:relative!important;
+  overflow:hidden!important;
+  touch-action:pan-y!important;
+  cursor:grab!important;
+}
+#learning .learning-single-screen-v73:active{cursor:grabbing!important;}
+#learning .learning-single-screen-v73::before,
+#learning .learning-single-screen-v73::after{
+  content:''!important;
+  position:absolute!important;
+  z-index:2!important;
+  top:19%!important;
+  bottom:16%!important;
+  width:58px!important;
+  filter:blur(18px)!important;
+  pointer-events:none!important;
+  transition:opacity .14s ease!important;
+}
+#learning .learning-single-screen-v73::before{left:-34px!important;background:rgba(21,150,111,.42)!important;opacity:var(--left-glow)!important;}
+#learning .learning-single-screen-v73::after{right:-34px!important;background:rgba(217,137,162,.42)!important;opacity:var(--right-glow)!important;}
+#learning .learning-single-progress-v73{
+  position:absolute!important;
+  z-index:8!important;
+  top:29px!important;
+  left:27px!important;
+  right:27px!important;
+  height:3px!important;
+  border-radius:999px!important;
+  background:rgba(28,48,40,.035)!important;
+  overflow:hidden!important;
+}
+#learning .learning-single-progress-v73 span{
+  display:block!important;
+  width:69%!important;
+  height:100%!important;
+  border-radius:inherit!important;
+  background:linear-gradient(90deg,#edb3c6 0%,#f1cf78 43%,#5ec593 77%,#12ad80 100%)!important;
+}
+#learning .learning-single-card-v73{
+  position:absolute!important;
+  z-index:5!important;
+  inset:0!important;
+  padding:0 27px!important;
+  box-sizing:border-box!important;
+  transform:translate3d(0,0,0) rotate(0deg)!important;
+  transition:transform .22s cubic-bezier(.22,.8,.25,1)!important;
+  will-change:transform!important;
+}
+#learning .learning-single-upper-v73{
+  margin-top:98px!important;
   text-align:left!important;
 }
-#garden .tree-offer-price-v72>div{
-  display:flex!important;
-  align-items:baseline!important;
-  gap:5px!important;
-  white-space:nowrap!important;
-}
-#garden .tree-offer-price-v72 strong{
-  color:#247258!important;
-  font-size:34px!important;
-  line-height:1!important;
-  font-weight:730!important;
-  letter-spacing:-.03em!important;
-}
-#garden .tree-offer-price-v72 span{
-  color:#858f8a!important;
-  font-size:9px!important;
-  line-height:1!important;
-  font-weight:600!important;
-}
-#garden .tree-offer-price-v72 small{
+#learning .learning-single-upper-v73 .sentence-line{margin:0!important;padding:0!important;text-align:left!important;}
+#learning .learning-single-upper-v73 .reflection-example{
   display:block!important;
-  margin-top:10px!important;
-  color:#72827a!important;
-  font-size:8px!important;
-  line-height:1.4!important;
-  font-weight:650!important;
-  letter-spacing:.02em!important;
+  color:#1b2521!important;
+  font-size:22px!important;
+  line-height:1.48!important;
+  font-weight:560!important;
+  letter-spacing:-.018em!important;
 }
-#garden .tree-offer-v72 .garden-meta-v71{
-  max-width:none!important;
-  margin:22px 0 0!important;
-  padding-top:17px!important;
-  border-top:1px solid rgba(49,111,87,.075)!important;
-}
-#garden .tree-offer-v72 .garden-meta-v71 span{
-  background:rgba(255,255,255,.58)!important;
-}
-
-/* 3) Ending is a separate epilogue, visually detached from the Journey chapter. */
-.site-ending-v72{
+#learning .learning-single-upper-v73 mark{
   position:relative!important;
-  margin:0!important;
-  padding:104px 0 110px!important;
-  background:linear-gradient(180deg,#fff 0%,rgba(246,251,248,.92) 100%)!important;
-  border-top:1px solid rgba(27,37,33,.055)!important;
+  z-index:0!important;
+  padding:0 .04em!important;
+  margin:0 -.04em!important;
+  color:inherit!important;
+  background:linear-gradient(180deg,transparent 15%,rgba(93,225,175,.18) 15%,rgba(80,217,165,.27) 83%,transparent 83%)!important;
+  box-shadow:0 0 18px rgba(78,220,165,.20),0 0 32px rgba(78,220,165,.10)!important;
+  border-radius:3px!important;
 }
-.site-ending-v72 .ending-inner-v72{
-  width:100%!important;
-  max-width:720px!important;
-  margin:0 auto!important;
-  padding:0 24px!important;
-  box-sizing:border-box!important;
-  text-align:center!important;
+#learning .learning-single-upper-v73 mark .core-word{color:#0d9f73!important;font-weight:650!important;}
+#learning .learning-question-v73{
+  margin-top:27px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:7px!important;
+  text-align:left!important;
 }
-.site-ending-v72 .ending-inner-v72>span{
-  display:block!important;
-  margin:0 0 14px!important;
-  color:#719688!important;
-  font-size:8px!important;
-  line-height:1!important;
-  font-weight:760!important;
-  letter-spacing:.18em!important;
+#learning .learning-question-v73 strong{color:#4e5c56!important;font-size:12.5px!important;line-height:1.45!important;font-weight:650!important;}
+#learning .learning-question-v73 span{color:#9aa39f!important;font-size:8.5px!important;line-height:1.55!important;}
+#learning .learning-judge-v73{
+  position:absolute!important;
+  z-index:12!important;
+  left:26px!important;
+  right:26px!important;
+  bottom:34px!important;
+  display:grid!important;
+  grid-template-columns:1fr auto 1fr!important;
+  align-items:center!important;
+  pointer-events:none!important;
 }
-.site-ending-v72 h2{
-  margin:0!important;
-  color:var(--v71-ink)!important;
-  font-size:31px!important;
-  line-height:1.28!important;
-  font-weight:700!important;
-  letter-spacing:-.025em!important;
-  text-align:center!important;
-}
-.site-ending-v72 p{
-  margin:16px 0 0!important;
-  color:#6e7973!important;
-  font-size:14px!important;
-  line-height:1.75!important;
-  text-align:center!important;
-}
-.site-ending-v72 p strong{color:#3d755f!important;font-weight:680!important;}
-.site-ending-v72 .signature{
-  margin-top:38px!important;
-  color:#9aa39f!important;
-  font-size:10px!important;
-  letter-spacing:.04em!important;
-  text-align:center!important;
-}
+#learning .learning-judge-v73>span{display:flex!important;align-items:center!important;gap:5px!important;opacity:.52!important;transition:opacity .12s ease,transform .12s ease!important;}
+#learning .judge-known-v73{justify-content:flex-start!important;color:#15966f!important;}
+#learning .judge-notyet-v73{justify-content:flex-end!important;color:#c27b92!important;}
+#learning .learning-judge-v73 b{font-size:15px!important;line-height:1!important;font-weight:520!important;}
+#learning .learning-judge-v73 small{font-size:8px!important;line-height:1!important;font-weight:620!important;}
+#learning .judge-center-v73{display:block!important;color:#b1b9b5!important;font-size:6.5px!important;letter-spacing:.02em!important;text-align:center!important;opacity:.7!important;}
+#learning .learning-single-device-v73.swiping-known .judge-known-v73,
+#learning .learning-single-device-v73.judged-known .judge-known-v73{opacity:1!important;transform:translateX(-2px)!important;}
+#learning .learning-single-device-v73.swiping-notyet .judge-notyet-v73,
+#learning .learning-single-device-v73.judged-notyet .judge-notyet-v73{opacity:1!important;transform:translateX(2px)!important;}
+#learning .learning-single-wrap-v73 .device-caption{margin-top:16px!important;}
 
 @media(max-width:720px){
-  #human .review-callout-v72,
-  #garden .tree-offer-v72{
-    width:calc(100% - 32px)!important;
-    max-width:none!important;
-  }
+  #human .review-callout-v72,#garden .tree-offer-v72{width:calc(100% - 44px)!important;max-width:none!important;}
   #human .review-callout-v72{padding:17px 18px!important;}
   #garden .tree-offer-v72{padding:22px 20px!important;}
-  #garden .tree-offer-grid-v72{
-    grid-template-columns:1fr!important;
-    gap:20px!important;
-  }
-  #garden .tree-offer-price-v72{
-    min-height:0!important;
-    padding:18px 0 0!important;
-    border-left:0!important;
-    border-top:1px solid rgba(49,111,87,.10)!important;
-  }
+  #garden .tree-offer-grid-v72{grid-template-columns:1fr!important;gap:20px!important;}
+  #garden .tree-offer-price-v72{min-height:0!important;padding:18px 0 0!important;border-left:0!important;border-top:1px solid rgba(49,111,87,.10)!important;}
   #garden .tree-offer-price-v72 strong{font-size:30px!important;}
   #garden .tree-offer-price-v72 small{margin-top:7px!important;}
   #garden .tree-offer-v72 .garden-meta-v71{margin-top:18px!important;padding-top:15px!important;}
   .site-ending-v72{padding:80px 0 86px!important;}
   .site-ending-v72 h2{font-size:26px!important;}
   .site-ending-v72 p{font-size:13px!important;}
+
+  /* Same 22px mobile inset for all text-level content. */
+  #memory .usage-memory,#memory .repair-principle,
+  #learning .editorial-subhead-v71,#learning .learning-note-v71,
+  #reflection .editorial-subhead-v71,
+  #human .editorial-subhead-v71,#human .human-subsection-v71>p,#human .human-principles-v71,#human .review-callout-v72,#human .reward-explainer-v71,#human .reward-conclusion-v71,#human .human-emphasis-v71,
+  #garden .garden-language-v71,#garden .tree-offer-v72,#garden .editorial-subhead-v71,#garden .garden-subsection-v71>p,#garden blockquote,
+  #journey .words-sentences-v71,#journey .journey-note-v71,#journey .year-card-v71{
+    width:calc(100% - 44px)!important;
+    max-width:none!important;
+  }
+  #learning .learning-single-upper-v73{margin-top:88px!important;}
+  #learning .learning-single-card-v73{padding:0 25px!important;}
+  #learning .learning-single-upper-v73 .reflection-example{font-size:19px!important;}
+  #learning .learning-question-v73{margin-top:23px!important;}
+  #learning .learning-judge-v73{left:22px!important;right:22px!important;bottom:31px!important;}
 }
 
 @media(max-width:430px){
   #garden .tree-offer-price-v72>div{gap:4px!important;}
   #garden .tree-offer-price-v72 strong{font-size:29px!important;}
   .site-ending-v72 .ending-inner-v72{padding:0 22px!important;}
+  #learning .learning-single-upper-v73{margin-top:84px!important;}
+  #learning .learning-single-upper-v73 .reflection-example{font-size:18px!important;}
+  #learning .learning-question-v73 strong{font-size:11.5px!important;}
+  #learning .learning-question-v73 span{font-size:8px!important;}
+  #learning .learning-judge-v73 small{font-size:7.5px!important;}
+  #learning .judge-center-v73{font-size:6px!important;}
 }
