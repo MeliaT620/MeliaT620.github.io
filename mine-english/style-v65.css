@@ -1,0 +1,80 @@
+/* Mine English v65 — chapter structure, CTA states, simplified Garden, calmer Journey. */
+
+/* Hero CTA keeps one visual state after tap/visit/focus. */
+.hero-link,
+.hero-link:link,
+.hero-link:visited,
+.hero-link:hover,
+.hero-link:active,
+.hero-link:focus,
+.hero-link:focus-visible{
+  background:linear-gradient(135deg,rgba(226,249,242,.72),rgba(246,253,250,.86))!important;
+  border:1px solid rgba(21,150,111,.11)!important;
+  color:#397764!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.86),0 10px 30px rgba(34,93,73,.055)!important;
+  text-decoration:none!important;
+  outline:none!important;
+}
+.hero-link b,
+.hero-link:visited b,
+.hero-link:active b{color:#58ab91!important;}
+
+/* Learning + Reflection are one chapter. Reflection reads as the second act, not a new chapter. */
+.learning-reflection-chapter-v65{padding-bottom:104px!important;}
+.learning-reflection-subsection-v65{margin-top:88px!important;padding-top:82px!important;border-top:1px solid rgba(28,63,50,.055)!important;}
+.reflection-subhead-v65{margin-bottom:34px!important;}
+
+/* Human-care rewards: a little more breathing room between value statement and mechanics. */
+.response-value-card .reward-system-integrated{margin-top:24px!important;}
+.reward-system-integrated .reward-mode h4{line-height:1.5!important;}
+.reward-system-integrated .reward-mode p{line-height:1.8!important;}
+
+/* My Garden: one calm tree visualization; no seasonal cluster UI. */
+.garden-section-v65{padding-top:108px!important;}
+.garden-hero-v65{grid-template-columns:minmax(240px,.88fr) minmax(0,1.12fr)!important;align-items:center!important;}
+.garden-visual-v65{height:300px!important;background:linear-gradient(180deg,#f5fbf8 0%,#eef8f3 64%,#e8f3ec 100%)!important;}
+.garden-visual-v65 .garden-tree-v50{transform:translateX(-50%) scale(1.08)!important;transform-origin:center bottom!important;}
+.garden-principles-v65 article{grid-template-columns:72px 1fr!important;padding:18px 2px!important;}
+.garden-principles-v65 strong{font-size:16px!important;}
+.garden-principles-v65 p{font-size:12px!important;line-height:1.7!important;}
+
+/* Grow My Tree is the focal Garden card. Keep price on one line. */
+.tree-challenge-v65{margin-top:24px!important;padding:30px 30px 28px!important;}
+.tree-challenge-v65 .tree-challenge-head-v50{align-items:center!important;}
+.tree-challenge-v65 .tree-challenge-head-v50>div{min-width:0!important;}
+.tree-challenge-v65 .tree-challenge-head-v50>strong{display:flex!important;align-items:baseline!important;gap:4px!important;font-size:30px!important;line-height:1!important;white-space:nowrap!important;}
+.tree-challenge-v65 .tree-challenge-head-v50>strong small{display:inline!important;margin:0!important;font-size:9px!important;line-height:1!important;text-align:left!important;color:#8f9994!important;font-weight:600!important;}
+
+/* Final chapter: make it feel like the other editorial cards instead of a cramped block. */
+.journey-v65{padding:112px 0 118px!important;}
+.journey-v65 .journey{
+  padding:42px 38px 38px!important;
+  border-radius:28px!important;
+  background:rgba(255,255,255,.84)!important;
+  border:1px solid rgba(28,63,50,.06)!important;
+  box-shadow:0 18px 64px rgba(35,76,61,.04)!important;
+}
+.journey-v65 .kicker{margin-bottom:12px!important;}
+.journey-v65 h2{margin-top:0!important;line-height:1.28!important;}
+.journey-v65 .journey-intro-v50{margin-top:18px!important;margin-bottom:30px!important;}
+.journey-v65 .words-sentences{margin:32px 0 24px!important;padding:18px 16px!important;border-radius:18px!important;background:rgba(247,251,249,.72)!important;border:1px solid rgba(28,63,50,.05)!important;}
+.journey-v65 .journey-note{margin:0 auto!important;max-width:690px!important;line-height:1.85!important;}
+.journey-v65 .year-card{margin-top:36px!important;}
+.journey-v65 blockquote{margin-top:34px!important;}
+
+@media(max-width:720px){
+  .learning-reflection-chapter-v65{padding-bottom:76px!important;}
+  .learning-reflection-subsection-v65{margin-top:68px!important;padding-top:64px!important;}
+  .garden-section-v65{padding-top:82px!important;}
+  .garden-hero-v65{grid-template-columns:1fr!important;}
+  .garden-visual-v65{height:220px!important;}
+  .garden-principles-v65 article{grid-template-columns:58px 1fr!important;padding:14px 2px!important;}
+  .tree-challenge-v65{padding:23px 20px 22px!important;}
+  .tree-challenge-v65 .tree-challenge-head-v50{gap:14px!important;}
+  .tree-challenge-v65 .tree-challenge-head-v50>strong{font-size:24px!important;}
+  .tree-challenge-v65 .tree-challenge-head-v50>strong small{font-size:8px!important;}
+  .journey-v65{padding:82px 0 88px!important;}
+  .journey-v65 .journey{padding:30px 20px 26px!important;border-radius:22px!important;}
+  .journey-v65 .journey-intro-v50{margin-bottom:24px!important;}
+  .journey-v65 .words-sentences{margin:26px 0 20px!important;padding:14px 10px!important;}
+}
