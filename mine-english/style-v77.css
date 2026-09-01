@@ -1,4 +1,4 @@
-/* Mine English v79 — three-page Learning reel, Review Complete + slightly deeper shared highlight. */
+/* Mine English v81 — three-page Learning reel, Review Complete stats + shared highlight. */
 
 /* ---------- Reel geometry ---------- */
 #learning .learning-reel-v77{touch-action:none!important;overscroll-behavior:contain!important;}
@@ -13,9 +13,7 @@
   transform:translate3d(0,0,0);
   will-change:transform;
 }
-#learning .learning-track-v77.is-settling{
-  transition:transform .29s cubic-bezier(.22,.72,.22,1)!important;
-}
+#learning .learning-track-v77.is-settling{transition:transform .29s cubic-bezier(.22,.72,.22,1)!important;}
 #learning .learning-page-v77{
   position:relative!important;
   flex:0 0 100%!important;
@@ -27,21 +25,13 @@
   box-sizing:border-box!important;
 }
 #learning .learning-page-v77 .learning-card-v74{position:absolute!important;inset:0!important;}
-
-/* During a vertical reel gesture, judgment glow gets out of the way completely. */
 #learning .learning-screen-v74.vertical-dragging::before,
 #learning .learning-screen-v74.vertical-dragging::after,
 #learning .learning-screen-v74.vertical-settling::before,
 #learning .learning-screen-v74.vertical-settling::after{opacity:0!important;}
+#learning .learning-progress-v77 span{width:33.333%;transition:width .28s cubic-bezier(.22,.72,.22,1)!important;}
 
-/* Progress is owned by JS: 1/3 -> 2/3 -> 3/3. */
-#learning .learning-progress-v77 span{
-  width:33.333%;
-  transition:width .28s cubic-bezier(.22,.72,.22,1)!important;
-}
-
-/* ---------- Shared highlight ----------
-   Same accepted 17–84% marker geometry, only a little deeper than v76. */
+/* ---------- Shared highlight ---------- */
 #learning .learning-upper-v74 .reflection-example mark,
 #reflection .reflection-example mark{
   box-shadow:none!important;
@@ -53,243 +43,105 @@
 }
 
 /* ---------- Page-scoped answer reveal ---------- */
-#learning .learning-page-v77[data-choice] .learning-question-v74{
-  opacity:0!important;
-  visibility:hidden!important;
-  transform:translateY(-2px)!important;
-}
-#learning .learning-page-v77[data-choice] .learning-answer-v75{
-  opacity:1!important;
-  visibility:visible!important;
-  transform:none!important;
-}
-#learning .learning-page-v77[data-choice] .learning-support-v75{
-  opacity:1!important;
-  visibility:visible!important;
-  pointer-events:auto!important;
-  transform:none!important;
-}
-
-/* Tiny next-page cue: unavailable before judgment, quietly alive afterwards. */
+#learning .learning-page-v77[data-choice] .learning-question-v74{opacity:0!important;visibility:hidden!important;transform:translateY(-2px)!important;}
+#learning .learning-page-v77[data-choice] .learning-answer-v75{opacity:1!important;visibility:visible!important;transform:none!important;}
+#learning .learning-page-v77[data-choice] .learning-support-v75{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:none!important;}
 #learning .learning-next-v77{
-  position:absolute!important;
-  left:50%!important;
-  bottom:8px!important;
-  transform:translateX(-50%)!important;
-  color:#9da7a2!important;
-  font-size:9px!important;
-  line-height:1!important;
-  font-weight:500!important;
-  opacity:.13!important;
-  transition:opacity .18s ease,color .18s ease,transform .18s ease!important;
-  pointer-events:none!important;
+  position:absolute!important;left:50%!important;bottom:8px!important;transform:translateX(-50%)!important;
+  color:#9da7a2!important;font-size:9px!important;line-height:1!important;font-weight:500!important;opacity:.13!important;
+  transition:opacity .18s ease,color .18s ease,transform .18s ease!important;pointer-events:none!important;
 }
-#learning .learning-page-v77[data-choice] .learning-next-v77{
-  color:#69a895!important;
-  opacity:.62!important;
-}
+#learning .learning-page-v77[data-choice] .learning-next-v77{color:#69a895!important;opacity:.62!important;}
 
-/* ---------- Page 02 · Review Express ----------
-   It uses the same vertical anchors as Page 01: English first, Chinese directly beneath. */
+/* ---------- Page 02 · Review Express ---------- */
 #learning .learning-express-upper-v77{margin-top:94px!important;}
-#learning .learning-express-sentence-v77{
-  margin:0!important;
-  padding:0!important;
-  text-align:left!important;
-}
-#learning .learning-express-cue-v77{
-  margin:6px 0 0!important;
-  color:#53605a!important;
-  font-size:9.6px!important;
-  line-height:1.45!important;
-  font-weight:620!important;
-  text-align:left!important;
-}
-
-/* Keep all of “lead the team” hidden. Each word keeps its natural width as an underline. */
+#learning .learning-express-sentence-v77{margin:0!important;padding:0!important;text-align:left!important;}
+#learning .learning-express-cue-v77{margin:6px 0 0!important;color:#53605a!important;font-size:9.6px!important;line-height:1.45!important;font-weight:620!important;text-align:left!important;}
 #learning .express-blank-group-v77{
-  display:inline-flex!important;
-  align-items:baseline!important;
-  gap:.18em!important;
-  vertical-align:baseline!important;
-  padding:0 .035em!important;
-  border-radius:3px!important;
-  background:transparent!important;
+  display:inline-flex!important;align-items:baseline!important;gap:.18em!important;vertical-align:baseline!important;
+  padding:0 .035em!important;border-radius:3px!important;background:transparent!important;
 }
 #learning .express-blank-word-v77{
-  position:relative!important;
-  display:inline-block!important;
-  line-height:1.08!important;
-  border-bottom:1px solid rgba(65,79,72,.28)!important;
-  color:transparent!important;
-  text-align:center!important;
-  box-sizing:border-box!important;
+  position:relative!important;display:inline-block!important;line-height:1.08!important;
+  border-bottom:1px solid rgba(65,79,72,.28)!important;color:transparent!important;text-align:center!important;box-sizing:border-box!important;
 }
 #learning .express-blank-word-v77[data-word="lead"]{min-width:2.35em!important;}
 #learning .express-blank-word-v77[data-word="the"]{min-width:1.62em!important;}
 #learning .express-blank-word-v77[data-word="team"]{min-width:2.42em!important;}
 #learning .express-blank-text-v77{visibility:hidden!important;white-space:nowrap!important;}
-
-/* After judgment, reveal the WHOLE natural unit. */
-#learning .learning-express-page-v77[data-choice] .express-blank-word-v77{
-  min-width:0!important;
-  width:auto!important;
-  border-bottom-color:transparent!important;
-  color:inherit!important;
-}
+#learning .learning-express-page-v77[data-choice] .express-blank-word-v77{min-width:0!important;width:auto!important;border-bottom-color:transparent!important;color:inherit!important;}
 #learning .learning-express-page-v77[data-choice] .express-blank-text-v77{visibility:visible!important;}
-#learning .learning-express-page-v77[data-choice] .express-blank-word-v77[data-word="lead"] .express-blank-text-v77{
-  color:#0b966d!important;
-  font-weight:780!important;
-}
-
-/* Express support follows the same Chinese -> divider -> lexical support rhythm as Page 01. */
+#learning .learning-express-page-v77[data-choice] .express-blank-word-v77[data-word="lead"] .express-blank-text-v77{color:#0b966d!important;font-weight:780!important;}
 #learning .learning-express-support-v77{margin-top:0!important;}
 #learning .learning-express-support-v77 .support-divider{margin-top:var(--reflection-gap)!important;}
-
-/* The active page's low-presence judgment labels are slightly easier to read. */
 #learning .learning-page-v77 .learning-gesture-v74>span{transition:opacity .12s ease,transform .12s ease!important;}
 
 /* ---------- Page 03 · Review Complete ---------- */
 #learning .learning-complete-page-v79{background:#fcfefd!important;}
 #learning .learning-complete-v79{
-  position:absolute!important;
-  inset:0!important;
-  box-sizing:border-box!important;
-  padding:82px 28px 28px!important;
-  display:flex!important;
-  flex-direction:column!important;
-  align-items:center!important;
-  text-align:center!important;
+  position:absolute!important;inset:0!important;box-sizing:border-box!important;padding:74px 26px 28px!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important;
 }
 #learning .learning-complete-kicker-v79{
-  display:block!important;
-  margin:0 0 17px!important;
-  color:#7f9e92!important;
-  font-size:6.4px!important;
-  line-height:1!important;
-  font-weight:760!important;
-  letter-spacing:.15em!important;
+  display:block!important;margin:0 0 15px!important;color:#7f9e92!important;font-size:6.4px!important;line-height:1!important;
+  font-weight:760!important;letter-spacing:.15em!important;
 }
 #learning .learning-complete-check-v79{
-  width:34px!important;
-  height:34px!important;
-  display:grid!important;
-  place-items:center!important;
-  margin:0 auto 14px!important;
-  border-radius:50%!important;
-  background:rgba(21,150,111,.09)!important;
-  color:#15966f!important;
-  font-size:15px!important;
-  line-height:1!important;
-  font-weight:720!important;
+  width:34px!important;height:34px!important;display:grid!important;place-items:center!important;margin:0 auto 13px!important;
+  border-radius:50%!important;background:rgba(21,150,111,.09)!important;color:#15966f!important;font-size:15px!important;line-height:1!important;font-weight:720!important;
 }
 #learning .learning-complete-v79 h3{
-  margin:0!important;
-  color:#1b2521!important;
-  font-size:17px!important;
-  line-height:1.35!important;
-  font-weight:700!important;
-  letter-spacing:-.025em!important;
+  margin:0!important;color:#1b2521!important;font-size:17px!important;line-height:1.35!important;font-weight:700!important;letter-spacing:-.025em!important;
 }
-#learning .learning-complete-summary-v79{
-  max-width:190px!important;
-  margin:9px auto 0!important;
-  color:#6f7b75!important;
-  font-size:8.2px!important;
-  line-height:1.65!important;
+
+/* Four quiet metrics: no heavy card, just a compact information band. */
+#learning .learning-complete-stats-v81{
+  width:100%!important;max-width:216px!important;margin:18px auto 0!important;padding:11px 0 10px!important;
+  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  border-top:1px solid rgba(27,37,33,.065)!important;border-bottom:1px solid rgba(27,37,33,.065)!important;
 }
+#learning .learning-complete-stats-v81>div{position:relative!important;min-width:0!important;padding:0 5px!important;box-sizing:border-box!important;}
+#learning .learning-complete-stats-v81>div+div::before{
+  content:''!important;position:absolute!important;left:0!important;top:3px!important;bottom:3px!important;width:1px!important;background:rgba(27,37,33,.055)!important;
+}
+#learning .learning-complete-stats-v81 strong{
+  display:block!important;margin:0!important;color:#2d4d41!important;font-size:11px!important;line-height:1.05!important;font-weight:740!important;letter-spacing:-.02em!important;white-space:nowrap!important;
+}
+#learning .learning-complete-stats-v81 span{
+  display:block!important;margin-top:4px!important;color:#82908a!important;font-size:5.5px!important;line-height:1!important;font-weight:690!important;letter-spacing:.055em!important;text-transform:uppercase!important;
+}
+#learning .learning-complete-stats-v81 small{
+  display:block!important;margin-top:3px!important;color:#a0aaa5!important;font-size:5.5px!important;line-height:1!important;font-weight:540!important;white-space:nowrap!important;
+}
+#learning #reviewDurationV81{font-variant-numeric:tabular-nums!important;font-size:10px!important;}
+
 #learning .learning-seed-reward-v79{
-  width:100%!important;
-  max-width:194px!important;
-  margin:22px auto 0!important;
-  padding:13px 15px!important;
-  box-sizing:border-box!important;
-  display:flex!important;
-  align-items:center!important;
-  gap:11px!important;
-  border:1px solid rgba(21,150,111,.075)!important;
-  border-radius:16px!important;
-  background:linear-gradient(135deg,rgba(239,250,246,.82),rgba(249,253,251,.92))!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.88)!important;
-  text-align:left!important;
+  width:100%!important;max-width:194px!important;margin:20px auto 0!important;padding:13px 15px!important;box-sizing:border-box!important;
+  display:flex!important;align-items:center!important;gap:11px!important;border:1px solid rgba(21,150,111,.075)!important;border-radius:16px!important;
+  background:linear-gradient(135deg,rgba(239,250,246,.82),rgba(249,253,251,.92))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.88)!important;text-align:left!important;
 }
 #learning .learning-seed-mark-v79{
-  flex:0 0 35px!important;
-  width:35px!important;
-  height:35px!important;
-  display:grid!important;
-  place-items:center!important;
-  border:0!important;
-  border-radius:50%!important;
-  background:rgba(21,150,111,.10)!important;
-  color:#15966f!important;
-  box-shadow:none!important;
+  flex:0 0 35px!important;width:35px!important;height:35px!important;display:grid!important;place-items:center!important;border:0!important;border-radius:50%!important;
+  background:rgba(21,150,111,.10)!important;color:#15966f!important;box-shadow:none!important;
 }
-#learning .learning-seed-mark-v79 svg{
-  width:19px!important;
-  height:19px!important;
-  fill:none!important;
-  stroke:currentColor!important;
-  stroke-width:1.75!important;
-  stroke-linecap:round!important;
-  stroke-linejoin:round!important;
-}
+#learning .learning-seed-mark-v79 svg{width:19px!important;height:19px!important;fill:none!important;stroke:currentColor!important;stroke-width:1.75!important;stroke-linecap:round!important;stroke-linejoin:round!important;}
 #learning .learning-seed-copy-v79{min-width:0!important;}
-#learning .learning-seed-copy-v79 small{
-  display:block!important;
-  margin:0 0 4px!important;
-  color:#76a08f!important;
-  font-size:5.8px!important;
-  line-height:1!important;
-  font-weight:760!important;
-  letter-spacing:.12em!important;
-}
-#learning .learning-seed-copy-v79 strong{
-  display:block!important;
-  color:#26725a!important;
-  font-size:13px!important;
-  line-height:1.1!important;
-  font-weight:760!important;
-  letter-spacing:-.015em!important;
-}
-#learning .learning-seed-copy-v79 span{
-  display:block!important;
-  margin-top:4px!important;
-  color:#7d8b84!important;
-  font-size:6.7px!important;
-  line-height:1.3!important;
-}
+#learning .learning-seed-copy-v79 small{display:block!important;margin:0 0 4px!important;color:#76a08f!important;font-size:5.8px!important;line-height:1!important;font-weight:760!important;letter-spacing:.12em!important;}
+#learning .learning-seed-copy-v79 strong{display:block!important;color:#26725a!important;font-size:13px!important;line-height:1.1!important;font-weight:760!important;letter-spacing:-.015em!important;}
+#learning .learning-seed-copy-v79 span{display:block!important;margin-top:4px!important;color:#7d8b84!important;font-size:6.7px!important;line-height:1.3!important;}
 #learning .learning-complete-care-v79{
-  max-width:195px!important;
-  margin:20px auto 0!important;
-  color:#64736c!important;
-  font-size:8px!important;
-  line-height:1.72!important;
-}
-#learning .learning-complete-back-v79{
-  position:absolute!important;
-  left:50%!important;
-  bottom:21px!important;
-  transform:translateX(-50%)!important;
-  color:#a6afaa!important;
-  font-size:6.5px!important;
-  line-height:1!important;
-  font-weight:520!important;
-  white-space:nowrap!important;
+  max-width:205px!important;margin:19px auto 0!important;color:#64736c!important;font-size:8px!important;line-height:1.72!important;font-weight:520!important;
 }
 
 @media(max-width:720px){
   #learning .learning-express-upper-v77{margin-top:88px!important;}
   #learning .learning-express-cue-v77{font-size:8.8px!important;}
-  #learning .learning-complete-v79{padding-top:76px!important;}
+  #learning .learning-complete-v79{padding-top:70px!important;}
 }
-
 @media(max-width:430px){
   #learning .learning-express-upper-v77{margin-top:84px!important;}
   #learning .learning-express-cue-v77{font-size:8.6px!important;}
   #learning .learning-express-support-v77 .support-divider{margin-top:var(--reflection-gap)!important;}
-  #learning .learning-complete-v79{padding-top:72px!important;}
-  #learning .learning-complete-summary-v79{font-size:7.8px!important;}
+  #learning .learning-complete-v79{padding-top:67px!important;}
   #learning .learning-complete-care-v79{font-size:7.7px!important;}
 }
