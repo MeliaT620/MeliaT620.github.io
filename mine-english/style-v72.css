@@ -1,0 +1,204 @@
+@import url('./style-v71.css?v=71');
+
+/* Mine English v72 — focused refinement of callout, Grow My Tree offer, and ending. */
+
+/* 1) Review principle becomes a real callout block, not loose highlighted text. */
+#human .review-callout-v72{
+  width:100%!important;
+  max-width:var(--v71-text-width)!important;
+  margin:22px auto 0!important;
+  padding:18px 20px!important;
+  box-sizing:border-box!important;
+  border-radius:17px!important;
+  background:linear-gradient(135deg,rgba(245,251,248,.88),rgba(250,253,251,.96))!important;
+  border:1px solid rgba(21,150,111,.10)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.88)!important;
+  text-align:left!important;
+}
+#human .review-callout-v72>span{
+  display:inline-flex!important;
+  align-items:center!important;
+  margin:0 0 9px!important;
+  padding:5px 9px!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.78)!important;
+  border:1px solid rgba(21,150,111,.09)!important;
+  color:#66877b!important;
+  font-size:7.5px!important;
+  line-height:1!important;
+  font-weight:760!important;
+  letter-spacing:.12em!important;
+}
+#human .review-callout-v72 p{
+  margin:0!important;
+  color:#566961!important;
+  font-size:12px!important;
+  line-height:1.78!important;
+  text-align:left!important;
+}
+#human .review-callout-v72 strong{
+  color:#2f6854!important;
+  font-weight:680!important;
+}
+
+/* 2) Grow My Tree is one coherent offer block with one shared alignment axis. */
+#garden .tree-offer-v72{
+  width:100%!important;
+  max-width:var(--v71-text-width)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding:28px!important;
+  box-sizing:border-box!important;
+  border-radius:22px!important;
+  background:linear-gradient(145deg,rgba(244,251,247,.94),rgba(252,250,241,.72))!important;
+  border:1px solid rgba(49,111,87,.085)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9)!important;
+}
+#garden .tree-offer-grid-v72{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 154px!important;
+  gap:30px!important;
+  align-items:center!important;
+}
+#garden .tree-offer-copy-v72 .editorial-subhead-v71{
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+}
+#garden .tree-offer-copy-v72>p{
+  max-width:520px!important;
+  margin:13px 0 0!important;
+  color:var(--v71-text)!important;
+  font-size:var(--v71-body)!important;
+  line-height:1.82!important;
+  text-align:left!important;
+}
+#garden .tree-offer-price-v72{
+  min-height:112px!important;
+  padding-left:24px!important;
+  border-left:1px solid rgba(49,111,87,.10)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:flex-start!important;
+  text-align:left!important;
+}
+#garden .tree-offer-price-v72>div{
+  display:flex!important;
+  align-items:baseline!important;
+  gap:5px!important;
+  white-space:nowrap!important;
+}
+#garden .tree-offer-price-v72 strong{
+  color:#247258!important;
+  font-size:34px!important;
+  line-height:1!important;
+  font-weight:730!important;
+  letter-spacing:-.03em!important;
+}
+#garden .tree-offer-price-v72 span{
+  color:#858f8a!important;
+  font-size:9px!important;
+  line-height:1!important;
+  font-weight:600!important;
+}
+#garden .tree-offer-price-v72 small{
+  display:block!important;
+  margin-top:10px!important;
+  color:#72827a!important;
+  font-size:8px!important;
+  line-height:1.4!important;
+  font-weight:650!important;
+  letter-spacing:.02em!important;
+}
+#garden .tree-offer-v72 .garden-meta-v71{
+  max-width:none!important;
+  margin:22px 0 0!important;
+  padding-top:17px!important;
+  border-top:1px solid rgba(49,111,87,.075)!important;
+}
+#garden .tree-offer-v72 .garden-meta-v71 span{
+  background:rgba(255,255,255,.58)!important;
+}
+
+/* 3) Ending is a separate epilogue, visually detached from the Journey chapter. */
+.site-ending-v72{
+  position:relative!important;
+  margin:0!important;
+  padding:104px 0 110px!important;
+  background:linear-gradient(180deg,#fff 0%,rgba(246,251,248,.92) 100%)!important;
+  border-top:1px solid rgba(27,37,33,.055)!important;
+}
+.site-ending-v72 .ending-inner-v72{
+  width:100%!important;
+  max-width:720px!important;
+  margin:0 auto!important;
+  padding:0 24px!important;
+  box-sizing:border-box!important;
+  text-align:center!important;
+}
+.site-ending-v72 .ending-inner-v72>span{
+  display:block!important;
+  margin:0 0 14px!important;
+  color:#719688!important;
+  font-size:8px!important;
+  line-height:1!important;
+  font-weight:760!important;
+  letter-spacing:.18em!important;
+}
+.site-ending-v72 h2{
+  margin:0!important;
+  color:var(--v71-ink)!important;
+  font-size:31px!important;
+  line-height:1.28!important;
+  font-weight:700!important;
+  letter-spacing:-.025em!important;
+  text-align:center!important;
+}
+.site-ending-v72 p{
+  margin:16px 0 0!important;
+  color:#6e7973!important;
+  font-size:14px!important;
+  line-height:1.75!important;
+  text-align:center!important;
+}
+.site-ending-v72 p strong{color:#3d755f!important;font-weight:680!important;}
+.site-ending-v72 .signature{
+  margin-top:38px!important;
+  color:#9aa39f!important;
+  font-size:10px!important;
+  letter-spacing:.04em!important;
+  text-align:center!important;
+}
+
+@media(max-width:720px){
+  #human .review-callout-v72,
+  #garden .tree-offer-v72{
+    width:calc(100% - 32px)!important;
+    max-width:none!important;
+  }
+  #human .review-callout-v72{padding:17px 18px!important;}
+  #garden .tree-offer-v72{padding:22px 20px!important;}
+  #garden .tree-offer-grid-v72{
+    grid-template-columns:1fr!important;
+    gap:20px!important;
+  }
+  #garden .tree-offer-price-v72{
+    min-height:0!important;
+    padding:18px 0 0!important;
+    border-left:0!important;
+    border-top:1px solid rgba(49,111,87,.10)!important;
+  }
+  #garden .tree-offer-price-v72 strong{font-size:30px!important;}
+  #garden .tree-offer-price-v72 small{margin-top:7px!important;}
+  #garden .tree-offer-v72 .garden-meta-v71{margin-top:18px!important;padding-top:15px!important;}
+  .site-ending-v72{padding:80px 0 86px!important;}
+  .site-ending-v72 h2{font-size:26px!important;}
+  .site-ending-v72 p{font-size:13px!important;}
+}
+
+@media(max-width:430px){
+  #garden .tree-offer-price-v72>div{gap:4px!important;}
+  #garden .tree-offer-price-v72 strong{font-size:29px!important;}
+  .site-ending-v72 .ending-inner-v72{padding:0 22px!important;}
+}
