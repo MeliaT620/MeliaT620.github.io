@@ -1,0 +1,100 @@
+/* Mine English v52 — Reflection mobile repair. */
+:root{--v52-green:#15966f;--v52-ink:#1b2521;--v52-muted:#748079;--v52-line:rgba(28,48,40,.075)}
+
+/* Stop older guess-based positioning from fighting the geometry script. */
+#reflection .reflection-stage-v51 .reflection-callout{
+  right:auto!important;
+  margin:0!important;
+  transform:none!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:4px!important;
+  z-index:30!important;
+  pointer-events:none!important;
+}
+#reflection .reflection-stage-v51 .reflection-callout small{
+  display:block!important;
+  white-space:nowrap!important;
+  font-size:9px!important;
+  line-height:1.42!important;
+  font-weight:560!important;
+  letter-spacing:0!important;
+  color:#68756f!important;
+}
+#reflection .reflection-stage-v51 .reflection-callout .callout-line{
+  width:42px!important;
+  min-width:42px!important;
+  height:1px!important;
+  background:rgba(83,113,101,.38)!important;
+  transform:none!important;
+}
+#reflection .reflection-stage-v51 .reflection-callout .callout-dot{
+  width:7px!important;
+  height:7px!important;
+  min-width:7px!important;
+  min-height:7px!important;
+  border-radius:50%!important;
+  background:#8ba59a!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+#reflection .callout-overview-v51 small,#reflection .callout-word-audio-v51 small{order:0!important;text-align:right!important}
+#reflection .callout-overview-v51 .callout-line,#reflection .callout-word-audio-v51 .callout-line{order:1!important}
+#reflection .callout-overview-v51 .callout-dot,#reflection .callout-word-audio-v51 .callout-dot{order:2!important}
+#reflection .callout-audio-v51 .callout-dot{order:0!important}
+#reflection .callout-audio-v51 .callout-line{order:1!important}
+#reflection .callout-audio-v51 small{order:2!important;text-align:left!important}
+
+/* Rebuild the vertical rhythm inside Reflection. English + Chinese are one group. */
+#reflection .reflection-card .demo-upper{
+  transform:translateY(-16px)!important;
+}
+#reflection .reflection-card .sentence-line{
+  margin-bottom:0!important;
+}
+#reflection .reflection-translation{
+  margin-top:4px!important;
+  line-height:1.45!important;
+}
+#reflection .reflection-card .support-divider{
+  margin-top:28px!important;
+  margin-bottom:28px!important;
+  width:86%!important;
+  background:var(--v52-line)!important;
+}
+#reflection .reflection-card .reflection-support{
+  transform:translateY(0)!important;
+}
+#reflection .reflection-card .support-word{
+  margin-bottom:11px!important;
+}
+
+/* Keep the phone content visually grouped instead of stretched over the whole height. */
+#reflection .reflection-card{
+  padding-top:54px!important;
+}
+#reflection .reflection-actions{bottom:52px!important}
+#reflection .live-comments{bottom:52px!important}
+
+@media(max-width:720px){
+  #reflection .reflection-stage-v51{overflow:visible!important}
+  #reflection .reflection-stage-v51 .reflection-callout small{
+    font-size:8px!important;
+    line-height:1.36!important;
+  }
+  #reflection .reflection-stage-v51 .reflection-callout .callout-line{
+    width:25px!important;
+    min-width:25px!important;
+  }
+  #reflection .reflection-stage-v51 .reflection-callout .callout-dot{
+    width:6px!important;height:6px!important;min-width:6px!important;min-height:6px!important;
+  }
+  #reflection .reflection-card .demo-upper{transform:translateY(-12px)!important}
+  #reflection .reflection-card .support-divider{margin-top:24px!important;margin-bottom:25px!important;width:82%!important}
+  #reflection .reflection-card{padding-top:50px!important}
+}
+
+@media(max-width:430px){
+  #reflection .reflection-stage-v51 .reflection-callout small{font-size:7.5px!important}
+  #reflection .reflection-stage-v51 .reflection-callout .callout-line{width:18px!important;min-width:18px!important}
+}
