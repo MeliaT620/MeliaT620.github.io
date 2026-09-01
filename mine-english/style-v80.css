@@ -1,4 +1,4 @@
-/* Mine English v82 — global mobile gutter + Reflection social-state contract + memory-row alignment. */
+/* Mine English v83 — global mobile gutter + Reflection social-state contract + memory-row alignment. */
 
 :root{
   --mine-mobile-gutter:30px;
@@ -31,11 +31,14 @@
   padding-top:2px!important;
   line-height:1.35!important;
 }
-/* The item selected for today is important because of its state, not because of a red card fill. */
+/* The item selected for today is important because of its state, not because of a red card fill.
+   Keep the same closing divider as the rows above so the rhythm continues into the 10-minute callout. */
 #memory .usage-memory .usage-row.fragile.selected{
   background:transparent!important;
   background-image:none!important;
-  border-color:transparent!important;
+  border:0!important;
+  border-bottom:1px solid rgba(27,37,33,.07)!important;
+  border-radius:0!important;
   box-shadow:none!important;
 }
 
