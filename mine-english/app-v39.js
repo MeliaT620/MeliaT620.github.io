@@ -1,4 +1,4 @@
-/* Mine English v64 — only Word Overview copy/line length changed from v63. */
+/* Mine English v71 — Reflection annotations + reward icons. */
 (function(){
   const sprout='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V11"/><path d="M12 13C8.5 13 6 10.5 6 7c3.8 0 6 2.2 6 6Z"/><path d="M12 10c0-3.4 2.5-5.8 6-5.8 0 3.5-2.3 5.8-6 5.8Z"/></svg>';
   const coin='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="5.4"/><path d="M9.4 12h5.2M12 9.4v5.2"/></svg>';
@@ -22,8 +22,14 @@
     const upperY=pr.bottom+(rr.top-pr.bottom)*0.74,lowerTarget=ar?ar.top:(spr.bottom+150),lowerY=spr.bottom+(lowerTarget-spr.bottom)*0.42;
     placeRight(stage.querySelector('.callout-audio-v51'),upperY);placeRight(stage.querySelector('.callout-word-audio-v51'),lowerY);
   }
-  function liftFlow(card){if(!card)return;const flow=card.querySelector('.reward-flow');if(flow&&flow.parentElement!==card)card.appendChild(flow)}
-  function refineRewards(){const completeMark=document.querySelector('.learning-reward-complete .coin-mark');if(completeMark){completeMark.classList.add('seed-icon');completeMark.innerHTML=sprout}const seed=document.querySelector('.reward-mode-mark.seed');if(seed){seed.classList.add('seed-icon');seed.innerHTML=sprout}const coinMark=document.querySelector('.reward-mode-mark.coin');if(coinMark){coinMark.classList.add('coin-icon');coinMark.innerHTML=coin}liftFlow(document.querySelector('.learning-reward-mode'));liftFlow(document.querySelector('.coin-mode'))}
+  function injectIcon(el,svg,extraClass){if(!el)return;el.classList.add(extraClass);if(!el.querySelector('svg'))el.innerHTML=svg}
+  function refineRewards(){
+    injectIcon(document.querySelector('.reward-growth-v71 .reward-item-mark-v71'),sprout,'seed-icon');
+    injectIcon(document.querySelector('.reward-coins-v71 .reward-item-mark-v71'),coin,'coin-icon');
+    injectIcon(document.querySelector('.learning-reward-complete .coin-mark'),sprout,'seed-icon');
+    injectIcon(document.querySelector('.reward-mode-mark.seed'),sprout,'seed-icon');
+    injectIcon(document.querySelector('.reward-mode-mark.coin'),coin,'coin-icon');
+  }
   function runAll(){refineCallouts();refineRewards();document.getElementById('library')?.remove();requestAnimationFrame(placeReflectionCallouts)}
   function boot(){runAll();const t=setInterval(runAll,160);setTimeout(()=>clearInterval(t),4500);window.addEventListener('resize',()=>requestAnimationFrame(placeReflectionCallouts),{passive:true});window.addEventListener('orientationchange',()=>setTimeout(placeReflectionCallouts,250),{passive:true});if('ResizeObserver' in window){const stage=document.querySelector('#reflection .reflection-stage-wrap');if(stage)new ResizeObserver(()=>requestAnimationFrame(placeReflectionCallouts)).observe(stage)}}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
