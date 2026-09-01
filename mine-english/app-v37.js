@@ -1,4 +1,4 @@
-/* Mine English v44 — interaction layer for the quiet demo system. */
+/* Mine English v45 — interaction layer for the quiet demo system. */
 (function(){
   const heart='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.2 4.9 13.5C1.4 10.2 3.8 4.8 8.2 5.4c1.6.2 2.9 1.2 3.8 2.6.9-1.4 2.2-2.4 3.8-2.6 4.4-.6 6.8 4.8 3.3 8.1L12 20.2Z"/></svg>';
   const star='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3.8 2.5 5.1 5.6.8-4.1 4 1 5.6-5-2.6-5 2.6 1-5.6-4.1-4 5.6-.8L12 3.8Z"/></svg>';
@@ -17,7 +17,7 @@
   function locale(scope){return scope.querySelector('.accent-toggle')?.dataset.accent==='UK'?'en-GB':'en-US'}
 
   function installSpatialAudio(){
-    document.querySelectorAll('.learning-scene.judge-scene,.reflection-screen').forEach(scope=>{
+    document.querySelectorAll('.learning-scene.judge-scene,#reflection .reflection-screen').forEach(scope=>{
       if(scope.dataset.v37Audio==='1')return;
       scope.dataset.v37Audio='1';
       let sx=0,sy=0,moved=false,timer=null;
@@ -83,7 +83,7 @@
   }
 
   function installSocial(){
-    const screen=document.querySelector('.reflection-screen');
+    const screen=document.querySelector('#reflection .reflection-screen');
     const layer=document.getElementById('liveComments');
     if(!screen||!layer||screen.dataset.v37Social==='1')return false;
     screen.dataset.v37Social='1';
@@ -127,5 +127,5 @@
     setTimeout(()=>clearInterval(t),6000);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
-  new MutationObserver(()=>{installSpatialAudio();installAccent();prepareWordPeek()}).observe(document.documentElement,{childList:true,subtree:true});
+  new MutationObserver(()=>{installSpatialAudio();installAccent();prepareWordPeek();installSocial()}).observe(document.documentElement,{childList:true,subtree:true});
 })();
