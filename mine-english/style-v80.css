@@ -1,0 +1,123 @@
+/* Mine English v80 — global mobile gutter + Reflection social-state contract.
+   One spacing token for all editorial content; demo devices remain independent visuals. */
+
+:root{
+  --mine-mobile-gutter:30px;
+}
+
+/* Reflection social icons: outline by default, solid after activation. */
+#reflection .reflection-actions .like-action.active svg,
+#reflection .reflection-actions .save-action.active svg,
+#reflection .reflection-actions .comment-action.active svg{
+  fill:currentColor!important;
+  stroke:currentColor!important;
+}
+#reflection .reflection-actions .like-action:not(.active) svg,
+#reflection .reflection-actions .save-action:not(.active) svg{
+  fill:none!important;
+}
+
+@media(max-width:720px){
+  /* v74 already routes most sections through --mine-page-gutter.
+     Point that contract at the one authoritative mobile value. */
+  :root{
+    --mine-page-gutter:var(--mine-mobile-gutter);
+  }
+
+  /* Hero was outside the section gutter system. Bring it onto the same axis. */
+  .hero.hero-minimal.wrap{
+    width:100%!important;
+    max-width:none!important;
+    padding-left:var(--mine-mobile-gutter)!important;
+    padding-right:var(--mine-mobile-gutter)!important;
+    box-sizing:border-box!important;
+  }
+  .hero.hero-minimal .hero-copy{
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    box-sizing:border-box!important;
+  }
+
+  /* Every editorial chapter uses the same outer gutter. */
+  #memory>.wrap,
+  #learning>.learning-intro,
+  #learning>.learning-subsection-v71,
+  #reflection>.wrap,
+  #human>.wrap,
+  #garden>.wrap,
+  #journey>.wrap{
+    width:100%!important;
+    max-width:none!important;
+    padding-left:var(--mine-mobile-gutter)!important;
+    padding-right:var(--mine-mobile-gutter)!important;
+    box-sizing:border-box!important;
+  }
+
+  /* Remove the old extra 8px on chapter headers so H2/body align to the same axis. */
+  #memory>.wrap>.section-head,
+  #learning>.wrap.learning-intro>.section-head,
+  #human>.wrap>.section-head,
+  #garden .garden-section-head-v71,
+  #journey .journey-head-v71{
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+
+  /* Text/subsection elements fill their already-guttered parent — no hidden second margin system. */
+  #memory .usage-memory,
+  #memory .repair-principle,
+  #learning .editorial-subhead-v71,
+  #reflection .editorial-subhead-v71,
+  #human .editorial-subhead-v71,
+  #human .human-subsection-v71>p,
+  #human .human-subsection-v71>blockquote,
+  #human .human-principles-v71,
+  #human .review-callout-v72,
+  #human .reward-explainer-v71,
+  #human .reward-conclusion-v71,
+  #human .human-emphasis-v71,
+  #garden .garden-language-v71,
+  #garden .tree-offer-v72,
+  #garden .editorial-subhead-v71,
+  #garden .garden-subsection-v71>p,
+  #garden blockquote,
+  #journey .words-sentences-v71,
+  #journey .journey-note-v71,
+  #journey .year-card-v71{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    box-sizing:border-box!important;
+  }
+
+  /* Coach is a top-level card, not nested in a guttered parent. Give it the exact same outer axis. */
+  #learning .learning-note-v71{
+    width:calc(100% - (var(--mine-mobile-gutter) * 2))!important;
+    max-width:none!important;
+    margin-left:var(--mine-mobile-gutter)!important;
+    margin-right:var(--mine-mobile-gutter)!important;
+    box-sizing:border-box!important;
+  }
+
+  /* Reflection text lives in a guttered wrap; the phone remains a centered visual. */
+  #reflection .reflection-stage-wrap{
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+
+  /* Ending follows the same reading axis even though its copy remains centered. */
+  .site-ending-v72 .ending-inner-v72{
+    width:100%!important;
+    max-width:720px!important;
+    padding-left:var(--mine-mobile-gutter)!important;
+    padding-right:var(--mine-mobile-gutter)!important;
+    box-sizing:border-box!important;
+  }
+}
+
+@media(max-width:370px){
+  :root{--mine-mobile-gutter:26px;}
+}
