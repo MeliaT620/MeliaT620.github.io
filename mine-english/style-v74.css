@@ -1,7 +1,7 @@
 @import url('./style-v71.css?v=71');
 
-/* Mine English v74 — one authoritative editorial refinement layer.
-   Learning is rebuilt from Reflection geometry + v37 rhythm + v22 gesture glow. */
+/* Mine English v75 — one authoritative editorial refinement layer.
+   Learning highlight = current Reflection. Judgment glow + answered state = v22 behavior. */
 :root{--mine-page-gutter:22px;}
 
 /* ---------- Existing editorial refinements kept intentionally ---------- */
@@ -30,37 +30,72 @@
 .site-ending-v72 p strong{color:#3d755f!important;font-weight:680!important;}
 .site-ending-v72 .signature{margin-top:38px!important;color:#9aa39f!important;font-size:10px!important;letter-spacing:.04em!important;text-align:center!important;}
 
-/* Coin background follows Seed: filled surface, no outer stroke. */
 #human .reward-coins-v71 .reward-item-mark-v71{border:0!important;box-shadow:none!important;background:rgba(240,199,77,.18)!important;color:#9a7411!important;}
 
-/* All five chapters get the same quiet chapter separator. */
 #memory::before,#learning::before,#human::before,#garden::before,#journey::before{content:''!important;position:absolute!important;top:0!important;left:50%!important;width:44px!important;height:1px!important;transform:translateX(-50%)!important;background:var(--v71-line)!important;}
 
-/* One desktop text axis. */
 #memory .usage-memory,#memory .repair-principle,
 #learning .editorial-subhead-v71,#learning .learning-note-v71,#reflection .editorial-subhead-v71,
 #human .editorial-subhead-v71,#human .human-subsection-v71>p,#human .human-principles-v71,#human .review-callout-v72,#human .reward-explainer-v71,#human .reward-conclusion-v71,#human .human-emphasis-v71,
 #garden .garden-language-v71,#garden .tree-offer-v72,#garden .editorial-subhead-v71,#garden .garden-subsection-v71>p,#garden blockquote,
 #journey .words-sentences-v71,#journey .journey-note-v71,#journey .year-card-v71{width:100%!important;max-width:var(--v71-text-width)!important;margin-left:auto!important;margin-right:auto!important;box-sizing:border-box!important;}
 
-/* ---------- Learning Page 01 ----------
-   Do not imitate Reflection: literally share its phone shell and screen ratio. */
+/* ---------------------------------------------------------
+   Learning Page 01
+   Phone shell and phrase highlight are literally aligned with current Reflection.
+   --------------------------------------------------------- */
 #learning .learning-demo-v74{width:100%!important;max-width:var(--v71-content-width)!important;margin:30px auto 0!important;display:flex!important;flex-direction:column!important;align-items:center!important;}
 #learning .learning-device-v74{position:relative!important;overflow:visible!important;}
-#learning .learning-screen-v74{--left-glow:0;--right-glow:0;--left-width:2.2px;--right-width:2.2px;--left-spread:8px;--right-spread:8px;position:relative!important;overflow:hidden!important;touch-action:pan-y!important;cursor:grab!important;}
+#learning .learning-screen-v74{--left-glow:0;--right-glow:0;--left-width:2.2px;--right-width:2.2px;--left-spread:7px;--right-spread:7px;--left-spread2:12px;--right-spread2:12px;position:relative!important;overflow:hidden!important;touch-action:pan-y pinch-zoom!important;cursor:grab!important;}
 #learning .learning-screen-v74:active{cursor:grabbing!important;}
-#learning .learning-screen-v74::before,#learning .learning-screen-v74::after{content:''!important;position:absolute!important;z-index:2!important;top:20%!important;bottom:19%!important;pointer-events:none!important;transition:opacity .12s ease,width .12s ease,box-shadow .12s ease!important;}
-#learning .learning-screen-v74::before{left:0!important;width:var(--left-width)!important;opacity:var(--left-glow)!important;background:rgba(16,185,129,.76)!important;box-shadow:0 0 var(--left-spread) rgba(16,185,129,.78),0 0 34px rgba(16,185,129,.22)!important;}
-#learning .learning-screen-v74::after{right:0!important;width:var(--right-width)!important;opacity:var(--right-glow)!important;background:rgba(233,137,166,.72)!important;box-shadow:0 0 var(--right-spread) rgba(233,137,166,.74),0 0 34px rgba(233,137,166,.20)!important;}
-#learning .learning-card-v74{position:absolute!important;z-index:4!important;inset:0!important;width:100%!important;height:100%!important;padding:0 27px!important;box-sizing:border-box!important;transform:translate3d(0,0,0)!important;transition:transform .2s cubic-bezier(.22,.8,.25,1)!important;will-change:transform!important;}
+
+/* v22 edge glow geometry: thin luminous edge, not a blurred color block. */
+#learning .learning-screen-v74::before,#learning .learning-screen-v74::after{content:''!important;position:absolute!important;z-index:3!important;top:7%!important;bottom:7%!important;width:2.2px!important;border-radius:999px!important;filter:none!important;opacity:0!important;pointer-events:none!important;}
+#learning .learning-screen-v74::before{left:0!important;background:linear-gradient(180deg,transparent,rgba(73,232,172,.92) 12%,#10B981 45%,#10B981 55%,rgba(73,232,172,.92) 88%,transparent)!important;}
+#learning .learning-screen-v74::after{right:0!important;background:linear-gradient(180deg,transparent,rgba(255,195,213,.94) 12%,#F09AB2 45%,#F09AB2 55%,rgba(255,195,213,.94) 88%,transparent)!important;}
+#learning .learning-screen-v74.reconsidering::before{opacity:var(--left-glow)!important;width:var(--left-width)!important;box-shadow:0 0 var(--left-spread) rgba(16,185,129,.82),0 0 var(--left-spread2) rgba(16,185,129,.24)!important;}
+#learning .learning-screen-v74.reconsidering::after{opacity:var(--right-glow)!important;width:var(--right-width)!important;box-shadow:0 0 var(--right-spread) rgba(240,154,178,.80),0 0 var(--right-spread2) rgba(240,154,178,.23)!important;}
+#learning .learning-screen-v74.known:not(.reconsidering)::before{opacity:1!important;width:4px!important;box-shadow:0 0 18px rgba(16,185,129,.95),0 0 34px rgba(16,185,129,.36)!important;}
+#learning .learning-screen-v74.not-yet:not(.reconsidering)::after{opacity:1!important;width:4px!important;box-shadow:0 0 18px rgba(240,154,178,.92),0 0 34px rgba(240,154,178,.34)!important;}
+#learning .learning-screen-v74.known:not(.reconsidering)::after,#learning .learning-screen-v74.not-yet:not(.reconsidering)::before{opacity:0!important;}
+
+#learning .learning-card-v74{position:absolute!important;z-index:4!important;inset:0!important;width:100%!important;height:100%!important;padding:0 27px!important;box-sizing:border-box!important;transform:none!important;}
 #learning .learning-upper-v74{position:relative!important;margin:94px 0 0!important;padding:0!important;text-align:left!important;}
 #learning .learning-upper-v74 .sentence-line{margin:0!important;padding:0!important;text-align:left!important;}
 #learning .learning-upper-v74 .reflection-example{display:block!important;margin:0!important;padding:0!important;}
-#learning .learning-upper-v74 mark{background:transparent!important;color:inherit!important;padding:0 .02em!important;border-radius:.1em!important;box-shadow:inset 0 -.42em 0 rgba(16,185,129,.16),0 0 17px rgba(16,185,129,.075)!important;-webkit-box-decoration-break:clone!important;box-decoration-break:clone!important;}
-#learning .learning-upper-v74 mark .core-word{color:#0d9b72!important;font-weight:740!important;}
-#learning .learning-question-v74{margin-top:15px!important;color:#53605a!important;font-size:9.6px!important;line-height:1.5!important;font-weight:620!important;text-align:left!important;}
+
+/* EXACT current Reflection highlight: same inset depth, opacity, radius, baseline. */
+#learning .learning-upper-v74 .reflection-example mark{background:none!important;box-shadow:inset 0 -.35em rgba(16,185,129,.12)!important;border-radius:.10em!important;padding:0 .02em!important;-webkit-box-decoration-break:clone!important;box-decoration-break:clone!important;color:inherit!important;}
+#learning .learning-upper-v74 .reflection-example mark .core-word{color:var(--v37-green)!important;font-weight:740!important;}
+
+/* Question and answered translation occupy the same semantic slot. */
+#learning .learning-response-v75{position:relative!important;min-height:14px!important;margin:6px 0 0!important;padding:0!important;}
+#learning .learning-question-v74,#learning .learning-answer-v75{position:absolute!important;inset:0!important;margin:0!important;padding:0!important;transition:opacity .18s ease,transform .18s ease!important;}
+#learning .learning-question-v74{color:#53605a!important;font-size:9.6px!important;line-height:1.45!important;font-weight:620!important;text-align:left!important;opacity:1!important;visibility:visible!important;}
+#learning .learning-answer-v75{opacity:0!important;visibility:hidden!important;transform:translateY(2px)!important;}
+#learning .learning-answer-v75 .reflection-translation{margin:0!important;padding:0!important;line-height:1.45!important;}
+#learning .learning-screen-v74[data-choice] .learning-question-v74{opacity:0!important;visibility:hidden!important;transform:translateY(-2px)!important;}
+#learning .learning-screen-v74[data-choice] .learning-answer-v75{opacity:1!important;visibility:visible!important;transform:none!important;}
+
+/* Answer support mirrors current Reflection: translation -> equal-gap divider -> lead support. */
+#learning .learning-support-v75{opacity:0!important;visibility:hidden!important;pointer-events:none!important;transform:translateY(5px)!important;transition:opacity .2s ease,transform .2s ease!important;}
+#learning .learning-screen-v74[data-choice] .learning-support-v75{opacity:1!important;visibility:visible!important;pointer-events:auto!important;transform:none!important;}
+#learning .learning-support-v75 .support-divider{position:relative!important;display:block!important;width:100%!important;height:1px!important;margin:var(--reflection-gap) 0!important;padding:0!important;border:0!important;background:var(--reflection-line)!important;transform:none!important;}
+#learning .learning-support-v75 .reflection-support{position:relative!important;margin:0!important;padding:0!important;}
+#learning .learning-support-v75 .support-word{margin:0 0 11px!important;padding:0!important;}
+#learning .learning-support-v75 .support-grid{grid-template-columns:24px 1fr!important;column-gap:7px!important;row-gap:5px!important;align-items:start!important;}
+#learning .learning-support-v75 .meta-control{width:24px!important;min-width:24px!important;height:13px!important;min-height:13px!important;padding:0!important;border-radius:999px!important;font-size:5.7px!important;line-height:1!important;display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;}
+#learning .learning-support-v75 .accent-toggle{align-self:center!important;background:rgba(248,251,250,.92)!important;color:#7f8a84!important;border:1px solid rgba(26,45,37,.08)!important;box-shadow:none!important;}
+#learning .learning-support-v75 .usage-pos{align-self:start!important;margin-top:1px!important;background:rgba(21,150,111,.10)!important;color:#15966f!important;border:1px solid rgba(21,150,111,.14)!important;font-weight:720!important;}
+#learning .learning-support-v75 .support-primary{min-height:13px!important;align-items:center!important;}
+#learning .learning-support-v75 .usage-copy{align-self:start!important;}
+#learning .learning-support-v75 .usage-zh{line-height:13px!important;}
+#learning .learning-support-v75 .usage-en{margin-top:4px!important;}
+#learning .learning-support-v75 .ipa{line-height:1!important;}
+
+/* v22-style low-presence judgment hint. */
 #learning .learning-gesture-v74{position:absolute!important;left:27px!important;right:27px!important;bottom:27px!important;display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;pointer-events:none!important;}
-#learning .learning-gesture-v74>span{display:flex!important;align-items:center!important;gap:5px!important;opacity:.43!important;transition:opacity .12s ease,transform .12s ease!important;white-space:nowrap!important;}
+#learning .learning-gesture-v74>span{display:flex!important;align-items:center!important;gap:5px!important;opacity:.43!important;white-space:nowrap!important;}
 #learning .learning-known-v74{justify-content:flex-start!important;color:#15966f!important;}
 #learning .learning-notyet-v74{justify-content:flex-end!important;color:#c47d94!important;}
 #learning .learning-gesture-v74 b{font-size:9px!important;line-height:1!important;font-weight:500!important;}
@@ -70,14 +105,13 @@
 #learning .learning-device-v74.swiping-notyet .learning-notyet-v74,#learning .learning-device-v74.judged-notyet .learning-notyet-v74{opacity:.96!important;transform:translateX(2px)!important;}
 #learning .learning-demo-v74 .device-caption{margin-top:15px!important;}
 
-/* Reflection icons exist even before JS initializes. Positioning stays untouched. */
+/* Reflection icons exist before JS initializes. */
 #reflection .reflection-actions .social-action{display:flex!important;}
 #reflection .reflection-actions .social-action svg{display:block!important;width:12.5px!important;height:12.5px!important;stroke:currentColor!important;fill:none!important;stroke-width:1.55!important;stroke-linecap:round!important;stroke-linejoin:round!important;}
 #reflection .reflection-actions .social-action small{display:block!important;}
 #reflection .reflection-actions .comment-action.active svg{fill:currentColor!important;stroke:currentColor!important;}
 
 @media(max-width:720px){
-  /* One physical page gutter. Child content no longer invents its own calc() margin. */
   #memory>.wrap,#learning>.learning-intro,#learning>.learning-subsection-v71,#reflection>.wrap,#human>.wrap,#garden>.wrap,#journey>.wrap{padding-left:var(--mine-page-gutter)!important;padding-right:var(--mine-page-gutter)!important;box-sizing:border-box!important;}
   #memory .usage-memory,#memory .repair-principle,
   #learning .editorial-subhead-v71,#learning .learning-note-v71,#reflection .editorial-subhead-v71,
@@ -96,7 +130,6 @@
   .site-ending-v72 h2{font-size:26px!important;}
   .site-ending-v72 p{font-size:13px!important;}
 
-  /* Mirror Reflection's already-approved internal mobile spacing. */
   #learning .learning-card-v74{padding:0 25px!important;}
   #learning .learning-upper-v74{margin-top:88px!important;}
   #learning .learning-gesture-v74{left:25px!important;right:25px!important;bottom:26px!important;}
@@ -108,7 +141,7 @@
   #garden .tree-offer-price-v72 strong{font-size:29px!important;}
   .site-ending-v72 .ending-inner-v72{padding:0 var(--mine-page-gutter)!important;}
   #learning .learning-upper-v74{margin-top:84px!important;}
-  #learning .learning-question-v74{margin-top:13px!important;font-size:8.6px!important;}
+  #learning .learning-question-v74{font-size:8.6px!important;}
   #learning .learning-gesture-v74 small{font-size:6.3px!important;}
   #learning .learning-gesture-center-v74{font-size:5.9px!important;}
 }
