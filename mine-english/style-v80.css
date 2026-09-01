@@ -1,4 +1,4 @@
-/* Mine English v86 — global mobile gutter + Reflection social-state contract + memory-row alignment + centered Learning chapter header + Mine Garden offer header. */
+/* Mine English v88 — global mobile gutter + Reflection social-state contract + memory-row alignment + centered Learning chapter header + Mine Garden offer header. */
 
 :root{
   --mine-mobile-gutter:30px;
@@ -95,7 +95,7 @@
   letter-spacing:-.01em!important;
 }
 
-/* Grow My Tree: the price belongs to the header, not a detached block below the copy. */
+/* Grow My Tree: title and the two-line price block share one bottom baseline. */
 #garden .tree-offer-grid-v72{
   display:block!important;
 }
@@ -106,7 +106,7 @@
   display:grid!important;
   grid-template-columns:minmax(0,1fr) auto!important;
   gap:24px!important;
-  align-items:start!important;
+  align-items:end!important;
   width:100%!important;
 }
 #garden .tree-offer-head-v86 .editorial-subhead-v71{
@@ -118,12 +118,13 @@
 #garden .tree-offer-price-v72{
   min-height:0!important;
   margin:0!important;
-  padding:4px 0 0!important;
+  padding:0 0 2px!important;
   border:0!important;
   display:flex!important;
   flex-direction:column!important;
-  justify-content:flex-start!important;
+  justify-content:flex-end!important;
   align-items:flex-end!important;
+  align-self:end!important;
   text-align:right!important;
   white-space:nowrap!important;
 }
@@ -132,14 +133,19 @@
   align-items:baseline!important;
   justify-content:flex-end!important;
   gap:5px!important;
+  line-height:1!important;
   white-space:nowrap!important;
 }
 #garden .tree-offer-price-v72 strong{
   font-size:32px!important;
+  line-height:1!important;
 }
 #garden .tree-offer-price-v72 small{
-  margin-top:7px!important;
+  display:block!important;
+  margin-top:4px!important;
+  line-height:1.15!important;
   text-align:right!important;
+  white-space:nowrap!important;
 }
 #garden .tree-offer-copy-v72>p{
   max-width:none!important;
@@ -265,16 +271,17 @@
     line-height:1.72!important;
   }
 
-  /* Keep title and price together in the first visual row on mobile too. */
+  /* Mobile follows the exact same bottom-alignment contract. */
   #garden .tree-offer-head-v86{
     grid-template-columns:minmax(0,1fr) 112px!important;
     gap:14px!important;
-    align-items:start!important;
+    align-items:end!important;
   }
   #garden .tree-offer-price-v72{
-    padding-top:3px!important;
+    padding:0 0 2px!important;
     border:0!important;
     align-items:flex-end!important;
+    align-self:end!important;
   }
   #garden .tree-offer-price-v72 strong{
     font-size:27px!important;
@@ -283,8 +290,9 @@
     font-size:7.5px!important;
   }
   #garden .tree-offer-price-v72 small{
-    margin-top:6px!important;
+    margin-top:4px!important;
     font-size:6.7px!important;
+    line-height:1.1!important;
   }
   #garden .tree-offer-copy-v72>p{
     margin-top:17px!important;
