@@ -1,0 +1,82 @@
+/* Mine English v66 — one visual system for the five product chapters. */
+:root{--chapter-max:900px;--chapter-gap:112px;--chapter-line:rgba(28,63,50,.075);--chapter-card:rgba(255,255,255,.78);--chapter-soft:rgba(247,251,249,.72);--chapter-ink:#1b2521;--chapter-text:#6b7670;--chapter-green:#15966f}
+
+/* ---------- Five chapters: one shared rhythm ---------- */
+#memory,#learning,#human,#garden,#journey{position:relative!important;padding-top:var(--chapter-gap)!important;padding-bottom:var(--chapter-gap)!important;border-top:1px solid var(--chapter-line)!important;background:#fff!important;}
+#memory{border-top:0!important;}
+#human,#journey{background:linear-gradient(180deg,rgba(248,251,249,.66),rgba(255,255,255,.98))!important;}
+#garden{background:linear-gradient(180deg,rgba(246,251,248,.78),rgba(253,254,253,.98))!important;}
+
+#memory>.wrap,#learning>.wrap,#human>.wrap,#garden>.wrap,#journey>.wrap{max-width:var(--chapter-max)!important;}
+#memory .section-head,#learning .section-head,#human .section-head,#garden .section-head,#journey .section-head{max-width:720px!important;margin:0 auto 42px!important;text-align:center!important;}
+#memory .section-head .kicker,#learning .section-head .kicker,#human .section-head .kicker,#garden .section-head .kicker,#journey .kicker{margin-bottom:12px!important;color:#4f8d77!important;font-size:9px!important;font-weight:760!important;letter-spacing:.15em!important;text-transform:uppercase!important;}
+#memory .section-head h2,#learning .section-head h2,#human .section-head h2,#garden .section-head h2,#journey h2{margin:0!important;color:var(--chapter-ink)!important;font-size:clamp(31px,4.6vw,50px)!important;line-height:1.17!important;letter-spacing:-.04em!important;}
+#memory .section-head p,#learning .section-head p,#human .section-head p,#garden .section-head p,#journey .journey-intro-v50{max-width:620px!important;margin:17px auto 0!important;color:var(--chapter-text)!important;font-size:14px!important;line-height:1.85!important;}
+
+/* ---------- 01 Memory: one surface, rows separated by lines ---------- */
+#memory .usage-memory{max-width:840px!important;margin:0 auto!important;padding:30px 32px!important;border-radius:24px!important;background:var(--chapter-card)!important;border:1px solid var(--chapter-line)!important;box-shadow:0 14px 46px rgba(33,70,55,.035)!important;}
+#memory .usage-row{border-radius:0!important;box-shadow:none!important;background:transparent!important;border:0!important;border-top:1px solid rgba(28,63,50,.055)!important;padding:25px 0!important;}
+#memory .usage-row:first-of-type{border-top:0!important;}
+#memory .attention-callout{margin:22px 0 0!important;padding:20px 0 0!important;border-radius:0!important;border:0!important;border-top:1px solid rgba(28,63,50,.06)!important;background:transparent!important;box-shadow:none!important;}
+#memory .repair-principle{max-width:840px!important;margin:28px auto 0!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;}
+
+/* ---------- 02 Learning + Reflection: same chapter, two acts ---------- */
+#learning{padding-bottom:var(--chapter-gap)!important;}
+#learning .learning-intro{max-width:900px!important;}
+#learning .linear-note{max-width:620px!important;margin:0 auto 34px!important;text-align:center!important;color:#85908a!important;}
+#learning .coach-preview-outside{margin-top:42px!important;padding:28px 0 0!important;border-radius:0!important;border:0!important;border-top:1px solid rgba(28,63,50,.06)!important;background:transparent!important;box-shadow:none!important;}
+#learning .learning-reflection-subsection-v65{margin-top:96px!important;padding-top:88px!important;border-top:1px solid rgba(28,63,50,.08)!important;}
+#learning .learning-reflection-subsection-v65 .section-head{margin-bottom:34px!important;}
+
+/* ---------- 03 Human Care: flatten card-inside-card ---------- */
+#human .human-sequence-v47{max-width:840px!important;margin:0 auto!important;gap:0!important;padding:0 30px!important;border-radius:24px!important;background:var(--chapter-card)!important;border:1px solid var(--chapter-line)!important;box-shadow:0 14px 46px rgba(33,70,55,.035)!important;}
+#human .human-value-card{margin:0!important;padding:32px 0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;border-top:1px solid rgba(28,63,50,.06)!important;}
+#human .human-value-card:first-child{border-top:0!important;}
+#human .reward-system-integrated{margin-top:24px!important;padding:24px 0 0!important;border-radius:0!important;border:0!important;border-top:1px solid rgba(28,63,50,.055)!important;background:transparent!important;box-shadow:none!important;}
+#human .reward-dual{gap:22px!important;}
+#human .reward-mode{padding:18px 0!important;border-radius:0!important;background:transparent!important;border:0!important;box-shadow:none!important;}
+#human .reward-mode+.reward-mode{border-top:1px solid rgba(28,63,50,.05)!important;}
+#human .reward-mode>.reward-flow{width:100%!important;margin:12px 0 0!important;}
+#human .reward-principle-v40{margin-top:18px!important;}
+
+/* ---------- 04 Garden: one visual + four definitions, then three flat rows ---------- */
+#garden{padding-top:var(--chapter-gap)!important;}
+#garden .garden-section-head-v50{margin-bottom:42px!important;}
+#garden .garden-hero-v50{max-width:840px!important;margin:0 auto!important;padding:28px!important;border-radius:24px!important;background:var(--chapter-card)!important;border:1px solid var(--chapter-line)!important;box-shadow:0 14px 46px rgba(33,70,55,.035)!important;}
+#garden .garden-visual-v65{height:320px!important;overflow:visible!important;padding-top:24px!important;box-sizing:border-box!important;}
+#garden .garden-visual-v65 .garden-tree-v50{bottom:58px!important;transform:translateX(-50%) scale(1.03)!important;}
+#garden .garden-principles-v65 article{padding:18px 0!important;border-bottom:1px solid rgba(28,63,50,.055)!important;}
+#garden .garden-principles-v65 article:last-child{border-bottom:0!important;}
+#garden .tree-challenge-v65,#garden .garden-continuity-v50,#garden .garden-keepsake-v50{max-width:840px!important;margin:0 auto!important;padding:30px 0!important;border-radius:0!important;background:transparent!important;border:0!important;border-top:1px solid rgba(28,63,50,.07)!important;box-shadow:none!important;}
+#garden .tree-challenge-v65{margin-top:36px!important;padding-top:34px!important;}
+#garden .tree-challenge-head-v50{align-items:center!important;}
+#garden .tree-challenge-head-v50>strong{padding-left:18px!important;}
+#garden .tree-challenge-points-v50{margin-top:18px!important;}
+#garden .garden-continuity-v50 blockquote{margin-top:14px!important;}
+
+/* ---------- 05 Real Language: no card shell, use spacing instead ---------- */
+#journey{padding-top:var(--chapter-gap)!important;padding-bottom:calc(var(--chapter-gap) + 10px)!important;}
+#journey .journey{max-width:840px!important;margin:0 auto!important;padding:0!important;border-radius:0!important;background:transparent!important;border:0!important;box-shadow:none!important;}
+#journey .journey-intro-v50{margin-top:18px!important;margin-bottom:36px!important;}
+#journey .words-sentences{margin:34px auto 26px!important;padding:18px 0!important;border-radius:0!important;background:transparent!important;border-top:1px solid rgba(28,63,50,.07)!important;border-bottom:1px solid rgba(28,63,50,.07)!important;}
+#journey .journey-note{max-width:680px!important;margin:0 auto!important;line-height:1.9!important;}
+#journey .year-card{margin-top:42px!important;border-radius:22px!important;box-shadow:none!important;border:1px solid rgba(28,63,50,.06)!important;background:rgba(255,255,255,.68)!important;}
+#journey blockquote{margin-top:36px!important;}
+
+@media(max-width:720px){
+  :root{--chapter-gap:82px;}
+  #memory .section-head,#learning .section-head,#human .section-head,#garden .section-head,#journey .section-head{margin-bottom:32px!important;}
+  #memory .section-head h2,#learning .section-head h2,#human .section-head h2,#garden .section-head h2,#journey h2{font-size:31px!important;}
+  #memory .section-head p,#learning .section-head p,#human .section-head p,#garden .section-head p,#journey .journey-intro-v50{font-size:13px!important;line-height:1.78!important;}
+  #memory .usage-memory,#human .human-sequence-v47,#garden .garden-hero-v50{padding:22px 18px!important;border-radius:20px!important;}
+  #human .human-value-card{padding:26px 0!important;}
+  #learning .learning-reflection-subsection-v65{margin-top:72px!important;padding-top:68px!important;}
+  #garden .garden-visual-v65{height:268px!important;overflow:hidden!important;padding-top:30px!important;}
+  #garden .garden-visual-v65 .garden-tree-v50{bottom:34px!important;transform:translateX(-50%) scale(.92)!important;}
+  #garden .tree-challenge-v65,#garden .garden-continuity-v50,#garden .garden-keepsake-v50{padding:26px 2px!important;}
+  #garden .tree-challenge-v65{margin-top:30px!important;}
+  #garden .tree-challenge-head-v50{align-items:flex-start!important;}
+  #garden .tree-challenge-head-v50>strong{padding-left:8px!important;}
+  #journey .words-sentences{padding:16px 0!important;}
+  #journey .year-card{margin-top:34px!important;}
+}
